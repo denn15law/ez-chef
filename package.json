@@ -1,0 +1,30 @@
+{
+  "name": "ez-chef",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node /backend/server.js",
+    "server": "nodemon /backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denn15law/ez-chef.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denn15law/ez-chef/issues"
+  },
+  "homepage": "https://github.com/denn15law/ez-chef#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "concurrently": "^7.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
