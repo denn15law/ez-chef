@@ -6,6 +6,9 @@ const Nav = (props) => {
     <nav>
       <h3>Nav Bar</h3>
       <ul className="nav-links">
+        <Link to="/">
+          <li>Home Page</li>
+        </Link>
         <Link to="/myrecipes">
           <li>My Recipes</li>
         </Link>
@@ -13,7 +16,7 @@ const Nav = (props) => {
           <li>Add New Recipe</li>
         </Link>
         <Link to="/favourites">
-          <li>Favourites</li>
+          <li>My Favourites</li>
         </Link>
         <Link to="/grocerylist">
           <li>Grocery List</li>
