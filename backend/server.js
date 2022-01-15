@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 //Require Routes
-const recipes = require("./routes/api/recipes");
+const recipesRoutes = require("./routes/recipes");
 
 //Set up .env
 const dotenv = require("dotenv");
@@ -19,7 +19,7 @@ dotenv.config();
 const db = require("./config/keys").mongoURI;
 
 //Use Routes
-app.use("/api/recipes", recipes);
+app.use("/recipes", recipesRoutes);
 
 // Connect to Mongo
 mongoose
