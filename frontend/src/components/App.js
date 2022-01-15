@@ -1,9 +1,10 @@
 import "../App.css";
+import NewRecipe from "./NewRecipe";
 
 const App = () => {
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <NewRecipe />
     </div>
   );
 };
