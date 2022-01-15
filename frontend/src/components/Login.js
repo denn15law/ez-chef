@@ -55,7 +55,7 @@ const Login = () => {
             <AccountCircleIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Log in to EZ Chef
+            Log in to Your Account
           </Typography>
           <Box
             component="form"
