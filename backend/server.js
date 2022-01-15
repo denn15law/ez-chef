@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 //Require Routes
 const recipesRoutes = require("./routes/recipes");
@@ -13,6 +14,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 app.use(bodyParser.json());
+app.use(cors());
 dotenv.config();
 
 // Database config
