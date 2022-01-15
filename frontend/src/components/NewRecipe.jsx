@@ -1,4 +1,5 @@
 import React from "react";
+import RecipeForm from "./RecipeForm";
 import { Container, AppBar, Typography } from "@mui/material";
 
 const NewRecipe = () => {
@@ -9,6 +10,7 @@ const NewRecipe = () => {
           NEW RECIPE
         </Typography>
       </AppBar>
+      <RecipeForm />
     </Container>
   );
 };
