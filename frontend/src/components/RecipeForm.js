@@ -6,17 +6,22 @@ class RecipeForm extends Component {
   constructor(props) {
     super(props);
 
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleURLChange = this.handleURLChange.bind(this);
+    this.handleInstructionChange = this.handleInstructionChange.bind(this);
+    this.handleServingSizeChange = this.handleServingSizeChange.bind(this);
+
     this.state = {
       title: "",
       image_url: "",
-      instruction: "",
+      instructions: "",
       serving_size: 0,
-      ingredients: [
-        {
-          name: "",
-          measurement: 0,
-        },
-      ],
+      // ingredients: [
+      //   {
+      //     name: "",
+      //     measurement: 0,
+      //   },
+      // ],
     };
   }
 
@@ -34,7 +39,7 @@ class RecipeForm extends Component {
 
   handleInstructionChange = (event) => {
     this.setState({
-      instruction: event.target.value,
+      instructions: event.target.value,
     });
   };
 
@@ -60,18 +65,25 @@ class RecipeForm extends Component {
   //   });
   // };
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
-    const data = this.state;
+
+    const recipeObject = {
+      title: this.state.title,
+      image_url: this.state.image_url,
+      instructions: this.state.instructions,
+      serving_size: this.state.serving_size,
+    };
+
     axios
-      .post("/recipes", data)
+      .post("/recipes", recipeObject)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  };
+  }
 
   render() {
     return (
@@ -109,7 +121,7 @@ class RecipeForm extends Component {
                 id="outlined-multiline-flexible"
                 label="Instructions"
                 type="text"
-                value={this.state.instruction}
+                value={this.state.instructions}
                 onChange={this.handleInstructionChange}
               />
             </div>
