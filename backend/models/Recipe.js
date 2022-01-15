@@ -11,7 +11,7 @@ const RecipeSchema = new Schema({
   image_url: {
     type: String,
   },
-  instruction: {
+  instructions: {
     type: String,
     required: true,
   },
