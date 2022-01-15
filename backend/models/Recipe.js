@@ -22,4 +22,5 @@ const RecipeSchema = new Schema({
   ingredients: [{ name: String, measurement: Number }],
 });
 
-module.exports = Recipe = mongoose.model("recipe", RecipeSchema);
+const Recipe = mongoose.model("Recipe", RecipeSchema);
+module.exports = Recipe;
