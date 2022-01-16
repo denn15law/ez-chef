@@ -4,7 +4,7 @@ const searchFunc = (req, res) => {
   const search = req.params.searched;
   axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=d50d1ea32e0e4f338050036501789998&query=${search}&number=20`
+      `https://api.spoonacular.com/recipes/complexSearch?${process.env.apiKey}&query=${search}&number=20`
     )
     .then(function (response) {
       // handle success
@@ -21,7 +21,7 @@ const recipeDetails = (req, res) => {
   console.log("I am recipeID", recipeID);
   axios
     .get(
-      `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=d50d1ea32e0e4f338050036501789998&query=includeNutrition=false`
+      `https://api.spoonacular.com/recipes/${recipeID}/information?${process.env.apiKey}&query=includeNutrition=false`
     )
     .then(function (response) {
       res.send(response.data);
