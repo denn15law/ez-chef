@@ -1,21 +1,28 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
+import {
+  Box,
+  CssBaseline,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+} from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import HomeIcon from "@mui/icons-material/Home";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import AddIcon from "@mui/icons-material/Add";
+import StarIcon from "@mui/icons-material/Star";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArticleIcon from "@mui/icons-material/Article";
+import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -115,29 +122,65 @@ const Nav = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {[
-            "Home",
-            "My Recipes",
-            "Add Recipe",
-            "My Favourites",
-            "Grocery List",
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <Link to="/">
+              <ListItemText primary="Home" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <MenuBookIcon />
+            </ListItemIcon>
+            <Link to="/myrecipes">
+              <ListItemText primary="My Recipes" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <AddIcon />
+            </ListItemIcon>
+            <Link to="/new">
+              <ListItemText primary="Add New Recipe" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <StarIcon />
+            </ListItemIcon>
+            <Link to="/favourites">
+              <ListItemText primary="My Favourites" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <ShoppingCartIcon />
+            </ListItemIcon>
+            <Link to="/grocerylist">
+              <ListItemText primary="Grocery List" />
+            </Link>
+          </ListItem>
         </List>
         <Divider />
         <List>
-          <Link to="/register">
-            <li>Register</li>
-          </Link>
-          <Link to="/login">
-            <li>Login</li>
-          </Link>
+          <ListItem>
+            <ListItemIcon>
+              <ArticleIcon />
+            </ListItemIcon>
+            <Link to="/register">
+              <ListItemText primary="Register" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+            <Link to="/login">
+              <ListItemText primary="Login" />
+            </Link>
+          </ListItem>
         </List>
       </Drawer>
       <Main open={open}>
@@ -148,34 +191,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-// const Nav = (props) => {
-//   return (
-//     <nav>
-//       <h3>Nav Bar</h3>
-//       <ul className="nav-links">
-//         <Link to="/">
-//           <li>Home Page</li>
-//         </Link>
-//         <Link to="/myrecipes">
-//           <li>My Recipes</li>
-//         </Link>
-//         <Link to="/new">
-//           <li>Add New Recipe</li>
-//         </Link>
-//         <Link to="/favourites">
-//           <li>My Favourites</li>
-//         </Link>
-//         <Link to="/grocerylist">
-//           <li>Grocery List</li>
-//         </Link>
-//         <Link to="/register">
-//           <li>Register</li>
-//         </Link>
-//         <Link to="/login">
-//           <li>Login</li>
-//         </Link>
-//       </ul>
-//     </nav>
-//   );
-// };
