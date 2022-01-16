@@ -9,6 +9,7 @@ import GroceryList from "./GroceryList";
 import Register from "./Register";
 import Login from "./Login";
 import SearchForm from "./SearchForm";
+import RecipeDetails from "./RecipeDetails";
 import "./App.css";
 
 const App = () => {
@@ -26,6 +27,11 @@ const App = () => {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/search" element={<SearchForm />}></Route>
+            <Route
+              exact
+              path="/search/id/:recipeID"
+              element={<RecipeDetails />}
+            ></Route>
           </Routes>
         </div>
       </div>

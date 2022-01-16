@@ -16,20 +16,31 @@ const SearchForm = () => {
   }
 
   const getSearch = () => {
-    console.log(search);
     axios
       .get(`http://localhost:8000/search/${search}`)
       .then(function (response) {
         // handle success
-        console.log(response);
+        setSearched(search);
+        setRecipeData(response.data);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       });
-
-    // document.getElementById("mainInput").value = "";
   };
+
+  // const getDet = (id) => {
+  //   axios
+  //     .get(`http://localhost:8000/search/id/${id}`)
+  //     .then(function (response) {
+  //       // handle success
+  //       console.log("frontend", JSON.stringify(response.data));
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <div>
@@ -48,8 +59,10 @@ const SearchForm = () => {
 
       {recipeData.length
         ? recipeData.map((recip) => {
+            const url = `http://localhost:3000/search/id/${recip.id}`;
             return (
               <div className="recipe" key={recip.id}>
+                <a href={url}>{recip.title}</a>
                 <h1>{recip.title}</h1>
                 <img src={recip.image}></img>
               </div>
