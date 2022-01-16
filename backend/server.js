@@ -18,8 +18,10 @@ app.use(bodyParser.json());
 app.use(cors());
 dotenv.config();
 
-// Database config
-const db = require("./config/keys").mongoURI;
+// Database config to Connect to local
+// const db = require("./config/keys").mongoLocal;
+//Connect to Cloud
+const db = require("./config/keys").mongoCloud;
 
 //Use Routes
 app.use("/recipes", recipesRoutes);
