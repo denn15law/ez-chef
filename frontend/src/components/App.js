@@ -28,7 +28,6 @@ const App = () => {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/search" element={<SearchForm />}></Route>
             <Route
-              exact
               path="/search/id/:recipeID"
               element={<RecipeDetails />}
             ></Route>

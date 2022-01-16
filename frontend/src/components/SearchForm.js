@@ -29,19 +29,6 @@ const SearchForm = () => {
       });
   };
 
-  // const getDet = (id) => {
-  //   axios
-  //     .get(`http://localhost:8000/search/id/${id}`)
-  //     .then(function (response) {
-  //       // handle success
-  //       console.log("frontend", JSON.stringify(response.data));
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error);
-  //     });
-  // };
-
   return (
     <div>
       <h1 className="Search-Form">Recipe Search</h1>
