@@ -1,4 +1,11 @@
-import { Button, Input, Box } from "@mui/material";
+import {
+  Button,
+  Input,
+  Box,
+  InputLabel,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import axios from "axios";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -28,38 +35,6 @@ const New = (props) => {
     control,
   });
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const URL = "http://localhost:8000/recipes";
-  //   const body = recipe;
-  //   axios
-  //     .post(URL, body)
-  //     .then((resp) => {
-  //       console.log(resp);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // render a list of ingredients
-  // when a user changes the name of an ignredient,  a callback function is valled that passes in the new name and the index of the ingredient we're modifying
-  // const handleIngredientNameChange = (newName, ingredientIndex) => {
-  //   const ingredients = [...recipe.ingredients];
-  //   const ingredientToEdit = ingredients[ingredientIndex];
-  //   ingredients[ingredientIndex] = {
-  //     ...ingredientToEdit,
-  //     name: newName,
-  //   };
-  //   const newRecipe = {
-  //     ...recipe,
-  //     ingredients,
-  //   };
-  //   setRecipe(newRecipe);
-  // };
-
-  // https://www.npmjs.com/package/react-hook-form
-
   const renderIngredientForm = () => {
     append({ name: "", measurement: "" });
   };
@@ -78,18 +53,29 @@ const New = (props) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box display="flex" justifyContent="center">
         <Box display="flex" flexDirection="column" width={500}>
+          <InputLabel htmlFor="title">Title of Recipe:</InputLabel>
           <Input
             {...register("title")}
+            id="title"
             name="title"
             control={control}
             render={({ field }) => <Input {...field} />}
           />
-          <Input
-            {...register("instruction")}
-            name="instruction"
+          <InputLabel htmlFor="instructions">Instructions:</InputLabel>
+          <TextField
+            {...register("instructions")}
+            control={control}
+            id="outlined-multiline-static"
+            multiline
+            rows={4}
+            defaultValue="Enter Recipe Instructions"
+            render={({ field }) => <TextField {...field} />}
+          />
+          {/* <Input
+            name="instructions"
             control={control}
             render={({ field }) => <Input {...field} />}
-          />
+          /> */}
           <Input
             {...register("serving_size")}
             name="serving_size"
@@ -102,7 +88,7 @@ const New = (props) => {
             control={control}
             render={({ field }) => <Input {...field} />}
           />
-          <h1>Ingredients</h1>
+          <Typography variant="h6">List of Ingredients</Typography>
 
           {ingredientsFields.map((item, i) => (
             <Box display="flex">
