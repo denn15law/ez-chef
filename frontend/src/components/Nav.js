@@ -147,8 +147,12 @@ const Nav = () => {
             variant="h6"
             noWrap
             component="div"
+<<<<<<< HEAD
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
+=======
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+>>>>>>> main
             EZ Chef
           </Typography>
           <Search>
