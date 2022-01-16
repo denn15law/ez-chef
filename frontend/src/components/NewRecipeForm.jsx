@@ -7,7 +7,7 @@ import {
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import axios from "axios";
-import { useForm, useFieldArray, Controller } from "react-hook-form";
+import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
 
 const useStyles = makeStyles({
     serving_size: {
@@ -18,16 +18,16 @@ const useStyles = makeStyles({
 const NewRecipeForm = (props) => {
 
   // const classes = useStyles()
-  const { control, handleSubmit, reset } = useForm({
+  const { control, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
       title: "",
       instructions: "",
-      serving_size: null,
+      serving_size: '',
       image_url: "",
       ingredients: [
         {
           name: "",
-          quantity: null,
+          quantity: '',
           unit: ''
         },
       ],
@@ -117,7 +117,8 @@ const NewRecipeForm = (props) => {
             control={control}
             render={({field}) => 
               <TextField 
-                type="number" label="Serving Size" variant="outlined" {...field}/>
+                type="number" 
+                label="Serving Size" variant="outlined" {...field}/>
             }/>
           <Controller
             name="image_url"
@@ -131,6 +132,13 @@ const NewRecipeForm = (props) => {
             variant="contained"
             color="success"
           >Submit</Button>
+          <Button
+            variant="contained"
+            onClick={() => reset()}
+          >
+            Reset
+          </Button>
+
         </Box>
       </Box>
     </form>
