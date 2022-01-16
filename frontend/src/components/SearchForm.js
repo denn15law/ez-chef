@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import * as React from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const SearchForm = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
-
+  const [searched, setSearched] = useState("");
   function handleChange(e) {
     setSearch(
       e.target.value
@@ -22,6 +23,7 @@ const SearchForm = () => {
       )
       .then(function (response) {
         // handle success
+        setSearched(search);
         console.log(response.data);
         setRecipeData(response.data.results);
       })
@@ -41,9 +43,13 @@ const SearchForm = () => {
         type="text"
         placeholder="Enter Ingredients or Keywords"
         onChange={handleChange}
+        size="40"
       />
       <button onClick={getSearch}>Search Recipe</button>
-      <h4>Now displaying recipes containing: {search.replaceAll("+", ", ")}</h4>
+      {recipeData.length ? (
+        <h4>Now displaying recipes containing: {searched}</h4>
+      ) : null}
+
       {recipeData.length
         ? recipeData.map((recip) => {
             return (
@@ -59,3 +65,10 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
+
+// <input
+//         id="mainInput"
+//         type="text"
+//         placeholder="Enter Ingredients or Keywords"
+//         onChange={handleChange}
+//       />

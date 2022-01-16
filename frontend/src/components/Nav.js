@@ -1,21 +1,31 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
+import { styled, useTheme, alpha } from "@mui/material/styles";
+import {
+  Box,
+  CssBaseline,
+  Divider,
+  Drawer,
+  IconButton,
+  InputBase,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import HomeIcon from "@mui/icons-material/Home";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import AddIcon from "@mui/icons-material/Add";
+import StarIcon from "@mui/icons-material/Star";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArticleIcon from "@mui/icons-material/Article";
+import PersonIcon from "@mui/icons-material/Person";
+import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -65,6 +75,48 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
+
 const Nav = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -87,9 +139,27 @@ const Nav = () => {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}>
+            sx={{ mr: 2, ...(open && { display: "none" }) }}
+          >
             <MenuIcon />
           </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            EZ Chef
+          </Typography>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search..."
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -103,7 +173,8 @@ const Nav = () => {
         }}
         variant="persistent"
         anchor="left"
-        open={open}>
+        open={open}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
@@ -115,31 +186,68 @@ const Nav = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {[
-            "Home",
-            "My Recipes",
-            "Add Recipe",
-            "My Favourites",
-            "Grocery List",
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <Link to="/">
+              <ListItemText primary="Home" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <MenuBookIcon />
+            </ListItemIcon>
+            <Link to="/myrecipes">
+              <ListItemText primary="My Recipes" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <AddIcon />
+            </ListItemIcon>
+            <Link to="/new">
+              <ListItemText primary="Add New Recipe" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <StarIcon />
+            </ListItemIcon>
+            <Link to="/favourites">
+              <ListItemText primary="My Favourites" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <ShoppingCartIcon />
+            </ListItemIcon>
+            <Link to="/grocerylist">
+              <ListItemText primary="Grocery List" />
+            </Link>
+          </ListItem>
         </List>
         <Divider />
         <List>
-          <Link to="/register">
-            <li>Register</li>
-          </Link>
-          <Link to="/login">
-            <li>Login</li>
-          </Link>
+          <ListItem>
+            <ListItemIcon>
+              <ArticleIcon />
+            </ListItemIcon>
+            <Link to="/register">
+              <ListItemText primary="Register" />
+            </Link>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+            <Link to="/login">
+              <ListItemText primary="Login" />
+            </Link>
+          </ListItem>
         </List>
       </Drawer>
+
       <Main open={open}>
         <DrawerHeader />
       </Main>
@@ -148,34 +256,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-// const Nav = (props) => {
-//   return (
-//     <nav>
-//       <h3>Nav Bar</h3>
-//       <ul className="nav-links">
-//         <Link to="/">
-//           <li>Home Page</li>
-//         </Link>
-//         <Link to="/myrecipes">
-//           <li>My Recipes</li>
-//         </Link>
-//         <Link to="/new">
-//           <li>Add New Recipe</li>
-//         </Link>
-//         <Link to="/favourites">
-//           <li>My Favourites</li>
-//         </Link>
-//         <Link to="/grocerylist">
-//           <li>Grocery List</li>
-//         </Link>
-//         <Link to="/register">
-//           <li>Register</li>
-//         </Link>
-//         <Link to="/login">
-//           <li>Login</li>
-//         </Link>
-//       </ul>
-//     </nav>
-//   );
-// };
