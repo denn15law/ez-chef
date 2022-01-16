@@ -1,4 +1,6 @@
-import * as React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -32,14 +34,24 @@ const Copyright = (props) => {
 const theme = createTheme();
 
 const Login = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const [data, setData] = useState({ email: "", password: "" });
+
+  const navigate = useNavigate();
+
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const url = "/login";
+      const { data: res } = await axios.post(url, data);
+      navigate("/");
+      console.log(res.message);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -73,6 +85,8 @@ const Login = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              value={data.email}
+              onChange={handleChange}
             />
             <TextField
               margin="normal"
@@ -83,6 +97,8 @@ const Login = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={data.password}
+              onChange={handleChange}
             />
             <Button
               type="submit"
