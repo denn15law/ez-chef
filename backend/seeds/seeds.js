@@ -5,7 +5,7 @@ dotenv.config();
 const db = require("../config/keys").mongoLocal;
 
 //Connect to Cloud
-const db = require("../config/keys").mongoCloud;
+// const db = require("../config/keys").mongoCloud;
 
 //Require models
 const Recipe = require("../models/Recipe");
@@ -16,8 +16,8 @@ mongoose
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log(err.message));
 
-// Recipe.collection.drop(() => console.log("Recipe Dropped"));
-// User.collection.drop(() => console.log("User Dropped"));
+Recipe.collection.drop(() => console.log("Recipe Dropped"));
+User.collection.drop(() => console.log("User Dropped"));
 
 let recipe = new Recipe({
   title: "fried rice",

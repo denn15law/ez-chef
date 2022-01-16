@@ -1,13 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const { getUsers, createUser, findUserById } = require("../controllers/users");
+const User = require("../models/User");
 
-//Recipe Model
-const Recipe = require("../models/Recipe");
+//Route: /users
+router.get("/", (req, res) => {
+  User.find()
+    .then((user) => res.json(user))
+    .catch((err) => {
+      res.status(404).json({ message: err.message });
+    });
+});
 
-//Route: /recipes
-router.get("/", getUsers);
-router.post("/", createUser);
-router.get("/:id", findUserById);
+// router.get("/:id", (req, res) => {
+//   User.findById(req.body.id)
+//     .then((res) => {
+//       res.send(req.user);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
 
 module.exports = router;
