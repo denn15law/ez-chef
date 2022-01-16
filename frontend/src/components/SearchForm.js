@@ -18,21 +18,17 @@ const SearchForm = () => {
   const getSearch = () => {
     console.log(search);
     axios
-      .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=509c30240911425fa631c29ca02b8e8c&query=${search}&number=20`
-      )
+      .get(`http://localhost:8000/search/${search}`)
       .then(function (response) {
         // handle success
-        setSearched(search);
-        console.log(response.data);
-        setRecipeData(response.data.results);
+        console.log(response);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       });
 
-    document.getElementById("mainInput").value = "";
+    // document.getElementById("mainInput").value = "";
   };
 
   return (
