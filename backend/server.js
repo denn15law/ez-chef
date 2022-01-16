@@ -5,6 +5,7 @@ const cors = require("cors");
 
 //Require Routes
 const recipesRoutes = require("./routes/recipes");
+const usersRoutes = require("./routes/users");
 
 //Set up .env
 const dotenv = require("dotenv");
@@ -22,6 +23,7 @@ const db = require("./config/keys").mongoURI;
 
 //Use Routes
 app.use("/recipes", recipesRoutes);
+app.use("/users", usersRoutes);
 
 // Connect to Mongo
 mongoose
