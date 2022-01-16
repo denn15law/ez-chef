@@ -8,6 +8,7 @@ import Favourites from "./Favourites";
 import GroceryList from "./GroceryList";
 import Register from "./Register";
 import Login from "./Login";
+import SearchForm from "./SearchForm";
 import "./App.css";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/grocerylist" element={<GroceryList />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path="/search" element={<SearchForm />}></Route>
           </Routes>
         </div>
       </div>

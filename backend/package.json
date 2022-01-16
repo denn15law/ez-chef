@@ -2,11 +2,11 @@
   "name": "ez-chef",
   "version": "1.0.0",
   "description": "",
-  "main": "./backend/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node ./backend/server.js",
-    "server": "nodemon ./backend/server.js",
-    "seed": "node ./backend/seeds/seeds.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "seed": "node ./seeds/seeds.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.8",
+    "axios": "^0.24.0",
     "body-parser": "^1.19.1",
     "concurrently": "^7.0.0",
     "cors": "^2.8.5",
