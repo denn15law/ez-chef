@@ -120,7 +120,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Nav = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const [search, setSearch] = React.useState("Search");
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -147,12 +147,8 @@ const Nav = () => {
             variant="h6"
             noWrap
             component="div"
-<<<<<<< HEAD
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-=======
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
->>>>>>> main
             EZ Chef
           </Typography>
           <Search>
@@ -161,7 +157,7 @@ const Nav = () => {
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search..."
-              inputProps={{ "aria-label": "search" }}
+              inputProps={{ "aria-label": search }}
             />
           </Search>
         </Toolbar>
