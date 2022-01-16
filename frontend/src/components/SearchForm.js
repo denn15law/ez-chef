@@ -3,21 +3,22 @@ import RecipeList from "./RecipeList";
 import axios from "axios";
 
 const SearchForm = () => {
-  const [recipeData, setRecipeData] = useState({});
+  const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
 
   function handleChange(e) {
-    setSearch(e.target.value);
+    setSearch(e.target.value.replaceAll(",", "+").replaceAll(", ", "+"));
   }
 
   const getSearch = () => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=509c30240911425fa631c29ca02b8e8c&ingredients=${search}&number=20`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=509c30240911425fa631c29ca02b8e8c&query=${search}&number=20`
       )
       .then(function (response) {
         // handle success
-        setRecipeData(response.data);
+        console.log(response.data);
+        setRecipeData(response.data.results);
       })
       .catch(function (error) {
         // handle error
