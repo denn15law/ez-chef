@@ -19,9 +19,8 @@ app.use(cors());
 dotenv.config();
 
 // Database config to Connect to local
-// const db = require("./config/keys").mongoLocal;
-//Connect to Cloud
-const db = require("./config/keys").mongoCloud;
+// const db = require("./config/keys").mongoCloud;
+const db = require("./config/keys").mongoLocal;
 
 //Use Routes
 app.use("/recipes", recipesRoutes);
