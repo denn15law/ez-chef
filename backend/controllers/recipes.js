@@ -9,6 +9,7 @@ const getRecipes = (req, res) => {
 };
 
 const createRecipe = (req, res) => {
+  console.log(req.body);
   const newRecipe = new Recipe({
     title: req.body.title,
     image_url: req.body.image_url,
