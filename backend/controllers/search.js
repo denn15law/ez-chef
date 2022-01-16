@@ -1,10 +1,12 @@
 const { default: axios } = require("axios");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const searchFunc = (req, res) => {
   const search = req.params.searched;
   axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?${process.env.apiKey}&query=${search}&number=20`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.apiKey}&query=${search}&number=20`
     )
     .then(function (response) {
       // handle success
@@ -21,7 +23,7 @@ const recipeDetails = (req, res) => {
   console.log("I am recipeID", recipeID);
   axios
     .get(
-      `https://api.spoonacular.com/recipes/${recipeID}/information?${process.env.apiKey}&query=includeNutrition=false`
+      `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${process.env.apiKey}&query=includeNutrition=false`
     )
     .then(function (response) {
       res.send(response.data);
