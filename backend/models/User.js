@@ -2,11 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-<<<<<<< HEAD
-//Create Schema for Recipe
-=======
 //Create Schema for User
->>>>>>> main
 const UserSchema = new Schema({
   first_name: {
     type: String,
@@ -14,10 +10,6 @@ const UserSchema = new Schema({
   },
   last_name: {
     type: String,
-<<<<<<< HEAD
-    required: true,
-=======
->>>>>>> main
   },
   email: {
     type: String,
