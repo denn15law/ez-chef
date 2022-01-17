@@ -24,7 +24,7 @@ let recipe = new Recipe({
   instructions: "Fry the rice",
   serving_size: 1,
   image_url: "https://i.imgur.com/VYIC6pb.jpeg",
-  ingredients: [{ name: "rice", measurement: 1 }],
+  ingredients: [{ name: "rice", quantity: 1, unit: "cup" }],
 });
 recipe
   .save()

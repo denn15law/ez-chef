@@ -10,13 +10,14 @@ import {
 import Index from "./Index";
 import Nav from "./Nav";
 import MyRecipes from "./MyRecipes";
-import New from "./New";
 import Favourites from "./Favourites";
 import GroceryList from "./GroceryList";
 import Register from "./Register";
 import Login from "./Login";
 import SearchForm from "./SearchForm";
+import RecipeDetails from "./RecipeDetails";
 import "./App.css";
+import NewRecipe from "./NewRecipe";
 
 const AuthenticateUser = () => {
   let authenticatedUser = localStorage.getItem("storedUser");
@@ -35,13 +36,17 @@ const App = () => {
         <div className="main">
           <Routes>
             <Route path="/" element={<Index />}></Route>
+
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/search" element={<SearchForm />}></Route>
-
+            <Route
+              path="/search/id/:recipeID"
+              element={<RecipeDetails />}
+            ></Route>
             <Route element={<AuthenticateUser />}>
               <Route path="/myrecipes" element={<MyRecipes />}></Route>
-              <Route path="/new" element={<New />}></Route>
+              <Route path="/new" element={<NewRecipe />}></Route>
               <Route path="/favourites" element={<Favourites />}></Route>
               <Route path="/grocerylist" element={<GroceryList />}></Route>
             </Route>

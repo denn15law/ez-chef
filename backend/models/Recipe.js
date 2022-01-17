@@ -19,7 +19,7 @@ const RecipeSchema = new Schema({
     type: Number,
     required: true,
   },
-  ingredients: [{ name: String, measurement: String }],
+  ingredients: [{ name: String, quantity: Number, unit: String }],
 });
 
 const Recipe = mongoose.model("Recipe", RecipeSchema);
