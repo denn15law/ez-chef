@@ -16,23 +16,17 @@ const SearchForm = () => {
   }
 
   const getSearch = () => {
-    console.log(search);
     axios
-      .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=509c30240911425fa631c29ca02b8e8c&query=${search}&number=20`
-      )
+      .get(`http://localhost:8000/search/${search}`)
       .then(function (response) {
         // handle success
         setSearched(search);
-        console.log(response.data);
-        setRecipeData(response.data.results);
+        setRecipeData(response.data);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       });
-
-    document.getElementById("mainInput").value = "";
   };
 
   return (
@@ -52,8 +46,10 @@ const SearchForm = () => {
 
       {recipeData.length
         ? recipeData.map((recip) => {
+            const url = `http://localhost:3000/search/id/${recip.id}`;
             return (
               <div className="recipe" key={recip.id}>
+                <a href={url}>{recip.title}</a>
                 <h1>{recip.title}</h1>
                 <img src={recip.image}></img>
               </div>
@@ -65,10 +61,3 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
-
-// <input
-//         id="mainInput"
-//         type="text"
-//         placeholder="Enter Ingredients or Keywords"
-//         onChange={handleChange}
-//       />

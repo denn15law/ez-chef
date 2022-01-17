@@ -8,6 +8,7 @@ import GroceryList from "./GroceryList";
 import Register from "./Register";
 import Login from "./Login";
 import SearchForm from "./SearchForm";
+import RecipeDetails from "./RecipeDetails";
 import "./App.css";
 import NewRecipe from "./NewRecipe";
 
@@ -26,6 +27,10 @@ const App = () => {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/search" element={<SearchForm />}></Route>
+            <Route
+              path="/search/id/:recipeID"
+              element={<RecipeDetails />}
+            ></Route>
           </Routes>
         </div>
       </div>
