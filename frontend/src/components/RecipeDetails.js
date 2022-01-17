@@ -30,6 +30,10 @@ const RecipeDetails = () => {
     <div>
       <h1>{details.title}</h1>
       <img src={details.image}></img>
+      <div class="recipe-actions">
+        <button class="favorite-recipe">Favorite Recipe</button>
+        <button id="add-grocery">Add to Grocery List</button>
+      </div>
       <div id="recipe-ingredients">
         <h3>Recipe Ingredients:</h3>
         <ul>
