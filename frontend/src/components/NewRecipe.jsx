@@ -5,10 +5,12 @@ const NewRecipe = () => {
   return (
     <Container>
       <AppBar position="static" color="inherit">
-        <Typography variant="h2" align="center">NEW RECIPE</Typography>
+        <Typography variant="h2" align="center">
+          NEW RECIPE
+        </Typography>
       </AppBar>
     </Container>
-  )
-}
+  );
+};
 
-export default NewRecipe
+export default NewRecipe;
