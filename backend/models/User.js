@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-//Create Schema for Recipe
+
+//Create Schema for User
 const UserSchema = new Schema({
   first_name: {
     type: String,

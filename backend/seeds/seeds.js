@@ -16,15 +16,15 @@ mongoose
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log(err.message));
 
-// Recipe.collection.drop(() => console.log("Recipe Dropped"));
-// User.collection.drop(() => console.log("User Dropped"));
+Recipe.collection.drop(() => console.log("Recipe Dropped"));
+User.collection.drop(() => console.log("User Dropped"));
 
 let recipe = new Recipe({
   title: "fried rice",
   instructions: "Fry the rice",
   serving_size: 1,
   image_url: "https://i.imgur.com/VYIC6pb.jpeg",
-  ingredients: [{ name: "rice", measurement: 1 }],
+  ingredients: [{ name: "rice", quantity: 1, unit: "cup" }],
 });
 
 recipe

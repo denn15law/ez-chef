@@ -9,7 +9,6 @@ const getRecipes = (req, res) => {
 };
 
 const createRecipe = (req, res) => {
-  console.log("calling req.body", req.body);
   const newRecipe = new Recipe({
     title: req.body.title,
     image_url: req.body.image_url,
@@ -17,6 +16,7 @@ const createRecipe = (req, res) => {
     instructions: req.body.instructions,
     serving_size: req.body.serving_size,
   });
+  console.log(newRecipe);
   newRecipe
     .save()
     .then((response) => res.json(response))
