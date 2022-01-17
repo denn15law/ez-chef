@@ -35,31 +35,6 @@ const addFavourite = (req, res) => {
       res.status(400).send("Favourite already added");
     }
   });
-  // async (err, result) => {
-  //   console.log("error", err);
-  //   console.log("result", result);
-  //   if (err) {
-  //     throw err;
-  //   }
-  //   if (result) {
-  //     res
-  //       .status(400)
-  //       .send("You have already added this recipe to your favourites.");
-  //   }
-  //   if (!result) {
-  //     const newFavourite = new Favourite({
-  //       favourite_title: req.body.title,
-  //       favourite_image: req.body.image,
-  //       favourite_recipeID: req.body.id,
-  //     });
-  //     newFavourite
-  //       .save()
-  //       .then((response) => {
-  //         res.json(response);
-  //       })
-  //       .catch((err) => console.log(err.message));
-  //   }
-  // };
 };
 
 module.exports = {
