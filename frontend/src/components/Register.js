@@ -52,9 +52,9 @@ const Register = () => {
     e.preventDefault();
     try {
       const url = "/register";
-      const { data: res } = await axios.post(url, data);
+      await axios.post(url, data);
+      // console.log(data);
       navigate("/login");
-      console.log(res.message);
     } catch (error) {
       console.log(error);
     }
