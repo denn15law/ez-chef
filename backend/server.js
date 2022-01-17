@@ -30,8 +30,8 @@ app.use(
 app.use(
   session({
     secret: "secretcode",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   })
 );
 app.use(cookieParser("secretcode"));
