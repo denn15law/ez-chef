@@ -61,10 +61,3 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
-
-// <input
-//         id="mainInput"
-//         type="text"
-//         placeholder="Enter Ingredients or Keywords"
-//         onChange={handleChange}
-//       />

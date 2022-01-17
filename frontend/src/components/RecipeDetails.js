@@ -20,6 +20,12 @@ const RecipeDetails = () => {
       });
   }, [id]);
 
+  function removeTags(str) {
+    if (str === null || str === "") return false;
+    else str = str.toString();
+    return str.replace(/(<([^>]+)>)/gi, "");
+  }
+
   return (
     <div>
       <h1>{details.title}</h1>
@@ -42,29 +48,13 @@ const RecipeDetails = () => {
         <h3>Cooking Instructions:</h3>
         <ol type="1">
           {Object.values(details).length
-            ? details.instructions
-                .replaceAll("<li>", "")
-                .replaceAll("</li>", "")
-                .replaceAll("<ol>", "")
-                .replaceAll("</ol>", "")
-                .replaceAll("<p>", "")
-                .replaceAll("</p>", "")
-                .replaceAll("<b>", "")
-                .replaceAll("</b>", "")
+            ? removeTags(details.instructions)
                 .split(".")
                 .slice(0, -1)
                 .map((each) => {
                   return (
                     <li
-                      key={details.instructions
-                        .replaceAll("<li>", "")
-                        .replaceAll("</li>", "")
-                        .replaceAll("<ol>", "")
-                        .replaceAll("</ol>", "")
-                        .replaceAll("<p>", "")
-                        .replaceAll("</p>", "")
-                        .replaceAll("<b>", "")
-                        .replaceAll("</b>", "")
+                      key={removeTags(details.instructions)
                         .split(".")
                         .indexOf(each)}
                     >
