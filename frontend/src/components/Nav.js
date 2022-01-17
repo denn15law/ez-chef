@@ -1,4 +1,5 @@
 import * as React from "react";
+import Logout from "./Logout";
 import { styled, useTheme } from "@mui/material/styles";
 import {
   Box,
@@ -25,6 +26,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArticleIcon from "@mui/icons-material/Article";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
+// import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -109,6 +111,9 @@ const Nav = () => {
           <Link to="/search">
             <SearchIcon />
           </Link>
+          <Divider>
+            <Logout />
+          </Divider>
         </Toolbar>
       </AppBar>
       <Drawer

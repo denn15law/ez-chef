@@ -10,6 +10,7 @@ const recipesRoutes = require("./routes/recipes");
 const usersRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
+const logoutRoutes = require("./routes/logout");
 const searchRoutes = require("./routes/search");
 const favouriteRoutes = require("./routes/favourites");
 
@@ -58,6 +59,7 @@ app.use("/recipes", recipesRoutes);
 app.use("/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
+app.use("/logout", logoutRoutes);
 app.use("/search", searchRoutes);
 
 // Connect to Mongo
