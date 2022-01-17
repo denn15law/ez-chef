@@ -17,8 +17,8 @@ mongoose
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log(err.message));
 
-// Recipe.collection.drop(() => console.log("Recipe Dropped"));
-// User.collection.drop(() => console.log("User Dropped"));
+Recipe.collection.drop(() => console.log("Recipe Dropped"));
+User.collection.drop(() => console.log("User Dropped"));
 Favourite.collection.drop(() => console.log("Favourite Dropped"));
 
 let recipe = new Recipe({
@@ -51,14 +51,30 @@ user
   })
   .catch((err) => console.log(err));
 
-// let favourite = new Favourite({
-//   favourite_recipeID: 632501,
-// });
+let favourite1 = new Favourite({
+  favourite_title: "Apple Crumble",
+  favourite_image: "https://spoonacular.com/recipeImages/632522-556x370.jpg",
+  favourite_recipeID: 632501,
+});
 
-// favourite
-//   .save()
-//   .then((res) => {
-//     console.log(res);
-//     mongoose.disconnect(db);
-//   })
-//   .catch((err) => console.log(err));
+let favourite2 = new Favourite({
+  favourite_title: "Apple Pie Smoothie",
+  favourite_image: "https://spoonacular.com/recipeImages/632575-556x370.jpg",
+  favourite_recipeID: 632575,
+});
+
+favourite1
+  .save()
+  .then((res) => {
+    console.log(res);
+    mongoose.disconnect(db);
+  })
+  .catch((err) => console.log(err));
+
+favourite2
+  .save()
+  .then((res) => {
+    console.log(res);
+    mongoose.disconnect(db);
+  })
+  .catch((err) => console.log(err));
