@@ -19,7 +19,7 @@ mongoose
 
 // Recipe.collection.drop(() => console.log("Recipe Dropped"));
 // User.collection.drop(() => console.log("User Dropped"));
-// Favourite.collection.drop(() => console.log("Favourite Dropped"));
+Favourite.collection.drop(() => console.log("Favourite Dropped"));
 
 let recipe = new Recipe({
   title: "fried rice",
@@ -51,14 +51,14 @@ user
   })
   .catch((err) => console.log(err));
 
-let favourite = new Favourite({
-  favourite_recipeID: 632501,
-});
+// let favourite = new Favourite({
+//   favourite_recipeID: 632501,
+// });
 
-favourite
-  .save()
-  .then((res) => {
-    console.log(res);
-    mongoose.disconnect(db);
-  })
-  .catch((err) => console.log(err));
+// favourite
+//   .save()
+//   .then((res) => {
+//     console.log(res);
+//     mongoose.disconnect(db);
+//   })
+//   .catch((err) => console.log(err));

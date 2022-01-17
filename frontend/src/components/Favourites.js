@@ -4,17 +4,31 @@ import axios from "axios";
 
 const Favourites = (props) => {
   const [recipeData, setRecipeData] = useState([]);
+  const [myFavs, setMyFavs] = useState([]);
+
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:8000/favourites")
+      .then(function (response) {
+        console.log("iamdata", response.data);
+        setMyFavs(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div>
       <h1>Favourites Page</h1>
-      {recipeData.length ? (
-        recipeData.map((recip) => {
-          const url = `http://localhost:3000/search/id/${recip.id}`;
+      {myFavs.length ? (
+        myFavs.map((recip) => {
+          const url = `http://localhost:3000/search/id/${recip.favourite_recipeID}`;
           return (
-            <div className="recipe" key={recip.id}>
-              <a href={url}>{recip.title}</a>
-              <h1>{recip.title}</h1>
-              <img src={recip.image}></img>
+            <div className="recipe" key={recip.favourite_recipeID}>
+              <a href={url}>{recip.favourite_title}</a>
+              <h1>{recip.favourite_title}</h1>
+              <img src={recip.favourite_image}></img>
             </div>
           );
         })

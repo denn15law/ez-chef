@@ -1,6 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RecipeDetails = () => {
   const [details, setDetails] = useState({});
@@ -26,12 +27,36 @@ const RecipeDetails = () => {
     return str.replace(/(<([^>]+)>)/gi, "");
   }
 
+  const onClickFavourite = (e) => {
+    const URL = "http://localhost:8000/favourites";
+    console.log("I am details", details);
+
+    axios
+      .post(URL, details)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const url = "/register";
+  //     const { data: res } = await axios.post(url, data);
+  //     navigate("/login");
+  //     console.log(res.message);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   return (
     <div>
       <h1>{details.title}</h1>
       <img src={details.image}></img>
       <div class="recipe-actions">
-        <button class="favorite-recipe">Favorite Recipe</button>
+        <button class="favorite-recipe" onClick={onClickFavourite}>
+          Add to Favourites
+        </button>
         <button id="add-grocery">Add to Grocery List</button>
       </div>
       <div id="recipe-ingredients">

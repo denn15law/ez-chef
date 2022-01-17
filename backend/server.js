@@ -47,12 +47,12 @@ dotenv.config();
 const db = require("./config/keys").mongoLocal;
 
 //Use Routes
+app.use("/favourites", favouriteRoutes);
 app.use("/recipes", recipesRoutes);
 app.use("/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/search", searchRoutes);
-app.use("/favourites", favouriteRoutes);
 
 // Connect to Mongo
 mongoose

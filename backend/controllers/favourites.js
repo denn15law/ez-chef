@@ -12,15 +12,13 @@ const getFavourites = (req, res) => {
 };
 
 const addFavourite = (req, res) => {
-  const newFavourite = new Recipe({
-    title: req.body.title,
-    image_url: req.body.image_url,
-    ingredients: req.body.ingredients,
-    instructions: req.body.instructions,
-    serving_size: req.body.serving_size,
+  const newFavourite = new Favourite({
+    favourite_title: req.body.title,
+    favourite_image: req.body.image,
+    favourite_recipeID: req.body.id,
   });
-  console.log(newRecipe);
-  newRecipe
+  console.log(newFavourite);
+  newFavourite
     .save()
     .then((response) => res.json(response))
     .catch((err) => console.log(err.message));
@@ -28,4 +26,5 @@ const addFavourite = (req, res) => {
 
 module.exports = {
   getFavourites,
+  addFavourite,
 };
