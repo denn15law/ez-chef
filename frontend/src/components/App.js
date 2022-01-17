@@ -42,7 +42,8 @@ const App = () => {
             <Route path="/search" element={<SearchForm />}></Route>
             <Route
               path="/search/id/:recipeID"
-              element={<RecipeDetails />}></Route>
+              element={<RecipeDetails />}
+            ></Route>
             {/* <Route element={<AuthenticateUser />}> */}
             <Route path="/myrecipes" element={<MyRecipes />}></Route>
             <Route path="/new" element={<NewRecipe />}></Route>

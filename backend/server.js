@@ -11,6 +11,7 @@ const usersRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const searchRoutes = require("./routes/search");
+const favouriteRoutes = require("./routes/favourites");
 
 //Set up .env
 const dotenv = require("dotenv");
@@ -52,6 +53,7 @@ dotenv.config();
 const db = require("./config/keys").mongoLocal;
 
 //Use Routes
+app.use("/favourites", favouriteRoutes);
 app.use("/recipes", recipesRoutes);
 app.use("/users", usersRoutes);
 app.use("/register", registerRoutes);
