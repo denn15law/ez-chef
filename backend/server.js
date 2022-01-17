@@ -2,8 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const passport = require("passport");
+// const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 //Require Routes
@@ -34,12 +33,19 @@ app.use(
     secret: "secretcode",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+    },
   })
 );
-app.use(cookieParser("secretcode"));
+// app.use(cookieParser("secretcode"));
+
+// Passport configurations
+const passport = require("./config/passport");
 app.use(passport.initialize());
 app.use(passport.session());
-require("./config/passport")(passport);
+
+// dotenv
 dotenv.config();
 
 // Database config to Connect to local
