@@ -12,16 +12,54 @@ const getFavourites = (req, res) => {
 };
 
 const addFavourite = (req, res) => {
-  const newFavourite = new Favourite({
-    favourite_title: req.body.title,
-    favourite_image: req.body.image,
-    favourite_recipeID: req.body.id,
+  const recipeID = req.body.id;
+  console.log("I am recipeID in addFavourite", recipeID);
+
+  Favourite.findOne({ favourite_recipeID: recipeID }).then((response) => {
+    console.log("called");
+    console.log(response);
+    if (!response) {
+      const newFavourite = new Favourite({
+        favourite_title: req.body.title,
+        favourite_image: req.body.image,
+        favourite_recipeID: req.body.id,
+      });
+      newFavourite
+        .save()
+        .then((response) => {
+          res.json(response);
+        })
+        .catch((err) => console.log(err.message));
+    } else {
+      console.log("Already added!");
+      res.status(400).send("Favourite already added");
+    }
   });
-  console.log(newFavourite);
-  newFavourite
-    .save()
-    .then((response) => res.json(response))
-    .catch((err) => console.log(err.message));
+  // async (err, result) => {
+  //   console.log("error", err);
+  //   console.log("result", result);
+  //   if (err) {
+  //     throw err;
+  //   }
+  //   if (result) {
+  //     res
+  //       .status(400)
+  //       .send("You have already added this recipe to your favourites.");
+  //   }
+  //   if (!result) {
+  //     const newFavourite = new Favourite({
+  //       favourite_title: req.body.title,
+  //       favourite_image: req.body.image,
+  //       favourite_recipeID: req.body.id,
+  //     });
+  //     newFavourite
+  //       .save()
+  //       .then((response) => {
+  //         res.json(response);
+  //       })
+  //       .catch((err) => console.log(err.message));
+  //   }
+  // };
 };
 
 module.exports = {

@@ -12,7 +12,6 @@ const RecipeDetails = () => {
     axios
       .get(`http://localhost:8000/search/id/${id}`)
       .then(function (response) {
-        console.log("iamdata", response.data);
         setDetails(response.data);
       })
       .catch(function (error) {
@@ -30,7 +29,6 @@ const RecipeDetails = () => {
   const onClickFavourite = (e) => {
     const URL = "http://localhost:8000/favourites";
     console.log("I am details", details);
-
     axios
       .post(URL, details)
       .then((res) => console.log(res))
