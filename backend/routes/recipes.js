@@ -7,9 +7,6 @@ const {
   deleteRecipeById,
 } = require("../controllers/recipes");
 
-//Recipe Model
-const Recipe = require("../models/Recipe");
-
 //Route: /recipes
 router.get("/", getRecipes);
 router.post("/", createRecipe);

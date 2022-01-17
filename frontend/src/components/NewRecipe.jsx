@@ -6,11 +6,13 @@ const NewRecipe = () => {
   return (
     <Container>
       <AppBar position="static" color="inherit">
+
         <Typography variant="h4" align="center">ADD NEW RECIPE</Typography>
+
       </AppBar>
         <NewRecipeForm/>
     </Container>
-  )
-}
+  );
+};
 
-export default NewRecipe
+export default NewRecipe;
