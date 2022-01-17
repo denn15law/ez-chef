@@ -12,6 +12,7 @@ const usersRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const searchRoutes = require("./routes/search");
+const favouriteRoutes = require("./routes/favourites");
 
 //Set up .env
 const dotenv = require("dotenv");
@@ -51,6 +52,7 @@ app.use("/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/search", searchRoutes);
+app.use("/favourites", favouriteRoutes);
 
 // Connect to Mongo
 mongoose
