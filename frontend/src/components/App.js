@@ -19,14 +19,14 @@ import RecipeDetails from "./RecipeDetails";
 import "./App.css";
 import NewRecipe from "./NewRecipe";
 
-const AuthenticateUser = () => {
-  let authenticatedUser = localStorage.getItem("storedUser");
-  let location = useLocation();
-  if (!authenticatedUser) {
-    return <Navigate to="/login" state={{ from: location }} />;
-  }
-  return <Outlet />;
-};
+// const AuthenticateUser = () => {
+//   let authenticatedUser = localStorage.getItem("storedUser");
+//   let location = useLocation();
+//   if (!authenticatedUser) {
+//     return <Navigate to="/login" state={{ from: location }} />;
+//   }
+//   return <Outlet />;
+// };
 
 const App = () => {
   return (
@@ -44,12 +44,12 @@ const App = () => {
               path="/search/id/:recipeID"
               element={<RecipeDetails />}
             ></Route>
-            <Route element={<AuthenticateUser />}>
-              <Route path="/myrecipes" element={<MyRecipes />}></Route>
-              <Route path="/new" element={<NewRecipe />}></Route>
-              <Route path="/favourites" element={<Favourites />}></Route>
-              <Route path="/grocerylist" element={<GroceryList />}></Route>
-            </Route>
+            {/* <Route element={<AuthenticateUser />}> */}
+            <Route path="/myrecipes" element={<MyRecipes />}></Route>
+            <Route path="/new" element={<NewRecipe />}></Route>
+            <Route path="/favourites" element={<Favourites />}></Route>
+            <Route path="/grocerylist" element={<GroceryList />}></Route>
+            {/* </Route> */}
           </Routes>
         </div>
       </div>
