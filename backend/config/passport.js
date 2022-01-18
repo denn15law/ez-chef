@@ -1,42 +1,50 @@
+const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
-const initialize = (passport) => {
-  passport.use(
-    new LocalStrategy((email, password, done) => {
-      User.findOne({ email: email }, (err, user) => {
-        if (err) {
-          throw err;
-        }
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
+});
+
+passport.use(
+  new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+    User.findOne({ email: email })
+      .then((user) => {
         if (!user) {
-          return done(null, false);
+          const newUser = new User({ email, password });
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) throw err;
+              newUser.password = hash;
+              newUser
+                .save()
+                .then((user) => {
+                  return done(null, user);
+                })
+                .catch((err) => {
+                  return done(null, false, { message: err });
+                });
+            });
+          });
+        } else {
+          bcrypt.compare(password, user.password, (err, match) => {
+            if (err) throw err;
+            if (match) {
+              return done(null, user);
+            } else {
+              return done(null, false, { message: "Wrong password" });
+            }
+          });
         }
-        bcrypt.compare(password, user.password, (err, result) => {
-          if (err) {
-            throw err;
-          }
-          if (result === true) {
-            return done(null, user);
-          } else {
-            return done(null, false);
-          }
-        });
+      })
+      .catch((err) => {
+        return done(null, false, { message: err });
       });
-    })
-  );
+  })
+);
 
-  passport.serializeUser((user, cb) => {
-    cb(null, user.id);
-  });
-  passport.deserializeUser((id, cb) => {
-    User.findOne({ _id: id }, (err, user) => {
-      const userInformation = {
-        email: user.email,
-      };
-      cb(err, userInformation);
-    });
-  });
-};
-
-module.exports = initialize;
+module.exports = passport;

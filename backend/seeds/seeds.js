@@ -10,6 +10,7 @@ const db = require("../config/keys").mongoCloud;
 //Require models
 const Recipe = require("../models/Recipe");
 const User = require("../models/User");
+const Favourite = require("../models/Favourite");
 
 mongoose
   .connect(db)
@@ -18,6 +19,7 @@ mongoose
 
 Recipe.collection.drop(() => console.log("Recipe Dropped"));
 User.collection.drop(() => console.log("User Dropped"));
+Favourite.collection.drop(() => console.log("Favourite Dropped"));
 
 let recipe = new Recipe({
   title: "fried rice",
@@ -42,6 +44,34 @@ let user = new User({
 });
 
 user
+  .save()
+  .then((res) => {
+    console.log(res);
+    mongoose.disconnect(db);
+  })
+  .catch((err) => console.log(err));
+
+let favourite1 = new Favourite({
+  favourite_title: "Apple Crumble",
+  favourite_image: "https://spoonacular.com/recipeImages/632522-556x370.jpg",
+  favourite_recipeID: 632501,
+});
+
+let favourite2 = new Favourite({
+  favourite_title: "Apple Pie Smoothie",
+  favourite_image: "https://spoonacular.com/recipeImages/632575-556x370.jpg",
+  favourite_recipeID: 632575,
+});
+
+favourite1
+  .save()
+  .then((res) => {
+    console.log(res);
+    mongoose.disconnect(db);
+  })
+  .catch((err) => console.log(err));
+
+favourite2
   .save()
   .then((res) => {
     console.log(res);

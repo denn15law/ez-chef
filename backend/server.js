@@ -2,8 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const passport = require("passport");
+// const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 //Require Routes
@@ -13,6 +12,7 @@ const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const searchRoutes = require("./routes/search");
 const groceryListRoutes = require("./routes/groceryList");
+const favouriteRoutes = require("./routes/favourites");
 
 //Set up .env
 const dotenv = require("dotenv");
@@ -34,12 +34,19 @@ app.use(
     secret: "secretcode",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+    },
   })
 );
-app.use(cookieParser("secretcode"));
+// app.use(cookieParser("secretcode"));
+
+// Passport configurations
+const passport = require("./config/passport");
 app.use(passport.initialize());
 app.use(passport.session());
-require("./config/passport")(passport);
+
+// dotenv
 dotenv.config();
 
 // Database config to Connect to local
@@ -47,6 +54,7 @@ const db = require("./config/keys").mongoCloud;
 // const db = require("./config/keys").mongoLocal;
 
 //Use Routes
+app.use("/favourites", favouriteRoutes);
 app.use("/recipes", recipesRoutes);
 app.use("/users", usersRoutes);
 app.use("/register", registerRoutes);
