@@ -6,22 +6,21 @@ const SearchForm = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
   const [searched, setSearched] = useState("");
-  function handleChange(e) {
-    setSearch(
-      e.target.value
-        .replaceAll(",", "+")
-        .replaceAll(", ", "+")
-        .replaceAll(" ", "")
-    );
-  }
 
+  function handleChange(e) {
+    setSearch(e.target.value);
+  }
+  const replaceString = (str) => {
+    return str.replaceAll(" ", "+").replaceAll(",", "+");
+  };
   const getSearch = () => {
     axios
-      .get(`http://localhost:8000/search/${search}`)
+      .get(`http://localhost:8000/search/${replaceString(search)}`)
       .then(function (response) {
         // handle success
-        setSearched(search);
+        setSearched(replaceString(search));
         setRecipeData(response.data);
+        setSearch("");
       })
       .catch(function (error) {
         // handle error
@@ -36,25 +35,34 @@ const SearchForm = () => {
         id="mainInput"
         type="text"
         placeholder="Enter Ingredients or Keywords"
+        value={search}
         onChange={handleChange}
         size="40"
       />
       <button onClick={getSearch}>Search Recipe</button>
       {recipeData.length ? (
-        <h4>Now displaying recipes containing: {searched}</h4>
+        <h4>
+          Now displaying recipes containing:{" "}
+          {searched.replaceAll("++", "+").replaceAll("+", ", ")}
+        </h4>
       ) : null}
 
       {recipeData.length
-        ? recipeData.map((recip) => {
-            const url = `http://localhost:3000/search/id/${recip.id}`;
-            return (
-              <div className="recipe" key={recip.id}>
-                <a href={url}>{recip.title}</a>
-                <h1>{recip.title}</h1>
-                <img src={recip.image}></img>
-              </div>
-            );
-          })
+        ? recipeData
+            .sort((a, b) =>
+              a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+            )
+            .map((recip) => {
+              const url = `http://localhost:3000/search/id/${recip.id}`;
+              return (
+                <div className="recipe" key={recip.id}>
+                  <a href={url}>
+                    <h2>{recip.title}</h2>
+                  </a>
+                  <img src={recip.image}></img>
+                </div>
+              );
+            })
         : null}
     </div>
   );

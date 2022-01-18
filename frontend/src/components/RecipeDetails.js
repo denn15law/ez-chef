@@ -51,7 +51,7 @@ const RecipeDetails = () => {
     <div>
       <h1>{details.title}</h1>
       <img src={details.image}></img>
-      <div class="recipe-actions">
+      <div className="recipe-actions">
         <button class="favorite-recipe" onClick={onClickFavourite}>
           Add to Favourites
         </button>
