@@ -23,7 +23,6 @@ const SearchForm = () => {
         // handle success
         setSearched(search);
         setRecipeData(response.data);
-        setSearch("");
       })
       .catch(function (error) {
         // handle error
@@ -38,7 +37,6 @@ const SearchForm = () => {
         id="mainInput"
         type="text"
         placeholder="Enter Ingredients or Keywords"
-        value={search}
         onChange={handleChange}
         size="40"
       />
@@ -50,17 +48,21 @@ const SearchForm = () => {
       ) : null}
 
       {recipeData.length
-        ? recipeData.map((recip) => {
-            const url = `http://localhost:3000/search/id/${recip.id}`;
-            return (
-              <div className="recipe" key={recip.id}>
-                <a href={url}>
-                  <h2>{recip.title}</h2>
-                </a>
-                <img src={recip.image}></img>
-              </div>
-            );
-          })
+        ? recipeData
+            .sort((a, b) =>
+              a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+            )
+            .map((recip) => {
+              const url = `http://localhost:3000/search/id/${recip.id}`;
+              return (
+                <div className="recipe" key={recip.id}>
+                  <a href={url}>
+                    <h2>{recip.title}</h2>
+                  </a>
+                  <img src={recip.image}></img>
+                </div>
+              );
+            })
         : null}
     </div>
   );
