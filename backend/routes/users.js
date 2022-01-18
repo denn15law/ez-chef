@@ -19,7 +19,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/", async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
-  console.log(`----- ${user} -----`);
+  console.log(`----- ${req.session.id} -----`);
   res.json(user);
 });
 

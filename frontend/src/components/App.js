@@ -1,6 +1,13 @@
-import React from "react";
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  // Outlet,
+  // Navigate,
+  // useLocation,
+} from "react-router-dom";
 import Index from "./Index";
 import Nav from "./Nav";
 import MyRecipes from "./MyRecipes";
@@ -13,20 +20,21 @@ import RecipeDetails from "./RecipeDetails";
 import NewRecipe from "./NewRecipe";
 import "./App.css";
 
-// const AuthenticateUser = () => {
-//   let authenticatedUser = localStorage.getItem("storedUser");
-//   let location = useLocation();
-//   if (!authenticatedUser) {
-//     return <Navigate to="/login" state={{ from: location }} />;
-//   }
-//   return <Outlet />;
-// };
-
 const App = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="App">
-        <Nav />
+        <Nav user={user} />
         <div className="main">
           <Routes>
             <Route path="/" element={<Index />}></Route>
@@ -36,12 +44,11 @@ const App = () => {
             <Route
               path="/search/id/:recipeID"
               element={<RecipeDetails />}></Route>
-            {/* <Route element={<AuthenticateUser />}> */}
+
             <Route path="/myrecipes" element={<MyRecipes />}></Route>
             <Route path="/new" element={<NewRecipe />}></Route>
             <Route path="/favourites" element={<Favourites />}></Route>
             <Route path="/grocerylist" element={<GroceryList />}></Route>
-            {/* </Route> */}
           </Routes>
         </div>
       </div>

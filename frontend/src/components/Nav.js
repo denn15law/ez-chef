@@ -76,7 +76,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const Nav = () => {
+const Nav = ({ user }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -111,9 +111,7 @@ const Nav = () => {
           <Link to="/search">
             <SearchIcon />
           </Link>
-          <Divider>
-            <Logout />
-          </Divider>
+          <Divider>{user && <Logout />}</Divider>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -147,57 +145,69 @@ const Nav = () => {
               <ListItemText primary="Home" />
             </Link>
           </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <MenuBookIcon />
-            </ListItemIcon>
-            <Link to="/myrecipes">
-              <ListItemText primary="My Recipes" />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <AddIcon />
-            </ListItemIcon>
-            <Link to="/new">
-              <ListItemText primary="Add New Recipe" />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <StarIcon />
-            </ListItemIcon>
-            <Link to="/favourites">
-              <ListItemText primary="My Favourites" />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <ShoppingCartIcon />
-            </ListItemIcon>
-            <Link to="/grocerylist">
-              <ListItemText primary="Grocery List" />
-            </Link>
-          </ListItem>
+          {user && (
+            <ListItem>
+              <ListItemIcon>
+                <MenuBookIcon />
+              </ListItemIcon>
+              <Link to="/myrecipes">
+                <ListItemText primary="My Recipes" />
+              </Link>
+            </ListItem>
+          )}
+          {user && (
+            <ListItem>
+              <ListItemIcon>
+                <AddIcon />
+              </ListItemIcon>
+              <Link to="/new">
+                <ListItemText primary="Add New Recipe" />
+              </Link>
+            </ListItem>
+          )}
+          {user && (
+            <ListItem>
+              <ListItemIcon>
+                <StarIcon />
+              </ListItemIcon>
+              <Link to="/favourites">
+                <ListItemText primary="My Favourites" />
+              </Link>
+            </ListItem>
+          )}
+          {user && (
+            <ListItem>
+              <ListItemIcon>
+                <ShoppingCartIcon />
+              </ListItemIcon>
+              <Link to="/grocerylist">
+                <ListItemText primary="Grocery List" />
+              </Link>
+            </ListItem>
+          )}
         </List>
         <Divider />
         <List>
-          <ListItem>
-            <ListItemIcon>
-              <ArticleIcon />
-            </ListItemIcon>
-            <Link to="/register">
-              <ListItemText primary="Register" />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <PersonIcon />
-            </ListItemIcon>
-            <Link to="/login">
-              <ListItemText primary="Login" />
-            </Link>
-          </ListItem>
+          {!user && (
+            <ListItem>
+              <ListItemIcon>
+                <ArticleIcon />
+              </ListItemIcon>
+              <Link to="/register">
+                <ListItemText primary="Register" />
+              </Link>
+            </ListItem>
+          )}
+          {!user && (
+            <ListItem>
+              <ListItemIcon>
+                <PersonIcon />
+              </ListItemIcon>
+              <Link to="/login">
+                <ListItemText primary="Login" />
+              </Link>
+            </ListItem>
+          )}
         </List>
       </Drawer>
 

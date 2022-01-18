@@ -1,14 +1,22 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 const Logout = () => {
-  const onClick = (e) => {
+  const navigate = useNavigate();
+
+  const onClick = async (e) => {
     e.preventDefault();
-    axios
+    await axios
       .post("/logout")
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        localStorage.clear();
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 //Require Routes
@@ -39,7 +39,7 @@ app.use(
     },
   })
 );
-// app.use(cookieParser("secretcode"));
+app.use(cookieParser("secretcode"));
 
 // Passport configurations
 const passport = require("./config/passport");
