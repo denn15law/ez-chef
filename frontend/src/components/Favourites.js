@@ -26,8 +26,10 @@ const Favourites = (props) => {
           const url = `http://localhost:3000/search/id/${recip.favourite_recipeID}`;
           return (
             <div className="recipe" key={recip.favourite_recipeID}>
-              <a href={url}>{recip.favourite_title}</a>
-              <h1>{recip.favourite_title}</h1>
+              {/* <a href={url}>{recip.favourite_title}</a> */}
+              <a href={url}>
+                <h2>{recip.favourite_title}</h2>
+              </a>
               <img src={recip.favourite_image}></img>
             </div>
           );

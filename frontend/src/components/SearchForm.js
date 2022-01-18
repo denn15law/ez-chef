@@ -41,7 +41,9 @@ const SearchForm = () => {
       />
       <button onClick={getSearch}>Search Recipe</button>
       {recipeData.length ? (
-        <h4>Now displaying recipes containing: {searched}</h4>
+        <h4>
+          Now displaying recipes containing: {searched.replaceAll("+", ", ")}
+        </h4>
       ) : null}
 
       {recipeData.length
@@ -49,8 +51,9 @@ const SearchForm = () => {
             const url = `http://localhost:3000/search/id/${recip.id}`;
             return (
               <div className="recipe" key={recip.id}>
-                <a href={url}>{recip.title}</a>
-                <h1>{recip.title}</h1>
+                <a href={url}>
+                  <h2>{recip.title}</h2>
+                </a>
                 <img src={recip.image}></img>
               </div>
             );
