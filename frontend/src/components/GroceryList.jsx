@@ -36,8 +36,6 @@ const GroceryList = (props) => {
     getRecipesFromDatabase();
   }, [])
 
-  console.log(user)
-
   return (
     <>
       <Typography variant="h3" mb={3}>My Grocery List </Typography>
