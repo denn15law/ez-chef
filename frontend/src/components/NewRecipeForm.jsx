@@ -1,17 +1,24 @@
-import { Button, Box, TextField, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import React from "react";
 import axios from "axios";
+import {
+  Avatar,
+  Button,
+  ButtonGroup,
+  Box,
+  Container,
+  CssBaseline,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
 
-const useStyles = makeStyles({
-  serving_size: {
-    width: "30px",
-  },
-});
+const theme = createTheme();
 
 const NewRecipeForm = (props) => {
-  // const classes = useStyles()
   const { control, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
       title: "",
@@ -54,97 +61,164 @@ const NewRecipeForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Box display="flex" justifyContent="center" mt={2}>
-        <Box display="flex" flexDirection="column" width={500}>
-          <Controller
-            name="title"
-            control={control}
-            render={({ field }) => (
-              <TextField label="Title" variant="outlined" {...field} />
-            )}
-          />
-          <Typography variant="h6">List of Ingredients</Typography>
-          {ingredientsFields.map((item, i) => (
-            <Box display="flex">
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Paper sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
+        <Box
+          sx={{
+            p: 2,
+            margin: "auto",
+            maxWidth: 500,
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "centre",
+            justifyContent: "centre",
+          }}>
+          <Avatar
+            sx={{
+              m: 1,
+              bgcolor: "secondary.main",
+            }}>
+            <RestaurantIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Add a New Recipe
+          </Typography>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Box
+              sx={{
+                p: 2,
+                margin: "auto",
+                maxWidth: 500,
+                flexGrow: 1,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "centre",
+                justifyContent: "centre",
+              }}>
               <Controller
-                name={`ingredients.${i}.quantity`}
+                name="title"
                 control={control}
                 render={({ field }) => (
                   <TextField
-                    type="number"
-                    label="Quantity"
-                    variant="outlined"
+                    label="Title"
+                    variant="standard"
+                    style={{ marginBottom: 10 }}
                     {...field}
                   />
                 )}
               />
               <Controller
-                name={`ingredients.${i}.unit`}
+                name="image_url"
                 control={control}
                 render={({ field }) => (
-                  <TextField label="Unit" variant="outlined" {...field} />
+                  <TextField
+                    label="Image URL"
+                    variant="standard"
+                    {...field}
+                    style={{ marginBottom: 30 }}
+                  />
+                )}
+              />
+              <Typography variant="h6" style={{ marginBottom: 8 }}>
+                List of Ingredients
+              </Typography>
+              {ingredientsFields.map((item, i) => (
+                <Box display="flex" sx={{ marginBottom: 1 }}>
+                  <Controller
+                    name={`ingredients.${i}.quantity`}
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        size="small"
+                        type="number"
+                        label="Qty"
+                        variant="standard"
+                        style={{ width: 50 }}
+                        {...field}
+                      />
+                    )}
+                  />
+
+                  <Controller
+                    name={`ingredients.${i}.unit`}
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        size="small"
+                        label="Unit"
+                        variant="standard"
+                        style={{ width: 100 }}
+                        {...field}
+                      />
+                    )}
+                  />
+                  <Controller
+                    name={`ingredients.${i}.name`}
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        size="small"
+                        label="Ingredient"
+                        variant="standard"
+                        style={{ width: 250 }}
+                        {...field}
+                      />
+                    )}
+                  />
+                  <Button
+                    onClick={renderIngredientForm}
+                    style={{ display: "flex", alignItems: "flex-end" }}>
+                    Add
+                  </Button>
+                  <Button
+                    color="error"
+                    onClick={() => remove(i)}
+                    style={{ display: "flex", alignItems: "flex-end" }}>
+                    Delete
+                  </Button>
+                </Box>
+              ))}
+
+              <Controller
+                name="instructions"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    style={{ marginTop: 10 }}
+                    label="Recipe Instructions:"
+                    id="standard-multiline-static"
+                    multiline
+                    rows={4}
+                    {...field}
+                  />
                 )}
               />
               <Controller
-                name={`ingredients.${i}.name`}
+                name="serving_size"
                 control={control}
                 render={({ field }) => (
-                  <TextField label="Ingredient" variant="outlined" {...field} />
+                  <TextField
+                    type="number"
+                    label="Serving Size"
+                    variant="standard"
+                    {...field}
+                    style={{ marginBottom: 10 }}
+                  />
                 )}
               />
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => remove(i)}>
-                Delete
-              </Button>
             </Box>
-          ))}
-          <Button variant="contained" onClick={renderIngredientForm}>
-            Add Ingredient
-          </Button>
-          <Controller
-            name="instructions"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                label="Recipe Instructions:"
-                id="outlined-multiline-static"
-                multiline
-                rows={4}
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name="serving_size"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                type="number"
-                label="Serving Size"
-                variant="outlined"
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name="image_url"
-            control={control}
-            render={({ field }) => (
-              <TextField label="Image Url" variant="outlined" {...field} />
-            )}
-          />
-          <Button type="submit" variant="contained" color="success">
-            Submit
-          </Button>
-          <Button variant="contained" onClick={() => reset()}>
-            Reset
-          </Button>
+            <ButtonGroup>
+              <Button type="submit" color="success">
+                Submit
+              </Button>
+              <Button onClick={() => reset()}>Reset</Button>
+            </ButtonGroup>
+          </form>
         </Box>
-      </Box>
-    </form>
+      </Paper>
+    </ThemeProvider>
   );
 };
 
