@@ -13,6 +13,7 @@ const Logout = () => {
       .then((res) => {
         localStorage.clear();
         navigate("/");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -25,7 +26,8 @@ const Logout = () => {
       onClick={onClick}
       fullWidth
       variant="contained"
-      sx={{ mt: 3, mb: 2 }}>
+      sx={{ mt: 3, mb: 2 }}
+    >
       Log Out
     </Button>
   );

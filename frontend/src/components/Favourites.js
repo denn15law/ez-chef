@@ -3,11 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 
 const Favourites = (props) => {
-  const [recipeData, setRecipeData] = useState([]);
   const [myFavs, setMyFavs] = useState([]);
-  const [recipeID, setRecipeID] = useState("");
-
-  React.useEffect(() => {
+  const getData = () => {
     axios
       .get("http://localhost:8000/favourites")
       .then(function (response) {
@@ -16,14 +13,18 @@ const Favourites = (props) => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  React.useEffect(() => {
+    getData();
   }, []);
 
   const deleteFavourite = (id) => {
-    console.log("i am id", id)
     const URL = `http://localhost:8000/favourites/${id}`;
     axios
       .delete(URL)
       .then(function (response) {
+        getData();
         console.log(response);
       })
       .catch(function (error) {
@@ -44,7 +45,11 @@ const Favourites = (props) => {
               </a>
               <img src={recip.favourite_image}></img>
               <div className="delete-favourite" key={recip.favourite_recipeID}>
-                <button onClick={() => {deleteFavourite(recip.favourite_recipeID)}}>
+                <button
+                  onClick={() => {
+                    deleteFavourite(recip.favourite_recipeID);
+                  }}
+                >
                   Delete {recip.favourite_title} from Favourites
                 </button>
               </div>
