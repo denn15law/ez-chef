@@ -6,6 +6,8 @@ import RecipeList from "./RecipeList";
 
 const GroceryList = (props) => {
 
+  const {user} = props
+
   const [ingredients, getIngredients] = useState([])
   const [recipes, getRecipes] = useState([])
   
@@ -33,7 +35,6 @@ const GroceryList = (props) => {
     getIngredientsFromDatabase();
     getRecipesFromDatabase();
   }, [])
-
 
   return (
     <>

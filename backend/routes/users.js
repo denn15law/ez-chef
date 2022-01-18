@@ -2,25 +2,19 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
+const {
+  getAllUsers,
+  getUserById,
+  addRecipeToUser,
+  getUserCreatedRecipes,
+} = require("../controllers/users");
+
 //Route: /users
-router.get("/", (req, res) => {
-  User.find()
-    .then((user) => res.json(user))
-    .catch((err) => {
-      res.status(404).json({ message: err.message });
-    });
-});
+router.get("/", getAllUsers);
+router.get("/:id", getUserById);
 
-router.get("/:id", (req, res) => {
-  User.findById(req.params.id)
-    .then((user) => res.json(user))
-    .catch((err) => res.status(404).json({ message: err.message }));
-});
-
-router.post("/", async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
-  console.log(`----- ${req.session.id} -----`);
-  res.json(user);
-});
+//Routes for user recipes
+router.get("/:user_id/recipes", getUserCreatedRecipes);
+router.post("/:user_id/:recipe_id", addRecipeToUser);
 
 module.exports = router;
