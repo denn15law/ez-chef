@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Outlet,
-  useLocation,
-  Navigate,
-} from "react-router-dom";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./Index";
 import Nav from "./Nav";
 import MyRecipes from "./MyRecipes";
@@ -16,8 +10,8 @@ import Register from "./Register";
 import Login from "./Login";
 import SearchForm from "./SearchForm";
 import RecipeDetails from "./RecipeDetails";
-import "./App.css";
 import NewRecipe from "./NewRecipe";
+import "./App.css";
 
 // const AuthenticateUser = () => {
 //   let authenticatedUser = localStorage.getItem("storedUser");
@@ -36,14 +30,12 @@ const App = () => {
         <div className="main">
           <Routes>
             <Route path="/" element={<Index />}></Route>
-
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/search" element={<SearchForm />}></Route>
             <Route
               path="/search/id/:recipeID"
-              element={<RecipeDetails />}
-            ></Route>
+              element={<RecipeDetails />}></Route>
             {/* <Route element={<AuthenticateUser />}> */}
             <Route path="/myrecipes" element={<MyRecipes />}></Route>
             <Route path="/new" element={<NewRecipe />}></Route>
