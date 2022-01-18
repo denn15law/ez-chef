@@ -25,16 +25,16 @@ const Login = () => {
     setUser({ ...user, [input.name]: input.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const url = "/login";
-      const { user: res } = await axios.post(url, user);
-      navigate("/");
-      console.log(res.message);
-    } catch (error) {
-      console.log(error);
-    }
+    const url = "/login";
+    axios
+      .post(url, user)
+      .then((res) => {
+        console.log(res.data);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

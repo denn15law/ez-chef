@@ -31,16 +31,16 @@ const Register = () => {
     setData({ ...data, [input.name]: input.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const url = "/register";
-      await axios.post(url, data);
-      // console.log(data);
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-    }
+    const url = "/register";
+    axios
+      .post(url, data)
+      .then((res) => {
+        console.log(res.data);
+        navigate("/login");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
