@@ -8,21 +8,19 @@ const SearchForm = () => {
   const [searched, setSearched] = useState("");
 
   function handleChange(e) {
-    setSearch(
-      e.target.value
-        .replaceAll(",", "+")
-        .replaceAll(", ", "+")
-        .replaceAll(" ", "")
-    );
+    setSearch(e.target.value);
   }
-
+  const replaceString = (str) => {
+    return str.replaceAll(" ", "+").replaceAll(",", "+");
+  };
   const getSearch = () => {
     axios
-      .get(`http://localhost:8000/search/${search}`)
+      .get(`http://localhost:8000/search/${replaceString(search)}`)
       .then(function (response) {
         // handle success
-        setSearched(search);
+        setSearched(replaceString(search));
         setRecipeData(response.data);
+        setSearch("");
       })
       .catch(function (error) {
         // handle error
@@ -37,13 +35,15 @@ const SearchForm = () => {
         id="mainInput"
         type="text"
         placeholder="Enter Ingredients or Keywords"
+        value={search}
         onChange={handleChange}
         size="40"
       />
       <button onClick={getSearch}>Search Recipe</button>
       {recipeData.length ? (
         <h4>
-          Now displaying recipes containing: {searched.replaceAll("+", ", ")}
+          Now displaying recipes containing:{" "}
+          {searched.replaceAll("++", "+").replaceAll("+", ", ")}
         </h4>
       ) : null}
 
