@@ -14,11 +14,13 @@ const Favourite = require("../models/Favourite");
 
 mongoose
   .connect(db)
-  .then(() => console.log("Database Connected"))
+  .then(() => {
+    console.log("Database Connected");
+  })
   .catch((err) => console.log(err.message));
 
 Recipe.collection.drop(() => console.log("Recipe Dropped"));
 User.collection.drop(() => console.log("User Dropped"));
 Favourite.collection.drop(() => console.log("Favourite Dropped"));
 
-mongoose.disconnect(db);
+// mongoose.disconnect(db);

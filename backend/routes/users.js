@@ -13,6 +13,7 @@ const {
 router.get("/", getAllUsers);
 router.get("/:id", getUserById);
 
+
 //Routes for user recipes
 router.get("/:user_id/recipes", getUserCreatedRecipes);
 router.post("/:user_id/:recipe_id", addRecipeToUser);
