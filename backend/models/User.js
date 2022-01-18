@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Recipe = require("./Recipe");
 
 const Schema = mongoose.Schema;
 
@@ -21,6 +22,8 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  recipes_created: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
+  groceryList_recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
 });
 
 const User = mongoose.model("User", UserSchema);

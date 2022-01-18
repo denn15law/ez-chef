@@ -43,20 +43,25 @@ const App = () => {
             <Route path="/search" element={<SearchForm />}></Route>
             <Route
               path="/search/id/:recipeID"
-              element={<RecipeDetails />}></Route>
+              element={<RecipeDetails />}
+            ></Route>
 
             <Route
               path="/myrecipes"
-              element={user ? <MyRecipes /> : <Index />}></Route>
+              element={user ? <MyRecipes /> : <Index />}
+            ></Route>
             <Route
               path="/new"
-              element={user ? <NewRecipe /> : <Index />}></Route>
+              element={user ? <NewRecipe /> : <Index />}
+            ></Route>
             <Route
               path="/favourites"
-              element={user ? <Favourites /> : <Index />}></Route>
+              element={user ? <Favourites /> : <Index />}
+            ></Route>
             <Route
               path="/grocerylist"
-              element={user ? <GroceryList /> : <Index />}></Route>
+              element={user ? <GroceryList user={user} /> : <Index />}
+            ></Route>
           </Routes>
         </div>
       </div>

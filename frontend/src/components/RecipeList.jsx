@@ -1,7 +1,6 @@
 import { Typography, Box, Button } from '@mui/material'
 import axios from 'axios'
 import React from 'react'
-import { useEffect } from 'react'
 
 export default function RecipeList(props) {
 
