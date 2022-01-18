@@ -35,7 +35,7 @@ const Favourites = (props) => {
 
   return (
     <div>
-      <h1>Favourites Page</h1>
+      <h1>My Favourite Recipes</h1>
       {myFavs.length ? (
         myFavs.map((recip) => {
           const url = `http://localhost:3000/search/id/${recip.favourite_recipeID}`;
@@ -49,7 +49,9 @@ const Favourites = (props) => {
               </div>
               <div className="favourite-recipe-content">
                 <a href={url}>
-                  <h2>{recip.favourite_title}</h2>
+                  <h2 className="recipe-favourite-title">
+                    {recip.favourite_title}
+                  </h2>
                 </a>
                 <div
                   className="delete-favourite"

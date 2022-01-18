@@ -48,58 +48,60 @@ const RecipeDetails = (props) => {
 
   return (
     <div className="recipe-details">
-      <h1>{details.title}</h1>
+      <h1 className="recipe-title">{details.title}</h1>
       <img src={details.image}></img>
       <div className="recipe-actions">
-        <button class="favorite-recipe" onClick={onClickFavourite}>
+        <button className="favorite-recipe" onClick={onClickFavourite}>
           Add to Favourites
         </button>
         <button id="add-grocery">Add to Grocery List</button>
       </div>
-      <div className="recipe-ingredients">
-        <h2 className="recipe-ingredients">Recipe Ingredients:</h2>
-        <h3 className="current-servings">
-          Current Servings: {details.servings}
-        </h3>
-        <ul>
-          {Object.values(details).length > 0
-            ? details.extendedIngredients.map((ing) => {
-                return (
-                  <li key={ing.id}>
-                    {ing.amount} {ing.unit} {ing.name}
-                  </li>
-                );
-              })
-            : null}
-        </ul>
-      </div>
-      <div className="recipe-instructions">
-        <h2 className="cooking-instructions">Cooking Instructions:</h2>
-        <ol type="1">
-          {Object.values(details).length
-            ? removeTags(details.instructions)
-                .split(".")
-                .slice(0, -1)
-                .map((each) => {
+      <div className="recipe-content">
+        <div className="recipe-ingredients">
+          <h2 className="recipe-ingredients">Recipe Ingredients</h2>
+          <ul>
+            {Object.values(details).length > 0
+              ? details.extendedIngredients.map((ing) => {
                   return (
-                    <li
-                      key={removeTags(details.instructions)
-                        .split(".")
-                        .indexOf(each)}
-                    >
-                      {each}
+                    <li key={ing.id}>
+                      {ing.amount} {ing.unit} {ing.name}
                     </li>
                   );
                 })
-            : null}
-          {/* {details.instructions
+              : null}
+          </ul>
+          <h3 className="current-servings">
+            Current Servings: {details.servings}
+          </h3>
+        </div>
+        <div className="recipe-instructions">
+          <h2 className="cooking-instructions">Cooking Instructions</h2>
+          <ol type="1">
+            {Object.values(details).length
+              ? removeTags(details.instructions)
+                  .split(".")
+                  .slice(0, -1)
+                  .map((each) => {
+                    return (
+                      <li
+                        key={removeTags(details.instructions)
+                          .split(".")
+                          .indexOf(each)}
+                      >
+                        {each}
+                      </li>
+                    );
+                  })
+              : null}
+            {/* {details.instructions
             ? details.instructions
                 .replaceAll("<li>", "")
                 .replaceAll("</li>", "")
                 .replaceAll("<ol>", "")
                 .replaceAll("</ol>", "")
             : null} */}
-        </ol>
+          </ol>
+        </div>
       </div>
     </div>
   );
