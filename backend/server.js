@@ -12,6 +12,7 @@ const usersRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const searchRoutes = require("./routes/search");
+const groceryListRoutes = require("./routes/groceryList");
 
 //Set up .env
 const dotenv = require("dotenv");
@@ -42,8 +43,8 @@ require("./config/passport")(passport);
 dotenv.config();
 
 // Database config to Connect to local
-// const db = require("./config/keys").mongoCloud;
-const db = require("./config/keys").mongoLocal;
+const db = require("./config/keys").mongoCloud;
+// const db = require("./config/keys").mongoLocal;
 
 //Use Routes
 app.use("/recipes", recipesRoutes);
@@ -51,6 +52,7 @@ app.use("/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/search", searchRoutes);
+app.use("/groceries", groceryListRoutes);
 
 // Connect to Mongo
 mongoose
