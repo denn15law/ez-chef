@@ -13,6 +13,7 @@ const Logout = () => {
       .then((res) => {
         localStorage.clear();
         navigate("/");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);

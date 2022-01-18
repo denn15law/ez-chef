@@ -98,16 +98,14 @@ const Nav = ({ user }) => {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
+            sx={{ mr: 2, ...(open && { display: "none" }) }}>
             <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
             EZ Chef
           </Typography>
           <Link to="/search">
@@ -127,8 +125,7 @@ const Nav = ({ user }) => {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
-      >
+        open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
