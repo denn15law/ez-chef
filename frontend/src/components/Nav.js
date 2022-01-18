@@ -144,7 +144,7 @@ const Nav = ({ user }) => {
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <Link to="/">
+            <Link to="/" onClick={handleDrawerClose}>
               <ListItemText primary="Home" />
             </Link>
           </ListItem>
@@ -153,7 +153,7 @@ const Nav = ({ user }) => {
               <ListItemIcon>
                 <MenuBookIcon />
               </ListItemIcon>
-              <Link to="/myrecipes">
+              <Link to="/myrecipes" onClick={handleDrawerClose}>
                 <ListItemText primary="My Recipes" />
               </Link>
             </ListItem>
@@ -163,7 +163,7 @@ const Nav = ({ user }) => {
               <ListItemIcon>
                 <AddIcon />
               </ListItemIcon>
-              <Link to="/new">
+              <Link to="/new" onClick={handleDrawerClose}>
                 <ListItemText primary="Add New Recipe" />
               </Link>
             </ListItem>
@@ -173,7 +173,7 @@ const Nav = ({ user }) => {
               <ListItemIcon>
                 <StarIcon />
               </ListItemIcon>
-              <Link to="/favourites">
+              <Link to="/favourites" onClick={handleDrawerClose}>
                 <ListItemText primary="My Favourites" />
               </Link>
             </ListItem>
@@ -183,7 +183,7 @@ const Nav = ({ user }) => {
               <ListItemIcon>
                 <ShoppingCartIcon />
               </ListItemIcon>
-              <Link to="/grocerylist">
+              <Link to="/grocerylist" onClick={handleDrawerClose}>
                 <ListItemText primary="Grocery List" />
               </Link>
             </ListItem>
@@ -196,7 +196,7 @@ const Nav = ({ user }) => {
               <ListItemIcon>
                 <ArticleIcon />
               </ListItemIcon>
-              <Link to="/register">
+              <Link to="/register" onClick={handleDrawerClose}>
                 <ListItemText primary="Register" />
               </Link>
             </ListItem>
@@ -206,7 +206,7 @@ const Nav = ({ user }) => {
               <ListItemIcon>
                 <PersonIcon />
               </ListItemIcon>
-              <Link to="/login">
+              <Link to="/login" onClick={handleDrawerClose}>
                 <ListItemText primary="Login" />
               </Link>
             </ListItem>
