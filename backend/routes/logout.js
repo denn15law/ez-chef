@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
 
 router.post("/", (req, res) => {
+  req.session.destroy();
+  console.log(`-----${req.session.id}-----`);
   req.logOut();
-  res.redirect("/");
-  console.log(`----- ${user.first_name} Logged out -----`);
+  res.json({ message: "Successfully logged out" });
 });
 
 module.exports = router;

@@ -79,7 +79,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const Nav = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [search, setSearch] = React.useState("Search");
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };

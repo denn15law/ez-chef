@@ -34,19 +34,19 @@ const Copyright = (props) => {
 const theme = createTheme();
 
 const Login = () => {
-  const [data, setData] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
-    setData({ ...data, [input.name]: input.value });
+    setUser({ ...user, [input.name]: input.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const url = "/login";
-      const { data: res } = await axios.post(url, data);
+      const { user: res } = await axios.post(url, user);
       navigate("/");
       console.log(res.message);
     } catch (error) {
@@ -85,7 +85,7 @@ const Login = () => {
               name="email"
               autoComplete="email"
               autoFocus
-              value={data.email}
+              value={user.email}
               onChange={handleChange}
             />
             <TextField
@@ -97,7 +97,7 @@ const Login = () => {
               type="password"
               id="password"
               autoComplete="current-password"
-              value={data.password}
+              value={user.password}
               onChange={handleChange}
             />
             <Button
