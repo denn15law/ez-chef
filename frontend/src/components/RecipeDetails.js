@@ -3,10 +3,12 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const RecipeDetails = () => {
+const RecipeDetails = ({ user }) => {
   const [details, setDetails] = useState({});
   let url = window.location.pathname;
   const id = url.split("/search/id/")[1];
+
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     axios
@@ -27,6 +29,9 @@ const RecipeDetails = () => {
   }
 
   const onClickFavourite = (e) => {
+    if (!user) {
+      navigate("/login");
+    }
     const URL = "http://localhost:8000/favourites";
     console.log("I am details", details);
     axios
@@ -83,8 +88,7 @@ const RecipeDetails = () => {
                     <li
                       key={removeTags(details.instructions)
                         .split(".")
-                        .indexOf(each)}
-                    >
+                        .indexOf(each)}>
                       {each}
                     </li>
                   );

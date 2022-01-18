@@ -43,7 +43,7 @@ const App = () => {
             <Route path="/search" element={<SearchForm />}></Route>
             <Route
               path="/search/id/:recipeID"
-              element={<RecipeDetails />}
+              element={<RecipeDetails user={user} />}
             ></Route>
 
             <Route

@@ -34,6 +34,7 @@ const Login = () => {
         setUser(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
         navigate("/");
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };

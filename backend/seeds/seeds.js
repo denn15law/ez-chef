@@ -17,10 +17,6 @@ mongoose
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log(err.message));
 
-Recipe.collection.drop(() => console.log("Recipe Dropped"));
-User.collection.drop(() => console.log("User Dropped"));
-Favourite.collection.drop(() => console.log("Favourite Dropped"));
-
 let recipe = new Recipe({
   title: "fried rice",
   instructions: "Fry the rice",
