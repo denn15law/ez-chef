@@ -60,7 +60,11 @@ const App = () => {
             ></Route>
             <Route
               path="/grocerylist"
+<<<<<<< HEAD
               element={user ? <GroceryList /> : <Index />}
+=======
+              element={user ? <GroceryList user={user} /> : <Index />}
+>>>>>>> main
             ></Route>
           </Routes>
         </div>
