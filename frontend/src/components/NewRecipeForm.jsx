@@ -5,9 +5,7 @@ import {
   Button,
   ButtonGroup,
   Box,
-  Container,
   CssBaseline,
-  Grid,
   Paper,
   TextField,
   Typography,
@@ -15,10 +13,13 @@ import {
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 const NewRecipeForm = (props) => {
+  const navigate = useNavigate();
+
   const { control, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
       title: "",
@@ -50,14 +51,13 @@ const NewRecipeForm = (props) => {
 
   const onSubmit = (data) => {
     const URL = "/recipes";
-
     console.log(data);
     axios
       .post(URL, data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-
     reset();
+    navigate("/myrecipes");
   };
 
   return (
