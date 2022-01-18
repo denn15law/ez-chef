@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 //Connect to Local
-// const db = require("../config/keys").mongoLocal;
+const db = require("../config/keys").mongoLocal;
 
 //Connect to Cloud
-const db = require("../config/keys").mongoCloud;
+// const db = require("../config/keys").mongoCloud;
 
 //Require models
 const Recipe = require("../models/Recipe");
@@ -32,7 +32,6 @@ recipe
   .save()
   .then((res) => {
     console.log(res);
-    mongoose.disconnect(db);
   })
   .catch((err) => console.log(err));
 
@@ -47,7 +46,6 @@ user
   .save()
   .then((res) => {
     console.log(res);
-    mongoose.disconnect(db);
   })
   .catch((err) => console.log(err));
 
@@ -67,7 +65,6 @@ favourite1
   .save()
   .then((res) => {
     console.log(res);
-    mongoose.disconnect(db);
   })
   .catch((err) => console.log(err));
 

@@ -15,7 +15,7 @@ const FavouriteSchema = new Schema({
   },
 
   favourite_recipeID: {
-    type: Number,
+    type: String,
     required: true,
     unique: true,
   },

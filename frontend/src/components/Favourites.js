@@ -5,6 +5,7 @@ import axios from "axios";
 const Favourites = (props) => {
   const [recipeData, setRecipeData] = useState([]);
   const [myFavs, setMyFavs] = useState([]);
+  const [recipeID, setRecipeID] = useState("");
 
   React.useEffect(() => {
     axios
@@ -18,6 +19,18 @@ const Favourites = (props) => {
       });
   }, []);
 
+  const deleteFavourite = () => {
+    const URL = "http://localhost:8000/favourites/61e6e05bdeaa4d5394c190e6";
+    axios
+      .delete(URL)
+      .then(function (response) {
+        console.log("remove me from favourites", response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <h1>Favourites Page</h1>
@@ -26,11 +39,15 @@ const Favourites = (props) => {
           const url = `http://localhost:3000/search/id/${recip.favourite_recipeID}`;
           return (
             <div className="recipe" key={recip.favourite_recipeID}>
-              {/* <a href={url}>{recip.favourite_title}</a> */}
               <a href={url}>
                 <h2>{recip.favourite_title}</h2>
               </a>
               <img src={recip.favourite_image}></img>
+              <div className="delete-favourite" key={recip.favourite_recipeID}>
+                <button onClick={deleteFavourite}>
+                  Delete {recip.favourite_title} from Favourites
+                </button>
+              </div>
             </div>
           );
         })
