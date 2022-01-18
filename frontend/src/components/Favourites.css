@@ -1,7 +1,7 @@
 div.favourite-recipe {
   width: 100%;
   display: flex;
-  border: solid 1px;
+
   margin-bottom: 40px;
   flex-direction: row;
   justify-content: space-between;

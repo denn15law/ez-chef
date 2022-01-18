@@ -49,7 +49,10 @@ const RecipeDetails = (props) => {
   return (
     <div className="recipe-details">
       <h1 className="recipe-title">{details.title}</h1>
-      <img src={details.image}></img>
+      <div className="recipe-details-image">
+        <img clasName="recipe-details-image" src={details.image}></img>
+      </div>
+
       <div className="recipe-actions">
         <button className="favorite-recipe" onClick={onClickFavourite}>
           Add to Favourites
