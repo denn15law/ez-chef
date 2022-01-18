@@ -45,10 +45,18 @@ const App = () => {
               path="/search/id/:recipeID"
               element={<RecipeDetails />}></Route>
 
-            <Route path="/myrecipes" element={<MyRecipes />}></Route>
-            <Route path="/new" element={<NewRecipe />}></Route>
-            <Route path="/favourites" element={<Favourites />}></Route>
-            <Route path="/grocerylist" element={<GroceryList />}></Route>
+            <Route
+              path="/myrecipes"
+              element={user ? <MyRecipes /> : <Index />}></Route>
+            <Route
+              path="/new"
+              element={user ? <NewRecipe /> : <Index />}></Route>
+            <Route
+              path="/favourites"
+              element={user ? <Favourites /> : <Index />}></Route>
+            <Route
+              path="/grocerylist"
+              element={user ? <GroceryList /> : <Index />}></Route>
           </Routes>
         </div>
       </div>
