@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import axios from "axios";
+import "./Favourites.css";
 
 const Favourites = (props) => {
   const [myFavs, setMyFavs] = useState([]);
@@ -39,19 +40,30 @@ const Favourites = (props) => {
         myFavs.map((recip) => {
           const url = `http://localhost:3000/search/id/${recip.favourite_recipeID}`;
           return (
-            <div className="recipe" key={recip.favourite_recipeID}>
-              <a href={url}>
-                <h2>{recip.favourite_title}</h2>
-              </a>
-              <img src={recip.favourite_image}></img>
-              <div className="delete-favourite" key={recip.favourite_recipeID}>
-                <button
-                  onClick={() => {
-                    deleteFavourite(recip.favourite_recipeID);
-                  }}
+            <div className="favourite-recipe" key={recip.favourite_recipeID}>
+              <div className="favourite-recipe-image">
+                <img
+                  className="favourite-recipe-image"
+                  src={recip.favourite_image}
+                ></img>
+              </div>
+              <div className="favourite-recipe-content">
+                <a href={url}>
+                  <h2>{recip.favourite_title}</h2>
+                </a>
+                <div
+                  className="delete-favourite"
+                  key={recip.favourite_recipeID}
                 >
-                  Delete {recip.favourite_title} from Favourites
-                </button>
+                  <button
+                    className="delete-favourite"
+                    onClick={() => {
+                      deleteFavourite(recip.favourite_recipeID);
+                    }}
+                  >
+                    <b>Delete {recip.favourite_title} from Favourites</b>
+                  </button>
+                </div>
               </div>
             </div>
           );

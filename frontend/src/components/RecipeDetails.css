@@ -1,0 +1,31 @@
+ul,
+ol {
+  text-align: left;
+  margin: 0;
+}
+
+div.recipe-ingredients {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 600px;
+  padding: 10px;
+}
+
+div.recipe-instructions {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 600px;
+  padding: 10px;
+}
+
+div.recipe-details {
+  background-color: lightgrey;
+}
+
+.recipe-ingredients,
+.current-servings,
+h2.cooking-instructions {
+  margin: 0;
+}
