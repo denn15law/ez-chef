@@ -17,4 +17,10 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(404).json({ message: err.message }));
 });
 
+router.post("/", async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+  console.log(`----- ${user} -----`);
+  res.json(user);
+});
+
 module.exports = router;
