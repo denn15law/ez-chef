@@ -11,7 +11,6 @@ const Favourites = (props) => {
     axios
       .get("http://localhost:8000/favourites")
       .then(function (response) {
-        console.log("iamdata", response.data);
         setMyFavs(response.data);
       })
       .catch(function (error) {
@@ -19,12 +18,13 @@ const Favourites = (props) => {
       });
   }, []);
 
-  const deleteFavourite = () => {
-    const URL = "http://localhost:8000/favourites/61e6e05bdeaa4d5394c190e6";
+  const deleteFavourite = (id) => {
+    console.log("i am id", id)
+    const URL = `http://localhost:8000/favourites/${id}`;
     axios
       .delete(URL)
       .then(function (response) {
-        console.log("remove me from favourites", response);
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -44,7 +44,7 @@ const Favourites = (props) => {
               </a>
               <img src={recip.favourite_image}></img>
               <div className="delete-favourite" key={recip.favourite_recipeID}>
-                <button onClick={deleteFavourite}>
+                <button onClick={() => {deleteFavourite(recip.favourite_recipeID)}}>
                   Delete {recip.favourite_title} from Favourites
                 </button>
               </div>

@@ -39,10 +39,8 @@ const addFavourite = (req, res) => {
 };
 
 const deleteFavouriteById = (req, res) => {
-  console.log("req.params.id", req.params.id)
-  Favourite.findByIdAndDelete(req.params.id)
+  Favourite.deleteOne({favourite_recipeID: req.params.id})
     .then((response) => {
-      console.log("response here", response);
       res.json(response);
     })
     .catch((err) => console.log(err));
