@@ -1,46 +1,46 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const Copyright = (props) => {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}>
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-};
 
 const theme = createTheme();
 
 const Register = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const [data, setData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const url = "/register";
+    axios
+      .post(url, data)
+      .then((res) => {
+        console.log(res.data);
+        navigate("/login");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -68,44 +68,52 @@ const Register = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
+                  name="first_name"
                   required
                   fullWidth
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  value={data.first_name}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  name="last_name"
                   required
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  autoFocus
+                  value={data.last_name}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  name="email"
                   required
                   fullWidth
                   id="email"
                   label="Email Address"
-                  name="email"
+                  type="email"
                   autoComplete="email"
+                  value={data.email}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  name="password"
                   required
                   fullWidth
-                  name="password"
+                  id="password"
                   label="Password"
                   type="password"
-                  id="password"
                   autoComplete="new-password"
+                  value={data.password}
+                  onChange={handleChange}
                 />
               </Grid>
             </Grid>
@@ -121,7 +129,6 @@ const Register = () => {
             </Link>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

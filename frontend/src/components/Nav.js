@@ -1,12 +1,12 @@
 import * as React from "react";
-import { styled, useTheme, alpha } from "@mui/material/styles";
+import Logout from "./Logout";
+import { styled, useTheme } from "@mui/material/styles";
 import {
   Box,
   CssBaseline,
   Divider,
   Drawer,
   IconButton,
-  InputBase,
   List,
   ListItem,
   ListItemIcon,
@@ -26,6 +26,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArticleIcon from "@mui/icons-material/Article";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
+// import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -75,49 +76,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
-
-const Nav = () => {
+const Nav = ({ user }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -149,15 +108,10 @@ const Nav = () => {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
             EZ Chef
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search..."
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <Link to="/search">
+            <SearchIcon />
+          </Link>
+          <Divider>{user && <Logout />}</Divider>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -187,61 +141,73 @@ const Nav = () => {
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <Link to="/">
+            <Link to="/" onClick={handleDrawerClose}>
               <ListItemText primary="Home" />
             </Link>
           </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <MenuBookIcon />
-            </ListItemIcon>
-            <Link to="/myrecipes">
-              <ListItemText primary="My Recipes" />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <AddIcon />
-            </ListItemIcon>
-            <Link to="/new">
-              <ListItemText primary="Add New Recipe" />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <StarIcon />
-            </ListItemIcon>
-            <Link to="/favourites">
-              <ListItemText primary="My Favourites" />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <ShoppingCartIcon />
-            </ListItemIcon>
-            <Link to="/grocerylist">
-              <ListItemText primary="Grocery List" />
-            </Link>
-          </ListItem>
+          {user && (
+            <ListItem>
+              <ListItemIcon>
+                <MenuBookIcon />
+              </ListItemIcon>
+              <Link to="/myrecipes" onClick={handleDrawerClose}>
+                <ListItemText primary="My Recipes" />
+              </Link>
+            </ListItem>
+          )}
+          {user && (
+            <ListItem>
+              <ListItemIcon>
+                <AddIcon />
+              </ListItemIcon>
+              <Link to="/new" onClick={handleDrawerClose}>
+                <ListItemText primary="Add New Recipe" />
+              </Link>
+            </ListItem>
+          )}
+          {user && (
+            <ListItem>
+              <ListItemIcon>
+                <StarIcon />
+              </ListItemIcon>
+              <Link to="/favourites" onClick={handleDrawerClose}>
+                <ListItemText primary="My Favourites" />
+              </Link>
+            </ListItem>
+          )}
+          {user && (
+            <ListItem>
+              <ListItemIcon>
+                <ShoppingCartIcon />
+              </ListItemIcon>
+              <Link to="/grocerylist" onClick={handleDrawerClose}>
+                <ListItemText primary="Grocery List" />
+              </Link>
+            </ListItem>
+          )}
         </List>
         <Divider />
         <List>
-          <ListItem>
-            <ListItemIcon>
-              <ArticleIcon />
-            </ListItemIcon>
-            <Link to="/register">
-              <ListItemText primary="Register" />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <PersonIcon />
-            </ListItemIcon>
-            <Link to="/login">
-              <ListItemText primary="Login" />
-            </Link>
-          </ListItem>
+          {!user && (
+            <ListItem>
+              <ListItemIcon>
+                <ArticleIcon />
+              </ListItemIcon>
+              <Link to="/register" onClick={handleDrawerClose}>
+                <ListItemText primary="Register" />
+              </Link>
+            </ListItem>
+          )}
+          {!user && (
+            <ListItem>
+              <ListItemIcon>
+                <PersonIcon />
+              </ListItemIcon>
+              <Link to="/login" onClick={handleDrawerClose}>
+                <ListItemText primary="Login" />
+              </Link>
+            </ListItem>
+          )}
         </List>
       </Drawer>
 
