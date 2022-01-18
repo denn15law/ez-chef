@@ -5,6 +5,7 @@ dotenv.config();
 
 const getFavourites = (req, res) => {
   Favourite.find()
+    .sort({ favourite_title: 1 })
     .then((favourite) => res.json(favourite))
     .catch((err) => {
       res.status(404).json({ message: err.message });
