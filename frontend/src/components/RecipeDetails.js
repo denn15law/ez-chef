@@ -35,18 +35,6 @@ const RecipeDetails = () => {
       .catch((err) => console.log(err));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const url = "/register";
-  //     const { data: res } = await axios.post(url, data);
-  //     navigate("/login");
-  //     console.log(res.message);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   return (
     <div>
       <h1>{details.title}</h1>
