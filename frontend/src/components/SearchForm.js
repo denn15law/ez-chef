@@ -6,6 +6,7 @@ const SearchForm = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
   const [searched, setSearched] = useState("");
+
   function handleChange(e) {
     setSearch(
       e.target.value
@@ -22,6 +23,7 @@ const SearchForm = () => {
         // handle success
         setSearched(search);
         setRecipeData(response.data);
+        setSearch("");
       })
       .catch(function (error) {
         // handle error
@@ -36,6 +38,7 @@ const SearchForm = () => {
         id="mainInput"
         type="text"
         placeholder="Enter Ingredients or Keywords"
+        value={search}
         onChange={handleChange}
         size="40"
       />
