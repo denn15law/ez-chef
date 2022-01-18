@@ -11,14 +11,10 @@ router.get("/", (req, res) => {
     });
 });
 
-// router.get("/:id", (req, res) => {
-//   User.findById(req.body.id)
-//     .then((res) => {
-//       res.send(req.user);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
+router.get("/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then((user) => res.json(user))
+    .catch((err) => res.status(404).json({ message: err.message }));
+});
 
 module.exports = router;
