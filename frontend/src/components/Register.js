@@ -15,23 +15,6 @@ import {
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const Copyright = (props) => {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}>
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-};
-
 const theme = createTheme();
 
 const Register = () => {
@@ -48,16 +31,16 @@ const Register = () => {
     setData({ ...data, [input.name]: input.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const url = "/register";
-      await axios.post(url, data);
-      // console.log(data);
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-    }
+    const url = "/register";
+    axios
+      .post(url, data)
+      .then((res) => {
+        console.log(res.data);
+        navigate("/login");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -146,7 +129,6 @@ const Register = () => {
             </Link>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

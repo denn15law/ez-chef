@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 //Require Routes
@@ -10,6 +10,7 @@ const recipesRoutes = require("./routes/recipes");
 const usersRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
+const logoutRoutes = require("./routes/logout");
 const searchRoutes = require("./routes/search");
 const groceryListRoutes = require("./routes/groceryList");
 const favouriteRoutes = require("./routes/favourites");
@@ -39,7 +40,7 @@ app.use(
     },
   })
 );
-// app.use(cookieParser("secretcode"));
+app.use(cookieParser("secretcode"));
 
 // Passport configurations
 const passport = require("./config/passport");
@@ -59,6 +60,7 @@ app.use("/recipes", recipesRoutes);
 app.use("/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
+app.use("/logout", logoutRoutes);
 app.use("/search", searchRoutes);
 app.use("/groceries", groceryListRoutes);
 

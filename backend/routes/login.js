@@ -16,7 +16,11 @@ router.post("/", (req, res, next) => {
       if (err) {
         return res.status(400).json({ err: err });
       }
-      return res.status(200).json({ success: `Logged in as ${user.id}` });
+      console.log(`-----Logged in as ${user.first_name}-----`);
+      // console.log(`-----${req.session.id}-----`);
+      // req.session.id = user.id;
+      console.log(`-----${user.id}-----`);
+      res.json(`${user.id}`);
     });
   })(req, res, next);
 });

@@ -14,44 +14,28 @@ import {
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const Copyright = (props) => {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}>
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-};
-
 const theme = createTheme();
 
 const Login = () => {
-  const [data, setData] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
-    setData({ ...data, [input.name]: input.value });
+    setUser({ ...user, [input.name]: input.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const url = "/login";
-      const { data: res } = await axios.post(url, data);
-      navigate("/");
-      console.log(res.message);
-    } catch (error) {
-      console.log(error);
-    }
+    const url = "/login";
+    await axios
+      .post(url, user)
+      .then((res) => {
+        setUser(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data));
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -85,7 +69,7 @@ const Login = () => {
               name="email"
               autoComplete="email"
               autoFocus
-              value={data.email}
+              value={user.email}
               onChange={handleChange}
             />
             <TextField
@@ -97,7 +81,7 @@ const Login = () => {
               type="password"
               id="password"
               autoComplete="current-password"
-              value={data.password}
+              value={user.password}
               onChange={handleChange}
             />
             <Button
@@ -112,7 +96,6 @@ const Login = () => {
             </Link>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

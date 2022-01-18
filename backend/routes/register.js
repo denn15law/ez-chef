@@ -26,7 +26,9 @@ router.post("/", async (req, res) => {
           password: hashedPassword,
         });
         await newUser.save();
-        res.send("User Created");
+        res
+          .status(200)
+          .json({ success: `----- ${newUser.first_name} created -----` });
       }
     });
   }

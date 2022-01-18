@@ -6,11 +6,11 @@ const NewRecipe = () => {
   return (
     <Container>
       <AppBar position="static" color="inherit">
-
-        <Typography variant="h4" align="center">ADD NEW RECIPE</Typography>
-
+        <Typography variant="h4" align="center">
+          ADD NEW RECIPE
+        </Typography>
       </AppBar>
-        <NewRecipeForm/>
+      <NewRecipeForm />
     </Container>
   );
 };

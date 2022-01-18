@@ -19,7 +19,7 @@ const createRecipe = (req, res) => {
   console.log(newRecipe);
   newRecipe
     .save()
-    .then((response) => res.json(response))
+    .then((response) => console.log(`-----${req.session.id}-----`))
     .catch((err) => console.log(err.message));
 };
 
