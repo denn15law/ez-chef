@@ -1,11 +1,23 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Favourites.css";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+// import MyRecipeCardExample from "./MyRecipeCardExample";
+// import "./Favourites.css";
 
-const MyRecipes = (props) => {
+const theme = createTheme();
+
+const MyRecipes = ({ user }) => {
   const [myRecipes, setMyRecipes] = useState([]);
-  const { user } = props;
 
   const getData = () => {
     axios
@@ -18,7 +30,7 @@ const MyRecipes = (props) => {
       });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     getData();
   }, []);
 
@@ -36,41 +48,58 @@ const MyRecipes = (props) => {
   };
 
   return (
-    <div>
-      <h1>My Recipes</h1>
-      {myRecipes.length ? (
-        myRecipes.map((recip) => {
-          const url = `http://localhost:3000/myRecipes/${recip._id}`;
-          return (
-            <div className="favourite-recipe" key={recip._id}>
-              <div className="favourite-recipe-image">
-                <img
-                  className="favourite-recipe-image"
-                  src={recip.image_url}
-                ></img>
-              </div>
-              <div className="favourite-recipe-content">
-                <a href={url}>
-                  <h2 className="recipe-favourite-title">{recip.title}</h2>
-                </a>
-                <div className="delete-favourite" key={recip._id}>
-                  <button
-                    className="delete-favourite"
-                    onClick={() => {
-                      deleteRecipe(recip._id);
-                    }}
-                  >
-                    <b>Delete {recip.title} from My Recipes</b>
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })
-      ) : (
-        <h3>You do not have any recipes!</h3>
-      )}
-    </div>
+    <Grid>
+      <Typography variant="h5">My Recipes</Typography>
+      <Grid
+        container
+        p={5}
+        spacing={{ xs: 2, md: 7 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+        {myRecipes.length ? (
+          myRecipes.map((recip) => {
+            const url = `http://localhost:3000/myRecipes/${recip._id}`;
+            return (
+              <Grid item key={recip}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Link href={url}>{recip.title}</Link>
+                  </CardContent>
+                  <CardMedia
+                    key={recip._id}
+                    component="img"
+                    className="favourite-recipe-image"
+                    src={recip.image_url}
+                    alt="recipe"
+                  />
+                  <CardActions>
+                    <Button
+                      onClick={() => {
+                        deleteRecipe(recip._id);
+                      }}
+                      className="delete-favourite"
+                      size="small">
+                      Delete
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            );
+          })
+        ) : (
+          <Typography variant="h5">Add a Recipe</Typography>
+        )}
+      </Grid>
+    </Grid>
   );
 };
 

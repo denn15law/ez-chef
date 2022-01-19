@@ -76,14 +76,12 @@ const NewRecipeForm = (props) => {
             flexDirection: "column",
             alignItems: "centre",
             justifyContent: "centre",
-          }}
-        >
+          }}>
           <Avatar
             sx={{
               m: 1,
               bgcolor: "secondary.main",
-            }}
-          >
+            }}>
             <RestaurantIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -100,8 +98,7 @@ const NewRecipeForm = (props) => {
                 flexDirection: "column",
                 alignItems: "centre",
                 justifyContent: "centre",
-              }}
-            >
+              }}>
               <Controller
                 name="title"
                 control={control}
@@ -175,15 +172,13 @@ const NewRecipeForm = (props) => {
                   />
                   <Button
                     onClick={renderIngredientForm}
-                    style={{ display: "flex", alignItems: "flex-end" }}
-                  >
+                    style={{ display: "flex", alignItems: "flex-end" }}>
                     Add
                   </Button>
                   <Button
                     color="error"
                     onClick={() => remove(i)}
-                    style={{ display: "flex", alignItems: "flex-end" }}
-                  >
+                    style={{ display: "flex", alignItems: "flex-end" }}>
                     Delete
                   </Button>
                 </Box>
