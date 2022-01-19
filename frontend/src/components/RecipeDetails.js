@@ -35,7 +35,7 @@ const RecipeDetails = (props) => {
 
   const onClickFavourite = () => {
     if (user) {
-      const URL = `http://localhost:8000/favourites/${user}`;
+      const URL = `http://localhost:8000/favourites/api/${user}/${details.id}`;
       axios
         .post(URL, details)
         .then((res) => {
