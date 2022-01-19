@@ -29,17 +29,13 @@ const createRecipe = (req, res) => {
 
 const deleteRecipeById = (req, res) => {
   Recipe.deleteOne({ _id: req.params.id, user: req.params.user })
-    .then((response) => res.json(response))
     .then(() => {
-      Favourite.deleteOne({
+      return Favourite.deleteOne({
         favourite_recipeID: req.params.id,
         user: req.params.user,
-      })
-        .then((response) => {
-          res.json(response);
-        })
-        .catch((err) => console.log(err));
+      });
     })
+    .then((response) => res.json(response))
     .catch((err) => console.log(err));
 };
 
