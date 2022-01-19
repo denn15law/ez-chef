@@ -15,14 +15,13 @@ const SearchForm = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
   const [searched, setSearched] = useState("");
+  const navigate = useNavigate();
+
   let url = window.location.pathname;
   const results = url.split("/search/results/")[1];
-  console.log("results", results);
-  const navigate = useNavigate();
 
   function handleChange(e) {
     setSearch(e.target.value);
-    replaceString(search);
   }
 
   const replaceString = (search) => {
@@ -46,9 +45,7 @@ const SearchForm = () => {
   }, [results]);
 
   const reloadSearch = () => {
-    console.log("results are here", results);
-    console.log("search is here", search);
-    navigate(`/search/results/${search}`);
+    navigate(`/search/results/${replaceString(search)}`);
   };
 
   return (
