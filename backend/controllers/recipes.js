@@ -1,4 +1,5 @@
 const Recipe = require("../models/Recipe");
+const Favourite = require("../models/Favourite");
 
 const getRecipes = (req, res) => {
   const user = req.params.user;
@@ -29,6 +30,16 @@ const createRecipe = (req, res) => {
 const deleteRecipeById = (req, res) => {
   Recipe.deleteOne({ _id: req.params.id, user: req.params.user })
     .then((response) => res.json(response))
+    .then(() => {
+      Favourite.deleteOne({
+        favourite_recipeID: req.params.id,
+        user: req.params.user,
+      })
+        .then((response) => {
+          res.json(response);
+        })
+        .catch((err) => console.log(err));
+    })
     .catch((err) => console.log(err));
 };
 

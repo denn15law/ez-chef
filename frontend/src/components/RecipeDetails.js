@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RecipeDetails.css";
+import { Button } from "@mui/material";
 
 const RecipeDetails = (props) => {
   const [details, setDetails] = useState({});
@@ -56,10 +57,19 @@ const RecipeDetails = (props) => {
         </div>
 
         <div className="recipe-actions">
-          <button className="favorite-recipe" onClick={onClickFavourite}>
+          <Button
+            onClick={onClickFavourite}
+            style={{ display: "flex", alignItems: "flex-end" }}
+          >
+            Add Recipe To Favourites
+          </Button>
+          {/* <button className="favorite-recipe" onClick={onClickFavourite}>
             Add to Favourites
-          </button>
-          <button id="add-grocery">Add to Grocery List</button>
+          </button> */}
+          <Button style={{ display: "flex", alignItems: "flex-end" }}>
+            Add To Grocery List
+          </Button>
+          {/* <button id="add-grocery">Add to Grocery List</button> */}
         </div>
         <div className="recipe-content">
           <div className="recipe-ingredients">

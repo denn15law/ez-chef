@@ -2,6 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 import "./RecipeDetails.css";
 
 const MyRecipeDetails = (props) => {
@@ -57,10 +58,19 @@ const MyRecipeDetails = (props) => {
         </div>
 
         <div className="recipe-actions">
-          <button className="favorite-recipe" onClick={onClickFavourite}>
+          <Button
+            onClick={onClickFavourite}
+            style={{ display: "flex", alignItems: "flex-end" }}
+          >
+            Add Recipe To Favourites
+          </Button>
+          {/* <button className="favorite-recipe" onClick={onClickFavourite}>
             Add to Favourites
-          </button>
-          <button id="add-grocery">Add to Grocery List</button>
+          </button> */}
+          <Button style={{ display: "flex", alignItems: "flex-end" }}>
+            Add To Grocery List
+          </Button>
+          {/* <button id="add-grocery">Add to Grocery List</button> */}
         </div>
         <div className="recipe-content">
           <div className="recipe-ingredients">
