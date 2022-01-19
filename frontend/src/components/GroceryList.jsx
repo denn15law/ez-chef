@@ -12,7 +12,7 @@ const GroceryList = (props) => {
   const [recipes, getRecipes] = useState([])
   
   const getIngredientsFromDatabase = () => {
-    axios.get('/groceries')
+    axios.get(`/groceries/ingredients/${user}`)
       .then((res) => {
         const allIngredients = res.data
         //add ingredients
@@ -24,7 +24,7 @@ const GroceryList = (props) => {
   }
 
   const getRecipesFromDatabase = () => {
-    axios.get('/recipes')
+    axios.get(`/groceries/recipes/${user}`)
       .then((res) => {
         const allRecipes = res.data
         getRecipes(allRecipes)
