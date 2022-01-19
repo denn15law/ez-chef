@@ -4,13 +4,14 @@ import React from 'react'
 
 export default function RecipeList(props) {
 
-  const {recipes} = props
+  const {recipes, user} = props
 
   const removeRecipe = (recipe) => {
     console.log(recipe._id)
-    axios.delete(`/recipes/${recipe._id}`)
+    axios.delete(`/groceries/recipes/${user}/${recipe._id}`)
       .then((res) => {
         console.log(res)
+        window.location.reload()
       })
   }
   
@@ -21,13 +22,13 @@ export default function RecipeList(props) {
         {recipes.map((recipe, index) => {
           // console.log(recipe)
           return (
-            <>
-            <Typography key={recipe.id}>{recipe.title}</Typography>
-            <Button 
-              onClick={() => {
-                removeRecipe(recipe)}}
-            >Remove Recipe from Shopping List</Button>
-            </>
+            <Box key={recipe._id}>
+              <Typography>{recipe.title}</Typography>
+              <Button 
+                onClick={() => {
+                  removeRecipe(recipe)}}
+              >Remove Recipe from Shopping List</Button>
+            </Box>
           )
         })}
       </Box>

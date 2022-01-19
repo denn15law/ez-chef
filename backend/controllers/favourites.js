@@ -13,7 +13,7 @@ const getFavourites = (req, res) => {
     });
 };
 
-const addFavourite = (req, res) => {
+const addFavouriteFromMyRecipes = (req, res) => {
   const user = req.params.user;
   const recipeID = req.body.id;
 
@@ -41,6 +41,34 @@ const addFavourite = (req, res) => {
   );
 };
 
+const addFavouriteFromApi = (req, res) => {
+  const user = req.params.user;
+  const recipeID = req.body.id;
+
+  Favourite.findOne({ favourite_recipeID: recipeID, user: user }).then(
+    (response) => {
+      console.log(response);
+      if (!response) {
+        const newFavourite = new Favourite({
+          user: user,
+          favourite_title: req.body.title,
+          favourite_image: req.body.image,
+          favourite_recipeID: req.body.id,
+        });
+        newFavourite
+          .save()
+          .then((response) => {
+            res.json(response);
+          })
+          .catch((err) => console.log(err.message));
+      } else {
+        console.log("Already added!");
+        res.status(400).send("Favourite already added");
+      }
+    }
+  );
+};
+
 const deleteFavouriteById = (req, res) => {
   const user = req.params.user;
   console.log("user", user);
@@ -53,6 +81,7 @@ const deleteFavouriteById = (req, res) => {
 
 module.exports = {
   getFavourites,
-  addFavourite,
+  addFavouriteFromMyRecipes,
+  addFavouriteFromApi,
   deleteFavouriteById,
 };

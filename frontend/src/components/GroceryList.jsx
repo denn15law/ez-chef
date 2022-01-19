@@ -39,7 +39,7 @@ const GroceryList = (props) => {
   return (
     <>
       <Typography variant="h3" mb={3}>My Grocery List </Typography>
-      <RecipeList recipes={recipes}/>
+      <RecipeList user={user} recipes={recipes}/>
       <IngredientList ingredients={ingredients}/>
     </>
   );

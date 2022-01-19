@@ -41,7 +41,7 @@ const MyRecipeDetails = (props) => {
 
   const onClickFavourite = () => {
     if (user) {
-      const URL = `http://localhost:8000/favourites/${user}`;
+      const URL = `http://localhost:8000/favourites/myRecipes/${user}/${details._id}`;
       axios
         .post(URL, details)
         .then((res) => {
@@ -54,6 +54,15 @@ const MyRecipeDetails = (props) => {
     }
   };
 
+  const onClickGrocery = () => {
+    axios
+      .post(`/users/${user}/grocery/${details._id}`)
+      .then((res) => {
+        console.log(res);
+        navigate("/groceryList");
+      })
+      .catch((err) => console.log(err));
+  };
   const onClickConvert = () => {
     setServingRatio(serving / details.serving_size);
   };
@@ -70,7 +79,9 @@ const MyRecipeDetails = (props) => {
           <button className="favorite-recipe" onClick={onClickFavourite}>
             Add to Favourites
           </button>
-          <button id="add-grocery">Add to Grocery List</button>
+          <button id="add-grocery" onClick={onClickGrocery}>
+            Add to Grocery List
+          </button>
         </div>
         <div className="recipe-content">
           <div className="recipe-ingredients">
@@ -114,7 +125,8 @@ const MyRecipeDetails = (props) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}>
+                          .indexOf(each)}
+                      >
                         {each}
                       </li>
                     );

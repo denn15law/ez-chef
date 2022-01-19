@@ -11,7 +11,7 @@ export default function IngredientList(props) {
         {/* {displayIngredients(ingredients)} */}
         {ingredients.map((ingredient, index) => {
           return (
-            <Typography>{`${ingredient.quantity} ${ingredient.unit} of ${ingredient.name}`}</Typography>
+            <Typography key={ingredient._id}>{`${ingredient.quantity} ${ingredient.unit} of ${ingredient.name}`}</Typography>
           )
         })}
       </Box>
