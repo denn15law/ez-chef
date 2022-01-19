@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SearchForm.css";
 
@@ -14,6 +15,7 @@ const SearchForm = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
   const [searched, setSearched] = useState("");
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setSearch(e.target.value);
@@ -21,19 +23,8 @@ const SearchForm = () => {
   const replaceString = (str) => {
     return str.replaceAll(" ", "+").replaceAll(",", "+");
   };
-  const getSearch = () => {
-    axios
-      .get(`http://localhost:8000/search/${replaceString(search)}`)
-      .then(function (response) {
-        // handle success
-        setSearched(replaceString(search));
-        setRecipeData(response.data);
-        setSearch("");
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
+  const showSearch = () => {
+    navigate(`/search/results/${replaceString(search)}`);
   };
 
   return (
@@ -49,36 +40,10 @@ const SearchForm = () => {
           onChange={handleChange}
           size="40"
         />
-        <button onClick={getSearch}>
+        <button onClick={showSearch}>
           Search Recipe
           <i class="fa fa-search"></i>
         </button>
-      </div>
-      {recipeData.length ? (
-        <h4>
-          Now displaying recipes containing:{" "}
-          {searched.replaceAll("++", "+").replaceAll("+", ", ")}
-        </h4>
-      ) : null}
-
-      <div className="recipe-results">
-        {recipeData.length
-          ? recipeData
-              .sort((a, b) =>
-                a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-              )
-              .map((recip) => {
-                const url = `http://localhost:3000/search/${recip.id}`;
-                return (
-                  <div className="recipe-card" key={recip.id}>
-                    <a href={url}>
-                      <h2>{recip.title}</h2>
-                    </a>
-                    <img src={recip.image}></img>
-                  </div>
-                );
-              })
-          : null}
       </div>
     </div>
   );
