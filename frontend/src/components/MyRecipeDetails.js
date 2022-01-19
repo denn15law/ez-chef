@@ -62,9 +62,9 @@ const MyRecipeDetails = (props) => {
         navigate("/groceryList");
       })
       .catch((err) => console.log(err));
-    const onClickConvert = () => {
-      setServingRatio(serving / details.serving_size);
-    };
+  };
+  const onClickConvert = () => {
+    setServingRatio(serving / details.serving_size);
   };
 
   return (
@@ -76,19 +76,12 @@ const MyRecipeDetails = (props) => {
         </div>
 
         <div className="recipe-actions">
-          <Button
-            onClick={onClickFavourite}
-            style={{ display: "flex", alignItems: "flex-end" }}
-          >
-            Add Recipe To Favourites
-          </Button>
-
-          <Button
-            style={{ display: "flex", alignItems: "flex-end" }}
-            onClick={onClickGerocery}
-          >
-            Add To Grocery List
-          </Button>
+          <button className="favorite-recipe" onClick={onClickFavourite}>
+            Add to Favourites
+          </button>
+          <button id="add-grocery" onClick={onClickGrocery}>
+            Add to Grocery List
+          </button>
         </div>
         <div className="recipe-content">
           <div className="recipe-ingredients">
@@ -134,7 +127,7 @@ const MyRecipeDetails = (props) => {
                           .split(".")
                           .indexOf(each)}
                       >
-                        {each + "."}
+                        {each}
                       </li>
                     );
                   })
