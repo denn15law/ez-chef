@@ -33,20 +33,20 @@ const MyRecipeDetails = (props) => {
     return str.replace(/(<([^>]+)>)/gi, "");
   }
 
-  // const onClickFavourite = () => {
-  //   if (user) {
-  //     const URL = `http://localhost:8000/favourites/${user}`;
-  //     axios
-  //       .post(URL, details)
-  //       .then((res) => {
-  //         console.log(res);
-  //         navigate("/favourites");
-  //       })
-  //       .catch((err) => console.log(err));
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // };
+  const onClickFavourite = () => {
+    if (user) {
+      const URL = `http://localhost:8000/favourites/${user}`;
+      axios
+        .post(URL, details)
+        .then((res) => {
+          console.log(res);
+          navigate("/favourites");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="recipe-details-container">
@@ -57,9 +57,9 @@ const MyRecipeDetails = (props) => {
         </div>
 
         <div className="recipe-actions">
-          {/* <button className="favorite-recipe" onClick={onClickFavourite}>
+          <button className="favorite-recipe" onClick={onClickFavourite}>
             Add to Favourites
-          </button> */}
+          </button>
           <button id="add-grocery">Add to Grocery List</button>
         </div>
         <div className="recipe-content">
