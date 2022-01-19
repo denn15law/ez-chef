@@ -23,9 +23,10 @@ const Logout = () => {
   return (
     <Button
       type="submit"
+      size="small"
       onClick={onClick}
       fullWidth
-      variant="contained"
+      variant="outlined"
       sx={{ mt: 3, mb: 2 }}>
       Log Out
     </Button>
