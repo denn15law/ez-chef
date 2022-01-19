@@ -4,6 +4,6 @@ const router = express.Router();
 
 const { searchFunc, recipeDetails } = require("../controllers/search");
 router.get("/:searched", searchFunc);
-router.get("/id/:recipeID", recipeDetails);
+router.get("/details/:id", recipeDetails);
 
 module.exports = router;
