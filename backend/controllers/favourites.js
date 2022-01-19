@@ -24,8 +24,8 @@ const addFavourite = (req, res) => {
         const newFavourite = new Favourite({
           user: user,
           favourite_title: req.body.title,
-          favourite_image: req.body.image,
-          favourite_recipeID: req.body.id,
+          favourite_image: req.body.image_url,
+          favourite_recipeID: req.body._id,
         });
         newFavourite
           .save()

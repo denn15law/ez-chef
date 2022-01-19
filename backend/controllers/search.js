@@ -19,7 +19,7 @@ const searchFunc = (req, res) => {
 };
 
 const recipeDetails = (req, res) => {
-  const recipeID = req.params.recipeID;
+  const recipeID = req.params.id;
   console.log("I am recipeID", recipeID);
   axios
     .get(
