@@ -10,7 +10,6 @@ const RecipeDetails = (props) => {
   const [servingRatio, setServingRatio] = useState(1);
   let url = window.location.pathname;
   const id = url.split("/search/")[1];
-
   const navigate = useNavigate();
 
   const { user } = props;
@@ -40,7 +39,7 @@ const RecipeDetails = (props) => {
 
   const onClickFavourite = () => {
     if (user) {
-      const URL = `http://localhost:8000/favourites/${user}`;
+      const URL = `http://localhost:8000/favourites/api/${user}/${details.id}`;
       axios
         .post(URL, details)
         .then((res) => {
@@ -66,10 +65,19 @@ const RecipeDetails = (props) => {
         </div>
 
         <div className="recipe-actions">
-          <button className="favorite-recipe" onClick={onClickFavourite}>
+          <Button
+            onClick={onClickFavourite}
+            style={{ display: "flex", alignItems: "flex-end" }}
+          >
+            Add Recipe To Favourites
+          </Button>
+          {/* <button className="favorite-recipe" onClick={onClickFavourite}>
             Add to Favourites
-          </button>
-          <button id="add-grocery">Add to Grocery List</button>
+          </button> */}
+          <Button style={{ display: "flex", alignItems: "flex-end" }}>
+            Add To Grocery List
+          </Button>
+          {/* <button id="add-grocery">Add to Grocery List</button> */}
         </div>
         <div className="recipe-content">
           <div className="recipe-ingredients">
@@ -113,8 +121,9 @@ const RecipeDetails = (props) => {
                         <li
                           key={removeTags(details.instructions)
                             .split(".")
-                            .indexOf(each)}>
-                          {each}
+                            .indexOf(each)}
+                        >
+                          {each + "."}
                         </li>
                       );
                     })
