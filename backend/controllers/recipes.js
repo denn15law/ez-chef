@@ -1,8 +1,8 @@
 const Recipe = require("../models/Recipe");
 
 const getRecipes = (req, res) => {
-  const user = req.params.user;
-  Recipe.find({ user: user })
+  // const user = req.params.user;
+  Recipe.find()
     .sort({ title: 1 })
     .then((recipe) => res.json(recipe))
     .catch((err) => {
