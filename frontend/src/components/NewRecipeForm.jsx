@@ -132,6 +132,7 @@ const NewRecipeForm = (props) => {
                     render={({ field }) => (
                       <TextField
                         size="small"
+                        InputProps={{ inputProps: { min: 0 } }}
                         type="number"
                         label="Qty"
                         variant="standard"
@@ -186,7 +187,7 @@ const NewRecipeForm = (props) => {
                 control={control}
                 render={({ field }) => (
                   <TextField
-                    style={{ marginTop: 10 }}
+                    style={{ marginTop: 10, marginBottom: 5 }}
                     label="Recipe Instructions:"
                     id="standard-multiline-static"
                     multiline
@@ -201,6 +202,7 @@ const NewRecipeForm = (props) => {
                 render={({ field }) => (
                   <TextField
                     type="number"
+                    InputProps={{ inputProps: { min: 1 } }}
                     label="Serving Size"
                     variant="standard"
                     {...field}
