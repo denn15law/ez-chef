@@ -1,7 +1,9 @@
 const Recipe = require("../models/Recipe");
 
 const getRecipes = (req, res) => {
-  Recipe.find()
+  const user = req.params.user;
+  Recipe.find({ user: user })
+    .sort({ title: 1 })
     .then((recipe) => res.json(recipe))
     .catch((err) => {
       res.status(404).json({ message: err.message });
@@ -10,6 +12,7 @@ const getRecipes = (req, res) => {
 
 const createRecipe = (req, res) => {
   const newRecipe = new Recipe({
+    user: req.params.user,
     title: req.body.title,
     image_url: req.body.image_url,
     ingredients: req.body.ingredients,
@@ -23,14 +26,8 @@ const createRecipe = (req, res) => {
     .catch((err) => console.log(err.message));
 };
 
-const findRecipeById = (req, res) => {
-  Recipe.findById(req.params.id)
-    .then((recipe) => res.json(recipe))
-    .catch((err) => res.status(404).json({ message: err.message }));
-};
-
 const deleteRecipeById = (req, res) => {
-  Recipe.findByIdAndDelete(req.params.id)
+  Recipe.deleteOne({ _id: req.params.id, user: req.params.user })
     .then((response) => res.json(response))
     .catch((err) => console.log(err));
 };
@@ -38,6 +35,5 @@ const deleteRecipeById = (req, res) => {
 module.exports = {
   getRecipes,
   createRecipe,
-  findRecipeById,
   deleteRecipeById,
 };

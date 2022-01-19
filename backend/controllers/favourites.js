@@ -16,11 +16,9 @@ const getFavourites = (req, res) => {
 const addFavourite = (req, res) => {
   const user = req.params.user;
   const recipeID = req.body.id;
-  console.log("I am recipeID in addFavourite", recipeID);
 
   Favourite.findOne({ favourite_recipeID: recipeID, user: user }).then(
     (response) => {
-      console.log("called");
       console.log(response);
       if (!response) {
         const newFavourite = new Favourite({
