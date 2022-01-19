@@ -56,7 +56,8 @@ const MyRecipeDetails = (props) => {
 
   const onClickGrocery = () => {
     axios
-      .post(`/users/${user}/grocery/${details._id}`)
+      // .post(`/users/${user}/grocery/${details._id}`)
+      .post(`/groceries/add/${user}/${details._id}`)
       .then((res) => {
         console.log(res);
         navigate("/groceryList");

@@ -1,6 +1,7 @@
 //Required Models
 const Recipe = require("../models/Recipe");
 const User = require("../models/User");
+const axios = require("axios");
 
 const getUserGroceryItems = (req, res) => {
   const user_id = req.params.user_id;
@@ -63,30 +64,75 @@ const deleteRecipeFromGroceryList = (req, res) => {
     .catch((err) => res.json(err.message));
 };
 
-// const addRecipeToUser = (req, res) => {
-//   const user_id = req.params.user_id;
-//   const recipe_id = req.params.recipe_id;
+const addRecipeToGroceries = (req, res) => {
+  const user_id = req.params.user_id;
+  const recipe_id = req.params.recipe_id;
 
-//   Recipe.findById(recipe_id)
-//     .then((recipe) => {
-//       return User.findByIdAndUpdate(
-//         user_id,
-//         { $push: { groceryList_recipes: recipe._id } },
-//         { new: true, upsert: true },
-//         function (err, managerparent) {
-//           if (err) throw err;
-//           console.log(managerparent);
-//         }
-//       );
-//     })
-//     .then((updatedUser) => {
-//       res.json(updatedUser);
-//     })
-//     .catch((err) => res.json(err));
-// };
+  //if recipe is user created
+  if (recipe_id.length > 7) {
+    Recipe.findById(recipe_id)
+      .then((recipe) => {
+        return User.findByIdAndUpdate(
+          user_id,
+          { $push: { groceryList_recipes: recipe._id } },
+          { new: true, upsert: true },
+          function (err, managerparent) {
+            if (err) throw err;
+            console.log(managerparent);
+          }
+        );
+      })
+      .then((updatedUser) => {
+        res.json(updatedUser);
+      })
+      .catch((err) => res.json(err.message));
+  } else {
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/${recipe_id}/information?apiKey=${process.env.apiKey}&query=includeNutrition=false`
+      )
+      .then((response) => {
+        const recipeDetails = response.data;
+        const ingredients = recipeDetails.extendedIngredients.map(
+          (ingredient) => {
+            return {
+              name: ingredient.name,
+              quantity: ingredient.amount,
+              unit: ingredient.unit,
+            };
+          }
+        );
+
+        return Recipe.create({
+          user: user_id,
+          title: recipeDetails.title,
+          image_url: recipeDetails.image,
+          serving_size: recipeDetails.servings,
+          instructions: recipeDetails.instructions,
+          ingredients: ingredients,
+        })
+          .then((newRecipe) => {
+            return User.findByIdAndUpdate(
+              user_id,
+              { $push: { groceryList_recipes: newRecipe._id } },
+              { new: true, upsert: true },
+              function (err, managerparent) {
+                if (err) throw err;
+                console.log(managerparent);
+              }
+            );
+          })
+          .then((updatedUser) => {
+            res.json(updatedUser);
+          })
+          .catch((err) => res.json(err.message));
+      });
+  }
+};
 
 module.exports = {
   getUserGroceryItems,
   getUserGroceryRecipes,
   deleteRecipeFromGroceryList,
+  addRecipeToGroceries,
 };
