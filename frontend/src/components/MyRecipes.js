@@ -72,7 +72,7 @@ const MyRecipes = ({ user }) => {
                     alignItems: "center",
                   }}>
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Link to={url}>{recip.title}</Link>
+                    <Link href={url}>{recip.title}</Link>
                   </CardContent>
                   <CardMedia
                     key={recip._id}
