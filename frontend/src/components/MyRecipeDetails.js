@@ -54,8 +54,17 @@ const MyRecipeDetails = (props) => {
     }
   };
 
-  const onClickConvert = () => {
-    setServingRatio(serving / details.serving_size);
+  const onClickGrocery = () => {
+    axios
+      .post(`/users/${user}/grocery/${details._id}`)
+      .then((res) => {
+        console.log(res);
+        navigate("/groceryList");
+      })
+      .catch((err) => console.log(err));
+    const onClickConvert = () => {
+      setServingRatio(serving / details.serving_size);
+    };
   };
 
   return (
@@ -73,13 +82,13 @@ const MyRecipeDetails = (props) => {
           >
             Add Recipe To Favourites
           </Button>
-          {/* <button className="favorite-recipe" onClick={onClickFavourite}>
-            Add to Favourites
-          </button> */}
-          <Button style={{ display: "flex", alignItems: "flex-end" }}>
+
+          <Button
+            style={{ display: "flex", alignItems: "flex-end" }}
+            onClick={onClickGerocery}
+          >
             Add To Grocery List
           </Button>
-          {/* <button id="add-grocery">Add to Grocery List</button> */}
         </div>
         <div className="recipe-content">
           <div className="recipe-ingredients">
