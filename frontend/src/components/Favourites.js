@@ -36,7 +36,7 @@ const Favourites = (props) => {
   };
 
   return (
-    <div>
+    <div className="favourite-recipes-page">
       <h1>My Favourite Recipes</h1>
       {myFavs.length ? (
         myFavs.map((recip) => {
