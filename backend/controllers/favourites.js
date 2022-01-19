@@ -4,7 +4,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const getFavourites = (req, res) => {
-  Favourite.find()
+  const user = req.params.user;
+  Favourite.find({ user: user })
     .sort({ favourite_title: 1 })
     .then((favourite) => res.json(favourite))
     .catch((err) => {
@@ -13,33 +14,37 @@ const getFavourites = (req, res) => {
 };
 
 const addFavourite = (req, res) => {
+  const user = req.params.user;
   const recipeID = req.body.id;
-  console.log("I am recipeID in addFavourite", recipeID);
 
-  Favourite.findOne({ favourite_recipeID: recipeID }).then((response) => {
-    console.log("called");
-    console.log(response);
-    if (!response) {
-      const newFavourite = new Favourite({
-        favourite_title: req.body.title,
-        favourite_image: req.body.image,
-        favourite_recipeID: req.body.id,
-      });
-      newFavourite
-        .save()
-        .then((response) => {
-          res.json(response);
-        })
-        .catch((err) => console.log(err.message));
-    } else {
-      console.log("Already added!");
-      res.status(400).send("Favourite already added");
+  Favourite.findOne({ favourite_recipeID: recipeID, user: user }).then(
+    (response) => {
+      console.log(response);
+      if (!response) {
+        const newFavourite = new Favourite({
+          user: user,
+          favourite_title: req.body.title,
+          favourite_image: req.body.image,
+          favourite_recipeID: req.body.id,
+        });
+        newFavourite
+          .save()
+          .then((response) => {
+            res.json(response);
+          })
+          .catch((err) => console.log(err.message));
+      } else {
+        console.log("Already added!");
+        res.status(400).send("Favourite already added");
+      }
     }
-  });
+  );
 };
 
 const deleteFavouriteById = (req, res) => {
-  Favourite.deleteOne({favourite_recipeID: req.params.id})
+  const user = req.params.user;
+  console.log("user", user);
+  Favourite.deleteOne({ favourite_recipeID: req.params.id, user: user })
     .then((response) => {
       res.json(response);
     })

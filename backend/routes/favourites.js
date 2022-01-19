@@ -8,8 +8,8 @@ const {
 } = require("../controllers/favourites");
 
 //Route: /favourites
-router.get("/", getFavourites);
-router.post("/", addFavourite);
-router.delete("/:id", deleteFavouriteById);
+router.get("/:user", getFavourites);
+router.post("/:user", addFavourite);
+router.delete("/:user/:id", deleteFavouriteById);
 
 module.exports = router;

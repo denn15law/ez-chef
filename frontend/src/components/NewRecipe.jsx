@@ -13,7 +13,8 @@ const styles = {
   },
 };
 
-const NewRecipe = () => {
+const NewRecipe = (props) => {
+  const { user } = props;
   return (
     <Paper style={styles.paperContainer}>
       <Box
@@ -22,8 +23,9 @@ const NewRecipe = () => {
           flexGrow: 1,
           height: "100vh",
           overflow: "auto",
-        }}>
-        <NewRecipeForm />
+        }}
+      >
+        <NewRecipeForm user={user} />
       </Box>
     </Paper>
   );

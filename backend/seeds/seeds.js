@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
-//Connect to Local
-// const db = require("../config/keys").mongoLocal;
+// Connect to Local
+const db = require("../config/keys").mongoLocal;
 
-//Connect to Cloud
-const db = require("../config/keys").mongoCloud;
+// //Connect to Cloud
+// const db = require("../config/keys").mongoCloud;
 
 //Require models
 const Recipe = require("../models/Recipe");
