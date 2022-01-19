@@ -48,15 +48,15 @@ const App = () => {
 
             <Route
               path="/myrecipes"
-              element={user ? <MyRecipes /> : <Index />}
+              element={user ? <MyRecipes user={user} /> : <Index />}
             ></Route>
             <Route
               path="/new"
-              element={user ? <NewRecipe /> : <Index />}
+              element={user ? <NewRecipe user={user} /> : <Index />}
             ></Route>
             <Route
               path="/favourites"
-              element={user ? <Favourites /> : <Index />}
+              element={user ? <Favourites user={user} /> : <Index />}
             ></Route>
             <Route
               path="/grocerylist"

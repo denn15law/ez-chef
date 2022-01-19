@@ -8,9 +8,8 @@ const {
 } = require("../controllers/recipes");
 
 //Route: /recipes
-router.get("/", getRecipes);
-router.post("/", createRecipe);
-router.get("/:id", findRecipeById);
-router.delete("/:id", deleteRecipeById);
+router.get("/:user", getRecipes);
+router.post("/:user", createRecipe);
+router.delete("/:user/:id", deleteRecipeById);
 
 module.exports = router;

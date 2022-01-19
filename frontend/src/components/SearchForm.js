@@ -1,6 +1,14 @@
 import * as React from "react";
 import { useState } from "react";
 import axios from "axios";
+import "./SearchForm.css";
+
+<link
+  rel="stylesheet"
+  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+  crossorigin="anonymous"
+/>;
 
 const SearchForm = () => {
   const [recipeData, setRecipeData] = useState([]);
@@ -30,16 +38,22 @@ const SearchForm = () => {
 
   return (
     <div>
-      <h1 className="Search-Form">Recipe Search</h1>
-      <input
-        id="mainInput"
-        type="text"
-        placeholder="Enter Ingredients or Keywords"
-        value={search}
-        onChange={handleChange}
-        size="40"
-      />
-      <button onClick={getSearch}>Search Recipe</button>
+      <div class="search">
+        <h1 className="Search-Form">Recipe Search</h1>
+        <input
+          id="mainInput"
+          class="searchTerm"
+          type="text"
+          placeholder="Enter Ingredients or Keywords"
+          value={search}
+          onChange={handleChange}
+          size="40"
+        />
+        <button onClick={getSearch}>
+          Search Recipe
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
       {recipeData.length ? (
         <h4>
           Now displaying recipes containing:{" "}
@@ -47,23 +61,25 @@ const SearchForm = () => {
         </h4>
       ) : null}
 
-      {recipeData.length
-        ? recipeData
-            .sort((a, b) =>
-              a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-            )
-            .map((recip) => {
-              const url = `http://localhost:3000/search/id/${recip.id}`;
-              return (
-                <div className="recipe" key={recip.id}>
-                  <a href={url}>
-                    <h2>{recip.title}</h2>
-                  </a>
-                  <img src={recip.image}></img>
-                </div>
-              );
-            })
-        : null}
+      <div className="recipe-results">
+        {recipeData.length
+          ? recipeData
+              .sort((a, b) =>
+                a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+              )
+              .map((recip) => {
+                const url = `http://localhost:3000/search/id/${recip.id}`;
+                return (
+                  <div className="recipe-card" key={recip.id}>
+                    <a href={url}>
+                      <h2>{recip.title}</h2>
+                    </a>
+                    <img src={recip.image}></img>
+                  </div>
+                );
+              })
+          : null}
+      </div>
     </div>
   );
 };
