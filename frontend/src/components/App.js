@@ -19,6 +19,7 @@ import SearchForm from "./SearchForm";
 import RecipeDetails from "./RecipeDetails";
 import NewRecipe from "./NewRecipe";
 import MyRecipeDetails from "./MyRecipeDetails";
+import SearchResults from "./SearchResults";
 import "./App.css";
 
 const App = () => {
@@ -42,6 +43,10 @@ const App = () => {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/search" element={<SearchForm />}></Route>
+            <Route
+              path="/search/results/:search"
+              element={<SearchResults />}
+            ></Route>
             <Route
               path="/search/:recipeID"
               element={<RecipeDetails user={user} />}
