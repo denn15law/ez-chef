@@ -4,21 +4,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RecipeDetails.css";
 
-const RecipeDetails = (props) => {
+const MyRecipeDetails = (props) => {
   const [details, setDetails] = useState({});
   let url = window.location.pathname;
-  const id = url.split("/search/")[1];
+  const id = url.split("/myRecipes/")[1];
 
   const navigate = useNavigate();
 
   const { user } = props;
 
   React.useEffect(() => {
+    console.log("I am my recipeID", id);
     axios
-      .get(`http://localhost:8000/search/details/${id}`)
+      .get(`http://localhost:8000/recipes/recipeDetails/${user}/${id}`)
       .then(function (response) {
-        setDetails(response.data);
-        console.log("response", response.data);
+        setDetails(response.data[0]);
+        console.log("response", response.data[0]);
       })
       .catch(function (error) {
         // handle error
@@ -32,33 +33,33 @@ const RecipeDetails = (props) => {
     return str.replace(/(<([^>]+)>)/gi, "");
   }
 
-  const onClickFavourite = () => {
-    if (user) {
-      const URL = `http://localhost:8000/favourites/${user}`;
-      axios
-        .post(URL, details)
-        .then((res) => {
-          console.log(res);
-          navigate("/favourites");
-        })
-        .catch((err) => console.log(err));
-    } else {
-      navigate("/login");
-    }
-  };
+  // const onClickFavourite = () => {
+  //   if (user) {
+  //     const URL = `http://localhost:8000/favourites/${user}`;
+  //     axios
+  //       .post(URL, details)
+  //       .then((res) => {
+  //         console.log(res);
+  //         navigate("/favourites");
+  //       })
+  //       .catch((err) => console.log(err));
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // };
 
   return (
     <div className="recipe-details-container">
       <div className="recipe-details">
         <h1 className="recipe-title">{details.title}</h1>
         <div className="recipe-details-image">
-          <img clasName="recipe-details-image" src={details.image}></img>
+          <img className="recipe-details-image" src={details.image_url}></img>
         </div>
 
         <div className="recipe-actions">
-          <button className="favorite-recipe" onClick={onClickFavourite}>
+          {/* <button className="favorite-recipe" onClick={onClickFavourite}>
             Add to Favourites
-          </button>
+          </button> */}
           <button id="add-grocery">Add to Grocery List</button>
         </div>
         <div className="recipe-content">
@@ -66,38 +67,40 @@ const RecipeDetails = (props) => {
             <h2 className="recipe-ingredients">Recipe Ingredients</h2>
             <ul>
               {Object.values(details).length > 0
-                ? details.extendedIngredients.map((ing) => {
+                ? details.ingredients.map((ing) => {
                     return (
                       <li key={ing.id}>
-                        {ing.amount} {ing.unit} {ing.name}
+                        {ing.quantity} {ing.unit} {ing.name}
                       </li>
                     );
                   })
                 : null}
             </ul>
             <h3 className="current-servings">
-              Current Servings: {details.servings}
+              Current Servings: {details.serving_size}
             </h3>
           </div>
           <div className="recipe-instructions">
             <h2 className="cooking-instructions">Cooking Instructions</h2>
             <ol type="1">
-              {Object.values(details).length
-                ? removeTags(details.instructions)
-                    .split(".")
-                    .slice(0, -1)
-                    .map((each) => {
-                      return (
-                        <li
-                          key={removeTags(details.instructions)
-                            .split(".")
-                            .indexOf(each)}
-                        >
-                          {each}
-                        </li>
-                      );
-                    })
-                : null}
+              {Object.values(details).length ? (
+                removeTags(details.instructions)
+                  .split(".")
+                  .slice(0, -1)
+                  .map((each) => {
+                    return (
+                      <li
+                        key={removeTags(details.instructions)
+                          .split(".")
+                          .indexOf(each)}
+                      >
+                        {each}
+                      </li>
+                    );
+                  })
+              ) : (
+                <p>You do not have instructions</p>
+              )}
             </ol>
           </div>
         </div>
@@ -106,4 +109,4 @@ const RecipeDetails = (props) => {
   );
 };
 
-export default RecipeDetails;
+export default MyRecipeDetails;

@@ -18,6 +18,7 @@ import Login from "./Login";
 import SearchForm from "./SearchForm";
 import RecipeDetails from "./RecipeDetails";
 import NewRecipe from "./NewRecipe";
+import MyRecipeDetails from "./MyRecipeDetails";
 import "./App.css";
 
 const App = () => {
@@ -42,13 +43,17 @@ const App = () => {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/search" element={<SearchForm />}></Route>
             <Route
-              path="/search/id/:recipeID"
+              path="/search/:recipeID"
               element={<RecipeDetails user={user} />}
             ></Route>
 
             <Route
               path="/myrecipes"
               element={user ? <MyRecipes user={user} /> : <Index />}
+            ></Route>
+            <Route
+              path="/myrecipes/:recipeID"
+              element={user ? <MyRecipeDetails user={user} /> : <Index />}
             ></Route>
             <Route
               path="/new"
