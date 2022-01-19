@@ -48,6 +48,16 @@ const MyRecipeDetails = (props) => {
     }
   };
 
+  const onClickGrocery = () => {
+    axios
+      .post(`/users/${user}/grocery/${details._id}`)
+      .then((res) => {
+        console.log(res);
+        navigate("/groceryList");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="recipe-details-container">
       <div className="recipe-details">
@@ -60,7 +70,9 @@ const MyRecipeDetails = (props) => {
           <button className="favorite-recipe" onClick={onClickFavourite}>
             Add to Favourites
           </button>
-          <button id="add-grocery">Add to Grocery List</button>
+          <button id="add-grocery" onClick={onClickGrocery}>
+            Add to Grocery List
+          </button>
         </div>
         <div className="recipe-content">
           <div className="recipe-ingredients">
