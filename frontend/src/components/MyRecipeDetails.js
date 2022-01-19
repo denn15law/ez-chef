@@ -87,7 +87,7 @@ const MyRecipeDetails = (props) => {
                 : null}
             </ul>
             <h3 className="current-servings">
-              <div>Current Servings: {details.serving_size}</div>
+              <div>Current Servings: {details.serving_size * servingRatio}</div>
               <div>Convert Servings: </div>
               <div>
                 <TextField
