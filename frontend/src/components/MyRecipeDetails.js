@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 import "./RecipeDetails.css";
 
 const MyRecipeDetails = (props) => {
@@ -124,7 +123,8 @@ const MyRecipeDetails = (props) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}>
+                          .indexOf(each)}
+                      >
                         {each}
                       </li>
                     );

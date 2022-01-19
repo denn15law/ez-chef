@@ -1,4 +1,3 @@
-const Favourite = require("../models/Favourite");
 const Recipe = require("../models/Recipe");
 const Favourite = require("../models/Favourite");
 
