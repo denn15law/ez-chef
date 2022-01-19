@@ -30,7 +30,7 @@ const addRecipeToUser = (req, res) => {
     .then((recipe) => {
       return User.findByIdAndUpdate(
         user_id,
-        { $push: { recipes_created: recipe._id } },
+        { $push: { groceryList_recipes: recipe._id } },
         { new: true, upsert: true },
         function (err, managerparent) {
           if (err) throw err;

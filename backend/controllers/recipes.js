@@ -32,8 +32,20 @@ const deleteRecipeById = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+const getRecipeDetails = (req, res) => {
+  const recipeID = req.params.id;
+  const user = req.params.user;
+  console.log("I am recipeID", recipeID);
+  Recipe.find({ user: user, _id: recipeID })
+    .then((recipe) => res.json(recipe))
+    .catch((err) => {
+      res.status(404).json({ message: err.message });
+    });
+};
+
 module.exports = {
   getRecipes,
   createRecipe,
   deleteRecipeById,
+  getRecipeDetails,
 };

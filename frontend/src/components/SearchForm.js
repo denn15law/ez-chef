@@ -68,7 +68,7 @@ const SearchForm = () => {
                 a.title.toLowerCase().localeCompare(b.title.toLowerCase())
               )
               .map((recip) => {
-                const url = `http://localhost:3000/search/id/${recip.id}`;
+                const url = `http://localhost:3000/search/${recip.id}`;
                 return (
                   <div className="recipe-card" key={recip.id}>
                     <a href={url}>

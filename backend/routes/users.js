@@ -18,7 +18,10 @@ router.get("/:id", getUserById);
 
 //Routes for user recipes
 router.get("/:user_id/recipes", getUserCreatedRecipes);
-router.post("/:user_id/:recipe_id", addRecipeToUser);
+
+// add Recipe to grocerylist
+router.post("/:user_id/grocery/:recipe_id", addRecipeToUser);
+
 router.get("/:user_id/favourites", getUserFavourites);
 router.post("/:user_id/:favourite_id", addFavouriteToUser);
 
