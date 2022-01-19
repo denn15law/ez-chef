@@ -125,7 +125,7 @@ const MyRecipeDetails = (props) => {
                           .split(".")
                           .indexOf(each)}
                       >
-                        {each}
+                        {each + "."}
                       </li>
                     );
                   })
