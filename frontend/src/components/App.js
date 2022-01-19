@@ -56,15 +56,11 @@ const App = () => {
             ></Route>
             <Route
               path="/favourites"
-              element={user ? <Favourites /> : <Index />}
+              element={user ? <Favourites user={user} /> : <Index />}
             ></Route>
             <Route
               path="/grocerylist"
-<<<<<<< HEAD
-              element={user ? <GroceryList /> : <Index />}
-=======
               element={user ? <GroceryList user={user} /> : <Index />}
->>>>>>> main
             ></Route>
           </Routes>
         </div>

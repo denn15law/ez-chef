@@ -38,6 +38,7 @@ const RecipeDetails = (props) => {
         .post(URL, details)
         .then((res) => {
           console.log(res);
+          console.log("I am user", user);
           navigate("/favourites");
         })
         .catch((err) => console.log(err));

@@ -1,5 +1,7 @@
 const User = require("../models/User");
 const Recipe = require("../models/Recipe");
+const Favourite = require("../models/Favourite");
+const res = require("express/lib/response");
 
 const getAllUsers = (req, res) => {
   User.find()
@@ -42,9 +44,40 @@ const addRecipeToUser = (req, res) => {
     .catch((err) => res.json(err));
 };
 
+const getUserFavourites = (req, res) => {
+  const user_id = req.params.user_id;
+  User.findById(user_id)
+    .then((user) => res.json(user.favourited_recipes))
+    .catch((err) => res.json(err.message));
+};
+
+const addFavouriteToUser = (req, res) => {
+  const user_id = req.params.user_id;
+  const favourite_id = req.params.favourite_id;
+
+  Favourite.findById(favourite_id)
+    .then((favourite) => {
+      return User.findByIdAndUpdate(
+        user_id,
+        { $push: { favourited_recipts: favourite._id } },
+        { new: true, upsert: true },
+        function (err, managerparent) {
+          if (err) throw err;
+          console.log(managerparent);
+        }
+      );
+    })
+    .then((updatedUser) => {
+      res.json(updatedUser);
+    })
+    .catch((err) => res.json(err));
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   getUserCreatedRecipes,
   addRecipeToUser,
+  getUserFavourites,
+  addFavouriteToUser,
 };

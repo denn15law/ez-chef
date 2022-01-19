@@ -5,6 +5,7 @@ import "./Favourites.css";
 
 const Favourites = (props) => {
   const [myFavs, setMyFavs] = useState([]);
+  const { user } = props;
   const getData = () => {
     axios
       .get("http://localhost:8000/favourites")
