@@ -33,12 +33,11 @@ const RecipeDetails = (props) => {
 
   const onClickFavourite = () => {
     if (user) {
-      const URL = "http://localhost:8000/favourites";
+      const URL = `http://localhost:8000/favourites/${user}`;
       axios
         .post(URL, details)
         .then((res) => {
           console.log(res);
-          console.log("I am user", user);
           navigate("/favourites");
         })
         .catch((err) => console.log(err));

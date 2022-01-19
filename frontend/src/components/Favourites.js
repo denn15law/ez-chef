@@ -7,8 +7,9 @@ const Favourites = (props) => {
   const [myFavs, setMyFavs] = useState([]);
   const { user } = props;
   const getData = () => {
+    console.log("iamuser", user);
     axios
-      .get("http://localhost:8000/favourites")
+      .get(`http://localhost:8000/favourites/${user}`)
       .then(function (response) {
         setMyFavs(response.data);
       })
@@ -22,7 +23,7 @@ const Favourites = (props) => {
   }, []);
 
   const deleteFavourite = (id) => {
-    const URL = `http://localhost:8000/favourites/${id}`;
+    const URL = `http://localhost:8000/favourites/${user}/${id}`;
     axios
       .delete(URL)
       .then(function (response) {

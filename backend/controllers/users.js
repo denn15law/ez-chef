@@ -59,7 +59,7 @@ const addFavouriteToUser = (req, res) => {
     .then((favourite) => {
       return User.findByIdAndUpdate(
         user_id,
-        { $push: { favourited_recipts: favourite._id } },
+        { $push: { favourited_recipes: favourite._id } },
         { new: true, upsert: true },
         function (err, managerparent) {
           if (err) throw err;
