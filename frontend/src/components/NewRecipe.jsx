@@ -6,10 +6,11 @@ import Image from "../docs/background-image.jpg";
 const styles = {
   paperContainer: {
     backgroundImage: `url(${Image})`,
-    margin: "auto",
-    display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    width: "100vw",
+    height: "100vh",
   },
 };
 
@@ -23,8 +24,7 @@ const NewRecipe = (props) => {
           flexGrow: 1,
           height: "100vh",
           overflow: "auto",
-        }}
-      >
+        }}>
         <NewRecipeForm user={user} />
       </Box>
     </Paper>
