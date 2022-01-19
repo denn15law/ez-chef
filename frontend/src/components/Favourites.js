@@ -40,7 +40,13 @@ const Favourites = (props) => {
       <h1>My Favourite Recipes</h1>
       {myFavs.length ? (
         myFavs.map((recip) => {
-          const url = `http://localhost:3000/search/${recip.favourite_recipeID}`;
+          let url = "";
+          if (recip.favourite_recipeID.length < 7) {
+            url += `http://localhost:3000/search/${recip.favourite_recipeID}`;
+          } else {
+            url += `http://localhost:3000/myRecipes/${recip.favourite_recipeID}`;
+          }
+
           return (
             <div className="favourite-recipe" key={recip.favourite_recipeID}>
               <div className="favourite-recipe-image">
