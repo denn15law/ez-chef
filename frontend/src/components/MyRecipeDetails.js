@@ -62,6 +62,7 @@ const MyRecipeDetails = (props) => {
         navigate("/groceryList");
       })
       .catch((err) => console.log(err));
+  };
   const onClickConvert = () => {
     setServingRatio(serving / details.serving_size);
   };
@@ -124,7 +125,8 @@ const MyRecipeDetails = (props) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}>
+                          .indexOf(each)}
+                      >
                         {each}
                       </li>
                     );
