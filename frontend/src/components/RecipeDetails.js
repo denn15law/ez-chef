@@ -1,11 +1,13 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useState } from "react";
+import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./RecipeDetails.css";
 
 const RecipeDetails = (props) => {
   const [details, setDetails] = useState({});
+  const [serving, setServing] = useState(1);
+  const [servingRatio, setServingRatio] = useState(1);
   let url = window.location.pathname;
   const id = url.split("/search/")[1];
 
@@ -13,7 +15,7 @@ const RecipeDetails = (props) => {
 
   const { user } = props;
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios
       .get(`http://localhost:8000/search/details/${id}`)
       .then(function (response) {
@@ -25,6 +27,10 @@ const RecipeDetails = (props) => {
         console.log(error);
       });
   }, [id]);
+
+  useEffect(() => {
+    setServing(details.servings);
+  }, [details.servings]);
 
   function removeTags(str) {
     if (str === null || str === "") return false;
@@ -45,6 +51,10 @@ const RecipeDetails = (props) => {
     } else {
       navigate("/login");
     }
+  };
+
+  const onClickConvert = () => {
+    setServingRatio(serving / details.servings);
   };
 
   return (
@@ -69,14 +79,26 @@ const RecipeDetails = (props) => {
                 ? details.extendedIngredients.map((ing) => {
                     return (
                       <li key={ing.id}>
-                        {ing.amount} {ing.unit} {ing.name}
+                        {ing.amount * servingRatio} {ing.unit} {ing.name}
                       </li>
                     );
                   })
                 : null}
             </ul>
             <h3 className="current-servings">
-              Current Servings: {details.servings}
+              <div>Current Servings: {details.servings * servingRatio}</div>
+              <div>Convert Servings: </div>
+              <div>
+                <TextField
+                  type="number"
+                  value={serving}
+                  onChange={(e) => setServing(e.target.value)}
+                  InputProps={{ inputProps: { min: 1 } }}
+                  label="Servings"
+                  variant="standard"
+                />
+                <Button onClick={onClickConvert}>Convert</Button>
+              </div>
             </h3>
           </div>
           <div className="recipe-instructions">
@@ -91,8 +113,7 @@ const RecipeDetails = (props) => {
                         <li
                           key={removeTags(details.instructions)
                             .split(".")
-                            .indexOf(each)}
-                        >
+                            .indexOf(each)}>
                           {each}
                         </li>
                       );

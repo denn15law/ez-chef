@@ -91,7 +91,7 @@ const Nav = ({ user }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} style={{ background: "#F5F5F5" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -99,9 +99,10 @@ const Nav = ({ user }) => {
             onClick={handleDrawerOpen}
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}>
-            <MenuIcon />
+            <MenuIcon color="#000000" />
           </IconButton>
           <Typography
+            color="#000000"
             variant="h6"
             noWrap
             component="div"
