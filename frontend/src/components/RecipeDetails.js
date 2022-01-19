@@ -9,7 +9,6 @@ const RecipeDetails = (props) => {
   const [details, setDetails] = useState({});
   let url = window.location.pathname;
   const id = url.split("/search/")[1];
-
   const navigate = useNavigate();
 
   const { user } = props;
