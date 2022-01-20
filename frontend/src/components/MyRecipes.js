@@ -10,11 +10,6 @@ import {
   Link,
   Typography,
 } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import MyRecipeCardExample from "./MyRecipeCardExample";
-// import "./Favourites.css";
-
-const theme = createTheme();
 
 const MyRecipes = ({ user }) => {
   const [myRecipes, setMyRecipes] = useState([]);
@@ -77,16 +72,15 @@ const MyRecipes = ({ user }) => {
                   <CardMedia
                     key={recip._id}
                     component="img"
-                    className="favourite-recipe-image"
                     src={recip.image_url}
                     alt="recipe"
+                    style={{ height: 250, width: 250 }}
                   />
                   <CardActions>
                     <Button
                       onClick={() => {
                         deleteRecipe(recip._id);
                       }}
-                      className="delete-favourite"
                       size="small">
                       Delete
                     </Button>
