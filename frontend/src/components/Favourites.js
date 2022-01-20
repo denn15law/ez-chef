@@ -1,11 +1,19 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Favourites.css";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material";
 
-const Favourites = (props) => {
+const Favourites = ({ user }) => {
   const [myFavs, setMyFavs] = useState([]);
-  const { user } = props;
+
   const getData = () => {
     console.log("iamuser", user);
     axios
@@ -18,14 +26,14 @@ const Favourites = (props) => {
       });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     getData();
   }, []);
 
   const deleteFavourite = (id) => {
-    const URL = `http://localhost:8000/favourites/${user}/${id}`;
+    const url = `http://localhost:8000/favourites/${user}/${id}`;
     axios
-      .delete(URL)
+      .delete(url)
       .then(function (response) {
         getData();
         console.log(response);
@@ -36,52 +44,62 @@ const Favourites = (props) => {
   };
 
   return (
-    <div className="favourite-recipes-page">
-      <h1>My Favourite Recipes</h1>
-      {myFavs.length ? (
-        myFavs.map((recip) => {
-          let url = "";
-          if (recip.favourite_recipeID.length < 7) {
-            url += `http://localhost:3000/search/${recip.favourite_recipeID}`;
-          } else {
-            url += `http://localhost:3000/myRecipes/${recip.favourite_recipeID}`;
-          }
-
-          return (
-            <div className="favourite-recipe" key={recip.favourite_recipeID}>
-              <div className="favourite-recipe-image">
-                <img
-                  className="favourite-recipe-image"
-                  src={recip.favourite_image}
-                ></img>
-              </div>
-              <div className="favourite-recipe-content">
-                <a href={url}>
-                  <h2 className="recipe-favourite-title">
-                    {recip.favourite_title}
-                  </h2>
-                </a>
-                <div
-                  className="delete-favourite"
-                  key={recip.favourite_recipeID}
-                >
-                  <button
-                    className="delete-favourite"
-                    onClick={() => {
-                      deleteFavourite(recip.favourite_recipeID);
-                    }}
-                  >
-                    <b>Delete {recip.favourite_title} from Favourites</b>
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })
-      ) : (
-        <h3>You do not have any favourite recipes!</h3>
-      )}
-    </div>
+    <Grid>
+      <Typography variant="h5">My Favourite Recipes</Typography>
+      <Grid
+        container
+        p={5}
+        spacing={{ xs: 2, md: 7 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+        {myFavs.length ? (
+          myFavs.map((recip) => {
+            let url = "";
+            if (recip.favourite_recipeID.length < 10) {
+              url += `http://localhost:3000/search/${recip.favourite_recipeID}`;
+            } else {
+              url += `http://localhost:3000/myRecipes/${recip.favourite_recipeID}`;
+            }
+            return (
+              <Grid item key={recip}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Link href={url}>{recip.favourite_title}</Link>
+                  </CardContent>
+                  <CardMedia
+                    key={recip.favourite_recipeID}
+                    component="img"
+                    src={recip.favourite_image}
+                    alt="recipe"
+                    style={{ height: 250, width: 250 }}
+                  />
+                  <CardActions>
+                    <Button
+                      onClick={() => {
+                        deleteFavourite(recip.favourite_recipeID);
+                      }}
+                      size="small">
+                      Delete
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            );
+          })
+        ) : (
+          <Typography variant="h5">Add a Favourite Recipe</Typography>
+        )}
+      </Grid>
+    </Grid>
   );
 };
 
