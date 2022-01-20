@@ -198,7 +198,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                           key={removeTags(details.instructions)
                             .split(".")
                             .indexOf(each)}>
-                          {each}
+                          {each + "."}
                         </li>
                       );
                     })
