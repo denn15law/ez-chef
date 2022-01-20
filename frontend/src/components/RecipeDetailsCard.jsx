@@ -16,31 +16,29 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-alert";
 
-const MyRecipeDetailsCard = ({ user }) => {
+const RecipeDetails = ({ user }) => {
   const [details, setDetails] = useState({});
   const [serving, setServing] = useState(1);
   const [servingRatio, setServingRatio] = useState(1);
   let url = window.location.pathname;
-  const id = url.split("/myRecipes/")[1];
+  const id = url.split("/search/")[1];
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("I am my recipeID", id);
     axios
-      .get(`http://localhost:8000/recipes/recipeDetails/${user}/${id}`)
+      .get(`http://localhost:8000/search/details/${id}`)
       .then(function (response) {
-        setDetails(response.data[0]);
-        console.log("response", response.data[0]);
+        setDetails(response.data);
+        console.log("response", response.data);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       });
   }, [id]);
 
   useEffect(() => {
-    setServing(details.serving_size);
-  }, [details.serving_size]);
+    setServing(details.servings);
+  }, [details.servings]);
 
   function removeTags(str) {
     if (str === null || str === "") return false;
@@ -50,36 +48,39 @@ const MyRecipeDetailsCard = ({ user }) => {
 
   const onClickFavourite = () => {
     if (user) {
-      const URL = `http://localhost:8000/favourites/myRecipes/${user}/${details._id}`;
+      const URL = `http://localhost:8000/favourites/api/${user}/${details.id}`;
       axios
         .post(URL, details)
         .then((res) => {
           alert("Added!");
         })
-        .catch((err) =>
-          alert("This recipe has already been added to your favourites!")
-        );
+        .catch((err) => {
+          alert("This recipe has already been added to your favourites.");
+          console.log(err);
+        });
     } else {
       navigate("/login");
     }
   };
 
   const onClickConvert = () => {
-    setServingRatio(serving / details.serving_size);
+    setServingRatio(serving / details.servings);
   };
 
   const onClickGrocery = () => {
     if (user) {
       axios
         .post(
-          `http://localhost:8000/groceries/myRecipes/${user}/${details.id}`,
+          `http://localhost:8000/groceries/api/${user}/${details.id}`,
           details
         )
         .then((res) => {
+          console.log(res);
           alert("Added!");
         })
         .catch((err) => {
-          alert("This recipe has already been added to your grocery list!");
+          alert("This recipe has already been added to your grocery list.");
+          console.log(err);
         });
     } else {
       navigate("/login");
@@ -115,7 +116,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Grid sx={{ p: 2 }}>
             <CardMedia
               component="img"
-              src={details.image_url}
+              src={details.image}
               alt="recipe"
               style={{ height: 250, width: 250 }}
             />
@@ -134,21 +135,21 @@ const MyRecipeDetailsCard = ({ user }) => {
             </Typography>
             <Grid sx={{ p: 2 }}>
               {Object.values(details).length > 0
-                ? details.ingredients.map((ing) => {
+                ? details.extendedIngredients.map((ing) => {
                     return (
                       <li key={ing.id}>
-                        {ing.quantity * servingRatio} {ing.unit} {ing.name}
+                        {ing.amount * servingRatio} {ing.unit} {ing.name}
                       </li>
                     );
                   })
                 : null}
             </Grid>
             <Grid
-              sx={{
+              x={{
                 p: 1,
               }}>
               <Typography>
-                Current Servings: {details.serving_size * servingRatio}
+                Current Servings: {details.servings * servingRatio}
               </Typography>
               <Grid
                 sx={{
@@ -181,23 +182,21 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Grid sx={{ p: 1 }}>
             <Typography variant="h5">Cooking Instructions</Typography>
             <ol type="1">
-              {Object.values(details).length ? (
-                removeTags(details.instructions)
-                  .split(".")
-                  .slice(0, -1)
-                  .map((each) => {
-                    return (
-                      <li
-                        key={removeTags(details.instructions)
-                          .split(".")
-                          .indexOf(each)}>
-                        {each}
-                      </li>
-                    );
-                  })
-              ) : (
-                <Typography>You do not have instructions</Typography>
-              )}
+              {Object.values(details).length
+                ? removeTags(details.instructions)
+                    .split(".")
+                    .slice(0, -1)
+                    .map((each) => {
+                      return (
+                        <li
+                          key={removeTags(details.instructions)
+                            .split(".")
+                            .indexOf(each)}>
+                          {each + "."}
+                        </li>
+                      );
+                    })
+                : null}
             </ol>
           </Grid>
         </Box>
@@ -206,4 +205,4 @@ const MyRecipeDetailsCard = ({ user }) => {
   );
 };
 
-export default MyRecipeDetailsCard;
+export default RecipeDetails;
