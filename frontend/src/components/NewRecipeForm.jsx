@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import {
-  Avatar,
   Button,
   ButtonGroup,
   Box,
@@ -11,13 +10,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
+import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const NewRecipeForm = ({ user }) => {
   const navigate = useNavigate();
 
-  const { control, handleSubmit, reset, setValue } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       title: "",
       instructions: "",
@@ -71,8 +70,7 @@ const NewRecipeForm = ({ user }) => {
             flexDirection: "column",
             alignItems: "centre",
             justifyContent: "centre",
-          }}
-        >
+          }}>
           <Typography component="h1" variant="h5">
             Add a New Recipe
           </Typography>
@@ -87,8 +85,7 @@ const NewRecipeForm = ({ user }) => {
                 flexDirection: "column",
                 alignItems: "centre",
                 justifyContent: "centre",
-              }}
-            >
+              }}>
               <Controller
                 name="title"
                 control={control}
@@ -162,15 +159,13 @@ const NewRecipeForm = ({ user }) => {
                   />
                   <Button
                     onClick={renderIngredientForm}
-                    style={{ display: "flex", alignItems: "flex-end" }}
-                  >
+                    style={{ display: "flex", alignItems: "flex-end" }}>
                     Add
                   </Button>
                   <Button
                     color="error"
                     onClick={() => remove(i)}
-                    style={{ display: "flex", alignItems: "flex-end" }}
-                  >
+                    style={{ display: "flex", alignItems: "flex-end" }}>
                     Delete
                   </Button>
                 </Box>

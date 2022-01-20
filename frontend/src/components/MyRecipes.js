@@ -77,7 +77,9 @@ const MyRecipes = ({ user }) => {
               height: "100vh",
               overflow: "auto",
             }}>
-            <Typography variant="h5">My Recipes</Typography>
+            <Typography variant="h5" fontWeight="bold">
+              My Recipes
+            </Typography>
             <Grid
               container
               p={5}
@@ -112,17 +114,18 @@ const MyRecipes = ({ user }) => {
                         <CardActions>
                           <Button
                             onClick={() => {
-                              deleteRecipe(recip._id);
-                            }}
-                            size="small">
-                            Delete
-                          </Button>
-                          <Button
-                            onClick={() => {
                               editRecipe(recip._id);
                             }}
                             size="small">
                             Edit
+                          </Button>
+                          <Button
+                            color="error"
+                            onClick={() => {
+                              deleteRecipe(recip._id);
+                            }}
+                            size="small">
+                            Delete
                           </Button>
                         </CardActions>
                       </Card>
