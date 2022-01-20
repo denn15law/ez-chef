@@ -13,6 +13,7 @@ import {
   ListItemText,
   Toolbar,
   Typography,
+  makeStyles,
 } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -23,9 +24,9 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import AddIcon from "@mui/icons-material/Add";
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import ArticleIcon from "@mui/icons-material/Article";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
+import BrunchDiningIcon from "@mui/icons-material/BrunchDining";
 // import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 
@@ -94,7 +95,6 @@ const Nav = ({ user }) => {
       <AppBar position="fixed" open={open} style={{ background: "#cb997e" }}>
         <Toolbar>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -192,11 +192,21 @@ const Nav = ({ user }) => {
         </List>
         <Divider />
         <List>
-          {!user && (
+          {user && (
             <ListItem>
               <ListItemIcon>
-                <ArticleIcon />
+                <BrunchDiningIcon />
               </ListItemIcon>
+              <Link to="/about" onClick={handleDrawerClose}>
+                <ListItemText primary="About Us" />
+              </Link>
+            </ListItem>
+          )}
+        </List>
+        <List>
+          {!user && (
+            <ListItem>
+              <ListItemIcon></ListItemIcon>
               <Link to="/register" onClick={handleDrawerClose}>
                 <ListItemText primary="Register" />
               </Link>
