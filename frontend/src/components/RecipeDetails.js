@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./RecipeDetails.css";
+import { Alert } from "react-alert";
 
 const RecipeDetails = (props) => {
   const [details, setDetails] = useState({});
@@ -22,7 +23,6 @@ const RecipeDetails = (props) => {
         console.log("response", response.data);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       });
   }, [id]);
@@ -43,10 +43,12 @@ const RecipeDetails = (props) => {
       axios
         .post(URL, details)
         .then((res) => {
-          console.log(res);
-          navigate("/favourites");
+          alert("Added!");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          alert("This recipe has already been added to your favourites.");
+          console.log(err);
+        });
     } else {
       navigate("/login");
     }
@@ -65,9 +67,12 @@ const RecipeDetails = (props) => {
         )
         .then((res) => {
           console.log(res);
-          navigate("/groceryList");
+          alert("Added!");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          alert("This recipe has already been added to your grocery list.");
+          console.log(err);
+        });
     } else {
       navigate("/login");
     }
@@ -88,16 +93,12 @@ const RecipeDetails = (props) => {
           >
             Add Recipe To Favourites
           </Button>
-          {/* <button className="favorite-recipe" onClick={onClickFavourite}>
-            Add to Favourites
-          </button> */}
           <Button
             onClick={onClickGrocery}
             style={{ display: "flex", alignItems: "flex-end" }}
           >
             Add To Grocery List
           </Button>
-          {/* <button id="add-grocery">Add to Grocery List</button> */}
         </div>
         <div className="recipe-content">
           <div className="recipe-ingredients">
