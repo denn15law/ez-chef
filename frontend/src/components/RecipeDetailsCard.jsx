@@ -182,21 +182,29 @@ const RecipeDetails = ({ user }) => {
           <Grid sx={{ p: 1 }}>
             <Typography variant="h5">Cooking Instructions</Typography>
             <ol type="1">
-              {Object.values(details).length
-                ? removeTags(details.instructions)
-                    .split(".")
-                    .slice(0, -1)
-                    .map((each) => {
-                      return (
-                        <li
-                          key={removeTags(details.instructions)
-                            .split(".")
-                            .indexOf(each)}>
-                          {each + "."}
-                        </li>
-                      );
-                    })
-                : null}
+              <Grid
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  textAlign: "left",
+                }}>
+                {Object.values(details).length
+                  ? removeTags(details.instructions)
+                      .split(".")
+                      .slice(0, -1)
+                      .map((each) => {
+                        return (
+                          <li
+                            key={removeTags(details.instructions)
+                              .split(".")
+                              .indexOf(each)}>
+                            {each + "."}
+                          </li>
+                        );
+                      })
+                  : null}
+              </Grid>
             </ol>
           </Grid>
         </Box>
