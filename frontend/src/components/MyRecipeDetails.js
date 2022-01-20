@@ -69,7 +69,7 @@ const MyRecipeDetails = (props) => {
   };
 
   const onClickConvert = () => {
-    setServingRatio(serving / details.servings);
+    setServingRatio(serving / details.serving_size);
   };
 
   const onClickGrocery = () => {
@@ -110,7 +110,8 @@ const MyRecipeDetails = (props) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-          }}>
+          }}
+        >
           <Typography component="h1" variant="h5" p={1}>
             {details.title}
           </Typography>
@@ -171,7 +172,8 @@ const MyRecipeDetails = (props) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}>
+                          .indexOf(each)}
+                      >
                         {each}
                       </li>
                     );
