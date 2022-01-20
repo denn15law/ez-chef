@@ -89,14 +89,12 @@ const RecipeDetails = (props) => {
         <div className="recipe-actions">
           <Button
             onClick={onClickFavourite}
-            style={{ display: "flex", alignItems: "flex-end" }}
-          >
+            style={{ display: "flex", alignItems: "flex-end" }}>
             Add Recipe To Favourites
           </Button>
           <Button
             onClick={onClickGrocery}
-            style={{ display: "flex", alignItems: "flex-end" }}
-          >
+            style={{ display: "flex", alignItems: "flex-end" }}>
             Add To Grocery List
           </Button>
         </div>
