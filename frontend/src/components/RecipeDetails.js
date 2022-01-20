@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./RecipeDetails.css";
-import { Alert } from "react-alert";
 
 const RecipeDetails = (props) => {
   const [details, setDetails] = useState({});
   const [serving, setServing] = useState(1);
   const [servingRatio, setServingRatio] = useState(1);
+  // const [errorMessage, setErrorMessage] = useState(null);
   let url = window.location.pathname;
   const id = url.split("/search/")[1];
   const navigate = useNavigate();
