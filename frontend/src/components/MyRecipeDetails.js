@@ -54,18 +54,25 @@ const MyRecipeDetails = (props) => {
     }
   };
 
-  const onClickGrocery = () => {
-    axios
-      // .post(`/users/${user}/grocery/${details._id}`)
-      .post(`/groceries/add/${user}/${details._id}`)
-      .then((res) => {
-        console.log(res);
-        navigate("/groceryList");
-      })
-      .catch((err) => console.log(err));
-  };
   const onClickConvert = () => {
-    setServingRatio(serving / details.serving_size);
+    setServingRatio(serving / details.servings);
+  };
+
+  const onClickGrocery = () => {
+    if (user) {
+      axios
+        .post(
+          `http://localhost:8000/groceries/myRecipes/${user}/${details.id}`,
+          details
+        )
+        .then((res) => {
+          console.log(res);
+          navigate("/groceryList");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      navigate("/login");
+    }
   };
 
   return (

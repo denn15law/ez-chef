@@ -57,13 +57,20 @@ const RecipeDetails = (props) => {
   };
 
   const onClickGrocery = () => {
-    axios
-      .post(`/groceries/add/${user}/${details.id}`)
-      .then((res) => {
-        console.log(res);
-        navigate("/groceryList");
-      })
-      .catch((err) => console.log(err));
+    if (user) {
+      axios
+        .post(
+          `http://localhost:8000/groceries/api/${user}/${details.id}`,
+          details
+        )
+        .then((res) => {
+          console.log(res);
+          navigate("/groceryList");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
