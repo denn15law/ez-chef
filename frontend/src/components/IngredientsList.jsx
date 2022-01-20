@@ -30,7 +30,7 @@ const IngredientList = ({ myGroceryList }) => {
         direction="column"
         justifyContent="center"
         alignItems="center">
-        <Typography variant="h5">Ingredient List</Typography>
+        <Typography variant="h5">List of Ingredients</Typography>
         <Box
           container
           p={2}
