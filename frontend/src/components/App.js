@@ -20,6 +20,7 @@ import RecipeDetails from "./RecipeDetails";
 import NewRecipe from "./NewRecipe";
 import MyRecipeDetails from "./MyRecipeDetails";
 import SearchResults from "./SearchResults";
+import EditRecipe from "./EditRecipe";
 import About from "./About";
 import "./App.css";
 
@@ -65,6 +66,10 @@ const App = () => {
             <Route
               path="/new"
               element={user ? <NewRecipe user={user} /> : <Index />}
+            ></Route>
+            <Route
+              path="/edit/:user/:recipeID"
+              element={user ? <EditRecipe user={user} /> : <Index />}
             ></Route>
             <Route
               path="/favourites"

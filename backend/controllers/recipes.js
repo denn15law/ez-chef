@@ -11,6 +11,16 @@ const getRecipes = (req, res) => {
     });
 };
 
+const getRecipeDetailsEdit = (req, res) => {
+  const user = req.params.user;
+  const recipeID = req.params.id;
+  Recipe.find({ user: user, _id: recipeID })
+    .then((recipe) => res.json(recipe))
+    .catch((err) => {
+      res.status(404).json({ message: err.message });
+    });
+};
+
 const createRecipe = (req, res) => {
   const newRecipe = new Recipe({
     user: req.params.user,
@@ -51,9 +61,30 @@ const getRecipeDetails = (req, res) => {
     });
 };
 
+const editRecipeDetails = (req, res) => {
+  const recipeID = req.params.id;
+  const user = req.params.user;
+
+  Recipe.updateOne(
+    { user: user, _id: recipeID },
+    {
+      $set: {
+        title: req.body.title,
+        ingredients: req.body.ingredients,
+        instructions: req.body.instructions,
+        serving_size: req.body.serving_size,
+      },
+    }
+  )
+    .then((response) => console.log(`-----${req.session.id}-----`))
+    .catch((err) => console.log(err.message));
+};
+
 module.exports = {
   getRecipes,
+  getRecipeDetailsEdit,
   createRecipe,
   deleteRecipeById,
   getRecipeDetails,
+  editRecipeDetails,
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Avatar,
@@ -14,12 +15,30 @@ import {
 import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-const NewRecipeForm = ({ user }) => {
+const EditRecipeForm = (props) => {
   const navigate = useNavigate();
+
+  const { user, recipeID } = props;
+
+  const [recipe, setRecipe] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/recipes/edit/${user}/${recipeID}`)
+      .then((res) => {
+        setRecipe(res.data[0]);
+        console.log("res.data", res.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  console.log("recipetitle", recipe.title);
 
   const { control, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
-      title: "",
+      title: `${recipe.title}`,
       instructions: "",
       serving_size: "",
       image_url: "",
@@ -46,14 +65,12 @@ const NewRecipeForm = ({ user }) => {
     append({ name: "", quantity: "", unit: "" });
   };
 
-  const onSubmit = (data) => {
-    const URL = `/recipes/${user}`;
-    console.log(data);
+  const editRecipe = (data) => {
+    console.log("data data data", data);
     axios
-      .post(URL, data)
+      .put(`/recipes/edit/${user}/${recipeID}`, data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    reset();
     navigate("/myrecipes");
   };
 
@@ -74,9 +91,9 @@ const NewRecipeForm = ({ user }) => {
           }}
         >
           <Typography component="h1" variant="h5">
-            Add a New Recipe
+            Edit Recipe
           </Typography>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(editRecipe)}>
             <Box
               sx={{
                 p: 2,
@@ -207,9 +224,8 @@ const NewRecipeForm = ({ user }) => {
             </Box>
             <ButtonGroup>
               <Button type="submit" color="success">
-                Submit
+                Edit
               </Button>
-              <Button onClick={() => reset()}>Reset</Button>
             </ButtonGroup>
           </form>
         </Box>
@@ -218,4 +234,4 @@ const NewRecipeForm = ({ user }) => {
   );
 };
 
-export default NewRecipeForm;
+export default EditRecipeForm;
