@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Paper } from "@mui/material";
 import NewRecipeForm from "./NewRecipeForm";
-import Image from "../docs/background-image.jpg";
+import Image from "../docs/new-recipe-background.jpg";
 
 const styles = {
   paperContainer: {
