@@ -116,7 +116,27 @@ const MyRecipes = ({ user }) => {
                   );
                 })
               ) : (
-                <Typography variant="h5">Add a Recipe</Typography>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  lg={4}
+                  style={{
+                    textAlign: "center",
+                  }}>
+                  <Box
+                    sx={{
+                      p: 10,
+                      flexGrow: 1,
+                      height: "100vh",
+                      overflow: "auto",
+                    }}>
+                    <Button href="/new" variant="contained" size="small">
+                      Create New Recipes
+                    </Button>
+                  </Box>
+                </Grid>
               )}
             </Grid>
           </Box>
