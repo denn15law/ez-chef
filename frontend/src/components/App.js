@@ -12,7 +12,7 @@ import Index from "./Index";
 import Nav from "./Nav";
 import MyRecipes from "./MyRecipes";
 import Favourites from "./Favourites";
-import GroceryList from "./GroceryList";
+import GroceryList from "./GroceryList2";
 import Register from "./Register";
 import Login from "./Login";
 import SearchForm from "./SearchForm";

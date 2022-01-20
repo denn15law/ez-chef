@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 // import "./RecipeDetails.css";
 
@@ -8,6 +8,7 @@ const RecipeDetails = (props) => {
   const [details, setDetails] = useState({});
   const [serving, setServing] = useState(1);
   const [servingRatio, setServingRatio] = useState(1);
+  // const [errorMessage, setErrorMessage] = useState(null);
   let url = window.location.pathname;
   const id = url.split("/search/")[1];
   const navigate = useNavigate();
@@ -22,7 +23,6 @@ const RecipeDetails = (props) => {
         console.log("response", response.data);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       });
   }, [id]);
@@ -43,10 +43,12 @@ const RecipeDetails = (props) => {
       axios
         .post(URL, details)
         .then((res) => {
-          console.log(res);
-          navigate("/favourites");
+          alert("Added!");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          alert("This recipe has already been added to your favourites.");
+          console.log(err);
+        });
     } else {
       navigate("/login");
     }
@@ -57,13 +59,23 @@ const RecipeDetails = (props) => {
   };
 
   const onClickGrocery = () => {
-    axios
-      .post(`/groceries/add/${user}/${details.id}`)
-      .then((res) => {
-        console.log(res);
-        navigate("/groceryList");
-      })
-      .catch((err) => console.log(err));
+    if (user) {
+      axios
+        .post(
+          `http://localhost:8000/groceries/api/${user}/${details.id}`,
+          details
+        )
+        .then((res) => {
+          console.log(res);
+          alert("Added!");
+        })
+        .catch((err) => {
+          alert("This recipe has already been added to your grocery list.");
+          console.log(err);
+        });
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -80,7 +92,6 @@ const RecipeDetails = (props) => {
             style={{ display: "flex", alignItems: "flex-end" }}>
             Add Recipe To Favourites
           </Button>
-
           <Button
             onClick={onClickGrocery}
             style={{ display: "flex", alignItems: "flex-end" }}>
