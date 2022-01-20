@@ -110,6 +110,7 @@ const addRecipeToGroceries = (req, res) => {
           serving_size: recipeDetails.servings,
           instructions: recipeDetails.instructions,
           ingredients: ingredients,
+          user_created: false,
         })
           .then((newRecipe) => {
             return User.findByIdAndUpdate(

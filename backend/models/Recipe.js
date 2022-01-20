@@ -8,7 +8,7 @@ const RecipeSchema = new Schema({
     type: String,
     required: true,
   },
-
+  user_created: Boolean,
   title: {
     type: String,
     required: true,

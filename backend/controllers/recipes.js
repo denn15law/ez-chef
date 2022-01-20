@@ -3,7 +3,7 @@ const Favourite = require("../models/Favourite");
 
 const getRecipes = (req, res) => {
   const user = req.params.user;
-  Recipe.find({ user: user })
+  Recipe.find({ user: user, user_created: true })
     .sort({ title: 1 })
     .then((recipe) => res.json(recipe))
     .catch((err) => {
@@ -19,6 +19,7 @@ const createRecipe = (req, res) => {
     ingredients: req.body.ingredients,
     instructions: req.body.instructions,
     serving_size: req.body.serving_size,
+    user_created: true,
   });
   console.log(newRecipe);
   newRecipe
