@@ -56,7 +56,7 @@ const About = ({ user }) => {
             <Typography variant="h5">About EZ Chef</Typography>
             <Grid
               container
-              p={5}
+              p={2}
               spacing={{ xs: 2, md: 7 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
@@ -72,7 +72,11 @@ const About = ({ user }) => {
                     justifyContent: "center",
                     alignItems: "center",
                     maxWidth: 715,
-                    height: 275,
+                    height: 300,
+                    textAlign: "left",
+                    paddingTop: 2,
+                    paddingLeft: 1,
+                    paddingRight: 1,
                   }}
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
@@ -88,11 +92,12 @@ const About = ({ user }) => {
                       list, and even convert serving sizes based on how much
                       food you want to make. Once you are confident enough, you
                       can even create your own recipes in EZ Chef so that you
-                      can keep coming back to that same delicious meal. EZ Chef
-                      is perfect for anybody wishing to improve their cooking
-                      skills, avid meal prep fanatics, new aspiring chefs, and
-                      those who wish to cook for themselves and need a
-                      convenient serving size converter. Start cooking today!
+                      can come back to that same delicious meal whenever you
+                      want to. EZ Chef is perfect for anybody wishing to improve
+                      their cooking skills, avid meal prep fanatics, new
+                      aspiring chefs, and those who wish to cook for themselves
+                      and need a convenient serving size converter. Start
+                      cooking today!
                     </p>
                   </CardContent>
                 </Card>
