@@ -86,18 +86,18 @@ const About = ({ user }) => {
                       cooped up at home and constantly eating instant ramen and
                       leftover pizza. Like so many others, they wanted to
                       improve their cooking skills but didn't know where to
-                      start. Meet EZ Chef. EZ Chef is your new chef mate who can
-                      help you develop your cooking skills by providing recipe
-                      ideas and cooking instructions, set you up with a grocery
-                      list, and even convert serving sizes based on how much
-                      food you want to make. Once you are confident enough, you
-                      can even create your own recipes in EZ Chef so that you
-                      can come back to that same delicious meal whenever you
-                      want to. EZ Chef is perfect for anybody wishing to improve
-                      their cooking skills, avid meal prep fanatics, new
-                      aspiring chefs, and those who wish to cook for themselves
-                      and need a convenient serving size converter. Start
-                      cooking today!
+                      start. Meet EZ Chef, cooking made easy. EZ Chef is your
+                      new chef mate who can help you develop your cooking skills
+                      by providing recipe ideas and cooking instructions, set
+                      you up with a grocery list, and even convert serving sizes
+                      based on how much food you want to make. Once you are
+                      confident enough, you can even create your own recipes in
+                      EZ Chef so that you can come back to that same delicious
+                      meal whenever you want to. EZ Chef is perfect for anybody
+                      wishing to improve their cooking skills, avid meal prep
+                      fanatics, new aspiring chefs, and those who wish to cook
+                      for themselves and need a convenient serving size
+                      converter. Start cooking today!
                     </p>
                   </CardContent>
                 </Card>
