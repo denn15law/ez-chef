@@ -24,7 +24,6 @@ export default function IngredientList(props) {
 
   return (
     <div classname="ingredients-list-container">
-      {" "}
       {myGroceryList.length ? (
         <div>
           <Box display="flex" justifyContent="center" flexDirection="column">
