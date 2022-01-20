@@ -20,6 +20,7 @@ import RecipeDetails from "./RecipeDetails";
 import NewRecipe from "./NewRecipe";
 import MyRecipeDetails from "./MyRecipeDetails";
 import SearchResults from "./SearchResults";
+import About from "./About";
 import "./App.css";
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
         <div className="main">
           <Routes>
             <Route path="/" element={<Index />}></Route>
+            <Route path="/about" element={<About user={user} />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/search" element={<SearchForm />}></Route>
