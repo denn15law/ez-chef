@@ -10,7 +10,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -77,13 +76,6 @@ const NewRecipeForm = (props) => {
             alignItems: "centre",
             justifyContent: "centre",
           }}>
-          <Avatar
-            sx={{
-              m: 1,
-              bgcolor: "secondary.main",
-            }}>
-            <RestaurantIcon />
-          </Avatar>
           <Typography component="h1" variant="h5">
             Add a New Recipe
           </Typography>
@@ -189,7 +181,7 @@ const NewRecipeForm = (props) => {
                 control={control}
                 render={({ field }) => (
                   <TextField
-                    style={{ marginTop: 10, marginBottom: 5 }}
+                    style={{ marginTop: 10, marginBottom: 10 }}
                     label="Recipe Instructions:"
                     id="standard-multiline-static"
                     multiline
