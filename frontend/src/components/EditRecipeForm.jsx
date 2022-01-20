@@ -12,7 +12,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
+import {
+  useForm,
+  useFieldArray,
+  Controller,
+  setValue,
+  formState,
+} from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const EditRecipeForm = (props) => {
@@ -34,11 +40,9 @@ const EditRecipeForm = (props) => {
       });
   }, []);
 
-  console.log("recipetitle", recipe.title);
-
-  const { control, handleSubmit, reset, setValue } = useForm({
+  const { control, handleSubmit, reset, setValue, formState } = useForm({
     defaultValues: {
-      title: `${recipe.title}`,
+      title: "",
       instructions: "",
       serving_size: "",
       image_url: "",
@@ -51,6 +55,12 @@ const EditRecipeForm = (props) => {
       ],
     },
   });
+
+  useEffect(() => {
+    reset(recipe);
+  }, [recipe]);
+
+  console.log("recipetitle", recipe.title);
 
   const {
     fields: ingredientsFields,

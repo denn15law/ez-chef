@@ -70,6 +70,7 @@ const editRecipeDetails = (req, res) => {
     {
       $set: {
         title: req.body.title,
+        image_url: req.body.image_url,
         ingredients: req.body.ingredients,
         instructions: req.body.instructions,
         serving_size: req.body.serving_size,
