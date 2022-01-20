@@ -1,10 +1,21 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import React from "react";
+import axios from "axios";
+import {
+  Button,
+  ButtonGroup,
+  Box,
+  CssBaseline,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+  CardContent,
+  Link,
+  CardActions,
+  Card,
+} from "@mui/material";
 
-export default function RecipesList(props) {
-  const { myGroceryList, user } = props;
-
+const RecipesList = ({ myGroceryList, user }) => {
   const deleteGroceryList = (id) => {
     const url = `http://localhost:8000/groceries/${user}/${id}`;
     axios
@@ -19,49 +30,56 @@ export default function RecipesList(props) {
   };
 
   return (
-    <div className="recipe-list-container">
-      {myGroceryList.length ? (
-        myGroceryList.map((groceryList) => {
-          let url = "";
-          if (groceryList.grocery_list_recipeID.length <= 10) {
-            url += `http://localhost:3000/search/${groceryList.grocery_list_recipeID}`;
-          } else {
-            url += `http://localhost:3000/myRecipes/${groceryList.grocery_list_recipeID}`;
-          }
-
-          return (
-            <div
-              className="grocery-list"
-              key={groceryList.grocery_list_recipeID}
-            >
-              <div className="grocery-list-recipes">
-                <a href={url}>
-                  <h2 className="grocery-list-recipe-title">
-                    {groceryList.grocery_list_title}
-                  </h2>
-                </a>
-                <div
-                  className="delete-favourite"
-                  key={groceryList.grocery_list_recipeID}
-                >
-                  <button
-                    className="delete-favourite"
-                    onClick={() => {
-                      deleteGroceryList(groceryList.grocery_list_recipeID);
-                    }}
-                  >
-                    <b>
-                      Delete {groceryList.grocery_list_title} from Grocery List
-                    </b>
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })
-      ) : (
-        <h3>You do not have any recipes in your grocery list!</h3>
-      )}
-    </div>
+    <Grid>
+      <CssBaseline />
+      <Grid
+        container
+        p={5}
+        spacing={{ xs: 2, md: 7 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+        {myGroceryList.length ? (
+          myGroceryList.map((groceryList) => {
+            let url = "";
+            if (groceryList.grocery_list_recipeID.length <= 10) {
+              url += `http://localhost:3000/search/${groceryList.grocery_list_recipeID}`;
+            } else {
+              url += `http://localhost:3000/myRecipes/${groceryList.grocery_list_recipeID}`;
+            }
+            return (
+              <Grid item key={groceryList.grocery_list_recipeID}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Link href={url}>{groceryList.grocery_list_title}</Link>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      color="error"
+                      onClick={() => {
+                        deleteGroceryList(groceryList.grocery_list_recipeID);
+                      }}>
+                      Delete
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            );
+          })
+        ) : (
+          <h3>You do not have any recipes in your grocery list!</h3>
+        )}
+      </Grid>
+    </Grid>
   );
-}
+};
+
+export default RecipesList;

@@ -114,17 +114,18 @@ const MyRecipes = ({ user }) => {
                         <CardActions>
                           <Button
                             onClick={() => {
-                              deleteRecipe(recip._id);
-                            }}
-                            size="small">
-                            Delete
-                          </Button>
-                          <Button
-                            onClick={() => {
                               editRecipe(recip._id);
                             }}
                             size="small">
                             Edit
+                          </Button>
+                          <Button
+                            color="error"
+                            onClick={() => {
+                              deleteRecipe(recip._id);
+                            }}
+                            size="small">
+                            Delete
                           </Button>
                         </CardActions>
                       </Card>

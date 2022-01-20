@@ -112,6 +112,7 @@ const Favourites = ({ user }) => {
                         />
                         <CardActions>
                           <Button
+                            color="error"
                             onClick={() => {
                               deleteFavourite(recip.favourite_recipeID);
                             }}
