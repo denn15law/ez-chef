@@ -84,42 +84,44 @@ const MyRecipeDetails = (props) => {
   return (
     <Grid>
       <CssBaseline />
-      {/* <Paper sx={{ p: 2, margin: "auto", maxWidth: 1000, flexGrow: 1 }}> */}
-      <Card
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}>
+      <Paper sx={{ p: 2, margin: "auto", maxWidth: 700, flexGrow: 1 }}>
+        {/* <Card
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}> */}
         <Box
           component="main"
           sx={{
-            p: 5,
             flexGrow: 1,
-            height: "100vh",
             overflow: "auto",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" p={1}>
             {details.title}
           </Typography>
-          <CardMedia
-            component="img"
-            src={details.image_url}
-            alt="recipe"
-            style={{ height: 250, width: 250 }}
-          />
+          <Grid sx={{ p: 2 }}>
+            <CardMedia
+              component="img"
+              src={details.image_url}
+              alt="recipe"
+              style={{ height: 250, width: 250 }}
+            />
+          </Grid>
           <ButtonGroup>
             <Button onClick={onClickFavourite}>Add to Favourites</Button>
             <Button onClick={onClickGrocery}>Add to Grocery List</Button>
           </ButtonGroup>
-
-          <div className="recipe-ingredients">
+          <Grid sx={{ p: 2 }}>
             <Typography component="h2" variant="h5">
               Recipe Ingredients
             </Typography>
-
-            <ul>
+            <Grid>
               {Object.values(details).length > 0
                 ? details.ingredients.map((ing) => {
                     return (
@@ -129,11 +131,13 @@ const MyRecipeDetails = (props) => {
                     );
                   })
                 : null}
-            </ul>
-            <h3 className="current-servings">
-              <div>Current Servings: {details.serving_size * servingRatio}</div>
-              <div>Convert Servings: </div>
-              <div>
+            </Grid>
+            <Grid>
+              <Typography>
+                Current Servings: {details.serving_size * servingRatio}
+              </Typography>
+              <Typography>Convert Servings: </Typography>
+              <Grid>
                 <TextField
                   type="number"
                   value={serving}
@@ -143,11 +147,11 @@ const MyRecipeDetails = (props) => {
                   variant="standard"
                 />
                 <Button onClick={onClickConvert}>Convert</Button>
-              </div>
-            </h3>
-          </div>
-          <div className="recipe-instructions">
-            <h2 className="cooking-instructions">Cooking Instructions</h2>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid>
+            <Typography variant="h5">Cooking Instructions</Typography>
             <ol type="1">
               {Object.values(details).length ? (
                 removeTags(details.instructions)
@@ -167,10 +171,10 @@ const MyRecipeDetails = (props) => {
                 <p>You do not have instructions</p>
               )}
             </ol>
-          </div>
+          </Grid>
         </Box>
-      </Card>
-      {/* </Paper> */}
+        {/* </Card> */}
+      </Paper>
     </Grid>
   );
 };
