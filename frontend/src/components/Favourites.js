@@ -41,7 +41,7 @@ const Favourites = (props) => {
       {myFavs.length ? (
         myFavs.map((recip) => {
           let url = "";
-          if (recip.favourite_recipeID.length < 7) {
+          if (recip.favourite_recipeID.length <= 10) {
             url += `http://localhost:3000/search/${recip.favourite_recipeID}`;
           } else {
             url += `http://localhost:3000/myRecipes/${recip.favourite_recipeID}`;
