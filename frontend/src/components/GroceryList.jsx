@@ -50,8 +50,15 @@ const GroceryList = ({ user }) => {
             <Typography variant="h5" fontWeight="bold">
               My Grocery List
             </Typography>
-            <RecipesList myGroceryList={myGroceryList} user={user} />
-            <IngredientsList myGroceryList={myGroceryList} />
+            <Grid
+              container
+              p={2}
+              direction="row"
+              justifyContent="space-evenly"
+              alignItems="top">
+              <RecipesList myGroceryList={myGroceryList} user={user} />
+              <IngredientsList myGroceryList={myGroceryList} />
+            </Grid>
           </Box>
         </Grid>
       </Paper>

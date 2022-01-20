@@ -35,6 +35,7 @@ const RecipesList = ({ myGroceryList, user }) => {
       <Grid
         container
         p={2}
+        width="50vw"
         direction="row"
         justifyContent="center"
         alignItems="center">
@@ -42,9 +43,8 @@ const RecipesList = ({ myGroceryList, user }) => {
         <Grid
           container
           p={2}
-          spacing={{ xs: 2, md: 7 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-          direction="row"
+          spacing={{ xs: 2, md: 2 }}
+          direction="column"
           justifyContent="center"
           alignItems="center">
           {myGroceryList.length ? (
