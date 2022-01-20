@@ -6,20 +6,16 @@ import {
   ButtonGroup,
   Box,
   CssBaseline,
+  Grid,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-const theme = createTheme();
-
-const NewRecipeForm = (props) => {
+const NewRecipeForm = ({ user }) => {
   const navigate = useNavigate();
-
-  const { user } = props;
 
   const { control, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
@@ -62,7 +58,7 @@ const NewRecipeForm = (props) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <Grid>
       <CssBaseline />
       <Paper sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
         <Box
@@ -214,7 +210,7 @@ const NewRecipeForm = (props) => {
           </form>
         </Box>
       </Paper>
-    </ThemeProvider>
+    </Grid>
   );
 };
 

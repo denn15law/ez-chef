@@ -122,7 +122,27 @@ const Favourites = ({ user }) => {
                   );
                 })
               ) : (
-                <Typography variant="h5">Add a Favourite Recipe</Typography>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  lg={4}
+                  style={{
+                    textAlign: "center",
+                  }}>
+                  <Box
+                    sx={{
+                      p: 10,
+                      flexGrow: 1,
+                      height: "100vh",
+                      overflow: "auto",
+                    }}>
+                    <Button href="/search" variant="contained" size="small">
+                      Search for Recipes
+                    </Button>
+                  </Box>
+                </Grid>
               )}
             </Grid>
           </Box>
