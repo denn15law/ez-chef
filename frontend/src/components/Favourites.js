@@ -139,7 +139,7 @@ const Favourites = ({ user }) => {
                       overflow: "auto",
                     }}>
                     <Button href="/search" variant="contained" size="small">
-                      Search for Recipes
+                      Search For Recipes
                     </Button>
                   </Box>
                 </Grid>
