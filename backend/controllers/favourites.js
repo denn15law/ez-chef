@@ -16,11 +16,10 @@ const getFavourites = (req, res) => {
 
 const addFavouriteFromMyRecipes = (req, res) => {
   const user = req.params.user;
-  const recipeID = req.body.id;
+  const recipeID = req.params.id;
 
   Favourite.findOne({ favourite_recipeID: recipeID, user: user }).then(
     (response) => {
-      console.log(response);
       if (!response) {
         const newFavourite = new Favourite({
           user: user,
@@ -33,7 +32,10 @@ const addFavouriteFromMyRecipes = (req, res) => {
           .then((response) => {
             res.json(response);
           })
-          .catch((err) => console.log(err.message));
+          .catch((err) => console.log(err));
+      } else {
+        console.log("Already added!");
+        res.status(400).send("Favourite already added");
       }
     }
   );

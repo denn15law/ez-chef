@@ -71,17 +71,14 @@ const MyRecipeDetailsCard = ({ user }) => {
 
   const onClickGrocery = () => {
     if (user) {
+      const URL = `http://localhost:8000/groceries/myRecipes/${user}/${details._id}`;
       axios
-        .post(
-          `http://localhost:8000/groceries/myRecipes/${user}/${details.id}`,
-          details
-        )
+        .post(URL, details)
         .then((res) => {
           alert("Added!");
         })
         .catch((err) => {
           alert("This recipe has already been added to your grocery list!");
-          console.log(err);
         });
     } else {
       navigate("/login");

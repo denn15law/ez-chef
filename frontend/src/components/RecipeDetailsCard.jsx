@@ -56,7 +56,6 @@ const RecipeDetails = ({ user }) => {
         })
         .catch((err) => {
           alert("This recipe has already been added to your favourites.");
-          console.log(err);
         });
     } else {
       navigate("/login");
