@@ -21,11 +21,8 @@ import {
 } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-const EditRecipeForm = (props) => {
+const EditRecipeForm = ({ user, recipeID }) => {
   const navigate = useNavigate();
-
-  const { user, recipeID } = props;
-
   const [recipe, setRecipe] = useState({});
 
   useEffect(() => {
@@ -98,8 +95,7 @@ const EditRecipeForm = (props) => {
             flexDirection: "column",
             alignItems: "centre",
             justifyContent: "centre",
-          }}
-        >
+          }}>
           <Typography component="h1" variant="h5">
             Edit Recipe
           </Typography>
@@ -114,8 +110,7 @@ const EditRecipeForm = (props) => {
                 flexDirection: "column",
                 alignItems: "centre",
                 justifyContent: "centre",
-              }}
-            >
+              }}>
               <Controller
                 name="title"
                 control={control}
@@ -189,15 +184,13 @@ const EditRecipeForm = (props) => {
                   />
                   <Button
                     onClick={renderIngredientForm}
-                    style={{ display: "flex", alignItems: "flex-end" }}
-                  >
+                    style={{ display: "flex", alignItems: "flex-end" }}>
                     Add
                   </Button>
                   <Button
                     color="error"
                     onClick={() => remove(i)}
-                    style={{ display: "flex", alignItems: "flex-end" }}
-                  >
+                    style={{ display: "flex", alignItems: "flex-end" }}>
                     Delete
                   </Button>
                 </Box>

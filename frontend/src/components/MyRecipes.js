@@ -76,8 +76,7 @@ const MyRecipes = ({ user }) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
-            }}
-          >
+            }}>
             <Typography variant="h5">My Recipes</Typography>
             <Grid
               container
@@ -86,8 +85,7 @@ const MyRecipes = ({ user }) => {
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
               justifyContent="center"
-              alignItems="center"
-            >
+              alignItems="center">
               {myRecipes.length ? (
                 myRecipes.map((recip) => {
                   const url = `http://localhost:3000/myRecipes/${recip._id}`;
@@ -100,8 +98,7 @@ const MyRecipes = ({ user }) => {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Link href={url}>{recip.title}</Link>
                         </CardContent>
@@ -117,16 +114,14 @@ const MyRecipes = ({ user }) => {
                             onClick={() => {
                               deleteRecipe(recip._id);
                             }}
-                            size="small"
-                          >
+                            size="small">
                             Delete
                           </Button>
                           <Button
                             onClick={() => {
                               editRecipe(recip._id);
                             }}
-                            size="small"
-                          >
+                            size="small">
                             Edit
                           </Button>
                         </CardActions>
@@ -143,16 +138,14 @@ const MyRecipes = ({ user }) => {
                   lg={4}
                   style={{
                     textAlign: "center",
-                  }}
-                >
+                  }}>
                   <Box
                     sx={{
                       p: 10,
                       flexGrow: 1,
                       height: "100vh",
                       overflow: "auto",
-                    }}
-                  >
+                    }}>
                     <Button href="/new" variant="contained" size="small">
                       Create New Recipes
                     </Button>
