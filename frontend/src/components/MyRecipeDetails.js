@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./RecipeDetails.css";
+import { Alert } from "react-alert";
 
 const MyRecipeDetails = (props) => {
   const [details, setDetails] = useState({});
@@ -12,7 +13,6 @@ const MyRecipeDetails = (props) => {
   const id = url.split("/myRecipes/")[1];
 
   const navigate = useNavigate();
-
   const { user } = props;
 
   useEffect(() => {
@@ -45,27 +45,36 @@ const MyRecipeDetails = (props) => {
       axios
         .post(URL, details)
         .then((res) => {
-          console.log(res);
-          navigate("/favourites");
+          alert("Added!");
         })
-        .catch((err) => console.log(err));
+        .catch((err) =>
+          alert("This recipe has already been added to your favourites!")
+        );
     } else {
       navigate("/login");
     }
   };
 
-  const onClickGrocery = () => {
-    axios
-      // .post(`/users/${user}/grocery/${details._id}`)
-      .post(`/groceries/add/${user}/${details._id}`)
-      .then((res) => {
-        console.log(res);
-        navigate("/groceryList");
-      })
-      .catch((err) => console.log(err));
-  };
   const onClickConvert = () => {
-    setServingRatio(serving / details.serving_size);
+    setServingRatio(serving / details.servings);
+  };
+
+  const onClickGrocery = () => {
+    if (user) {
+      axios
+        .post(
+          `http://localhost:8000/groceries/myRecipes/${user}/${details.id}`,
+          details
+        )
+        .then((res) => {
+          alert("Added!");
+        })
+        .catch((err) => {
+          alert("This recipe has already been added to your grocery list!");
+        });
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
