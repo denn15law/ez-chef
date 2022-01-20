@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  CssBaseline,
+  Grid,
+  Link,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import "./RecipeDetails.css";
+// import "./RecipeDetails.css";
 
 const MyRecipeDetails = (props) => {
   const [details, setDetails] = useState({});
@@ -56,7 +70,6 @@ const MyRecipeDetails = (props) => {
 
   const onClickGrocery = () => {
     axios
-      // .post(`/users/${user}/grocery/${details._id}`)
       .post(`/groceries/add/${user}/${details._id}`)
       .then((res) => {
         console.log(res);
@@ -69,24 +82,43 @@ const MyRecipeDetails = (props) => {
   };
 
   return (
-    <div className="recipe-details-container">
-      <div className="recipe-details">
-        <h1 className="recipe-title">{details.title}</h1>
-        <div className="recipe-details-image">
-          <img className="recipe-details-image" src={details.image_url}></img>
-        </div>
+    <Grid>
+      <CssBaseline />
+      {/* <Paper sx={{ p: 2, margin: "auto", maxWidth: 1000, flexGrow: 1 }}> */}
+      <Card
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        <Box
+          component="main"
+          sx={{
+            p: 5,
+            flexGrow: 1,
+            height: "100vh",
+            overflow: "auto",
+          }}>
+          <Typography component="h1" variant="h5">
+            {details.title}
+          </Typography>
+          <CardMedia
+            component="img"
+            src={details.image_url}
+            alt="recipe"
+            style={{ height: 250, width: 250 }}
+          />
+          <ButtonGroup>
+            <Button onClick={onClickFavourite}>Add to Favourites</Button>
+            <Button onClick={onClickGrocery}>Add to Grocery List</Button>
+          </ButtonGroup>
 
-        <div className="recipe-actions">
-          <button className="favorite-recipe" onClick={onClickFavourite}>
-            Add to Favourites
-          </button>
-          <button id="add-grocery" onClick={onClickGrocery}>
-            Add to Grocery List
-          </button>
-        </div>
-        <div className="recipe-content">
           <div className="recipe-ingredients">
-            <h2 className="recipe-ingredients">Recipe Ingredients</h2>
+            <Typography component="h2" variant="h5">
+              Recipe Ingredients
+            </Typography>
+
             <ul>
               {Object.values(details).length > 0
                 ? details.ingredients.map((ing) => {
@@ -126,8 +158,7 @@ const MyRecipeDetails = (props) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}
-                      >
+                          .indexOf(each)}>
                         {each}
                       </li>
                     );
@@ -137,9 +168,10 @@ const MyRecipeDetails = (props) => {
               )}
             </ol>
           </div>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Card>
+      {/* </Paper> */}
+    </Grid>
   );
 };
 
