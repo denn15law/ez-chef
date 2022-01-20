@@ -91,22 +91,24 @@ const Nav = ({ user }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} style={{ background: "#F5F5F5" }}>
+      <AppBar position="fixed" open={open} style={{ background: "#cb997e" }}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}>
-            <MenuIcon color="#000000" />
+            sx={{ mr: 2, ...(open && { display: "none" }) }}
+          >
+            <MenuIcon color="primary" />
           </IconButton>
           <Typography
             color="#000000"
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
             EZ Chef
           </Typography>
           <Link to="/search">
@@ -126,7 +128,8 @@ const Nav = ({ user }) => {
         }}
         variant="persistent"
         anchor="left"
-        open={open}>
+        open={open}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
