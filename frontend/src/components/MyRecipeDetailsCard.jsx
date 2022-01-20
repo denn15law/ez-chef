@@ -4,29 +4,25 @@ import {
   Box,
   Button,
   ButtonGroup,
-  Card,
-  CardActions,
-  CardContent,
   CardMedia,
   CssBaseline,
   Grid,
-  Link,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-alert";
 
-const MyRecipeDetails = (props) => {
+const MyRecipeDetailsCard = ({ user }) => {
   const [details, setDetails] = useState({});
   const [serving, setServing] = useState(1);
   const [servingRatio, setServingRatio] = useState(1);
   let url = window.location.pathname;
   const id = url.split("/myRecipes/")[1];
-
   const navigate = useNavigate();
-  const { user } = props;
 
   useEffect(() => {
     console.log("I am my recipeID", id);
@@ -93,14 +89,13 @@ const MyRecipeDetails = (props) => {
   return (
     <Grid>
       <CssBaseline />
-      <Paper sx={{ p: 2, margin: "auto", maxWidth: 700, flexGrow: 1 }}>
-        {/* <Card
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}> */}
+      <Paper
+        sx={{
+          p: 2,
+          margin: "auto",
+          maxWidth: 600,
+          flexGrow: 1,
+        }}>
         <Box
           component="main"
           sx={{
@@ -110,9 +105,11 @@ const MyRecipeDetails = (props) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-          }}
-        >
-          <Typography component="h1" variant="h5" p={1}>
+          }}>
+          <Typography
+            component="h1"
+            variant="h5"
+            sx={{ p: 1, fontWeight: "bold" }}>
             {details.title}
           </Typography>
           <Grid sx={{ p: 2 }}>
@@ -124,14 +121,18 @@ const MyRecipeDetails = (props) => {
             />
           </Grid>
           <ButtonGroup>
-            <Button onClick={onClickFavourite}>Add to Favourites</Button>
-            <Button onClick={onClickGrocery}>Add to Grocery List</Button>
+            <Button onClick={onClickFavourite}>
+              <StarIcon />
+            </Button>
+            <Button onClick={onClickGrocery}>
+              <AddShoppingCartIcon />
+            </Button>
           </ButtonGroup>
           <Grid sx={{ p: 2 }}>
             <Typography component="h2" variant="h5">
               Recipe Ingredients
             </Typography>
-            <Grid>
+            <Grid sx={{ p: 2 }}>
               {Object.values(details).length > 0
                 ? details.ingredients.map((ing) => {
                     return (
@@ -142,52 +143,75 @@ const MyRecipeDetails = (props) => {
                   })
                 : null}
             </Grid>
-            <Grid>
+            <Grid
+              sx={{
+                p: 1,
+              }}>
               <Typography>
                 Current Servings: {details.serving_size * servingRatio}
               </Typography>
-              <Typography>Convert Servings: </Typography>
-              <Grid>
+              <Grid
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}>
+                <Typography>Convert Servings: </Typography>
                 <TextField
+                  style={{
+                    width: 70,
+                    marginTop: 5,
+                    marginLeft: 10,
+                    marginRight: 5,
+                  }}
+                  size="small"
                   type="number"
                   value={serving}
                   onChange={(e) => setServing(e.target.value)}
-                  InputProps={{ inputProps: { min: 1 } }}
-                  label="Servings"
-                  variant="standard"
+                  InputProps={{
+                    inputProps: { min: 1, style: { textAlign: "center" } },
+                  }}
                 />
-                <Button onClick={onClickConvert}>Convert</Button>
+                <Button size="small" onClick={onClickConvert}>
+                  Convert
+                </Button>
               </Grid>
             </Grid>
           </Grid>
-          <Grid>
+          <Grid sx={{ p: 1 }}>
             <Typography variant="h5">Cooking Instructions</Typography>
             <ol type="1">
-              {Object.values(details).length ? (
-                removeTags(details.instructions)
-                  .split(".")
-                  .slice(0, -1)
-                  .map((each) => {
-                    return (
-                      <li
-                        key={removeTags(details.instructions)
-                          .split(".")
-                          .indexOf(each)}
-                      >
-                        {each}
-                      </li>
-                    );
-                  })
-              ) : (
-                <p>You do not have instructions</p>
-              )}
+              <Grid
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  textAlign: "left",
+                }}>
+                {Object.values(details).length ? (
+                  removeTags(details.instructions)
+                    .split(".")
+                    .slice(0, -1)
+                    .map((each) => {
+                      return (
+                        <li
+                          key={removeTags(details.instructions)
+                            .split(".")
+                            .indexOf(each)}>
+                          {each + "."}
+                        </li>
+                      );
+                    })
+                ) : (
+                  <Typography>You do not have instructions</Typography>
+                )}
+              </Grid>
             </ol>
           </Grid>
         </Box>
-        {/* </Card> */}
       </Paper>
     </Grid>
   );
 };
 
-export default MyRecipeDetails;
+export default MyRecipeDetailsCard;

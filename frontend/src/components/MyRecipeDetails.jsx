@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, CssBaseline, Grid, Paper } from "@mui/material";
-import RecipeDetailsCard from "./RecipeDetailsCard";
+import MyRecipeDetailsCard from "./MyRecipeDetailsCard";
 import Image from "../docs/new-recipe-background.jpg";
 
 const styles = {
@@ -14,7 +14,7 @@ const styles = {
   },
 };
 
-const RecipeDetails = ({ user }) => {
+const MyRecipeDetails = ({ user }) => {
   return (
     <Grid>
       <CssBaseline />
@@ -28,7 +28,7 @@ const RecipeDetails = ({ user }) => {
               height: "100vh",
               overflow: "auto",
             }}>
-            <RecipeDetailsCard user={user} />
+            <MyRecipeDetailsCard user={user} />
           </Box>
         </Grid>
       </Paper>
@@ -36,4 +36,4 @@ const RecipeDetails = ({ user }) => {
   );
 };
 
-export default RecipeDetails;
+export default MyRecipeDetails;
