@@ -71,7 +71,9 @@ const Favourites = ({ user }) => {
               height: "100vh",
               overflow: "auto",
             }}>
-            <Typography variant="h5">My Favourite Recipes</Typography>
+            <Typography variant="h5" fontWeight="bold">
+              My Favourite Recipes
+            </Typography>
             <Grid
               container
               p={5}

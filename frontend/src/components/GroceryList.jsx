@@ -1,7 +1,20 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Box, CssBaseline, Grid, Paper, Typography } from "@mui/material";
 import RecipesList from "./RecipesList";
 import IngredientsList from "./IngredientsList";
+import Image from "../docs/user-pages-background.jpg";
+
+const styles = {
+  paperContainer: {
+    backgroundImage: `url(${Image})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    width: "100vw",
+    height: "100vh",
+  },
+};
 
 const GroceryList = ({ user }) => {
   const [myGroceryList, setMyGroceryList] = useState([]);
@@ -22,11 +35,27 @@ const GroceryList = ({ user }) => {
   }, []);
 
   return (
-    <div className="grocery-list-page">
-      <h1>My Grocery List</h1>
-      <RecipesList myGroceryList={myGroceryList} user={user} />
-      <IngredientsList myGroceryList={myGroceryList} />
-    </div>
+    <Grid>
+      <CssBaseline />
+      <Paper style={styles.paperContainer}>
+        <Grid container spacing={4}>
+          <Box
+            component="main"
+            sx={{
+              p: 5,
+              flexGrow: 1,
+              height: "100vh",
+              overflow: "auto",
+            }}>
+            <Typography variant="h5" fontWeight="bold">
+              My Grocery List
+            </Typography>
+            <RecipesList myGroceryList={myGroceryList} user={user} />
+            <IngredientsList myGroceryList={myGroceryList} />
+          </Box>
+        </Grid>
+      </Paper>
+    </Grid>
   );
 };
 

@@ -77,7 +77,9 @@ const MyRecipes = ({ user }) => {
               height: "100vh",
               overflow: "auto",
             }}>
-            <Typography variant="h5">My Recipes</Typography>
+            <Typography variant="h5" fontWeight="bold">
+              My Recipes
+            </Typography>
             <Grid
               container
               p={5}
