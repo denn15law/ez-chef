@@ -19,7 +19,6 @@ const addGroceryListFromMyRecipes = (req, res) => {
 
   GroceryList.findOne({ grocery_list_recipeID: recipeID, user: user }).then(
     (response) => {
-      console.log(response);
       if (!response) {
         const newGroceryList = new GroceryList({
           user: user,
@@ -33,9 +32,6 @@ const addGroceryListFromMyRecipes = (req, res) => {
             res.json(response);
           })
           .catch((err) => console.log(err.message));
-      } else {
-        console.log("Already added!");
-        res.status(400).send("Already added to grocery list!");
       }
     }
   );

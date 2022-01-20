@@ -56,9 +56,10 @@ const MyRecipeDetailsCard = ({ user }) => {
         .then((res) => {
           alert("Added!");
         })
-        .catch((err) =>
-          alert("This recipe has already been added to your favourites!")
-        );
+        .catch((err) => {
+          alert("This recipe has already been added to your favourites!");
+          console.log(err);
+        });
     } else {
       navigate("/login");
     }
@@ -80,6 +81,7 @@ const MyRecipeDetailsCard = ({ user }) => {
         })
         .catch((err) => {
           alert("This recipe has already been added to your grocery list!");
+          console.log(err);
         });
     } else {
       navigate("/login");

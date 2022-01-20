@@ -1,5 +1,6 @@
 const { default: axios } = require("axios");
 const Favourite = require("../models/Favourite");
+
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -33,9 +34,6 @@ const addFavouriteFromMyRecipes = (req, res) => {
             res.json(response);
           })
           .catch((err) => console.log(err.message));
-      } else {
-        console.log("Already added!");
-        res.status(400).send("Favourite already added");
       }
     }
   );
