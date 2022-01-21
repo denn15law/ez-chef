@@ -1,6 +1,8 @@
 import * as React from "react";
-import Logout from "./Logout";
-import { styled, useTheme } from "@mui/material/styles";
+import { useState } from "react";
+import { styled } from "@mui/material/styles";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
 import {
   Box,
   CssBaseline,
@@ -13,43 +15,17 @@ import {
   ListItemText,
   Toolbar,
   Typography,
-  makeStyles,
 } from "@mui/material";
+import navbarList from "./navbarList";
 import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import HomeIcon from "@mui/icons-material/Home";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import AddIcon from "@mui/icons-material/Add";
-import StarIcon from "@mui/icons-material/Star";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
-import SearchIcon from "@mui/icons-material/Search";
 import BrunchDiningIcon from "@mui/icons-material/BrunchDining";
-// import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -77,16 +53,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const Nav = ({ user }) => {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+const Nav = (props) => {
+  const { user } = props;
+  const [open, setOpen] = useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const toggleOpen = () => {
+    setOpen(!open);
   };
 
   return (
@@ -96,7 +68,7 @@ const Nav = ({ user }) => {
         <Toolbar>
           <IconButton
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={toggleOpen}
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
           >
@@ -111,10 +83,10 @@ const Nav = ({ user }) => {
           >
             EZ Chef
           </Typography>
-          <Link to="/search">
-            <SearchIcon />
-          </Link>
-          <Divider>{user && <Logout />}</Divider>
+          <Divider>
+            {user && <LogoutButton />}
+            {!user && <LoginButton />}
+          </Divider>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -125,109 +97,153 @@ const Nav = ({ user }) => {
             width: drawerWidth,
             boxSizing: "border-box",
           },
+          backgroundColor: "#b7b7a4",
         }}
         variant="persistent"
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
+        <DrawerHeader
+          sx={{
+            backgroundColor: "#b7b7a4",
+          }}
+        >
+          <IconButton onClick={toggleOpen}>
+            <ChevronLeftIcon />
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          <ListItem>
+        <List
+          sx={{
+            backgroundColor: "#b7b7a4",
+            height: "100%",
+          }}
+        >
+          <ListItem
+            sx={{
+              "&:hover": {
+                backgroundColor: "#6b705c",
+              },
+            }}
+          >
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <Link to="/" onClick={handleDrawerClose}>
-              <ListItemText primary="Home" />
+            <Link
+              to="/"
+              onClick={toggleOpen}
+              style={{ textDecoration: "none" }}
+            >
+              <ListItemText
+                primary="Home"
+                sx={{
+                  color: "white",
+                }}
+              />
             </Link>
           </ListItem>
-          {user && (
-            <ListItem>
-              <ListItemIcon>
-                <MenuBookIcon />
-              </ListItemIcon>
-              <Link to="/myrecipes" onClick={handleDrawerClose}>
-                <ListItemText primary="My Recipes" />
-              </Link>
-            </ListItem>
-          )}
-          {user && (
-            <ListItem>
-              <ListItemIcon>
-                <AddIcon />
-              </ListItemIcon>
-              <Link to="/new" onClick={handleDrawerClose}>
-                <ListItemText primary="Add New Recipe" />
-              </Link>
-            </ListItem>
-          )}
-          {user && (
-            <ListItem>
-              <ListItemIcon>
-                <StarIcon />
-              </ListItemIcon>
-              <Link to="/favourites" onClick={handleDrawerClose}>
-                <ListItemText primary="My Favourites" />
-              </Link>
-            </ListItem>
-          )}
-          {user && (
-            <ListItem>
-              <ListItemIcon>
-                <ShoppingCartIcon />
-              </ListItemIcon>
-              <Link to="/grocerylist" onClick={handleDrawerClose}>
-                <ListItemText primary="Grocery List" />
-              </Link>
-            </ListItem>
-          )}
-        </List>
-        <Divider />
-        <List>
-          {user && (
-            <ListItem>
-              <ListItemIcon>
-                <BrunchDiningIcon />
-              </ListItemIcon>
-              <Link to="/about" onClick={handleDrawerClose}>
-                <ListItemText primary="About Us" />
-              </Link>
-            </ListItem>
-          )}
-        </List>
-        <List>
+          {user &&
+            navbarList.map((item, index) => {
+              return (
+                <ListItem
+                  key={index}
+                  sx={{
+                    "&:hover": {
+                      backgroundColor: "#6b705c",
+                    },
+                  }}
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <Link
+                    to={item.path}
+                    onClick={toggleOpen}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <ListItemText
+                      primary={item.desc}
+                      sx={{
+                        color: "white",
+                      }}
+                    />
+                  </Link>
+                </ListItem>
+              );
+            })}
+          <ListItem
+            sx={{
+              "&:hover": {
+                backgroundColor: "#6b705c",
+              },
+            }}
+          >
+            <ListItemIcon>
+              <BrunchDiningIcon />
+            </ListItemIcon>
+            <Link
+              to="/about"
+              onClick={toggleOpen}
+              style={{ textDecoration: "none" }}
+            >
+              <ListItemText
+                primary="About Us"
+                sx={{
+                  color: "white",
+                }}
+              />
+            </Link>
+          </ListItem>
           {!user && (
-            <ListItem>
-              <ListItemIcon></ListItemIcon>
-              <Link to="/register" onClick={handleDrawerClose}>
-                <ListItemText primary="Register" />
-              </Link>
-            </ListItem>
-          )}
-          {!user && (
-            <ListItem>
-              <ListItemIcon>
-                <PersonIcon />
-              </ListItemIcon>
-              <Link to="/login" onClick={handleDrawerClose}>
-                <ListItemText primary="Login" />
-              </Link>
-            </ListItem>
+            <>
+              <ListItem
+                sx={{
+                  "&:hover": {
+                    backgroundColor: "#6b705c",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <Link
+                  to="/register"
+                  onClick={toggleOpen}
+                  style={{ textDecoration: "none" }}
+                >
+                  <ListItemText
+                    primary="Sign Up"
+                    sx={{
+                      color: "white",
+                    }}
+                  />
+                </Link>
+              </ListItem>
+              <ListItem
+                sx={{
+                  "&:hover": {
+                    backgroundColor: "#6b705c",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <Link
+                  to="/login"
+                  onClick={toggleOpen}
+                  style={{ textDecoration: "none" }}
+                >
+                  <ListItemText
+                    primary="Login"
+                    sx={{
+                      color: "white",
+                    }}
+                  />
+                </Link>
+              </ListItem>
+            </>
           )}
         </List>
       </Drawer>
-
-      <Main open={open}>
-        <DrawerHeader />
-      </Main>
     </Box>
   );
 };

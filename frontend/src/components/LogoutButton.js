@@ -26,8 +26,9 @@ const Logout = () => {
       size="small"
       onClick={onClick}
       fullWidth
-      variant="outlined"
-      sx={{ mt: 3, mb: 2 }}>
+      variant="contained"
+      sx={{ mt: 3, mb: 2 }}
+    >
       Log Out
     </Button>
   );
