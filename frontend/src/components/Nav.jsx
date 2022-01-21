@@ -104,7 +104,7 @@ const Nav = ({ user }) => {
                 sx={{
                   ml: 1,
                   flex: 1,
-                  width: 150,
+                  width: 160,
                 }}
                 placeholder="Search for Recipes"
                 inputProps={{ "aria-label": "search google maps" }}
