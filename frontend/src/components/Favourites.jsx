@@ -62,7 +62,7 @@ const Favourites = ({ user }) => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4} marginTop={8}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
@@ -70,8 +70,7 @@ const Favourites = ({ user }) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
-            }}
-          >
+            }}>
             <Typography textAlign="center" variant="h5" fontWeight="bold">
               My Favourite Recipes
             </Typography>
@@ -82,8 +81,7 @@ const Favourites = ({ user }) => {
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
               justifyContent="center"
-              alignItems="center"
-            >
+              alignItems="center">
               {myFavs.length ? (
                 myFavs.map((recip) => {
                   let url = "";
@@ -101,8 +99,7 @@ const Favourites = ({ user }) => {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Link href={url}>{recip.favourite_title}</Link>
                         </CardContent>
@@ -119,8 +116,7 @@ const Favourites = ({ user }) => {
                             onClick={() => {
                               deleteFavourite(recip.favourite_recipeID);
                             }}
-                            size="small"
-                          >
+                            size="small">
                             Delete
                           </Button>
                         </CardActions>
@@ -137,16 +133,14 @@ const Favourites = ({ user }) => {
                   lg={4}
                   style={{
                     textAlign: "center",
-                  }}
-                >
+                  }}>
                   <Box
                     sx={{
                       p: 10,
                       flexGrow: 1,
                       height: "100vh",
                       overflow: "auto",
-                    }}
-                  >
+                    }}>
                     <Button href="/search" variant="contained" size="small">
                       Search For Recipes
                     </Button>

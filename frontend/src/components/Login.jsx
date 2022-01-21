@@ -45,13 +45,12 @@ const Login = () => {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 15,
+            marginTop: 18,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-          }}
-        >
+          }}>
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <AccountCircleIcon />
           </Avatar>
@@ -62,8 +61,7 @@ const Login = () => {
             component="form"
             onSubmit={handleSubmit}
             noValidate
-            sx={{ mt: 1 }}
-          >
+            sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -92,8 +90,7 @@ const Login = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
+              sx={{ mt: 3, mb: 2 }}>
               Sign In
             </Button>
             <Link href="/register" variant="body2">

@@ -20,7 +20,7 @@ const NewRecipe = (props) => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4} marginTop={8}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
@@ -30,8 +30,7 @@ const NewRecipe = (props) => {
               overflow: "auto",
               display: "flex",
               flexDirection: "column",
-            }}
-          >
+            }}>
             <NewRecipeForm user={user} />
           </Box>
         </Grid>

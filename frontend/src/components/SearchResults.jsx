@@ -71,6 +71,7 @@ const SearchForm = () => {
       <Paper style={styles.paperContainer}>
         <Grid
           container
+          marginTop={8}
           spacing={4}
           marginTop={8}
           sx={{
@@ -80,8 +81,7 @@ const SearchForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Box
             component="main"
             sx={{
@@ -90,8 +90,7 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Typography variant="h4" fontWeight="bold">
               Search For Recipes
             </Typography>
@@ -103,8 +102,7 @@ const SearchForm = () => {
                 display: "flex",
                 alignItems: "center",
                 width: 600,
-              }}
-            >
+              }}>
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Enter Ingredients or Keywords"
@@ -115,8 +113,7 @@ const SearchForm = () => {
               <IconButton
                 onClick={reloadSearch}
                 sx={{ p: "10px" }}
-                aria-label="search"
-              >
+                aria-label="search">
                 <SearchIcon />
               </IconButton>
             </Paper>
@@ -139,8 +136,7 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Grid
               container
               p={5}
@@ -148,8 +144,7 @@ const SearchForm = () => {
               columns={{ xs: 4, sm: 8, md: 16 }}
               direction="row"
               justifyContent="center"
-              alignItems="center"
-            >
+              alignItems="center">
               {recipeData.length
                 ? recipeData
                     .sort((a, b) =>
@@ -169,16 +164,14 @@ const SearchForm = () => {
                               ":hover": {
                                 boxShadow: 20,
                               },
-                            }}
-                          >
+                            }}>
                             <CardContent
                               sx={{
                                 flexGrow: 1,
                                 paddingTop: 6,
 
                                 marginBottom: -1,
-                              }}
-                            >
+                              }}>
                               <Link href={url} style={{ color: "black" }}>
                                 {recip.title}
                               </Link>
