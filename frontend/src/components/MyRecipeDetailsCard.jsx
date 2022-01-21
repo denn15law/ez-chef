@@ -100,6 +100,8 @@ const MyRecipeDetailsCard = ({ user }) => {
           margin: "auto",
           maxWidth: 600,
           flexGrow: 1,
+          paddingLeft: 0,
+          paddingRight: 0,
         }}
       >
         <Box
@@ -126,7 +128,7 @@ const MyRecipeDetailsCard = ({ user }) => {
               component="img"
               src={details.image_url}
               alt="recipe"
-              style={{ height: 250, width: 250 }}
+              style={{ height: 400, width: 750 }}
             />
           </Grid>
           <ButtonGroup>

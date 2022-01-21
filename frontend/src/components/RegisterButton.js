@@ -3,21 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
-const Logout = () => {
+const RegisterButton = () => {
   const navigate = useNavigate();
 
   const onClick = async (e) => {
-    e.preventDefault();
-    await axios
-      .post("/logout")
-      .then((res) => {
-        localStorage.clear();
-        navigate("/");
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    navigate("/register");
   };
 
   return (
@@ -27,11 +17,12 @@ const Logout = () => {
       onClick={onClick}
       fullWidth
       variant="contained"
+      color="secondary"
       sx={{ mt: 3, mb: 2 }}
     >
-      Log Out
+      Sign Up
     </Button>
   );
 };
 
-export default Logout;
+export default RegisterButton;
