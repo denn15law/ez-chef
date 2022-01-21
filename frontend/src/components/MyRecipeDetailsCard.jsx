@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-alert";
 
@@ -47,6 +48,10 @@ const MyRecipeDetailsCard = ({ user }) => {
     else str = str.toString();
     return str.replace(/(<([^>]+)>)/gi, "");
   }
+
+  const onClickEdit = (id) => {
+    navigate(`/edit/${user}/${id}`);
+  };
 
   const onClickFavourite = () => {
     if (user) {
@@ -94,8 +99,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           margin: "auto",
           maxWidth: 600,
           flexGrow: 1,
-        }}
-      >
+        }}>
         <Box
           component="main"
           sx={{
@@ -105,13 +109,11 @@ const MyRecipeDetailsCard = ({ user }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Typography
             component="h1"
             variant="h5"
-            sx={{ p: 1, fontWeight: "bold" }}
-          >
+            sx={{ p: 1, fontWeight: "bold" }}>
             {details.title}
           </Typography>
           <Grid sx={{ p: 2 }}>
@@ -123,6 +125,12 @@ const MyRecipeDetailsCard = ({ user }) => {
             />
           </Grid>
           <ButtonGroup>
+            <Button
+              onClick={() => {
+                onClickEdit(details._id);
+              }}>
+              <EditIcon />
+            </Button>
             <Button onClick={onClickFavourite}>
               <StarIcon />
             </Button>
@@ -148,8 +156,7 @@ const MyRecipeDetailsCard = ({ user }) => {
             <Grid
               sx={{
                 p: 1,
-              }}
-            >
+              }}>
               <Typography>
                 Current Servings: {details.serving_size * servingRatio}
               </Typography>
@@ -158,8 +165,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                }}
-              >
+                }}>
                 <Typography>Convert Servings: </Typography>
                 <TextField
                   style={{
@@ -191,8 +197,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   flexDirection: "column",
                   alignItems: "flex-start",
                   textAlign: "left",
-                }}
-              >
+                }}>
                 {Object.values(details).length ? (
                   removeTags(details.instructions)
                     .split(".")
@@ -202,8 +207,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                         <li
                           key={removeTags(details.instructions)
                             .split(".")
-                            .indexOf(each)}
-                        >
+                            .indexOf(each)}>
                           {each + "."}
                         </li>
                       );

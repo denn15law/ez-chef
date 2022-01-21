@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  // Outlet,
-  // Navigate,
-  // useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./Index";
 import Nav from "./Nav";
 import MyRecipes from "./MyRecipes";
 import Favourites from "./Favourites";
-import GroceryList from "./GroceryList2";
+import GroceryList from "./GroceryList";
 import Register from "./Register";
 import Login from "./Login";
 import SearchForm from "./SearchForm";
@@ -48,37 +40,31 @@ const App = () => {
             <Route path="/search" element={<SearchForm />}></Route>
             <Route
               path="/search/results/:search"
-              element={<SearchResults />}
-            ></Route>
+              element={<SearchResults />}></Route>
             <Route
               path="/search/:recipeID"
-              element={<RecipeDetails user={user} />}
-            ></Route>
+              element={<RecipeDetails user={user} />}></Route>
 
             <Route
               path="/myrecipes"
-              element={user ? <MyRecipes user={user} /> : <Index />}
-            ></Route>
+              element={user ? <MyRecipes user={user} /> : <Index />}></Route>
             <Route
               path="/myrecipes/:recipeID"
-              element={user ? <MyRecipeDetails user={user} /> : <Index />}
-            ></Route>
+              element={
+                user ? <MyRecipeDetails user={user} /> : <Index />
+              }></Route>
             <Route
               path="/new"
-              element={user ? <NewRecipe user={user} /> : <Index />}
-            ></Route>
+              element={user ? <NewRecipe user={user} /> : <Index />}></Route>
             <Route
               path="/edit/:user/:recipeID"
-              element={user ? <EditRecipe user={user} /> : <Index />}
-            ></Route>
+              element={user ? <EditRecipe user={user} /> : <Index />}></Route>
             <Route
               path="/favourites"
-              element={user ? <Favourites user={user} /> : <Index />}
-            ></Route>
+              element={user ? <Favourites user={user} /> : <Index />}></Route>
             <Route
               path="/grocerylist"
-              element={user ? <GroceryList user={user} /> : <Index />}
-            ></Route>
+              element={user ? <GroceryList user={user} /> : <Index />}></Route>
           </Routes>
         </div>
       </div>

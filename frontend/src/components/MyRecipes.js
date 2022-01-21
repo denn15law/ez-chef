@@ -76,9 +76,10 @@ const MyRecipes = ({ user }) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
-            }}
-          >
-            <Typography variant="h5">My Recipes</Typography>
+            }}>
+            <Typography variant="h5" fontWeight="bold">
+              My Recipes
+            </Typography>
             <Grid
               container
               p={5}
@@ -86,8 +87,7 @@ const MyRecipes = ({ user }) => {
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
               justifyContent="center"
-              alignItems="center"
-            >
+              alignItems="center">
               {myRecipes.length ? (
                 myRecipes.map((recip) => {
                   const url = `http://localhost:3000/myRecipes/${recip._id}`;
@@ -100,8 +100,7 @@ const MyRecipes = ({ user }) => {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Link href={url}>{recip.title}</Link>
                         </CardContent>
@@ -115,19 +114,18 @@ const MyRecipes = ({ user }) => {
                         <CardActions>
                           <Button
                             onClick={() => {
-                              deleteRecipe(recip._id);
-                            }}
-                            size="small"
-                          >
-                            Delete
-                          </Button>
-                          <Button
-                            onClick={() => {
                               editRecipe(recip._id);
                             }}
-                            size="small"
-                          >
+                            size="small">
                             Edit
+                          </Button>
+                          <Button
+                            color="error"
+                            onClick={() => {
+                              deleteRecipe(recip._id);
+                            }}
+                            size="small">
+                            Delete
                           </Button>
                         </CardActions>
                       </Card>
@@ -143,16 +141,14 @@ const MyRecipes = ({ user }) => {
                   lg={4}
                   style={{
                     textAlign: "center",
-                  }}
-                >
+                  }}>
                   <Box
                     sx={{
                       p: 10,
                       flexGrow: 1,
                       height: "100vh",
                       overflow: "auto",
-                    }}
-                  >
+                    }}>
                     <Button href="/new" variant="contained" size="small">
                       Create New Recipes
                     </Button>
