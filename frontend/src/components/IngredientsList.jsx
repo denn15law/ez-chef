@@ -28,24 +28,26 @@ const IngredientList = ({ myGroceryList }) => {
         width="40vw"
         direction="column"
         justifyContent="center"
-        alignItems="center"
-      >
-        <Typography variant="h5">List of Ingredients</Typography>
+        alignItems="center">
+        {myGroceryList.length ? (
+          <Typography variant="h5" fontWeight="bold">
+            List of Ingredients
+          </Typography>
+        ) : null}
+
         <Box
           container
           p={2}
           direction="column"
           justifyContent="center"
-          alignItems="center"
-        >
+          alignItems="center">
           {myGroceryList.length ? (
             <Grid
               p={2}
               direction="column"
               justifyContent="center"
               alignItems="center"
-              backgroundColor="white"
-            >
+              backgroundColor="white">
               {myIngredientsArray.map((groceryItem, index) => {
                 return (
                   <Typography key={index}>{`${groceryItem.name}`}</Typography>
