@@ -47,7 +47,7 @@ const GroceryList = ({ user }) => {
               height: "100vh",
               overflow: "auto",
             }}>
-            <Typography variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h5" fontWeight="bold">
               My Grocery List
             </Typography>
             <Grid

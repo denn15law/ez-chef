@@ -61,10 +61,9 @@ const MyRecipeDetailsCard = ({ user }) => {
         .then((res) => {
           alert("Added!");
         })
-        .catch((err) => {
-          alert("This recipe has already been added to your favourites!");
-          console.log(err);
-        });
+        .catch((err) =>
+          alert("This recipe has already been added to your favourites!")
+        );
     } else {
       navigate("/login");
     }
@@ -76,9 +75,11 @@ const MyRecipeDetailsCard = ({ user }) => {
 
   const onClickGrocery = () => {
     if (user) {
-      const URL = `http://localhost:8000/groceries/myRecipes/${user}/${details._id}`;
       axios
-        .post(URL, details)
+        .post(
+          `http://localhost:8000/groceries/myRecipes/${user}/${details.id}`,
+          details
+        )
         .then((res) => {
           alert("Added!");
         })
@@ -99,10 +100,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           margin: "auto",
           maxWidth: 600,
           flexGrow: 1,
-          paddingLeft: 0,
-          paddingRight: 0,
-        }}
-      >
+        }}>
         <Box
           component="main"
           sx={{
@@ -112,13 +110,12 @@ const MyRecipeDetailsCard = ({ user }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-          }}
-        >
+            textAlign: "center",
+          }}>
           <Typography
             component="h1"
             variant="h5"
-            sx={{ p: 1, fontWeight: "bold" }}
-          >
+            sx={{ p: 1, fontWeight: "bold" }}>
             {details.title}
           </Typography>
           <Grid sx={{ p: 2 }}>
@@ -126,15 +123,14 @@ const MyRecipeDetailsCard = ({ user }) => {
               component="img"
               src={details.image_url}
               alt="recipe"
-              style={{ height: 400, width: 700 }}
+              style={{ height: 250, width: 250 }}
             />
           </Grid>
           <ButtonGroup>
             <Button
               onClick={() => {
                 onClickEdit(details._id);
-              }}
-            >
+              }}>
               <EditIcon />
             </Button>
             <Button onClick={onClickFavourite}>
@@ -145,10 +141,10 @@ const MyRecipeDetailsCard = ({ user }) => {
             </Button>
           </ButtonGroup>
           <Grid sx={{ p: 2 }}>
-            <Typography component="h2" variant="h5" sx={{ fontWeight: "bold" }}>
+            <Typography fontWeight="bold" variant="h6">
               Recipe Ingredients
             </Typography>
-            <Grid sx={{ p: 2, textAlign: "left" }}>
+            <Grid sx={{ p: 2 }}>
               {Object.values(details).length > 0
                 ? details.ingredients.map((ing) => {
                     return (
@@ -162,9 +158,8 @@ const MyRecipeDetailsCard = ({ user }) => {
             <Grid
               sx={{
                 p: 1,
-              }}
-            >
-              <Typography sx={{ fontWeight: "bold" }}>
+              }}>
+              <Typography>
                 Current Servings: {details.serving_size * servingRatio}
               </Typography>
               <Grid
@@ -172,8 +167,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                }}
-              >
+                }}>
                 <Typography>Convert Servings: </Typography>
                 <TextField
                   style={{
@@ -197,7 +191,7 @@ const MyRecipeDetailsCard = ({ user }) => {
             </Grid>
           </Grid>
           <Grid sx={{ p: 1 }}>
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            <Typography fontWeight="bold" variant="h6">
               Cooking Instructions
             </Typography>
             <ol type="1">
@@ -207,8 +201,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   flexDirection: "column",
                   alignItems: "flex-start",
                   textAlign: "left",
-                }}
-              >
+                }}>
                 {Object.values(details).length ? (
                   removeTags(details.instructions)
                     .split(".")
@@ -218,8 +211,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                         <li
                           key={removeTags(details.instructions)
                             .split(".")
-                            .indexOf(each)}
-                        >
+                            .indexOf(each)}>
                           {each + "."}
                         </li>
                       );

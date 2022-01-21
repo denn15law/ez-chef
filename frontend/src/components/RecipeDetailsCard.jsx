@@ -56,6 +56,7 @@ const RecipeDetails = ({ user }) => {
         })
         .catch((err) => {
           alert("This recipe has already been added to your favourites.");
+          console.log(err);
         });
     } else {
       navigate("/login");
@@ -97,8 +98,7 @@ const RecipeDetails = ({ user }) => {
           flexGrow: 1,
           paddingLeft: 0,
           paddingRight: 0,
-        }}
-      >
+        }}>
         <Box
           component="main"
           sx={{
@@ -108,13 +108,12 @@ const RecipeDetails = ({ user }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-          }}
-        >
+            textAlign: "center",
+          }}>
           <Typography
             component="h1"
             variant="h5"
-            sx={{ p: 1, fontWeight: "bold" }}
-          >
+            sx={{ p: 1, fontWeight: "bold" }}>
             {details.title}
           </Typography>
           <Grid sx={{ p: 2 }}>
@@ -134,10 +133,10 @@ const RecipeDetails = ({ user }) => {
             </Button>
           </ButtonGroup>
           <Grid sx={{ p: 2 }}>
-            <Typography component="h2" variant="h5" sx={{ fontWeight: "bold" }}>
+            <Typography fontWeight="bold" variant="h6">
               Recipe Ingredients
             </Typography>
-            <Grid sx={{ p: 2, textAlign: "left" }}>
+            <Grid sx={{ p: 2 }}>
               {Object.values(details).length > 0
                 ? details.extendedIngredients.map((ing) => {
                     return (
@@ -151,9 +150,8 @@ const RecipeDetails = ({ user }) => {
             <Grid
               x={{
                 p: 1,
-              }}
-            >
-              <Typography sx={{ fontWeight: "bold" }}>
+              }}>
+              <Typography>
                 Current Servings: {details.servings * servingRatio}
               </Typography>
               <Grid
@@ -161,8 +159,7 @@ const RecipeDetails = ({ user }) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                }}
-              >
+                }}>
                 <Typography>Convert Servings: </Typography>
                 <TextField
                   style={{
@@ -186,7 +183,7 @@ const RecipeDetails = ({ user }) => {
             </Grid>
           </Grid>
           <Grid sx={{ p: 1 }}>
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            <Typography fontWeight="bold" variant="h6">
               Cooking Instructions
             </Typography>
             <ol type="1">
@@ -196,8 +193,7 @@ const RecipeDetails = ({ user }) => {
                   flexDirection: "column",
                   alignItems: "flex-start",
                   textAlign: "left",
-                }}
-              >
+                }}>
                 {Object.values(details).length
                   ? removeTags(details.instructions)
                       .split(".")
@@ -207,8 +203,7 @@ const RecipeDetails = ({ user }) => {
                           <li
                             key={removeTags(details.instructions)
                               .split(".")
-                              .indexOf(each)}
-                          >
+                              .indexOf(each)}>
                             {each + "."}
                           </li>
                         );

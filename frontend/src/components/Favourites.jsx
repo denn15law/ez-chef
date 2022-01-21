@@ -13,7 +13,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import Image from "../docs/salad.jpg";
+import Image from "../docs/user-pages-background.jpg";
 
 const styles = {
   paperContainer: {
@@ -71,7 +71,7 @@ const Favourites = ({ user }) => {
               height: "100vh",
               overflow: "auto",
             }}>
-            <Typography variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h5" fontWeight="bold">
               My Favourite Recipes
             </Typography>
             <Grid
@@ -99,9 +99,6 @@ const Favourites = ({ user }) => {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
-                          ":hover": {
-                            boxShadow: 20,
-                          },
                         }}>
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Link href={url}>{recip.favourite_title}</Link>
