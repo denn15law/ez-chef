@@ -95,6 +95,8 @@ const RecipeDetails = ({ user }) => {
           margin: "auto",
           maxWidth: 600,
           flexGrow: 1,
+          paddingLeft: 0,
+          paddingRight: 0,
         }}
       >
         <Box
@@ -120,7 +122,7 @@ const RecipeDetails = ({ user }) => {
               component="img"
               src={details.image}
               alt="recipe"
-              style={{ height: 250, width: 250 }}
+              style={{ height: 400, width: 750 }}
             />
           </Grid>
           <ButtonGroup>
@@ -132,10 +134,10 @@ const RecipeDetails = ({ user }) => {
             </Button>
           </ButtonGroup>
           <Grid sx={{ p: 2 }}>
-            <Typography component="h2" variant="h5">
+            <Typography component="h2" variant="h5" sx={{ fontWeight: "bold" }}>
               Recipe Ingredients
             </Typography>
-            <Grid sx={{ p: 2 }}>
+            <Grid sx={{ p: 2, textAlign: "left" }}>
               {Object.values(details).length > 0
                 ? details.extendedIngredients.map((ing) => {
                     return (
@@ -151,7 +153,7 @@ const RecipeDetails = ({ user }) => {
                 p: 1,
               }}
             >
-              <Typography>
+              <Typography sx={{ fontWeight: "bold" }}>
                 Current Servings: {details.servings * servingRatio}
               </Typography>
               <Grid
@@ -184,7 +186,9 @@ const RecipeDetails = ({ user }) => {
             </Grid>
           </Grid>
           <Grid sx={{ p: 1 }}>
-            <Typography variant="h5">Cooking Instructions</Typography>
+            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              Cooking Instructions
+            </Typography>
             <ol type="1">
               <Grid
                 sx={{
