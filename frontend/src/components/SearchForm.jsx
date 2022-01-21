@@ -33,7 +33,7 @@ const SearchForm = () => {
   const replaceString = (str) => {
     return str.replaceAll(" ", "+").replaceAll(",", "+");
   };
-  const showSearch = () => {
+  const showSearch = (e) => {
     navigate(`/search/results/${replaceString(search)}`);
   };
 
@@ -49,7 +49,8 @@ const SearchForm = () => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
-            }}>
+            }}
+          >
             <Grid
               sx={{
                 p: 20,
@@ -58,7 +59,8 @@ const SearchForm = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-              }}>
+              }}
+            >
               <Typography variant="h4" style={{ fontWeight: "bold" }}>
                 Search For Recipes
               </Typography>
@@ -70,7 +72,8 @@ const SearchForm = () => {
                   display: "flex",
                   alignItems: "center",
                   width: 600,
-                }}>
+                }}
+              >
                 <InputBase
                   sx={{ ml: 1, flex: 1 }}
                   placeholder="Enter Ingredients or Keywords"
@@ -81,7 +84,8 @@ const SearchForm = () => {
                 <IconButton
                   onClick={showSearch}
                   sx={{ p: "10px" }}
-                  aria-label="search">
+                  aria-label="search"
+                >
                   <SearchIcon />
                 </IconButton>
               </Paper>

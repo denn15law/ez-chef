@@ -15,11 +15,10 @@ const getGroceryListRecipes = (req, res) => {
 
 const addGroceryListFromMyRecipes = (req, res) => {
   const user = req.params.user;
-  const recipeID = req.body.id;
+  const recipeID = req.params.id;
 
   GroceryList.findOne({ grocery_list_recipeID: recipeID, user: user }).then(
     (response) => {
-      console.log(response);
       if (!response) {
         const newGroceryList = new GroceryList({
           user: user,
@@ -32,10 +31,10 @@ const addGroceryListFromMyRecipes = (req, res) => {
           .then((response) => {
             res.json(response);
           })
-          .catch((err) => console.log(err.message));
+          .catch((err) => console.log("hello i am error"));
       } else {
         console.log("Already added!");
-        res.status(400).send("Already added to grocery list!");
+        res.status(400).send("Favourite already added");
       }
     }
   );
