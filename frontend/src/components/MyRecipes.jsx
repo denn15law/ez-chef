@@ -77,7 +77,7 @@ const MyRecipes = ({ user }) => {
               height: "100vh",
               overflow: "auto",
             }}>
-            <Typography variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h5" fontWeight="bold">
               My Recipes
             </Typography>
             <Grid
@@ -100,9 +100,6 @@ const MyRecipes = ({ user }) => {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
-                          ":hover": {
-                            boxShadow: 20,
-                          },
                         }}>
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Link href={url}>{recip.title}</Link>

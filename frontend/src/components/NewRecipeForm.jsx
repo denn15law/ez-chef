@@ -66,12 +66,8 @@ const NewRecipeForm = ({ user }) => {
             margin: "auto",
             maxWidth: 500,
             flexGrow: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "centre",
-            justifyContent: "centre",
           }}>
-          <Typography component="h1" variant="h5">
+          <Typography textAlign="center" variant="h5">
             Add a New Recipe
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -83,8 +79,7 @@ const NewRecipeForm = ({ user }) => {
                 flexGrow: 1,
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "centre",
-                justifyContent: "centre",
+                textAlign: "center",
               }}>
               <Controller
                 name="title"
@@ -200,7 +195,12 @@ const NewRecipeForm = ({ user }) => {
                 )}
               />
             </Box>
-            <ButtonGroup>
+            <ButtonGroup
+              sx={{
+                display: "flex",
+                alignItem: "center",
+                justifyContent: "center",
+              }}>
               <Button type="submit" color="success">
                 Submit
               </Button>

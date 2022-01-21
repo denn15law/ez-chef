@@ -27,6 +27,8 @@ const MyRecipeDetails = ({ user }) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
+              display: "flex",
+              flexDirection: "column",
             }}>
             <MyRecipeDetailsCard user={user} />
           </Box>

@@ -48,7 +48,7 @@ const GroceryList = ({ user }) => {
               overflow: "auto",
             }}
           >
-            <Typography variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h5" fontWeight="bold">
               My Grocery List
             </Typography>
             <Grid

@@ -32,6 +32,8 @@ const EditRecipe = (props) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
+              display: "flex",
+              flexDirection: "column",
             }}>
             <EditRecipeForm user={user} recipeID={recipeID} />
           </Box>

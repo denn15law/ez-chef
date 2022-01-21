@@ -28,6 +28,8 @@ const NewRecipe = (props) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
+              display: "flex",
+              flexDirection: "column",
             }}>
             <NewRecipeForm user={user} />
           </Box>

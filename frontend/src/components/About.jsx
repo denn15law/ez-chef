@@ -53,7 +53,9 @@ const About = ({ user }) => {
               overflow: "auto",
             }}
           >
-            <Typography variant="h5">About EZ Chef</Typography>
+            <Typography textAlign="center" variant="h5" fontWeight="bold">
+              About EZ Chef
+            </Typography>
             <Grid
               container
               p={2}
@@ -77,6 +79,7 @@ const About = ({ user }) => {
                     paddingTop: 2,
                     paddingLeft: 1,
                     paddingRight: 1,
+                    textAlign: "center",
                   }}
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
@@ -103,7 +106,9 @@ const About = ({ user }) => {
                 </Card>
               </Grid>
             </Grid>
-            <Typography variant="h5">Our Team</Typography>
+            <Typography textAlign="center" variant="h5">
+              Our Team
+            </Typography>
             <Grid
               container
               p={5}
