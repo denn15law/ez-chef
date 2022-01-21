@@ -4,25 +4,16 @@ import {
   AppBar,
   Avatar,
   Box,
-  Button,
-  CssBaseline,
-  Divider,
-  Drawer,
   Grid,
   IconButton,
   InputBase,
-  List,
   ListItem,
   ListItemIcon,
-  ListItemText,
   Menu,
   MenuItem,
-  Paper,
-  Toolbar,
   Tooltip,
   Typography,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import AddIcon from "@mui/icons-material/Add";
@@ -31,8 +22,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArticleIcon from "@mui/icons-material/Article";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
-import LocalDiningIcon from "@mui/icons-material/LocalDining";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Image from "../docs/logo.png";
 
 const Nav = ({ user }) => {
