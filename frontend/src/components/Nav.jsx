@@ -1,29 +1,30 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import {
+  Avatar,
   Box,
-  CssBaseline,
   Divider,
   Drawer,
+  Grid,
   IconButton,
+  InputBase,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography,
+  Tooltip,
 } from "@mui/material";
 import navbarList from "./navbarList";
 import MuiAppBar from "@mui/material/AppBar";
-import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import BrunchDiningIcon from "@mui/icons-material/BrunchDining";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Image from "../docs/logo.png";
 
 const drawerWidth = 240;
 
@@ -53,42 +54,82 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const Nav = (props) => {
-  const { user } = props;
+const Nav = ({ user }) => {
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const navigateHome = () => {
+    navigate("/");
+  };
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const replaceString = (str) => {
+    return str.replaceAll(" ", "+").replaceAll(",", "+");
+  };
+
+  const showSearch = () => {
+    navigate(`/search/results/${replaceString(search)}`);
+  };
 
   const toggleOpen = () => {
     setOpen(!open);
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} style={{ background: "#cb997e" }}>
-        <Toolbar>
+    <AppBar position="fixed" open={open} style={{ background: "#f5f5f5" }}>
+      <Box
+        sx={{
+          // p: 1,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          textAlign: "center",
+        }}>
+        <Grid sx={{ display: "flex", flexDirection: "row", width: 160 }}>
+          <Toolbar>
+            <Tooltip title="Your Menu">
+              <IconButton
+                aria-label="open drawer"
+                onClick={toggleOpen}
+                edge="start"
+                sx={{ mr: 2, ...(open && { display: "none" }) }}>
+                <Avatar sx={{ width: 35, height: 35 }}>
+                  <PersonIcon />
+                </Avatar>
+              </IconButton>
+            </Tooltip>
+          </Toolbar>
+        </Grid>
+        <Grid sx={{ display: "flex", flexDirection: "row" }}>
+          <img src={Image} alt="logo" height={35} onClick={navigateHome} />
+        </Grid>
+        <Grid sx={{ display: "flex", flexDirection: "row" }}>
+          <InputBase
+            sx={{
+              ml: 1,
+              flex: 1,
+              width: 160,
+            }}
+            placeholder="Search for Recipes"
+            inputProps={{ "aria-label": "search google maps" }}
+            value={search}
+            onChange={handleChange}
+          />
           <IconButton
-            aria-label="open drawer"
-            onClick={toggleOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
-            <MenuIcon color="primary" />
+            onClick={showSearch}
+            sx={{ p: "10px" }}
+            aria-label="search">
+            <SearchIcon />
           </IconButton>
-          <Typography
-            color="#000000"
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            EZ Chef
-          </Typography>
-          <Divider>
-            {user && <LogoutButton />}
-            {!user && <LoginButton />}
-          </Divider>
-        </Toolbar>
-      </AppBar>
+        </Grid>
+      </Box>
+
+      {/* Drawer function */}
       <Drawer
         sx={{
           width: drawerWidth,
@@ -101,13 +142,11 @@ const Nav = (props) => {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
-      >
+        open={open}>
         <DrawerHeader
           sx={{
             backgroundColor: "#b7b7a4",
-          }}
-        >
+          }}>
           <IconButton onClick={toggleOpen}>
             <ChevronLeftIcon />
           </IconButton>
@@ -117,23 +156,20 @@ const Nav = (props) => {
           sx={{
             backgroundColor: "#b7b7a4",
             height: "100%",
-          }}
-        >
+          }}>
           <ListItem
             sx={{
               "&:hover": {
                 backgroundColor: "#6b705c",
               },
-            }}
-          >
+            }}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <Link
               to="/"
               onClick={toggleOpen}
-              style={{ textDecoration: "none" }}
-            >
+              style={{ textDecoration: "none" }}>
               <ListItemText
                 primary="Home"
                 sx={{
@@ -151,14 +187,12 @@ const Nav = (props) => {
                     "&:hover": {
                       backgroundColor: "#6b705c",
                     },
-                  }}
-                >
+                  }}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <Link
                     to={item.path}
                     onClick={toggleOpen}
-                    style={{ textDecoration: "none" }}
-                  >
+                    style={{ textDecoration: "none" }}>
                     <ListItemText
                       primary={item.desc}
                       sx={{
@@ -174,16 +208,14 @@ const Nav = (props) => {
               "&:hover": {
                 backgroundColor: "#6b705c",
               },
-            }}
-          >
+            }}>
             <ListItemIcon>
               <BrunchDiningIcon />
             </ListItemIcon>
             <Link
               to="/about"
               onClick={toggleOpen}
-              style={{ textDecoration: "none" }}
-            >
+              style={{ textDecoration: "none" }}>
               <ListItemText
                 primary="About Us"
                 sx={{
@@ -193,22 +225,20 @@ const Nav = (props) => {
             </Link>
           </ListItem>
           {!user && (
-            <>
+            <List>
               <ListItem
                 sx={{
                   "&:hover": {
                     backgroundColor: "#6b705c",
                   },
-                }}
-              >
+                }}>
                 <ListItemIcon>
                   <PersonIcon />
                 </ListItemIcon>
                 <Link
                   to="/register"
                   onClick={toggleOpen}
-                  style={{ textDecoration: "none" }}
-                >
+                  style={{ textDecoration: "none" }}>
                   <ListItemText
                     primary="Sign Up"
                     sx={{
@@ -222,16 +252,14 @@ const Nav = (props) => {
                   "&:hover": {
                     backgroundColor: "#6b705c",
                   },
-                }}
-              >
+                }}>
                 <ListItemIcon>
                   <PersonIcon />
                 </ListItemIcon>
                 <Link
                   to="/login"
                   onClick={toggleOpen}
-                  style={{ textDecoration: "none" }}
-                >
+                  style={{ textDecoration: "none" }}>
                   <ListItemText
                     primary="Login"
                     sx={{
@@ -240,11 +268,16 @@ const Nav = (props) => {
                   />
                 </Link>
               </ListItem>
-            </>
+            </List>
+          )}
+          {user && (
+            <ListItem>
+              <LogoutButton />
+            </ListItem>
           )}
         </List>
       </Drawer>
-    </Box>
+    </AppBar>
   );
 };
 
