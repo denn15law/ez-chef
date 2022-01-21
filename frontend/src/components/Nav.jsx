@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Logout from "./Logout";
 import {
   AppBar,
@@ -10,12 +10,14 @@ import {
   Drawer,
   Grid,
   IconButton,
+  InputBase,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Menu,
   MenuItem,
+  Paper,
   Toolbar,
   Tooltip,
   Typography,
@@ -30,17 +32,60 @@ import ArticleIcon from "@mui/icons-material/Article";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Image from "../docs/logo.png";
 
 const Nav = ({ user }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [search, setSearch] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  function handleChange(e) {
+    setSearch(e.target.value);
+  }
+
+  const replaceString = (str) => {
+    return str.replaceAll(" ", "+").replaceAll(",", "+");
+  };
+
+  const showSearch = () => {
+    navigate(`/search/results/${replaceString(search)}`);
+  };
+
+  const navigateHome = () => {
+    navigate("/");
+  };
+
+  const navigateMyRecipes = () => {
+    navigate("/myrecipes");
+  };
+
+  const navigateNew = () => {
+    navigate("/new");
+  };
+
+  const navigateFavourites = () => {
+    navigate("/favourites");
+  };
+
+  const navigateGroceryList = () => {
+    navigate("/grocerylist");
+  };
+
+  const navigateRegister = () => {
+    navigate("/register");
+  };
+
+  const navigateLogin = () => {
+    navigate("login");
   };
 
   return (
@@ -54,15 +99,31 @@ const Nav = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
         }}>
-        <Grid display sx={{ display: "flex" }}>
-          <Link to="/search">
-            <SearchIcon sx={{ width: 30, height: 30 }} />
-          </Link>
+        <Grid sx={{ marginLeft: 1, display: "flex", flexDirection: "row" }}>
+          <img src={Image} alt="logo" height={35} onClick={navigateHome} />
         </Grid>
         <Grid sx={{ display: "flex", flexDirection: "row" }}>
-          <img src={Image} alt="logo" height={35} />
-        </Grid>
-        <Grid>
+          <Grid sx={{ display: "flex", flexDirection: "row" }}>
+            <Grid sx={{ display: "flex", flexDirection: "row" }}>
+              <InputBase
+                sx={{
+                  ml: 1,
+                  flex: 1,
+                  width: 150,
+                }}
+                placeholder="Search for Recipes"
+                inputProps={{ "aria-label": "search google maps" }}
+                value={search}
+                onChange={handleChange}
+              />
+              <IconButton
+                onClick={showSearch}
+                sx={{ p: "10px" }}
+                aria-label="search">
+                <SearchIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
           <Tooltip title="Your Pages">
             <IconButton
               onClick={handleClick}
@@ -71,7 +132,7 @@ const Nav = ({ user }) => {
               aria-controls={open ? "account-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}>
-              <Avatar sx={{ width: 35, height: 35 }}>
+              <Avatar sx={{ width: 35, height: 35, marginRight: 1 }}>
                 <PersonIcon />
               </Avatar>
             </IconButton>
@@ -111,63 +172,73 @@ const Nav = ({ user }) => {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
             <MenuItem onClick={handleClose}>
-              <ListItem>
+              <ListItem onClick={navigateHome}>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                <Link to="/">
-                  <ListItemText primary="Home" />
-                </Link>
+                <Typography>Home</Typography>
               </ListItem>
             </MenuItem>
-            <MenuItem onClick={handleClose}>
-              {user && (
-                <ListItem>
+            {user && (
+              <MenuItem onClick={handleClose}>
+                <ListItem onClick={navigateMyRecipes}>
                   <ListItemIcon>
                     <MenuBookIcon />
                   </ListItemIcon>
-                  <Link to="/myrecipes">
-                    <ListItemText primary="My Recipes" />
-                  </Link>
+                  <Typography>My Recipes</Typography>
                 </ListItem>
-              )}
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              {user && (
-                <ListItem>
+              </MenuItem>
+            )}
+            {user && (
+              <MenuItem onClick={handleClose}>
+                <ListItem onClick={navigateNew}>
                   <ListItemIcon>
                     <AddIcon />
                   </ListItemIcon>
-                  <Link to="/new">
-                    <ListItemText primary="Add New Recipe" />
-                  </Link>
+                  <Typography>Add New Recipe</Typography>
                 </ListItem>
-              )}
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              {user && (
-                <ListItem>
+              </MenuItem>
+            )}
+            {user && (
+              <MenuItem onClick={handleClose}>
+                <ListItem onClick={navigateFavourites}>
                   <ListItemIcon>
                     <StarIcon />
                   </ListItemIcon>
-                  <Link to="/favourites">
-                    <ListItemText primary="Favourite Recipes" />
-                  </Link>
+                  <Typography>My Favourites</Typography>
                 </ListItem>
-              )}
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              {user && (
-                <ListItem>
+              </MenuItem>
+            )}
+            {user && (
+              <MenuItem onClick={handleClose}>
+                <ListItem onClick={navigateGroceryList}>
                   <ListItemIcon>
                     <ShoppingCartIcon />
                   </ListItemIcon>
-                  <Link to="/grocerylist">
-                    <ListItemText primary="My Grocery List" />
-                  </Link>
+                  <Typography>My Grocery List</Typography>
                 </ListItem>
-              )}
-            </MenuItem>
+              </MenuItem>
+            )}
+            {!user && (
+              <MenuItem onClick={handleClose}>
+                <ListItem onClick={navigateRegister}>
+                  <ListItemIcon>
+                    <ArticleIcon />
+                  </ListItemIcon>
+                  <Typography>Register</Typography>
+                </ListItem>
+              </MenuItem>
+            )}
+            {!user && (
+              <MenuItem onClick={handleClose}>
+                <ListItem onClick={navigateLogin}>
+                  <ListItemIcon>
+                    <PersonIcon />
+                  </ListItemIcon>
+                  <Typography>Login</Typography>
+                </ListItem>
+              </MenuItem>
+            )}
             <MenuItem onClick={handleClose}>{user && <Logout />}</MenuItem>
           </Menu>
         </Grid>
