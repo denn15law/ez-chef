@@ -49,7 +49,7 @@ const Index = () => {
   return (
     <Grid>
       <CssBaseline />
-      <Grid container spacing={5}>
+      <Grid container spacing={5} marginTop={8}>
         <ScrollContainer>
           <ScrollPage page={0}>
             <Paper style={styles.paperContainer}>
@@ -61,7 +61,8 @@ const Index = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                  }}>
+                  }}
+                >
                   <TypeWriterEffect
                     p={10}
                     color="white"
@@ -105,7 +106,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Search Recipes </Typography>
                   </CardContent>
@@ -123,7 +125,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Recipe Details </Typography>
                   </CardContent>
@@ -150,7 +153,8 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around">
+                justifyContent="space-around"
+              >
                 <Card
                   sx={{
                     height: "100%",
@@ -159,7 +163,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Create Recipes </Typography>
                   </CardContent>
@@ -177,7 +182,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">View Your Recipes</Typography>
                   </CardContent>
@@ -204,7 +210,8 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around">
+                justifyContent="space-around"
+              >
                 <Card
                   sx={{
                     height: "100%",
@@ -213,7 +220,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">My Favourite Recipes</Typography>
                   </CardContent>
@@ -231,7 +239,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">My Grocery List</Typography>
                   </CardContent>

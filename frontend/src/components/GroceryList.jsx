@@ -11,8 +11,9 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    height: "100vh",
+    overflow: "hidden",
+
+    height: "100%",
   },
 };
 
@@ -35,22 +36,31 @@ const GroceryList = ({ user }) => {
   }, []);
 
   return (
-    <Grid>
+    <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Paper style={styles.paperContainer}>
-        <Grid container spacing={4}>
+      <Grid xs={8.25}>
+        <Paper style={styles.paperContainer}></Paper>
+      </Grid>
+      <Grid xs={3.75}>
+        <Grid container spacing={4} marginTop={8} marginLeft={0}>
           <Box
             component="main"
             sx={{
-              p: 5,
-              flexGrow: 1,
-              height: "100vh",
-              overflow: "auto",
+              paddingTop: 8,
+              flexWrap: "wrap",
+              minHeight: "100vh",
+              overflow: "hidden",
+              alignContent: "center",
+              justifyContent: "center",
             }}
           >
-            <Typography textAlign="center" variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h4" fontWeight="bold">
               My Grocery List
+              {myGroceryList.length ? null : (
+                <h6>There are no recipes in your grocery list!</h6>
+              )}
             </Typography>
+
             <Grid
               container
               p={2}
@@ -63,7 +73,7 @@ const GroceryList = ({ user }) => {
             </Grid>
           </Box>
         </Grid>
-      </Paper>
+      </Grid>
     </Grid>
   );
 };

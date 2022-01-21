@@ -19,7 +19,7 @@ const RecipeDetails = ({ user }) => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} marginTop={8}>
           <Box
             component="main"
             sx={{
@@ -29,7 +29,8 @@ const RecipeDetails = ({ user }) => {
               overflow: "auto",
               display: "flex",
               flexDirection: "column",
-            }}>
+            }}
+          >
             <RecipeDetailsCard user={user} />
           </Box>
         </Grid>

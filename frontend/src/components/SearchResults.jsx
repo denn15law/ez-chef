@@ -72,6 +72,7 @@ const SearchForm = () => {
         <Grid
           container
           spacing={4}
+          marginTop={8}
           sx={{
             p: 2,
             flexGrow: 1,

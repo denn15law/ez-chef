@@ -30,7 +30,12 @@ const IngredientList = ({ myGroceryList }) => {
         justifyContent="center"
         alignItems="center"
       >
-        <Typography variant="h5">List of Ingredients</Typography>
+        {myGroceryList.length ? (
+          <Typography variant="h5" fontWeight="bold">
+            List of Ingredients
+          </Typography>
+        ) : null}
+
         <Box
           container
           p={2}
