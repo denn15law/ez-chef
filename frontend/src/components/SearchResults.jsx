@@ -116,6 +116,14 @@ const SearchForm = () => {
               </IconButton>
             </Paper>
           </Box>
+          <Grid p={1}>
+            {recipeData.length ? (
+              <Typography variant="h8" fontWeight="bold">
+                Now displaying recipes containing:{" "}
+                {searched.replaceAll("++", "+").replaceAll("+", ", ")}
+              </Typography>
+            ) : null}
+          </Grid>
           <Box
             component="main"
             sx={{
@@ -127,14 +135,6 @@ const SearchForm = () => {
               flexDirection: "column",
               alignItems: "center",
             }}>
-            <Grid>
-              {recipeData.length ? (
-                <Typography variant="h8" fontWeight="bold">
-                  Now displaying recipes containing:{" "}
-                  {searched.replaceAll("++", "+").replaceAll("+", ", ")}
-                </Typography>
-              ) : null}
-            </Grid>
             <Grid
               container
               p={5}
