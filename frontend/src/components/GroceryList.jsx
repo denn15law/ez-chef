@@ -38,7 +38,7 @@ const GroceryList = ({ user }) => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
@@ -46,8 +46,7 @@ const GroceryList = ({ user }) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
-            }}
-          >
+            }}>
             <Typography textAlign="center" variant="h5" fontWeight="bold">
               My Grocery List
             </Typography>
@@ -56,8 +55,7 @@ const GroceryList = ({ user }) => {
               p={2}
               direction="row"
               justifyContent="space-evenly"
-              alignItems="top"
-            >
+              alignItems="top">
               <RecipesList myGroceryList={myGroceryList} user={user} />
               <IngredientsList myGroceryList={myGroceryList} />
             </Grid>

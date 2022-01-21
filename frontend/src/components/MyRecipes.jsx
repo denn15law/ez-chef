@@ -68,7 +68,7 @@ const MyRecipes = ({ user }) => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
