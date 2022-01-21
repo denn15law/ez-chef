@@ -99,6 +99,9 @@ const Favourites = ({ user }) => {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
+                          ":hover": {
+                            boxShadow: 20,
+                          },
                         }}>
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Link href={url}>{recip.favourite_title}</Link>

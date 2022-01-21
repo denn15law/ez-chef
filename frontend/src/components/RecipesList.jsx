@@ -38,8 +38,7 @@ const RecipesList = ({ myGroceryList, user }) => {
         width="50vw"
         direction="row"
         justifyContent="center"
-        alignItems="center"
-      >
+        alignItems="center">
         {myGroceryList.length ? (
           <Typography variant="h5" fontWeight="bold">
             List of Recipes
@@ -52,8 +51,7 @@ const RecipesList = ({ myGroceryList, user }) => {
           spacing={{ xs: 2, md: 2 }}
           direction="column"
           justifyContent="center"
-          alignItems="center"
-        >
+          alignItems="center">
           {myGroceryList.length
             ? myGroceryList.map((groceryList) => {
                 let url = "";
@@ -71,8 +69,10 @@ const RecipesList = ({ myGroceryList, user }) => {
                         flexDirection: "row",
                         justifyContent: "center",
                         alignItems: "center",
-                      }}
-                    >
+                        ":hover": {
+                          boxShadow: 10,
+                        },
+                      }}>
                       <CardContent sx={{ flexGrow: 1 }}>
                         <Link href={url}>{groceryList.grocery_list_title}</Link>
                       </CardContent>
@@ -83,8 +83,7 @@ const RecipesList = ({ myGroceryList, user }) => {
                             deleteGroceryList(
                               groceryList.grocery_list_recipeID
                             );
-                          }}
-                        >
+                          }}>
                           Delete
                         </Button>
                       </CardActions>
