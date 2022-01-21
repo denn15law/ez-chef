@@ -79,7 +79,8 @@ const SearchForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          }}>
+          }}
+        >
           <Box
             component="main"
             sx={{
@@ -88,7 +89,8 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}>
+            }}
+          >
             <Typography variant="h5" fontWeight="bold">
               Search For Recipes
             </Typography>
@@ -100,7 +102,8 @@ const SearchForm = () => {
                 display: "flex",
                 alignItems: "center",
                 width: 600,
-              }}>
+              }}
+            >
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Enter Ingredients or Keywords"
@@ -111,7 +114,8 @@ const SearchForm = () => {
               <IconButton
                 onClick={reloadSearch}
                 sx={{ p: "10px" }}
-                aria-label="search">
+                aria-label="search"
+              >
                 <SearchIcon />
               </IconButton>
             </Paper>
@@ -126,7 +130,8 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}>
+            }}
+          >
             <Grid>
               {recipeData.length ? (
                 <Typography variant="h8" fontWeight="bold">
@@ -142,7 +147,8 @@ const SearchForm = () => {
               columns={{ xs: 4, sm: 8, md: 16 }}
               direction="row"
               justifyContent="center"
-              alignItems="center">
+              alignItems="center"
+            >
               {recipeData.length
                 ? recipeData
                     .sort((a, b) =>
@@ -159,7 +165,8 @@ const SearchForm = () => {
                               flexDirection: "column",
                               justifyContent: "center",
                               alignItems: "center",
-                            }}>
+                            }}
+                          >
                             <CardContent sx={{ flexGrow: 1 }}>
                               <Link href={url}>{recip.title}</Link>
                             </CardContent>
