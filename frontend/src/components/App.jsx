@@ -14,7 +14,6 @@ import MyRecipeDetails from "./MyRecipeDetails";
 import SearchResults from "./SearchResults";
 import EditRecipe from "./EditRecipe";
 import About from "./About";
-import "./App.css";
 
 const App = () => {
   const [user, setUser] = useState(null);
