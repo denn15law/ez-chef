@@ -12,7 +12,6 @@ const styles = {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     overflow: "hidden",
-
     height: "100%",
   },
 };
@@ -52,11 +51,14 @@ const GroceryList = ({ user }) => {
               overflow: "hidden",
               alignContent: "center",
               justifyContent: "center",
-            }}>
+            }}
+          >
             <Typography textAlign="center" variant="h4" fontWeight="bold">
               My Grocery List
               {myGroceryList.length ? null : (
-                <h6>There are no recipes in your grocery list!</h6>
+                <h6 textAlign="center">
+                  There are no recipes in your grocery list!
+                </h6>
               )}
             </Typography>
 
@@ -65,7 +67,8 @@ const GroceryList = ({ user }) => {
               p={2}
               direction="row"
               justifyContent="space-evenly"
-              alignItems="top">
+              alignItems="top"
+            >
               <RecipesList myGroceryList={myGroceryList} user={user} />
               <IngredientsList myGroceryList={myGroceryList} />
             </Grid>

@@ -10,20 +10,22 @@ import Person from "@mui/icons-material/Person";
 
 const navbarList = [
   {
+    icon: <Search />,
+    desc: "Search For Recipes",
+    path: "/search",
+  },
+  {
     icon: <MenuBook />,
     desc: "My Recipes",
     path: "/myrecipes",
   },
+
   {
     icon: <Add />,
     desc: "Create New Recipe",
     path: "/new",
   },
-  {
-    icon: <Search />,
-    desc: "Search For Recipes",
-    path: "/search",
-  },
+
   {
     icon: <Star />,
     desc: "My Favourites",
