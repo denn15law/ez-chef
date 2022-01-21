@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-alert";
 
@@ -47,6 +48,10 @@ const MyRecipeDetailsCard = ({ user }) => {
     else str = str.toString();
     return str.replace(/(<([^>]+)>)/gi, "");
   }
+
+  const onClickEdit = (id) => {
+    navigate(`/edit/${user}/${id}`);
+  };
 
   const onClickFavourite = () => {
     if (user) {
@@ -95,6 +100,8 @@ const MyRecipeDetailsCard = ({ user }) => {
           margin: "auto",
           maxWidth: 600,
           flexGrow: 1,
+          paddingLeft: 0,
+          paddingRight: 0,
         }}>
         <Box
           component="main"
@@ -105,6 +112,7 @@ const MyRecipeDetailsCard = ({ user }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            textAlign: "center",
           }}>
           <Typography
             component="h1"
@@ -117,10 +125,16 @@ const MyRecipeDetailsCard = ({ user }) => {
               component="img"
               src={details.image_url}
               alt="recipe"
-              style={{ height: 250, width: 250 }}
+              style={{ height: 400, width: 750 }}
             />
           </Grid>
           <ButtonGroup>
+            <Button
+              onClick={() => {
+                onClickEdit(details._id);
+              }}>
+              <EditIcon />
+            </Button>
             <Button onClick={onClickFavourite}>
               <StarIcon />
             </Button>
@@ -129,7 +143,7 @@ const MyRecipeDetailsCard = ({ user }) => {
             </Button>
           </ButtonGroup>
           <Grid sx={{ p: 2 }}>
-            <Typography component="h2" variant="h5">
+            <Typography fontWeight="bold" variant="h6">
               Recipe Ingredients
             </Typography>
             <Grid sx={{ p: 2 }}>
@@ -179,7 +193,9 @@ const MyRecipeDetailsCard = ({ user }) => {
             </Grid>
           </Grid>
           <Grid sx={{ p: 1 }}>
-            <Typography variant="h5">Cooking Instructions</Typography>
+            <Typography fontWeight="bold" variant="h6">
+              Cooking Instructions
+            </Typography>
             <ol type="1">
               <Grid
                 sx={{

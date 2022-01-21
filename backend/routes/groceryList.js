@@ -6,7 +6,7 @@ const {
   addGroceryListFromMyRecipes,
   addGroceryListFromApi,
   deleteGroceryListById,
-} = require("../controllers/groceryList2");
+} = require("../controllers/groceryList");
 
 // router.get("/ingredients/:user_id", getUserGroceryItems);
 // router.get("/recipes/:user_id", getUserGroceryRecipes);

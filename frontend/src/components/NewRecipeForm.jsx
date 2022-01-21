@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import {
-  Avatar,
   Button,
   ButtonGroup,
   Box,
@@ -11,13 +10,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useForm, useFieldArray, Controller, setValue } from "react-hook-form";
+import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const NewRecipeForm = ({ user }) => {
   const navigate = useNavigate();
 
-  const { control, handleSubmit, reset, setValue } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       title: "",
       instructions: "",
@@ -67,12 +66,8 @@ const NewRecipeForm = ({ user }) => {
             margin: "auto",
             maxWidth: 500,
             flexGrow: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "centre",
-            justifyContent: "centre",
           }}>
-          <Typography component="h1" variant="h5">
+          <Typography textAlign="center" variant="h5">
             Add a New Recipe
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -84,8 +79,7 @@ const NewRecipeForm = ({ user }) => {
                 flexGrow: 1,
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "centre",
-                justifyContent: "centre",
+                textAlign: "center",
               }}>
               <Controller
                 name="title"
@@ -201,7 +195,12 @@ const NewRecipeForm = ({ user }) => {
                 )}
               />
             </Box>
-            <ButtonGroup>
+            <ButtonGroup
+              sx={{
+                display: "flex",
+                alignItem: "center",
+                justifyContent: "center",
+              }}>
               <Button type="submit" color="success">
                 Submit
               </Button>

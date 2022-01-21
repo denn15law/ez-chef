@@ -96,6 +96,8 @@ const RecipeDetails = ({ user }) => {
           margin: "auto",
           maxWidth: 600,
           flexGrow: 1,
+          paddingLeft: 0,
+          paddingRight: 0,
         }}>
         <Box
           component="main"
@@ -106,6 +108,7 @@ const RecipeDetails = ({ user }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            textAlign: "center",
           }}>
           <Typography
             component="h1"
@@ -118,7 +121,7 @@ const RecipeDetails = ({ user }) => {
               component="img"
               src={details.image}
               alt="recipe"
-              style={{ height: 250, width: 250 }}
+              style={{ height: 400, width: 750 }}
             />
           </Grid>
           <ButtonGroup>
@@ -130,7 +133,7 @@ const RecipeDetails = ({ user }) => {
             </Button>
           </ButtonGroup>
           <Grid sx={{ p: 2 }}>
-            <Typography component="h2" variant="h5">
+            <Typography fontWeight="bold" variant="h6">
               Recipe Ingredients
             </Typography>
             <Grid sx={{ p: 2 }}>
@@ -180,7 +183,9 @@ const RecipeDetails = ({ user }) => {
             </Grid>
           </Grid>
           <Grid sx={{ p: 1 }}>
-            <Typography variant="h5">Cooking Instructions</Typography>
+            <Typography fontWeight="bold" variant="h6">
+              Cooking Instructions
+            </Typography>
             <ol type="1">
               <Grid
                 sx={{
