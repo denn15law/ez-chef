@@ -62,7 +62,7 @@ const Favourites = ({ user }) => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
@@ -71,7 +71,7 @@ const Favourites = ({ user }) => {
               height: "100vh",
               overflow: "auto",
             }}>
-            <Typography variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h5" fontWeight="bold">
               My Favourite Recipes
             </Typography>
             <Grid

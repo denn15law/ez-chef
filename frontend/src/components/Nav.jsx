@@ -15,6 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import AddIcon from "@mui/icons-material/Add";
 import StarIcon from "@mui/icons-material/Star";
@@ -52,6 +53,10 @@ const Nav = ({ user }) => {
 
   const navigateHome = () => {
     navigate("/");
+  };
+
+  const navigateAbout = () => {
+    navigate("/about");
   };
 
   const navigateMyRecipes = () => {
@@ -169,6 +174,14 @@ const Nav = ({ user }) => {
                 <Typography>Home</Typography>
               </ListItem>
             </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem onClick={navigateAbout}>
+                <ListItemIcon>
+                  <InfoIcon />
+                </ListItemIcon>
+                <Typography>About Us</Typography>
+              </ListItem>
+            </MenuItem>
             {user && (
               <MenuItem onClick={handleClose}>
                 <ListItem onClick={navigateMyRecipes}>
@@ -229,7 +242,11 @@ const Nav = ({ user }) => {
                 </ListItem>
               </MenuItem>
             )}
-            <MenuItem onClick={handleClose}>{user && <Logout />}</MenuItem>
+            {user && (
+              <MenuItem onClick={handleClose}>
+                <Logout />
+              </MenuItem>
+            )}
           </Menu>
         </Grid>
       </Box>

@@ -42,7 +42,7 @@ const Index = () => {
   return (
     <Grid>
       <CssBaseline />
-      <Grid container spacing={5}>
+      <Grid container marginTop={8} spacing={5}>
         <ScrollContainer>
           <ScrollPage page={0}>
             <Paper style={styles.paperContainer}>

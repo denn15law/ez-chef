@@ -106,6 +106,7 @@ const RecipeDetails = ({ user }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            textAlign: "center",
           }}>
           <Typography
             component="h1"

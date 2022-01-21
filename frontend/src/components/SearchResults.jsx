@@ -71,52 +71,20 @@ const SearchForm = () => {
       <Paper style={styles.paperContainer}>
         <Grid
           container
+          marginTop={8}
           spacing={4}
           sx={{
-            p: 2,
+            p: 5,
             flexGrow: 1,
             overflow: "auto",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}>
-          <Box
-            component="main"
-            sx={{
-              p: 5,
-              flexGrow: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}>
-            <Typography variant="h5" fontWeight="bold">
-              Search For Recipes
-            </Typography>
-            <Paper
-              component="form"
-              sx={{
-                marginTop: 2,
-                p: "2px 4px",
-                display: "flex",
-                alignItems: "center",
-                width: 600,
-              }}>
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Enter Ingredients or Keywords"
-                inputProps={{ "aria-label": "search google maps" }}
-                value={search}
-                onChange={handleChange}
-              />
-              <IconButton
-                onClick={reloadSearch}
-                sx={{ p: "10px" }}
-                aria-label="search">
-                <SearchIcon />
-              </IconButton>
-            </Paper>
-          </Box>
-          <Grid p={1}>
+          <Typography variant="h5" fontWeight="bold">
+            Search Results
+          </Typography>
+          <Grid p={5}>
             {recipeData.length ? (
               <Typography variant="h8" fontWeight="bold">
                 Now displaying recipes containing:{" "}
@@ -127,7 +95,7 @@ const SearchForm = () => {
           <Box
             component="main"
             sx={{
-              p: 4,
+              p: 3,
               flexGrow: 1,
               height: "65vh",
               overflow: "auto",

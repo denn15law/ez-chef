@@ -95,6 +95,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
             flexDirection: "column",
             alignItems: "centre",
             justifyContent: "centre",
+            textAlign: "center",
           }}>
           <Typography component="h1" variant="h5">
             Edit Recipe

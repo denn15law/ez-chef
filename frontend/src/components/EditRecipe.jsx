@@ -24,7 +24,7 @@ const EditRecipe = (props) => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
@@ -32,6 +32,8 @@ const EditRecipe = (props) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
+              display: "flex",
+              flexDirection: "column",
             }}>
             <EditRecipeForm user={user} recipeID={recipeID} />
           </Box>
