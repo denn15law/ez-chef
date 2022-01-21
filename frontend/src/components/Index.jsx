@@ -1,8 +1,6 @@
 import React from "react";
 import {
-  Box,
   Card,
-  CardActionArea,
   CardContent,
   CardMedia,
   CssBaseline,
@@ -16,13 +14,8 @@ import {
   ScrollPage,
   batch,
   Fade,
-  FadeIn,
-  Move,
-  MoveIn,
   MoveOut,
   Sticky,
-  StickyIn,
-  ZoomIn,
 } from "react-scroll-motion";
 
 import TypeWriterEffect from "react-typewriter-effect";

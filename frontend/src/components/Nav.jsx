@@ -177,6 +177,27 @@ const Nav = ({ user }) => {
               />
             </Link>
           </ListItem>
+          <ListItem
+            sx={{
+              "&:hover": {
+                backgroundColor: "#6b705c",
+              },
+            }}>
+            <ListItemIcon>
+              <BrunchDiningIcon />
+            </ListItemIcon>
+            <Link
+              to="/about"
+              onClick={toggleOpen}
+              style={{ textDecoration: "none" }}>
+              <ListItemText
+                primary="About Us"
+                sx={{
+                  color: "white",
+                }}
+              />
+            </Link>
+          </ListItem>
           {user &&
             navbarList.map((item, index) => {
               return (
@@ -202,27 +223,7 @@ const Nav = ({ user }) => {
                 </ListItem>
               );
             })}
-          <ListItem
-            sx={{
-              "&:hover": {
-                backgroundColor: "#6b705c",
-              },
-            }}>
-            <ListItemIcon>
-              <BrunchDiningIcon />
-            </ListItemIcon>
-            <Link
-              to="/about"
-              onClick={toggleOpen}
-              style={{ textDecoration: "none" }}>
-              <ListItemText
-                primary="About Us"
-                sx={{
-                  color: "white",
-                }}
-              />
-            </Link>
-          </ListItem>
+
           {!user && (
             <List>
               <ListItem
