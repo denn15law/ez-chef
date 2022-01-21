@@ -41,55 +41,59 @@ const SearchForm = () => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4}>
+        <Grid
+          container
+          spacing={4}
+          sx={{
+            p: 2,
+            flexGrow: 1,
+            overflow: "auto",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Box
             component="main"
             sx={{
-              p: 1,
+              p: 5,
               flexGrow: 1,
-              height: "100vh",
-              overflow: "auto",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <Grid
+            <Typography variant="h4" fontWeight="bold">
+              Search For Recipes
+            </Typography>
+            <Paper
+              component="form"
               sx={{
-                p: 20,
-                flexGrow: 1,
-                overflow: "auto",
+                marginTop: 2,
+                p: "2px 4px",
                 display: "flex",
-                flexDirection: "column",
                 alignItems: "center",
+                width: 600,
+                ":hover": {
+                  boxShadow: 20,
+                },
               }}
             >
-              <Typography variant="h4" style={{ fontWeight: "bold" }}>
-                Search For Recipes
-              </Typography>
-              <Paper
-                component="form"
-                sx={{
-                  marginTop: 5,
-                  p: "2px 4px",
-                  display: "flex",
-                  alignItems: "center",
-                  width: 600,
-                }}
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Enter Ingredients or Keywords"
+                inputProps={{ "aria-label": "search google maps" }}
+                value={search}
+                onChange={handleChange}
+              />
+              <IconButton
+                onClick={showSearch}
+                sx={{ p: "10px" }}
+                aria-label="search"
               >
-                <InputBase
-                  sx={{ ml: 1, flex: 1 }}
-                  placeholder="Enter Ingredients or Keywords"
-                  inputProps={{ "aria-label": "search google maps" }}
-                  value={search}
-                  onChange={handleChange}
-                />
-                <IconButton
-                  onClick={showSearch}
-                  sx={{ p: "10px" }}
-                  aria-label="search"
-                >
-                  <SearchIcon />
-                </IconButton>
-              </Paper>
-            </Grid>
+                <SearchIcon />
+              </IconButton>
+            </Paper>
           </Box>
         </Grid>
       </Paper>

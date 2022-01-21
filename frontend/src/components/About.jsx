@@ -121,6 +121,9 @@ const About = ({ user }) => {
                     justifyContent: "center",
                     alignItems: "center",
                     height: 220,
+                    ":hover": {
+                      boxShadow: 20,
+                    },
                   }}
                 >
                   <CardMedia
@@ -151,6 +154,9 @@ const About = ({ user }) => {
                     justifyContent: "center",
                     alignItems: "center",
                     height: 220,
+                    ":hover": {
+                      boxShadow: 20,
+                    },
                   }}
                 >
                   <CardMedia
@@ -181,6 +187,9 @@ const About = ({ user }) => {
                     justifyContent: "center",
                     alignItems: "center",
                     height: 220,
+                    ":hover": {
+                      boxShadow: 20,
+                    },
                   }}
                 >
                   <CardMedia
