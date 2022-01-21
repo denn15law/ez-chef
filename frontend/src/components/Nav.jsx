@@ -73,6 +73,7 @@ const Nav = ({ user }) => {
 
   const showSearch = () => {
     navigate(`/search/results/${replaceString(search)}`);
+    window.location.reload();
   };
 
   const toggleOpen = () => {
@@ -128,8 +129,6 @@ const Nav = ({ user }) => {
           </IconButton>
         </Grid>
       </Box>
-
-      {/* Drawer function */}
       <Drawer
         sx={{
           width: drawerWidth,
