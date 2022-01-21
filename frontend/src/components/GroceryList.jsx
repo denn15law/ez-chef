@@ -12,7 +12,6 @@ const styles = {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     overflow: "hidden",
-
     height: "100%",
   },
 };

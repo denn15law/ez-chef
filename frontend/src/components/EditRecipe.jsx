@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, CssBaseline, Grid, Paper } from "@mui/material";
 import EditRecipeForm from "./EditRecipeForm";
-import Image from "../docs/new-recipe-background.jpg";
+import Image from "../docs/background-option1.jpg";
 
 const styles = {
   paperContainer: {
@@ -9,11 +9,10 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    height: "100vh",
+    overflow: "hidden",
+    height: "100%",
   },
 };
-
 const EditRecipe = (props) => {
   const { user } = props;
 
@@ -21,9 +20,12 @@ const EditRecipe = (props) => {
   const recipeID = url.split(`/edit/${user}/`)[1];
 
   return (
-    <Grid>
+    <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Paper style={styles.paperContainer}>
+      <Grid xs={7.5}>
+        <Paper style={styles.paperContainer}></Paper>
+      </Grid>
+      <Grid xs={4.5}>
         <Grid container spacing={4} marginTop={8}>
           <Box
             component="main"
@@ -39,7 +41,7 @@ const EditRecipe = (props) => {
             <EditRecipeForm user={user} recipeID={recipeID} />
           </Box>
         </Grid>
-      </Paper>
+      </Grid>
     </Grid>
   );
 };

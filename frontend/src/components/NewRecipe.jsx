@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, CssBaseline, Grid, Paper } from "@mui/material";
+import { Box, CssBaseline, Grid, Paper, Sizing } from "@mui/material";
 import NewRecipeForm from "./NewRecipeForm";
-import Image from "../docs/new-recipe-background.jpg";
+import Image from "../docs/breakfast.jpg";
 
 const styles = {
   paperContainer: {
@@ -9,17 +9,17 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    height: "100vh",
+    overflow: "hidden",
+    height: "100%",
   },
 };
 
 const NewRecipe = (props) => {
   const { user } = props;
   return (
-    <Grid>
+    <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Paper style={styles.paperContainer}>
+      <Grid xs={4.5}>
         <Grid container spacing={4} marginTop={8}>
           <Box
             component="main"
@@ -35,7 +35,10 @@ const NewRecipe = (props) => {
             <NewRecipeForm user={user} />
           </Box>
         </Grid>
-      </Paper>
+      </Grid>
+      <Grid xs={7.5}>
+        <Paper style={styles.paperContainer}></Paper>
+      </Grid>
     </Grid>
   );
 };
