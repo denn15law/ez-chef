@@ -22,8 +22,8 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    height: "100vh",
+    width: "100%",
+    height: "100%",
   },
 };
 
@@ -74,9 +74,10 @@ const MyRecipes = ({ user }) => {
             sx={{
               p: 5,
               flexGrow: 1,
-              height: "100vh",
+              height: "93vh",
               overflow: "auto",
-            }}>
+            }}
+          >
             <Typography textAlign="center" variant="h5" fontWeight="bold">
               My Recipes
             </Typography>
@@ -87,7 +88,8 @@ const MyRecipes = ({ user }) => {
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
               justifyContent="center"
-              alignItems="center">
+              alignItems="center"
+            >
               {myRecipes.length ? (
                 myRecipes.map((recip) => {
                   const url = `http://localhost:3000/myRecipes/${recip._id}`;
@@ -103,7 +105,8 @@ const MyRecipes = ({ user }) => {
                           ":hover": {
                             boxShadow: 20,
                           },
-                        }}>
+                        }}
+                      >
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Link href={url}>{recip.title}</Link>
                         </CardContent>
@@ -119,7 +122,8 @@ const MyRecipes = ({ user }) => {
                             onClick={() => {
                               editRecipe(recip._id);
                             }}
-                            size="small">
+                            size="small"
+                          >
                             Edit
                           </Button>
                           <Button
@@ -127,7 +131,8 @@ const MyRecipes = ({ user }) => {
                             onClick={() => {
                               deleteRecipe(recip._id);
                             }}
-                            size="small">
+                            size="small"
+                          >
                             Delete
                           </Button>
                         </CardActions>
@@ -144,14 +149,16 @@ const MyRecipes = ({ user }) => {
                   lg={4}
                   style={{
                     textAlign: "center",
-                  }}>
+                  }}
+                >
                   <Box
                     sx={{
                       p: 10,
                       flexGrow: 1,
                       height: "100vh",
                       overflow: "auto",
-                    }}>
+                    }}
+                  >
                     <Button href="/new" variant="contained" size="small">
                       Create New Recipes
                     </Button>

@@ -15,6 +15,7 @@ import StarIcon from "@mui/icons-material/Star";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-alert";
+import { textAlign } from "@mui/system";
 
 const RecipeDetails = ({ user }) => {
   const [details, setDetails] = useState({});
@@ -90,130 +91,127 @@ const RecipeDetails = ({ user }) => {
   return (
     <Grid>
       <CssBaseline />
-      <Paper
+      <Box
+        component="main"
         sx={{
-          p: 2,
-          margin: "auto",
-          maxWidth: 600,
           flexGrow: 1,
-          paddingLeft: 0,
-          paddingRight: 0,
-        }}>
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            overflow: "auto",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-          }}>
-          <Typography
-            component="h1"
-            variant="h5"
-            sx={{ p: 1, fontWeight: "bold" }}>
-            {details.title}
+          overflow: "auto",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          marginRight: -5.5,
+        }}
+      >
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{ p: 1, fontWeight: "bold" }}
+        >
+          {details.title}
+        </Typography>
+        <Grid sx={{ p: 2 }}>
+          <CardMedia
+            component="img"
+            src={details.image}
+            alt="recipe"
+            style={{ height: 400, width: 500 }}
+          />
+        </Grid>
+        <ButtonGroup>
+          <Button onClick={onClickFavourite}>
+            <StarIcon />
+          </Button>
+          <Button onClick={onClickGrocery}>
+            <AddShoppingCartIcon />
+          </Button>
+        </ButtonGroup>
+        <Grid sx={{ p: 2 }}>
+          <Typography fontWeight="bold" variant="h6">
+            Recipe Ingredients
           </Typography>
-          <Grid sx={{ p: 2 }}>
-            <CardMedia
-              component="img"
-              src={details.image}
-              alt="recipe"
-              style={{ height: 400, width: 750 }}
-            />
+          <Grid sx={{ p: 2, textAlign: "left" }}>
+            {Object.values(details).length > 0
+              ? details.extendedIngredients.map((ing) => {
+                  return (
+                    <li key={ing.id}>
+                      {ing.amount * servingRatio} {ing.unit} {ing.name}
+                    </li>
+                  );
+                })
+              : null}
           </Grid>
-          <ButtonGroup>
-            <Button onClick={onClickFavourite}>
-              <StarIcon />
-            </Button>
-            <Button onClick={onClickGrocery}>
-              <AddShoppingCartIcon />
-            </Button>
-          </ButtonGroup>
-          <Grid sx={{ p: 2 }}>
-            <Typography fontWeight="bold" variant="h6">
-              Recipe Ingredients
+          <Grid
+            x={{
+              p: 1,
+            }}
+          >
+            <Typography>
+              Current Servings: {details.servings * servingRatio}
             </Typography>
-            <Grid sx={{ p: 2 }}>
-              {Object.values(details).length > 0
-                ? details.extendedIngredients.map((ing) => {
-                    return (
-                      <li key={ing.id}>
-                        {ing.amount * servingRatio} {ing.unit} {ing.name}
-                      </li>
-                    );
-                  })
+            <Grid
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Typography>Convert Servings: </Typography>
+              <TextField
+                style={{
+                  width: 70,
+                  marginTop: 5,
+                  marginLeft: 10,
+                  marginRight: 5,
+                }}
+                size="small"
+                type="number"
+                value={serving}
+                onChange={(e) => setServing(e.target.value)}
+                InputProps={{
+                  inputProps: { min: 1, style: { textAlign: "center" } },
+                }}
+              />
+              <Button size="small" onClick={onClickConvert}>
+                Convert
+              </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid sx={{ p: 5 }}>
+          <Typography fontWeight="bold" variant="h6">
+            Cooking Instructions
+          </Typography>
+          <ol type="1">
+            <Grid
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                textAlign: "left",
+              }}
+            >
+              {Object.values(details).length
+                ? removeTags(details.instructions)
+                    .split(".")
+                    .slice(0, -1)
+                    .map((each) => {
+                      return (
+                        <li
+                          key={removeTags(details.instructions)
+                            .split(".")
+                            .indexOf(each)}
+                        >
+                          {each + "."}
+                        </li>
+                      );
+                    })
                 : null}
             </Grid>
-            <Grid
-              x={{
-                p: 1,
-              }}>
-              <Typography>
-                Current Servings: {details.servings * servingRatio}
-              </Typography>
-              <Grid
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}>
-                <Typography>Convert Servings: </Typography>
-                <TextField
-                  style={{
-                    width: 70,
-                    marginTop: 5,
-                    marginLeft: 10,
-                    marginRight: 5,
-                  }}
-                  size="small"
-                  type="number"
-                  value={serving}
-                  onChange={(e) => setServing(e.target.value)}
-                  InputProps={{
-                    inputProps: { min: 1, style: { textAlign: "center" } },
-                  }}
-                />
-                <Button size="small" onClick={onClickConvert}>
-                  Convert
-                </Button>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid sx={{ p: 1 }}>
-            <Typography fontWeight="bold" variant="h6">
-              Cooking Instructions
-            </Typography>
-            <ol type="1">
-              <Grid
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  textAlign: "left",
-                }}>
-                {Object.values(details).length
-                  ? removeTags(details.instructions)
-                      .split(".")
-                      .slice(0, -1)
-                      .map((each) => {
-                        return (
-                          <li
-                            key={removeTags(details.instructions)
-                              .split(".")
-                              .indexOf(each)}>
-                            {each + "."}
-                          </li>
-                        );
-                      })
-                  : null}
-              </Grid>
-            </ol>
-          </Grid>
-        </Box>
-      </Paper>
+          </ol>
+        </Grid>
+      </Box>
     </Grid>
   );
 };

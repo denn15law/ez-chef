@@ -37,17 +37,17 @@ const GroceryList = ({ user }) => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Grid xs={8.25}>
+      <Grid xs={8}>
         <Paper style={styles.paperContainer}></Paper>
       </Grid>
-      <Grid xs={3.75}>
-        <Grid container spacing={4} marginTop={8} marginLeft={0}>
+      <Grid xs={4}>
+        <Grid container spacing={4} marginTop={8} paddingLeft={4}>
           <Box
             component="main"
             sx={{
               paddingTop: 8,
               flexWrap: "wrap",
-              minHeight: "100vh",
+              minHeight: "92.5vh",
               overflow: "hidden",
               alignContent: "center",
               justifyContent: "center",

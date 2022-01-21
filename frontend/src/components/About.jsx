@@ -51,7 +51,8 @@ const About = ({ user }) => {
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
-            }}>
+            }}
+          >
             <Typography textAlign="center" variant="h5" fontWeight="bold">
               About EZ Chef
             </Typography>
@@ -62,7 +63,8 @@ const About = ({ user }) => {
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
               justifyContent="center"
-              alignItems="center">
+              alignItems="center"
+            >
               <Grid item key={1}>
                 <Card
                   sx={{
@@ -78,7 +80,8 @@ const About = ({ user }) => {
                     paddingLeft: 1,
                     paddingRight: 1,
                     textAlign: "center",
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <p>
                       Two years into the COVID-19 pandemic, developers Jeewon
@@ -113,7 +116,8 @@ const About = ({ user }) => {
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
               justifyContent="center"
-              alignItems="center">
+              alignItems="center"
+            >
               <Grid item key={1}>
                 <Card
                   sx={{
@@ -125,7 +129,8 @@ const About = ({ user }) => {
                     ":hover": {
                       boxShadow: 20,
                     },
-                  }}>
+                  }}
+                >
                   <CardMedia
                     key={1}
                     component="img"
@@ -140,7 +145,8 @@ const About = ({ user }) => {
                       justifyContent: "center",
                       alignItems: "center",
                       height: 30,
-                    }}>
+                    }}
+                  >
                     <h4>Jeewon Lee</h4>
                   </CardContent>
                 </Card>
@@ -156,7 +162,8 @@ const About = ({ user }) => {
                     ":hover": {
                       boxShadow: 20,
                     },
-                  }}>
+                  }}
+                >
                   <CardMedia
                     key={2}
                     component="img"
@@ -171,7 +178,8 @@ const About = ({ user }) => {
                       justifyContent: "center",
                       alignItems: "center",
                       height: 30,
-                    }}>
+                    }}
+                  >
                     <h4>Dennis Law</h4>
                   </CardContent>
                 </Card>
@@ -187,7 +195,8 @@ const About = ({ user }) => {
                     ":hover": {
                       boxShadow: 20,
                     },
-                  }}>
+                  }}
+                >
                   <CardMedia
                     key={3}
                     component="img"
@@ -202,7 +211,8 @@ const About = ({ user }) => {
                       justifyContent: "center",
                       alignItems: "center",
                       height: 30,
-                    }}>
+                    }}
+                  >
                     <h4>Kyle Liang</h4>
                   </CardContent>
                 </Card>

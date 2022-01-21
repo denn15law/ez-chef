@@ -26,7 +26,7 @@ const NewRecipe = (props) => {
             sx={{
               p: 5,
               flexGrow: 1,
-              height: "100vh",
+              height: "92.5vh",
               overflow: "auto",
               display: "flex",
               flexDirection: "column",
