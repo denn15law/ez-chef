@@ -94,7 +94,7 @@ const Nav = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
         }}>
-        <Grid sx={{ marginLeft: 1, display: "flex", flexDirection: "row" }}>
+        <Grid sx={{ marginLeft: 2, display: "flex", flexDirection: "row" }}>
           <img src={Image} alt="logo" height={35} onClick={navigateHome} />
         </Grid>
         <Grid sx={{ display: "flex", flexDirection: "row" }}>
@@ -123,11 +123,11 @@ const Nav = ({ user }) => {
             <IconButton
               onClick={handleClick}
               size="small"
-              sx={{ ml: 2 }}
+              sx={{ ml: 2, marginRight: 2 }}
               aria-controls={open ? "account-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}>
-              <Avatar sx={{ width: 35, height: 35, marginRight: 1 }}>
+              <Avatar sx={{ width: 35, height: 35 }}>
                 <PersonIcon />
               </Avatar>
             </IconButton>
