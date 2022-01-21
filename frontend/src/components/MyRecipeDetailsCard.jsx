@@ -77,7 +77,7 @@ const MyRecipeDetailsCard = ({ user }) => {
     if (user) {
       axios
         .post(
-          `http://localhost:8000/groceries/myRecipes/${user}/${details.id}`,
+          `http://localhost:8000/groceries/myRecipes/${user}/${details._id}`,
           details
         )
         .then((res) => {
@@ -100,7 +100,8 @@ const MyRecipeDetailsCard = ({ user }) => {
           margin: "auto",
           maxWidth: 600,
           flexGrow: 1,
-        }}>
+        }}
+      >
         <Box
           component="main"
           sx={{
@@ -111,11 +112,13 @@ const MyRecipeDetailsCard = ({ user }) => {
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
-          }}>
+          }}
+        >
           <Typography
             component="h1"
             variant="h5"
-            sx={{ p: 1, fontWeight: "bold" }}>
+            sx={{ p: 1, fontWeight: "bold" }}
+          >
             {details.title}
           </Typography>
           <Grid sx={{ p: 2 }}>
@@ -130,7 +133,8 @@ const MyRecipeDetailsCard = ({ user }) => {
             <Button
               onClick={() => {
                 onClickEdit(details._id);
-              }}>
+              }}
+            >
               <EditIcon />
             </Button>
             <Button onClick={onClickFavourite}>
@@ -158,7 +162,8 @@ const MyRecipeDetailsCard = ({ user }) => {
             <Grid
               sx={{
                 p: 1,
-              }}>
+              }}
+            >
               <Typography>
                 Current Servings: {details.serving_size * servingRatio}
               </Typography>
@@ -167,7 +172,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                }}>
+                }}
+              >
                 <Typography>Convert Servings: </Typography>
                 <TextField
                   style={{
@@ -201,7 +207,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                   flexDirection: "column",
                   alignItems: "flex-start",
                   textAlign: "left",
-                }}>
+                }}
+              >
                 {Object.values(details).length ? (
                   removeTags(details.instructions)
                     .split(".")
@@ -211,7 +218,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                         <li
                           key={removeTags(details.instructions)
                             .split(".")
-                            .indexOf(each)}>
+                            .indexOf(each)}
+                        >
                           {each + "."}
                         </li>
                       );
