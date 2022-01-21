@@ -51,8 +51,7 @@ const GroceryList = ({ user }) => {
               overflow: "hidden",
               alignContent: "center",
               justifyContent: "center",
-            }}
-          >
+            }}>
             <Typography textAlign="center" variant="h4" fontWeight="bold">
               My Grocery List
               {myGroceryList.length ? null : (
@@ -65,8 +64,7 @@ const GroceryList = ({ user }) => {
               p={2}
               direction="row"
               justifyContent="space-evenly"
-              alignItems="top"
-            >
+              alignItems="top">
               <RecipesList myGroceryList={myGroceryList} user={user} />
               <IngredientsList myGroceryList={myGroceryList} />
             </Grid>

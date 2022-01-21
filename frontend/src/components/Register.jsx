@@ -49,13 +49,12 @@ const Register = () => {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 15,
+            marginTop: 18,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-          }}
-        >
+          }}>
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <AppRegistrationIcon />
           </Avatar>
@@ -66,8 +65,7 @@ const Register = () => {
             component="form"
             noValidate
             onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
-          >
+            sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -124,8 +122,7 @@ const Register = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
+              sx={{ mt: 3, mb: 2 }}>
               Sign Up
             </Button>
             <Link href="/login" variant="body2">
