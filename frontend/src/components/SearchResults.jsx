@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
-import Image from "../docs/user-pages-background.jpg";
+import Image from "../docs/burger.jpeg";
 
 const styles = {
   paperContainer: {
