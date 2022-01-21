@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
-import Image from "../docs/background-option2.jpg";
+import Image from "../docs/user-pages-background.jpg";
 
 const styles = {
   paperContainer: {
@@ -153,6 +153,7 @@ const SearchForm = () => {
               direction="row"
               justifyContent="center"
               alignItems="center"
+              textAlign="center"
             >
               {recipeData.length
                 ? recipeData

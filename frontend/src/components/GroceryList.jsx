@@ -11,7 +11,7 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    overflow: "hidden",
+    // overflow: "hidden",
     height: "100%",
   },
 };
@@ -46,9 +46,9 @@ const GroceryList = ({ user }) => {
             component="main"
             sx={{
               paddingTop: 8,
-              flexWrap: "wrap",
-              minHeight: "92.5vh",
-              overflow: "hidden",
+              flexGrow: 1,
+              height: "92.5vh",
+              overflow: "auto",
               alignContent: "center",
               justifyContent: "center",
             }}

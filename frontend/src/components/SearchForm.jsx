@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
-import Image from "../docs/background-option2.jpg";
+import Image from "../docs/user-pages-background.jpg";
 
 const styles = {
   paperContainer: {
@@ -53,7 +53,8 @@ const SearchForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          }}>
+          }}
+        >
           <Box
             component="main"
             sx={{
@@ -62,7 +63,8 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}>
+            }}
+          >
             <Typography variant="h4" fontWeight="bold">
               Search For Recipes
             </Typography>
@@ -77,7 +79,8 @@ const SearchForm = () => {
                 ":hover": {
                   boxShadow: 20,
                 },
-              }}>
+              }}
+            >
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Enter Ingredients or Keywords"
@@ -88,7 +91,8 @@ const SearchForm = () => {
               <IconButton
                 onClick={showSearch}
                 sx={{ p: "10px" }}
-                aria-label="search">
+                aria-label="search"
+              >
                 <SearchIcon />
               </IconButton>
             </Paper>
