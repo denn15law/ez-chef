@@ -8,7 +8,6 @@ import {
   ClickAwayListener,
   CssBaseline,
   Grid,
-  // IconButton,
   TextField,
   Tooltip,
   Typography,
@@ -26,18 +25,21 @@ const MyRecipeDetailsCard = ({ user }) => {
   const [servingRatio, setServingRatio] = useState(1);
   const [isFav, setIsFav] = useState(false);
   const [isGroceries, setIsGroceries] = useState(false);
-  const [tooltip, setTooltip] = useState(false);
+  const [addFav, setAddFav] = useState(false);
+  const [addGroceries, setAddGroceries] = useState(false);
 
   let url = window.location.pathname;
   const id = url.split("/myRecipes/")[1];
   const navigate = useNavigate();
 
   const handleTooltipClose = () => {
-    setTooltip(false);
+    setAddFav(false);
+    // setAddGroceries(false);
   };
 
   const handleTooltipOpen = () => {
-    setTooltip(true);
+    setAddFav(true);
+    // setAddGroceries(true);
   };
 
   useEffect(() => {
@@ -210,7 +212,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 <Tooltip
                   title="Added to Favourites"
                   onClose={handleTooltipClose}
-                  open={tooltip}>
+                  open={addFav}>
                   <StarIcon onClick={handleTooltipOpen} />
                 </Tooltip>
               </ClickAwayListener>
@@ -219,14 +221,36 @@ const MyRecipeDetailsCard = ({ user }) => {
                 <Tooltip
                   title="Removed from Favourites"
                   onClose={handleTooltipClose}
-                  open={tooltip}>
+                  open={addFav}>
                   <StarBorderIcon onClick={handleTooltipOpen} />
                 </Tooltip>
               </ClickAwayListener>
             )}
           </Button>
           <Button onClick={onClickGrocery}>
-            {isGroceries ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}
+            {isGroceries ? (
+              // <ClickAwayListener onClickAway={handleTooltipClose}>
+              //   <Tooltip
+              //     title="Added to your Grocery List"
+              //     onClose={handleTooltipClose}
+              //     open={addGroceries}>
+              <ShoppingCartIcon
+              // onClick={handleTooltipOpen}
+              />
+            ) : (
+              //   </Tooltip>
+              // </ClickAwayListener>
+              // <ClickAwayListener onClickAway={handleTooltipClose}>
+              //   <Tooltip
+              //     title="Added to your Grocery List"
+              //     onClose={handleTooltipClose}
+              //     open={addGroceries}>
+              <AddShoppingCartIcon
+              // onClickAway={handleTooltipOpen}
+              />
+              //   </Tooltip>
+              // </ClickAwayListener>
+            )}
           </Button>
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>
