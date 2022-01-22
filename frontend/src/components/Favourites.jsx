@@ -72,7 +72,7 @@ const Favourites = ({ user }) => {
               overflow: "auto",
             }}
           >
-            <Typography textAlign="center" variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h4" fontWeight="bold">
               My Favourite Recipes
             </Typography>
             <Grid

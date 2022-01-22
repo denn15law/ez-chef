@@ -14,6 +14,18 @@ const getFavourites = (req, res) => {
     });
 };
 
+// const checkFavourites = (req, res) => {
+//   user = req.params.user;
+//   recipeID = req.params.id;
+//   console.log("checkfav", user, recipeID);
+//   Favourite.findOne({ user: user, recipeID: recipeID })
+//     .then((response) => {
+//       res.json(response);
+//       console.log("I AM RESPONSE!!!!!", response);
+//     })
+//     .catch((err) => console.log("I AM ERROR!!!!", err));
+// };
+
 const addFavouriteFromMyRecipes = (req, res) => {
   const user = req.params.user;
   const recipeID = req.params.id;
@@ -84,4 +96,5 @@ module.exports = {
   addFavouriteFromMyRecipes,
   addFavouriteFromApi,
   deleteFavouriteById,
+  // checkFavourites,
 };

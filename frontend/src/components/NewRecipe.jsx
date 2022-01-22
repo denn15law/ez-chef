@@ -19,6 +19,9 @@ const NewRecipe = (props) => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
+      <Grid xs={7.5}>
+        <Paper style={styles.paperContainer}></Paper>
+      </Grid>
       <Grid xs={4.5}>
         <Grid container spacing={4} marginTop={8}>
           <Box
@@ -35,9 +38,6 @@ const NewRecipe = (props) => {
             <NewRecipeForm user={user} />
           </Box>
         </Grid>
-      </Grid>
-      <Grid xs={7.5}>
-        <Paper style={styles.paperContainer}></Paper>
       </Grid>
     </Grid>
   );

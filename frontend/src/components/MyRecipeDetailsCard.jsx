@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +22,8 @@ const MyRecipeDetailsCard = ({ user }) => {
   const [details, setDetails] = useState({});
   const [serving, setServing] = useState(1);
   const [servingRatio, setServingRatio] = useState(1);
+  // const [isFav, setIsFav] = useState(false);
+
   let url = window.location.pathname;
   const id = url.split("/myRecipes/")[1];
   const navigate = useNavigate();
@@ -37,6 +40,19 @@ const MyRecipeDetailsCard = ({ user }) => {
         // handle error
         console.log(error);
       });
+
+    // axios
+    //   .get(`http://localhost:8000/favourites/check/${user}/${id}`)
+    //   .then((response) => {
+    //     if (response.data) {
+    //       setIsFav(true);
+    //     } else {
+    //       setIsFav(false);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     setIsFav(false);
+    //   });
   }, [id]);
 
   useEffect(() => {
@@ -61,9 +77,8 @@ const MyRecipeDetailsCard = ({ user }) => {
         .then((res) => {
           alert("Added!");
         })
-        .catch((err) =>
-          alert("This recipe has already been added to your favourites!")
-        );
+        // .then(() => setIsFav(true))
+        .catch((err) => deleteFavourite());
     } else {
       navigate("/login");
     }
@@ -84,11 +99,38 @@ const MyRecipeDetailsCard = ({ user }) => {
           alert("Added!");
         })
         .catch((err) => {
-          alert("This recipe has already been added to your grocery list!");
+          deleteGroceryList();
         });
     } else {
       navigate("/login");
     }
+  };
+
+  const deleteFavourite = () => {
+    const url = `http://localhost:8000/favourites/${user}/${details._id}`;
+    axios
+      .delete(url)
+      .then(function (response) {
+        alert("This recipe has been removed from your favourites!");
+      })
+      .then(() => {
+        // setIsFav(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const deleteGroceryList = (id) => {
+    const url = `http://localhost:8000/groceries/${user}/${details._id}`;
+    axios
+      .delete(url)
+      .then(function (response) {
+        alert("This recipe has been removed from your grocery list!");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -109,7 +151,7 @@ const MyRecipeDetailsCard = ({ user }) => {
       >
         <Typography
           component="h1"
-          variant="h5"
+          variant="h4"
           sx={{ p: 1, fontWeight: "bold" }}
         >
           {details.title}

@@ -94,7 +94,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
         <Typography
           textAlign="center"
           component="h1"
-          variant="h5"
+          variant="h4"
           fontWeight="bold"
         >
           Edit Recipe

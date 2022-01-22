@@ -160,10 +160,10 @@ const SearchForm = () => {
                     .sort((a, b) =>
                       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
                     )
-                    .map((recip) => {
+                    .map((recip, index) => {
                       const url = `http://localhost:3000/search/${recip.id}`;
                       return (
-                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                        <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
                           <Card
                             sx={{
                               height: 275,
