@@ -42,6 +42,10 @@ const MyRecipeDetailsCard = ({ user }) => {
     // setAddGroceries(true);
   };
 
+  const myFunction = () => {
+    onClickFavourite();
+    handleTooltipOpen();
+  };
   useEffect(() => {
     console.log("I am my recipeID", id);
     axios
@@ -108,9 +112,6 @@ const MyRecipeDetailsCard = ({ user }) => {
       const URL = `http://localhost:8000/favourites/myRecipes/${user}/${details._id}`;
       axios
         .post(URL, details)
-        .then((res) => {
-          // alert("Added!");
-        })
         .then(() => setIsFav(true))
         .catch((err) => deleteFavourite());
     } else {
@@ -129,9 +130,6 @@ const MyRecipeDetailsCard = ({ user }) => {
           `http://localhost:8000/groceries/myRecipes/${user}/${details._id}`,
           details
         )
-        .then((res) => {
-          // alert("Added!");
-        })
         .then(() => setIsGroceries(true))
         .catch((err) => {
           deleteGroceryList();
@@ -145,9 +143,6 @@ const MyRecipeDetailsCard = ({ user }) => {
     const url = `http://localhost:8000/favourites/${user}/${details._id}`;
     axios
       .delete(url)
-      .then(function (response) {
-        // alert("This recipe has been removed from your favourites!");
-      })
       .then(() => {
         setIsFav(false);
       })
@@ -160,9 +155,6 @@ const MyRecipeDetailsCard = ({ user }) => {
     const url = `http://localhost:8000/groceries/${user}/${details._id}`;
     axios
       .delete(url)
-      .then(function (response) {
-        // alert("This recipe has been removed from your grocery list!");
-      })
       .then(() => {
         setIsGroceries(false);
       })
@@ -185,11 +177,13 @@ const MyRecipeDetailsCard = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
           marginRight: -5.5,
-        }}>
+        }}
+      >
         <Typography
           component="h1"
           variant="h4"
-          sx={{ p: 1, fontWeight: "bold" }}>
+          sx={{ p: 1, fontWeight: "bold" }}
+        >
           {details.title}
         </Typography>
         <Grid sx={{ p: 2 }}>
@@ -204,30 +198,36 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Button
             onClick={() => {
               onClickEdit(details._id);
-            }}>
+            }}
+          >
             <EditIcon />
           </Button>
-          <Button onClick={onClickFavourite}>
-            {isFav ? (
-              <ClickAwayListener onClickAway={handleTooltipClose}>
-                <Tooltip
-                  title="Added to Favourites"
-                  onClose={handleTooltipClose}
-                  open={addFav}>
-                  <StarIcon onClick={handleTooltipOpen} />
-                </Tooltip>
-              </ClickAwayListener>
-            ) : (
-              <ClickAwayListener onClickAway={handleTooltipClose}>
-                <Tooltip
-                  title="Removed from Favourites"
-                  onClose={handleTooltipClose}
-                  open={addFav}>
-                  <StarBorderIcon onClick={handleTooltipOpen} />
-                </Tooltip>
-              </ClickAwayListener>
-            )}
-          </Button>
+
+          {isFav ? (
+            <ClickAwayListener onClickAway={handleTooltipClose}>
+              <Tooltip
+                title="Added to Favourites"
+                onClose={handleTooltipClose}
+                open={addFav}
+              >
+                <Button onClick={myFunction}>
+                  <StarIcon />
+                </Button>
+              </Tooltip>
+            </ClickAwayListener>
+          ) : (
+            <ClickAwayListener onClickAway={handleTooltipClose}>
+              <Tooltip
+                title="Removed from Favourites"
+                onClose={handleTooltipClose}
+                open={addFav}
+              >
+                <Button onClick={myFunction}>
+                  <StarBorderIcon />
+                </Button>
+              </Tooltip>
+            </ClickAwayListener>
+          )}
           <Button onClick={onClickGrocery}>
             {isGroceries ? (
               // <ClickAwayListener onClickAway={handleTooltipClose}>
@@ -272,7 +272,8 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Grid
             sx={{
               p: 1,
-            }}>
+            }}
+          >
             <Typography>
               Current Servings: {details.serving_size * servingRatio}
             </Typography>
@@ -281,7 +282,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-              }}>
+              }}
+            >
               <Typography>Convert Servings: </Typography>
               <TextField
                 style={{
@@ -315,7 +317,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 textAlign: "left",
-              }}>
+              }}
+            >
               {Object.values(details).length ? (
                 removeTags(details.instructions)
                   .split(".")
@@ -325,7 +328,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}>
+                          .indexOf(each)}
+                      >
                         {each + "."}
                       </li>
                     );
