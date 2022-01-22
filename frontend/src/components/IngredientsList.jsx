@@ -33,7 +33,7 @@ const IngredientList = ({ myGroceryList }) => {
 
     axios.put('http://localhost:8000/twilio', send)
       .then(res => {
-        console.log(res)
+        console.log('text sent', res)
         setPhone('')
       })
       .catch(err => console.log(err))
@@ -89,6 +89,7 @@ const IngredientList = ({ myGroceryList }) => {
             onChange={handleChange}
           />
           <Button
+            variant="contained"
             onClick={textGroceries}
           >Text Me My Groceries</Button>
         </Box>
