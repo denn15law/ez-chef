@@ -23,7 +23,6 @@ const GroceryListSchema = new Schema({
   grocery_list_recipeID: {
     type: String,
     required: true,
-    unique: true,
   },
 });
 
