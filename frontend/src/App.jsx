@@ -5,7 +5,7 @@ import Index from "./components/Index";
 import Nav from "./components/Nav";
 import MyRecipes from "./components/MyRecipes";
 import Favourites from "./components/FavourtiesPage/Favourites";
-import GroceryList from "./components/GroceryList";
+import GroceryList from "./components/GroceryListPage/GroceryList";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import SearchForm from "./components/SearchForm";

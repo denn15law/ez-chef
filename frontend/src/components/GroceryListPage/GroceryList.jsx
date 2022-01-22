@@ -3,7 +3,7 @@ import axios from "axios";
 import { Box, CssBaseline, Grid, Paper, Typography } from "@mui/material";
 import RecipesList from "./RecipesList";
 import IngredientsList from "./IngredientsList";
-import Image from "../docs/food3.jpeg";
+import Image from "../../docs/food3.jpeg";
 
 const styles = {
   paperContainer: {
@@ -11,7 +11,6 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    // overflow: "hidden",
     height: "100%",
   },
 };
@@ -37,10 +36,10 @@ const GroceryList = ({ user }) => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Grid xs={7}>
+      <Grid item md={7}>
         <Paper style={styles.paperContainer}></Paper>
       </Grid>
-      <Grid xs={5}>
+      <Grid item xs={12} md={5}>
         <Grid container spacing={4} marginTop={8} paddingLeft={4}>
           <Box
             component="main"
