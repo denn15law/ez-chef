@@ -2,6 +2,7 @@ import React from "react";
 import { Box, CssBaseline, Grid, Paper } from "@mui/material";
 import EditRecipeForm from "./EditRecipeForm";
 import Image from "../../docs/breakfast2.jpeg";
+import { styled } from "@mui/system";
 
 const styles = {
   paperContainer: {
@@ -13,6 +14,16 @@ const styles = {
     height: "100%",
   },
 };
+
+const SideImage = styled("div")(({ theme }) => ({
+  width: "100%",
+  height: "100%",
+  display: "none",
+  [theme.breakpoints.up("md")]: {
+    display: "block",
+  },
+}));
+
 const EditRecipe = (props) => {
   const { user } = props;
 
@@ -23,7 +34,7 @@ const EditRecipe = (props) => {
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
 
-      <Grid xs={4.5}>
+      <Grid item xs={12} md={5}>
         <Grid container spacing={4} marginTop={8}>
           <Box
             component="main"
@@ -40,8 +51,10 @@ const EditRecipe = (props) => {
           </Box>
         </Grid>
       </Grid>
-      <Grid xs={7.5}>
-        <Paper style={styles.paperContainer}></Paper>
+      <Grid item md={7}>
+        <SideImage>
+          <Paper style={styles.paperContainer}></Paper>
+        </SideImage>
       </Grid>
     </Grid>
   );

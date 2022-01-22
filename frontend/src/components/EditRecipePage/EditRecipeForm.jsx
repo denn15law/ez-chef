@@ -2,23 +2,15 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {
-  Avatar,
   Button,
   ButtonGroup,
   Box,
   CssBaseline,
   Grid,
-  Paper,
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  useForm,
-  useFieldArray,
-  Controller,
-  setValue,
-  formState,
-} from "react-hook-form";
+import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const EditRecipeForm = ({ user, recipeID }) => {
@@ -37,7 +29,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
       });
   }, []);
 
-  const { control, handleSubmit, reset, setValue, formState } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       title: "",
       instructions: "",
@@ -57,8 +49,6 @@ const EditRecipeForm = ({ user, recipeID }) => {
     reset(recipe);
   }, [recipe]);
 
-  console.log("recipetitle", recipe.title);
-
   const {
     fields: ingredientsFields,
     append,
@@ -73,7 +63,6 @@ const EditRecipeForm = ({ user, recipeID }) => {
   };
 
   const editRecipe = (data) => {
-    console.log("data data data", data);
     axios
       .put(`/recipes/edit/${user}/${recipeID}`, data)
       .then((res) => console.log(res))
