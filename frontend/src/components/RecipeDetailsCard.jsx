@@ -205,7 +205,11 @@ const RecipeDetails = ({ user }) => {
           {isFav ? (
             <ClickAwayListener onClickAway={handleFavouriteTooltipClose}>
               <Tooltip
-                title="Added to Favourites"
+                title={
+                  <Typography fontSize={18} textAlign="center">
+                    Added to Favourites
+                  </Typography>
+                }
                 onClose={handleFavouriteTooltipClose}
                 open={addFav}
               >
@@ -217,7 +221,11 @@ const RecipeDetails = ({ user }) => {
           ) : (
             <ClickAwayListener onClickAway={handleFavouriteTooltipClose}>
               <Tooltip
-                title="Removed from Favourites"
+                title={
+                  <Typography fontSize={18} textAlign="center">
+                    Removed from Favourites
+                  </Typography>
+                }
                 onClose={handleFavouriteTooltipClose}
                 open={addFav}
               >
@@ -230,7 +238,11 @@ const RecipeDetails = ({ user }) => {
           {isGroceries ? (
             <ClickAwayListener onClickAway={handleGroceryTooltipClose}>
               <Tooltip
-                title="Added to Groceries"
+                title={
+                  <Typography fontSize={18} textAlign="center">
+                    Added to Groceries
+                  </Typography>
+                }
                 onClose={handleGroceryTooltipClose}
                 open={addGroceries}
               >
@@ -242,7 +254,11 @@ const RecipeDetails = ({ user }) => {
           ) : (
             <ClickAwayListener onClickAway={handleGroceryTooltipClose}>
               <Tooltip
-                title="Removed from Groceries"
+                title={
+                  <Typography fontSize={18} textAlign="center">
+                    Removed from Groceries
+                  </Typography>
+                }
                 onClose={handleGroceryTooltipClose}
                 open={addGroceries}
               >

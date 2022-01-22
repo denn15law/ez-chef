@@ -151,7 +151,7 @@ const Nav = ({ user }) => {
             <ClickAwayListener onClickAway={handleTooltipClose}>
               <Tooltip
                 title={
-                  <Typography fontSize={15} textAlign="center">
+                  <Typography fontSize={18} textAlign="center">
                     Please enter an ingrededient or keyword!
                   </Typography>
                 }
