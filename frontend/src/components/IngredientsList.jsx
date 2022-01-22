@@ -68,7 +68,8 @@ const IngredientList = ({ myGroceryList }) => {
         width="40vw"
         direction="column"
         justifyContent="center"
-        alignItems="center">
+        alignItems="center"
+      >
         {myGroceryList.length ? (
           <Typography variant="h5" fontWeight="bold">
             List of Ingredients
@@ -80,16 +81,19 @@ const IngredientList = ({ myGroceryList }) => {
           p={2}
           direction="column"
           justifyContent="center"
-          alignItems="center">
+          alignItems="center"
+        >
           {myGroceryList.length ? (
             <Grid
               p={2}
               direction="column"
               justifyContent="center"
               alignItems="center"
-              backgroundColor="white">
+              backgroundColor="white"
+            >
               <Grid
-                sx={{ marginBottom: 2, display: "flex", flexDirection: "row" }}>
+                sx={{ marginBottom: 2, display: "flex", flexDirection: "row" }}
+              >
                 <Grid sx={{ p: 0.5 }}>
                   <TextField
                     id="outlined-basic"
@@ -103,15 +107,25 @@ const IngredientList = ({ myGroceryList }) => {
                   <Button
                     size="small"
                     variant="outlined"
-                    onClick={textGroceries}>
-                    Text
+                    onClick={textGroceries}
+                  >
+                    Text me my groceries
                   </Button>
                 </Grid>
               </Grid>
               {myIngredientsArray.map((groceryItem, index) => {
                 return (
-                  <Grid sx={{ display: "flex", justifyContent: "center" }}>
-                    <Typography key={index}>{`${groceryItem.name}`}</Typography>
+                  <Grid
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <li key={index}>
+                      {`${groceryItem.name
+                        .charAt(0)
+                        .toUpperCase()}${groceryItem.name.slice(1)}`}
+                    </li>
                   </Grid>
                 );
               })}

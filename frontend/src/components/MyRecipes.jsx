@@ -159,7 +159,7 @@ const MyRecipes = ({ user }) => {
                       overflow: "auto",
                     }}
                   >
-                    <Button href="/new" variant="contained" size="small">
+                    <Button href="/new" variant="outlined" size="large">
                       Create New Recipes
                     </Button>
                   </Box>

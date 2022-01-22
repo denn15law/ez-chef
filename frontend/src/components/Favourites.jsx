@@ -70,7 +70,8 @@ const Favourites = ({ user }) => {
               flexGrow: 1,
               height: "95vh",
               overflow: "auto",
-            }}>
+            }}
+          >
             <Typography textAlign="center" variant="h4" fontWeight="bold">
               My Favourite Recipes
             </Typography>
@@ -81,7 +82,8 @@ const Favourites = ({ user }) => {
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
               justifyContent="center"
-              alignItems="center">
+              alignItems="center"
+            >
               {myFavs.length ? (
                 myFavs.map((recip) => {
                   let url = "";
@@ -102,7 +104,8 @@ const Favourites = ({ user }) => {
                           ":hover": {
                             boxShadow: 20,
                           },
-                        }}>
+                        }}
+                      >
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Link href={url}>{recip.favourite_title}</Link>
                         </CardContent>
@@ -119,7 +122,8 @@ const Favourites = ({ user }) => {
                             onClick={() => {
                               deleteFavourite(recip.favourite_recipeID);
                             }}
-                            size="small">
+                            size="small"
+                          >
                             Delete
                           </Button>
                         </CardActions>
@@ -136,15 +140,17 @@ const Favourites = ({ user }) => {
                   lg={4}
                   style={{
                     textAlign: "center",
-                  }}>
+                  }}
+                >
                   <Box
                     sx={{
                       p: 10,
                       flexGrow: 1,
                       height: "100vh",
                       overflow: "auto",
-                    }}>
-                    <Button href="/search" variant="contained" size="small">
+                    }}
+                  >
+                    <Button href="/search" variant="outlined" size="large">
                       Search For Recipes
                     </Button>
                   </Box>
