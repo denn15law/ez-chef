@@ -9,12 +9,11 @@ router.put("/", (req, res) => {
   const response = req.body;
   console.log(response);
   const phone = "+1" + response.phone;
-  // console.log(typeof phone);
 
   client.messages
     .create({
       body: response.message,
-      from: "+16204593471",
+      from: `${process.env.TWILIO_NUMBER}`,
       to: phone,
     })
     .then((message) => res.json(message.sid));
