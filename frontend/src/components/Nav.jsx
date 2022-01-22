@@ -235,27 +235,7 @@ const Nav = ({ user }) => {
               />
             </Link>
           </ListItem>
-          <ListItem
-            sx={{
-              "&:hover": {
-                backgroundColor: "#6b705c",
-              },
-            }}>
-            <ListItemIcon>
-              <SearchIcon />
-            </ListItemIcon>
-            <Link
-              to="/search"
-              onClick={toggleOpen}
-              style={{ textDecoration: "none" }}>
-              <ListItemText
-                primary="Search Recipes"
-                sx={{
-                  color: "white",
-                }}
-              />
-            </Link>
-          </ListItem>
+
           {user &&
             navbarList.map((item, index) => {
               return (
