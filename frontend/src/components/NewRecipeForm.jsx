@@ -47,6 +47,7 @@ const NewRecipeForm = ({ user }) => {
 
   const onSubmit = (data) => {
     const URL = `/recipes/${user}`;
+    console.log(data);
     axios
       .post(URL, data)
       .then((res) => console.log(res))

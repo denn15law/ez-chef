@@ -49,6 +49,7 @@ const SearchForm = () => {
     axios
       .get(`http://localhost:8000/search/results/${results}`)
       .then(function (response) {
+        console.log("response.data hello", response.data);
         // handle success
         setSearched(results);
         setRecipeData(response.data);

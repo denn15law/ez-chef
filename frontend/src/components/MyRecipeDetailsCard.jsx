@@ -43,6 +43,7 @@ const MyRecipeDetailsCard = ({ user }) => {
   };
 
   useEffect(() => {
+    console.log("I am my recipeID", id);
     axios
       .get(`http://localhost:8000/recipes/recipeDetails/${user}/${id}`)
       .then(function (response) {

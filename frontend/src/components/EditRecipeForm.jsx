@@ -30,6 +30,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
       .get(`http://localhost:8000/recipes/edit/${user}/${recipeID}`)
       .then((res) => {
         setRecipe(res.data[0]);
+        console.log("res.data", res.data[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -56,6 +57,8 @@ const EditRecipeForm = ({ user, recipeID }) => {
     reset(recipe);
   }, [recipe]);
 
+  console.log("recipetitle", recipe.title);
+
   const {
     fields: ingredientsFields,
     append,
@@ -70,6 +73,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
   };
 
   const editRecipe = (data) => {
+    console.log("data data data", data);
     axios
       .put(`/recipes/edit/${user}/${recipeID}`, data)
       .then((res) => console.log(res))

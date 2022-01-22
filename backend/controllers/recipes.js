@@ -32,9 +32,10 @@ const createRecipe = (req, res) => {
     serving_size: req.body.serving_size,
     user_created: true,
   });
+  console.log(newRecipe);
   newRecipe
     .save()
-    .then((res) => console.log(`-----${req.session.id}-----`))
+    .then((response) => console.log(`-----${req.session.id}-----`))
     .catch((err) => console.log(err.message));
 };
 
@@ -59,6 +60,7 @@ const deleteRecipeById = (req, res) => {
 const getRecipeDetails = (req, res) => {
   const recipeID = req.params.id;
   const user = req.params.user;
+  console.log("I am recipeID", recipeID);
   Recipe.find({ user: user, _id: recipeID })
     .then((recipe) => res.json(recipe))
     .catch((err) => {

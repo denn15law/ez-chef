@@ -30,6 +30,7 @@ const Favourites = ({ user }) => {
   const [myFavs, setMyFavs] = useState([]);
 
   const getData = () => {
+    console.log("iamuser", user);
     axios
       .get(`http://localhost:8000/favourites/${user}`)
       .then(function (response) {

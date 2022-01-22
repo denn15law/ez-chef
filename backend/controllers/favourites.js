@@ -59,6 +59,7 @@ const addFavouriteFromApi = (req, res) => {
 
   Favourite.findOne({ favourite_recipeID: recipeID, user: user }).then(
     (response) => {
+      console.log(response);
       if (!response) {
         const newFavourite = new Favourite({
           user: user,
@@ -82,6 +83,7 @@ const addFavouriteFromApi = (req, res) => {
 
 const deleteFavouriteById = (req, res) => {
   const user = req.params.user;
+  console.log("user", user);
   Favourite.deleteOne({ favourite_recipeID: req.params.id, user: user })
     .then((response) => {
       res.json(response);

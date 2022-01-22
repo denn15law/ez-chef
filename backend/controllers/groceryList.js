@@ -98,6 +98,8 @@ const addGroceryListFromApi = (req, res) => {
 
 const deleteGroceryListById = (req, res) => {
   const user = req.params.user;
+  console.log("grocery_list_recipeID", req.params.id);
+  console.log("deletegrocerylist user", user);
   GroceryList.deleteOne({ grocery_list_recipeID: req.params.id, user: user })
     .then((response) => {
       res.json(response);

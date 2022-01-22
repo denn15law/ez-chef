@@ -8,11 +8,11 @@ const searchFunc = (req, res) => {
     .get(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.apiKey}&query=${search}&number=20`
     )
-    .then((response) => {
+    .then(function (response) {
       // handle success
       res.send(response.data.results);
     })
-    .catch((error) => {
+    .catch(function (error) {
       // handle error
       console.log(error);
     });
@@ -20,14 +20,15 @@ const searchFunc = (req, res) => {
 
 const recipeDetails = (req, res) => {
   const recipeID = req.params.id;
+  console.log("I am recipeID", recipeID);
   axios
     .get(
       `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${process.env.apiKey}&query=includeNutrition=false`
     )
-    .then((response) => {
+    .then(function (response) {
       res.send(response.data);
     })
-    .catch((error) => {
+    .catch(function (error) {
       console.log(error);
     });
 };
