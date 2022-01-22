@@ -18,7 +18,7 @@ import About from "./About";
 
 const theme = createTheme({
   typography: {
-    fontFamily: ["JetBrains Mono", "sans-serif"].join(","),
+    // fontFamily: ["JetBrains Mono", "sans-serif"].join(","),
   },
 });
 
