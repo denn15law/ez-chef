@@ -20,9 +20,9 @@ const checkGroceries = (req, res) => {
   GroceryList.findOne({ grocery_list_recipeID: recipeID, user: user })
     .then((response) => {
       res.json(response);
-      console.log("I AM RESPONSE!!!!!", response);
+      console.log("I AM RESPONSE GROCERY!!!!!", response);
     })
-    .catch((err) => console.log("I AM ERROR!!!!", err));
+    .catch((err) => console.log(err));
 };
 
 const addGroceryListFromMyRecipes = (req, res) => {
@@ -58,7 +58,6 @@ const addGroceryListFromApi = (req, res) => {
 
   GroceryList.findOne({ grocery_list_recipeID: recipeID, user: user }).then(
     (response) => {
-      console.log("grocery list contollers response line 49", response);
       if (!response) {
         axios
           .get(
