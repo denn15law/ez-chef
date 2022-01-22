@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "../../docs/burger.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   paperContainer: {
@@ -27,10 +28,10 @@ const styles = {
 };
 
 const Favourites = ({ user }) => {
+  const navigate = useNavigate();
   const [myFavs, setMyFavs] = useState([]);
 
   const getData = () => {
-    console.log("iamuser", user);
     axios
       .get(`http://localhost:8000/favourites/${user}`)
       .then(function (response) {
@@ -150,7 +151,13 @@ const Favourites = ({ user }) => {
                       overflow: "auto",
                     }}
                   >
-                    <Button href="/search" variant="contained" size="small">
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={() => {
+                        navigate("/search");
+                      }}
+                    >
                       Search For Recipes
                     </Button>
                   </Box>
