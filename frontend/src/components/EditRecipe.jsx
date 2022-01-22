@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, CssBaseline, Grid, Paper } from "@mui/material";
 import EditRecipeForm from "./EditRecipeForm";
-import Image from "../docs/background-option1.jpg";
+import Image from "../docs/breakfast2.jpeg";
 
 const styles = {
   paperContainer: {
@@ -22,9 +22,7 @@ const EditRecipe = (props) => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Grid xs={7.5}>
-        <Paper style={styles.paperContainer}></Paper>
-      </Grid>
+
       <Grid xs={4.5}>
         <Grid container spacing={4} marginTop={8}>
           <Box
@@ -41,6 +39,9 @@ const EditRecipe = (props) => {
             <EditRecipeForm user={user} recipeID={recipeID} />
           </Box>
         </Grid>
+      </Grid>
+      <Grid xs={7.5}>
+        <Paper style={styles.paperContainer}></Paper>
       </Grid>
     </Grid>
   );

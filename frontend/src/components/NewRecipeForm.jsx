@@ -64,7 +64,7 @@ const NewRecipeForm = ({ user }) => {
           marginRight: -3,
           flexGrow: 1,
         }}>
-        <Typography textAlign="center" variant="h5" fontWeight="bold">
+        <Typography textAlign="center" variant="h4" fontWeight="bold">
           Add a New Recipe
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>

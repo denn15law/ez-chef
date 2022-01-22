@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-alert";
@@ -21,6 +22,8 @@ const RecipeDetails = ({ user }) => {
   const [details, setDetails] = useState({});
   const [serving, setServing] = useState(1);
   const [servingRatio, setServingRatio] = useState(1);
+  // const [isFav, setIsFav] = useState(false);
+
   let url = window.location.pathname;
   const id = url.split("/search/")[1];
   const navigate = useNavigate();
@@ -35,6 +38,22 @@ const RecipeDetails = ({ user }) => {
       .catch(function (error) {
         console.log(error);
       });
+
+    // axios
+    //   .get(`http://localhost:8000/favourites/check/${user}/${id}`)
+    //   .then((response) => {
+    //     if (response.data) {
+    //       setIsFav(true);
+    //       console.log("response.data", response.data);
+    //     } else {
+    //       setIsFav(false);
+    //       console.log("response false", response.data);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     setIsFav(false);
+    //     console.log("error here", error);
+    //   });
   }, [id]);
 
   useEffect(() => {
@@ -55,10 +74,8 @@ const RecipeDetails = ({ user }) => {
         .then((res) => {
           alert("Added!");
         })
-        .catch((err) => {
-          alert("This recipe has already been added to your favourites.");
-          console.log(err);
-        });
+        // .then(() => setIsFav(true))
+        .catch((err) => deleteFavourite());
     } else {
       navigate("/login");
     }
@@ -80,12 +97,36 @@ const RecipeDetails = ({ user }) => {
           alert("Added!");
         })
         .catch((err) => {
-          alert("This recipe has already been added to your grocery list.");
-          console.log(err);
+          deleteGroceryList();
         });
     } else {
       navigate("/login");
     }
+  };
+
+  const deleteFavourite = () => {
+    const url = `http://localhost:8000/favourites/${user}/${details.id}`;
+    axios
+      .delete(url)
+      .then(function (response) {
+        alert("This recipe has been removed from your favourites!");
+        // setIsFav(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const deleteGroceryList = () => {
+    const url = `http://localhost:8000/groceries/${user}/${details.id}`;
+    axios
+      .delete(url)
+      .then(function (response) {
+        alert("This recipe has been removed from your grocery list!");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -106,7 +147,7 @@ const RecipeDetails = ({ user }) => {
       >
         <Typography
           component="h1"
-          variant="h5"
+          variant="h4"
           sx={{ p: 1, fontWeight: "bold" }}
         >
           {details.title}

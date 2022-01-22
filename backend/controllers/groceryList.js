@@ -42,10 +42,11 @@ const addGroceryListFromMyRecipes = (req, res) => {
 
 const addGroceryListFromApi = (req, res) => {
   const user = req.params.user;
-  const recipeID = req.body.id;
+  const recipeID = req.params.id;
 
   GroceryList.findOne({ grocery_list_recipeID: recipeID, user: user }).then(
     (response) => {
+      console.log("grocery list contollers response line 49", response);
       if (!response) {
         axios
           .get(

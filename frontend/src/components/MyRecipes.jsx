@@ -78,7 +78,7 @@ const MyRecipes = ({ user }) => {
               overflow: "auto",
             }}
           >
-            <Typography textAlign="center" variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h4" fontWeight="bold">
               My Recipes
             </Typography>
             <Grid

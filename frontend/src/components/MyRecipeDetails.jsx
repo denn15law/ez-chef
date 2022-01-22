@@ -18,9 +18,7 @@ const MyRecipeDetails = ({ user }) => {
   return (
     <Grid container direction="row" spacing={1} width="100%">
       <CssBaseline />
-      <Grid xs={6.5}>
-        <Paper style={styles.paperContainer}></Paper>
-      </Grid>
+
       <Grid xs={5.5}>
         <Grid container marginTop={8} spacing={4}>
           <Box
@@ -37,6 +35,9 @@ const MyRecipeDetails = ({ user }) => {
             <MyRecipeDetailsCard user={user} />
           </Box>
         </Grid>
+      </Grid>
+      <Grid xs={6.5}>
+        <Paper style={styles.paperContainer}></Paper>
       </Grid>
     </Grid>
   );

@@ -22,8 +22,6 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  recipes_created: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
-  groceryList_recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
 });
 
 const User = mongoose.model("User", UserSchema);

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Box, Card, CssBaseline, Grid, Paper, Typography } from "@mui/material";
+import { Box, Card, CssBaseline, Grid, Paper, Typography, Button, TextField } from "@mui/material";
+import axios from 'axios'
 
 const IngredientList = ({ myGroceryList }) => {
   const [myIngredientsArray, setIngredientsArray] = useState([]);
+  const [phone, setPhone] = useState('')
 
   let ingredientsArray = [];
 
@@ -18,6 +20,28 @@ const IngredientList = ({ myGroceryList }) => {
   useEffect(() => {
     getIngredients();
   }, [myGroceryList]);
+
+  const textGroceries = () => {
+    const message = myIngredientsArray.map((ingredient, index) => {
+      return ingredient.name
+    })
+
+    const send = {
+      message: message.join(),
+      phone: phone
+    }
+
+    axios.put('http://localhost:8000/twilio', send)
+      .then(res => {
+        console.log('text sent', res)
+        setPhone('')
+      })
+      .catch(err => console.log(err))
+  }
+
+  const handleChange = (e) => {
+    setPhone(e.target.value)
+  }
 
   return (
     <Grid>
@@ -58,6 +82,16 @@ const IngredientList = ({ myGroceryList }) => {
               })}
             </Grid>
           ) : null}
+          <TextField
+            id="outlined-basic"
+            label="My Phone Number"
+            variant='outlined'
+            onChange={handleChange}
+          />
+          <Button
+            variant="contained"
+            onClick={textGroceries}
+          >Text Me My Groceries</Button>
         </Box>
       </Grid>
     </Grid>

@@ -40,7 +40,7 @@ const About = ({ user }) => {
               height: "92.5vh",
               overflow: "auto",
             }}>
-            <Typography textAlign="center" variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h4" fontWeight="bold">
               About EZ Chef
             </Typography>
             <Grid
@@ -94,7 +94,7 @@ const About = ({ user }) => {
                 </Card>
               </Grid>
             </Grid>
-            <Typography textAlign="center" variant="h5" fontWeight="bold">
+            <Typography textAlign="center" variant="h4" fontWeight="bold">
               Our Team
             </Typography>
             <Grid
