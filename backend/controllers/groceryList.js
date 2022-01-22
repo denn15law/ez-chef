@@ -13,6 +13,18 @@ const getGroceryListRecipes = (req, res) => {
     });
 };
 
+const checkGroceries = (req, res) => {
+  user = req.params.user;
+  recipeID = req.params.id;
+  console.log("checkgroceries", req.params.user, recipeID);
+  GroceryList.findOne({ grocery_list_recipeID: recipeID, user: user })
+    .then((response) => {
+      res.json(response);
+      console.log("I AM RESPONSE!!!!!", response);
+    })
+    .catch((err) => console.log("I AM ERROR!!!!", err));
+};
+
 const addGroceryListFromMyRecipes = (req, res) => {
   const user = req.params.user;
   const recipeID = req.params.id;
@@ -100,4 +112,5 @@ module.exports = {
   addGroceryListFromMyRecipes,
   addGroceryListFromApi,
   deleteGroceryListById,
+  checkGroceries,
 };

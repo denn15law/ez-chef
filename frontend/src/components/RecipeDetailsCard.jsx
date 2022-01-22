@@ -22,7 +22,8 @@ const RecipeDetails = ({ user }) => {
   const [details, setDetails] = useState({});
   const [serving, setServing] = useState(1);
   const [servingRatio, setServingRatio] = useState(1);
-  // const [isFav, setIsFav] = useState(false);
+  const [isFav, setIsFav] = useState(false);
+  const [isGroceries, setIsGroceries] = useState(false);
 
   let url = window.location.pathname;
   const id = url.split("/search/")[1];
@@ -38,23 +39,41 @@ const RecipeDetails = ({ user }) => {
       .catch(function (error) {
         console.log(error);
       });
-
-    // axios
-    //   .get(`http://localhost:8000/favourites/check/${user}/${id}`)
-    //   .then((response) => {
-    //     if (response.data) {
-    //       setIsFav(true);
-    //       console.log("response.data", response.data);
-    //     } else {
-    //       setIsFav(false);
-    //       console.log("response false", response.data);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     setIsFav(false);
-    //     console.log("error here", error);
-    //   });
   }, [id]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/favourites/check/${user}/${id}`)
+      .then((response) => {
+        if (response.data) {
+          console.log("response.data here", response.data);
+          setIsFav(true);
+        } else {
+          setIsFav(false);
+        }
+      })
+      .catch((error) => {
+        setIsFav(false);
+      });
+  }, [user]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/groceries/check/${user}/${id}`)
+      .then((response) => {
+        if (response.data) {
+          console.log("response.data here", response.data);
+          setIsGroceries(true);
+        } else {
+          setIsGroceries(false);
+          console.log("no response");
+        }
+      })
+      .catch((error) => {
+        setIsGroceries(false);
+        console.log("error when checking groceries");
+      });
+  }, [user]);
 
   useEffect(() => {
     setServing(details.servings);
@@ -74,7 +93,7 @@ const RecipeDetails = ({ user }) => {
         .then((res) => {
           alert("Added!");
         })
-        // .then(() => setIsFav(true))
+        .then(() => setIsFav(true))
         .catch((err) => deleteFavourite());
     } else {
       navigate("/login");
@@ -93,9 +112,9 @@ const RecipeDetails = ({ user }) => {
           details
         )
         .then((res) => {
-          console.log(res);
           alert("Added!");
         })
+        .then(() => setIsGroceries(true))
         .catch((err) => {
           deleteGroceryList();
         });
@@ -110,8 +129,11 @@ const RecipeDetails = ({ user }) => {
       .delete(url)
       .then(function (response) {
         alert("This recipe has been removed from your favourites!");
-        // setIsFav(false);
       })
+      .then(() => {
+        setIsFav(false);
+      })
+
       .catch(function (error) {
         console.log(error);
       });
@@ -124,6 +146,7 @@ const RecipeDetails = ({ user }) => {
       .then(function (response) {
         alert("This recipe has been removed from your grocery list!");
       })
+      .then(() => setIsGroceries(false))
       .catch(function (error) {
         console.log(error);
       });
@@ -162,10 +185,10 @@ const RecipeDetails = ({ user }) => {
         </Grid>
         <ButtonGroup>
           <Button onClick={onClickFavourite}>
-            <StarIcon />
+            {isFav ? <StarIcon /> : <StarBorderIcon />}
           </Button>
           <Button onClick={onClickGrocery}>
-            <AddShoppingCartIcon />
+            {isGroceries ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}
           </Button>
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>

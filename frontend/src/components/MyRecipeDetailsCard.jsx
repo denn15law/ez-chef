@@ -14,6 +14,7 @@ import {
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "react-alert";
@@ -22,7 +23,8 @@ const MyRecipeDetailsCard = ({ user }) => {
   const [details, setDetails] = useState({});
   const [serving, setServing] = useState(1);
   const [servingRatio, setServingRatio] = useState(1);
-  // const [isFav, setIsFav] = useState(false);
+  const [isFav, setIsFav] = useState(false);
+  const [isGroceries, setIsGroceries] = useState(false);
 
   let url = window.location.pathname;
   const id = url.split("/myRecipes/")[1];
@@ -37,23 +39,43 @@ const MyRecipeDetailsCard = ({ user }) => {
         console.log("response", response.data[0]);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       });
-
-    // axios
-    //   .get(`http://localhost:8000/favourites/check/${user}/${id}`)
-    //   .then((response) => {
-    //     if (response.data) {
-    //       setIsFav(true);
-    //     } else {
-    //       setIsFav(false);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     setIsFav(false);
-    //   });
   }, [id]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/favourites/check/${user}/${id}`)
+      .then((response) => {
+        if (response.data) {
+          console.log("response.data here", response.data);
+          setIsFav(true);
+        } else {
+          setIsFav(false);
+        }
+      })
+      .catch((error) => {
+        setIsFav(false);
+      });
+  }, [user]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/groceries/check/${user}/${id}`)
+      .then((response) => {
+        if (response.data) {
+          console.log("response.data here", response.data);
+          setIsGroceries(true);
+        } else {
+          setIsGroceries(false);
+          console.log("no response");
+        }
+      })
+      .catch((error) => {
+        setIsGroceries(false);
+        console.log("error when checking groceries");
+      });
+  }, [user]);
 
   useEffect(() => {
     setServing(details.serving_size);
@@ -77,7 +99,7 @@ const MyRecipeDetailsCard = ({ user }) => {
         .then((res) => {
           alert("Added!");
         })
-        // .then(() => setIsFav(true))
+        .then(() => setIsFav(true))
         .catch((err) => deleteFavourite());
     } else {
       navigate("/login");
@@ -98,6 +120,7 @@ const MyRecipeDetailsCard = ({ user }) => {
         .then((res) => {
           alert("Added!");
         })
+        .then(() => setIsGroceries(true))
         .catch((err) => {
           deleteGroceryList();
         });
@@ -114,7 +137,7 @@ const MyRecipeDetailsCard = ({ user }) => {
         alert("This recipe has been removed from your favourites!");
       })
       .then(() => {
-        // setIsFav(false);
+        setIsFav(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -127,6 +150,9 @@ const MyRecipeDetailsCard = ({ user }) => {
       .delete(url)
       .then(function (response) {
         alert("This recipe has been removed from your grocery list!");
+      })
+      .then(() => {
+        setIsGroceries(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -173,10 +199,10 @@ const MyRecipeDetailsCard = ({ user }) => {
             <EditIcon />
           </Button>
           <Button onClick={onClickFavourite}>
-            <StarIcon />
+            {isFav ? <StarIcon /> : <StarBorderIcon />}
           </Button>
           <Button onClick={onClickGrocery}>
-            <AddShoppingCartIcon />
+            {isGroceries ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}
           </Button>
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>
