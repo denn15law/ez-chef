@@ -54,8 +54,7 @@ const Index = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                  }}
-                >
+                  }}>
                   <TypeWriterEffect
                     p={10}
                     color="white"
@@ -99,15 +98,14 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Search Recipes </Typography>
                   </CardContent>
                   <CardMedia
                     component="img"
                     src={Image1}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -118,15 +116,14 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Recipe Details </Typography>
                   </CardContent>
                   <CardMedia
                     component="img"
                     src={Image2}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>
@@ -146,8 +143,7 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around"
-              >
+                justifyContent="space-around">
                 <Card
                   sx={{
                     height: "100%",
@@ -156,15 +152,14 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Create Recipes </Typography>
                   </CardContent>
                   <CardMedia
                     component="img"
                     src={Image3}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -175,15 +170,14 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">View Your Recipes</Typography>
                   </CardContent>
                   <CardMedia
                     component="img"
                     src={Image4}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>
@@ -203,8 +197,7 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around"
-              >
+                justifyContent="space-around">
                 <Card
                   sx={{
                     height: "100%",
@@ -213,15 +206,14 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">My Favourite Recipes</Typography>
                   </CardContent>
                   <CardMedia
                     component="img"
                     src={Image5}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -232,15 +224,14 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">My Grocery List</Typography>
                   </CardContent>
                   <CardMedia
                     component="img"
                     src={Image6}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>
