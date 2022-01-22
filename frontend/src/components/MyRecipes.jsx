@@ -13,6 +13,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { history } from "react-router-dom";
 import Image from "../docs/burger.jpeg";
 import { useNavigate } from "react-router-dom";
 
@@ -159,7 +160,13 @@ const MyRecipes = ({ user }) => {
                       overflow: "auto",
                     }}
                   >
-                    <Button href="/new" variant="contained" size="small">
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={() => {
+                        navigate("/new");
+                      }}
+                    >
                       Create New Recipes
                     </Button>
                   </Box>

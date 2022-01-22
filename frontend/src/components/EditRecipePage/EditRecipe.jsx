@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, CssBaseline, Grid, Paper } from "@mui/material";
 import EditRecipeForm from "./EditRecipeForm";
-import Image from "../docs/breakfast2.jpeg";
+import Image from "../../docs/breakfast2.jpeg";
 
 const styles = {
   paperContainer: {
