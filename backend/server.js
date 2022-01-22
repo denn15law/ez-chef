@@ -14,6 +14,7 @@ const logoutRoutes = require("./routes/logout");
 const searchRoutes = require("./routes/search");
 const groceryListRoutes = require("./routes/groceryList");
 const favouriteRoutes = require("./routes/favourites");
+const twilioRoute = require("./routes/twilio");
 
 //Set up .env
 const dotenv = require("dotenv");
@@ -63,6 +64,7 @@ app.use("/login", loginRoutes);
 app.use("/logout", logoutRoutes);
 app.use("/search", searchRoutes);
 app.use("/groceries", groceryListRoutes);
+app.use("/twilio", twilioRoute);
 
 // Connect to Mongo
 mongoose
