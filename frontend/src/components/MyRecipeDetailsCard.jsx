@@ -5,10 +5,12 @@ import {
   Button,
   ButtonGroup,
   CardMedia,
+  ClickAwayListener,
   CssBaseline,
   Grid,
-  Paper,
+  // IconButton,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
@@ -17,7 +19,6 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "react-alert";
 
 const MyRecipeDetailsCard = ({ user }) => {
   const [details, setDetails] = useState({});
@@ -25,10 +26,19 @@ const MyRecipeDetailsCard = ({ user }) => {
   const [servingRatio, setServingRatio] = useState(1);
   const [isFav, setIsFav] = useState(false);
   const [isGroceries, setIsGroceries] = useState(false);
+  const [tooltip, setTooltip] = useState(false);
 
   let url = window.location.pathname;
   const id = url.split("/myRecipes/")[1];
   const navigate = useNavigate();
+
+  const handleTooltipClose = () => {
+    setTooltip(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setTooltip(true);
+  };
 
   useEffect(() => {
     axios
@@ -96,7 +106,7 @@ const MyRecipeDetailsCard = ({ user }) => {
       axios
         .post(URL, details)
         .then((res) => {
-          alert("Added!");
+          // alert("Added!");
         })
         .then(() => setIsFav(true))
         .catch((err) => deleteFavourite());
@@ -117,7 +127,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           details
         )
         .then((res) => {
-          alert("Added!");
+          // alert("Added!");
         })
         .then(() => setIsGroceries(true))
         .catch((err) => {
@@ -133,7 +143,7 @@ const MyRecipeDetailsCard = ({ user }) => {
     axios
       .delete(url)
       .then(function (response) {
-        alert("This recipe has been removed from your favourites!");
+        // alert("This recipe has been removed from your favourites!");
       })
       .then(() => {
         setIsFav(false);
@@ -148,7 +158,7 @@ const MyRecipeDetailsCard = ({ user }) => {
     axios
       .delete(url)
       .then(function (response) {
-        alert("This recipe has been removed from your grocery list!");
+        // alert("This recipe has been removed from your grocery list!");
       })
       .then(() => {
         setIsGroceries(false);
@@ -195,7 +205,25 @@ const MyRecipeDetailsCard = ({ user }) => {
             <EditIcon />
           </Button>
           <Button onClick={onClickFavourite}>
-            {isFav ? <StarIcon /> : <StarBorderIcon />}
+            {isFav ? (
+              <ClickAwayListener onClickAway={handleTooltipClose}>
+                <Tooltip
+                  title="Added to Favourites"
+                  onClose={handleTooltipClose}
+                  open={tooltip}>
+                  <StarIcon onClick={handleTooltipOpen} />
+                </Tooltip>
+              </ClickAwayListener>
+            ) : (
+              <ClickAwayListener onClickAway={handleTooltipClose}>
+                <Tooltip
+                  title="Removed from Favourites"
+                  onClose={handleTooltipClose}
+                  open={tooltip}>
+                  <StarBorderIcon onClick={handleTooltipOpen} />
+                </Tooltip>
+              </ClickAwayListener>
+            )}
           </Button>
           <Button onClick={onClickGrocery}>
             {isGroceries ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}

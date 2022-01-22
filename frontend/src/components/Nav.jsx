@@ -147,14 +147,8 @@ const Nav = ({ user }) => {
             <ClickAwayListener onClickAway={handleTooltipClose}>
               <Tooltip
                 title="Please enter an ingredient or keyword!"
-                PopperProps={{
-                  disablePortal: true,
-                }}
                 onClose={handleTooltipClose}
-                open={tooltip}
-                disableFocusListener
-                disableHoverListener
-                disableTouchListener>
+                open={tooltip}>
                 <IconButton
                   onClick={handleTooltipOpen}
                   sx={{ p: "10px" }}
