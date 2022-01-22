@@ -56,6 +56,10 @@ const Index = () => {
                     alignItems: "center",
                   }}
                 >
+                  <div style={{
+                                        'background': 'grey'
+                    }}>
+
                   <TypeWriterEffect
                     p={10}
                     color="white"
@@ -74,6 +78,7 @@ const Index = () => {
                     multiTextDelay={1000}
                     typeSpeed={50}
                   />
+</div>
                 </Grid>
               </Animator>
             </Paper>

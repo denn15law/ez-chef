@@ -16,7 +16,7 @@ import {
   Toolbar,
   Tooltip,
 } from "@mui/material";
-import navbarList from "./navbarList";
+import navbarList from "../helpers/navbarList"
 import MuiAppBar from "@mui/material/AppBar";
 import SearchIcon from "@mui/icons-material/Search";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
