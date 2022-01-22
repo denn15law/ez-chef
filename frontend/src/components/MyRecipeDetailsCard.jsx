@@ -26,7 +26,6 @@ const MyRecipeDetailsCard = ({ user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("I am my recipeID", id);
     axios
       .get(`http://localhost:8000/recipes/recipeDetails/${user}/${id}`)
       .then(function (response) {
@@ -105,13 +104,11 @@ const MyRecipeDetailsCard = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
           marginRight: -5.5,
-        }}
-      >
+        }}>
         <Typography
           component="h1"
           variant="h5"
-          sx={{ p: 1, fontWeight: "bold" }}
-        >
+          sx={{ p: 1, fontWeight: "bold" }}>
           {details.title}
         </Typography>
         <Grid sx={{ p: 2 }}>
@@ -126,8 +123,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Button
             onClick={() => {
               onClickEdit(details._id);
-            }}
-          >
+            }}>
             <EditIcon />
           </Button>
           <Button onClick={onClickFavourite}>
@@ -155,8 +151,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Grid
             sx={{
               p: 1,
-            }}
-          >
+            }}>
             <Typography>
               Current Servings: {details.serving_size * servingRatio}
             </Typography>
@@ -165,8 +160,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Typography>Convert Servings: </Typography>
               <TextField
                 style={{
@@ -200,8 +194,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 textAlign: "left",
-              }}
-            >
+              }}>
               {Object.values(details).length ? (
                 removeTags(details.instructions)
                   .split(".")
@@ -211,8 +204,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}
-                      >
+                          .indexOf(each)}>
                         {each + "."}
                       </li>
                     );

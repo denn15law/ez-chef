@@ -49,7 +49,6 @@ const SearchForm = () => {
     axios
       .get(`http://localhost:8000/search/results/${results}`)
       .then(function (response) {
-        console.log("response.data hello", response.data);
         // handle success
         setSearched(results);
         setRecipeData(response.data);
@@ -81,8 +80,7 @@ const SearchForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Box
             component="main"
             sx={{
@@ -91,8 +89,7 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Typography variant="h4" fontWeight="bold">
               Search For Recipes
             </Typography>
@@ -107,8 +104,7 @@ const SearchForm = () => {
                 ":hover": {
                   boxShadow: 20,
                 },
-              }}
-            >
+              }}>
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Enter Ingredients or Keywords"
@@ -119,8 +115,7 @@ const SearchForm = () => {
               <IconButton
                 onClick={reloadSearch}
                 sx={{ p: "10px" }}
-                aria-label="search"
-              >
+                aria-label="search">
                 <SearchIcon />
               </IconButton>
             </Paper>
@@ -143,8 +138,7 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Grid
               container
               p={5}
@@ -153,8 +147,7 @@ const SearchForm = () => {
               direction="row"
               justifyContent="center"
               alignItems="center"
-              textAlign="center"
-            >
+              textAlign="center">
               {recipeData.length
                 ? recipeData
                     .sort((a, b) =>
@@ -174,16 +167,14 @@ const SearchForm = () => {
                               ":hover": {
                                 boxShadow: 20,
                               },
-                            }}
-                          >
+                            }}>
                             <CardContent
                               sx={{
                                 flexGrow: 1,
                                 paddingTop: 6,
 
                                 marginBottom: -1,
-                              }}
-                            >
+                              }}>
                               <Link href={url} style={{ color: "black" }}>
                                 {recip.title}
                               </Link>

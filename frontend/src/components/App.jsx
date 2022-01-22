@@ -29,7 +29,6 @@ const App = () => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
-      console.log(foundUser);
       setUser(foundUser);
     }
   }, []);
