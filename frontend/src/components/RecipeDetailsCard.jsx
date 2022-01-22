@@ -33,19 +33,30 @@ const RecipeDetails = ({ user }) => {
   const id = url.split("/search/")[1];
   const navigate = useNavigate();
 
-  const handleTooltipClose = () => {
+  const handleFavouriteTooltipClose = () => {
     setAddFav(false);
-    // setAddGroceries(false);
   };
 
-  const handleTooltipOpen = () => {
+  const handleFavouriteTooltipOpen = () => {
     setAddFav(true);
-    // setAddGroceries(true);
   };
 
-  const myFunction = () => {
+  const handleGroceryTooltipClose = () => {
+    setAddGroceries(false);
+  };
+
+  const handleGroceryTooltipOpen = () => {
+    setAddGroceries(true);
+  };
+
+  const myFavouriteFunction = () => {
     onClickFavourite();
-    handleTooltipOpen();
+    handleFavouriteTooltipOpen();
+  };
+
+  const myGroceryFunction = () => {
+    onClickGrocery();
+    handleGroceryTooltipOpen();
   };
 
   useEffect(() => {
@@ -192,33 +203,55 @@ const RecipeDetails = ({ user }) => {
         </Grid>
         <ButtonGroup>
           {isFav ? (
-            <ClickAwayListener onClickAway={handleTooltipClose}>
+            <ClickAwayListener onClickAway={handleFavouriteTooltipClose}>
               <Tooltip
                 title="Added to Favourites"
-                onClose={handleTooltipClose}
+                onClose={handleFavouriteTooltipClose}
                 open={addFav}
               >
-                <Button onClick={myFunction}>
+                <Button onClick={myFavouriteFunction}>
                   <StarIcon />
                 </Button>
               </Tooltip>
             </ClickAwayListener>
           ) : (
-            <ClickAwayListener onClickAway={handleTooltipClose}>
+            <ClickAwayListener onClickAway={handleFavouriteTooltipClose}>
               <Tooltip
                 title="Removed from Favourites"
-                onClose={handleTooltipClose}
+                onClose={handleFavouriteTooltipClose}
                 open={addFav}
               >
-                <Button onClick={myFunction}>
+                <Button onClick={myFavouriteFunction}>
                   <StarBorderIcon />
                 </Button>
               </Tooltip>
             </ClickAwayListener>
           )}
-          <Button onClick={onClickGrocery}>
-            {isGroceries ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}
-          </Button>
+          {isGroceries ? (
+            <ClickAwayListener onClickAway={handleGroceryTooltipClose}>
+              <Tooltip
+                title="Added to Groceries"
+                onClose={handleGroceryTooltipClose}
+                open={addGroceries}
+              >
+                <Button onClick={myGroceryFunction}>
+                  <ShoppingCartIcon />
+                </Button>
+              </Tooltip>
+            </ClickAwayListener>
+          ) : (
+            <ClickAwayListener onClickAway={handleGroceryTooltipClose}>
+              <Tooltip
+                title="Removed from Groceries"
+                onClose={handleGroceryTooltipClose}
+                open={addGroceries}
+              >
+                <Button onClick={myGroceryFunction}>
+                  <AddShoppingCartIcon />
+                </Button>
+              </Tooltip>
+            </ClickAwayListener>
+          )}
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>
           <Typography fontWeight="bold" variant="h6">
