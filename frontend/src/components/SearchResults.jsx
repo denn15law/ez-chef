@@ -12,6 +12,8 @@ import {
   Link,
   Paper,
   Typography,
+  Tooltip,
+  ClickAwayListener,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
@@ -32,10 +34,19 @@ const SearchForm = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
   const [searched, setSearched] = useState("");
+  const [tooltip, setTooltip] = useState(false);
   const navigate = useNavigate();
 
   let url = window.location.pathname;
   const results = url.split("/search/results/")[1];
+
+  const handleTooltipClose = () => {
+    setTooltip(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setTooltip(true);
+  };
 
   function handleChange(e) {
     setSearch(e.target.value);
@@ -81,7 +92,8 @@ const SearchForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          }}>
+          }}
+        >
           <Box
             component="main"
             sx={{
@@ -90,7 +102,8 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}>
+            }}
+          >
             <Typography variant="h4" fontWeight="bold">
               Search For Recipes
             </Typography>
@@ -105,7 +118,8 @@ const SearchForm = () => {
                 ":hover": {
                   boxShadow: 20,
                 },
-              }}>
+              }}
+            >
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Enter Ingredients or Keywords"
@@ -113,12 +127,36 @@ const SearchForm = () => {
                 value={search}
                 onChange={handleChange}
               />
-              <IconButton
-                onClick={reloadSearch}
-                sx={{ p: "10px" }}
-                aria-label="search">
-                <SearchIcon />
-              </IconButton>
+              {search && (
+                <IconButton
+                  onClick={reloadSearch}
+                  sx={{ p: "10px" }}
+                  aria-label="search"
+                >
+                  <SearchIcon />
+                </IconButton>
+              )}
+              {!search && (
+                <ClickAwayListener onClickAway={handleTooltipClose}>
+                  <Tooltip
+                    title={
+                      <Typography fontSize={20} textAlign="center">
+                        Please enter an ingrededient or keyword!
+                      </Typography>
+                    }
+                    onClose={handleTooltipClose}
+                    open={tooltip}
+                  >
+                    <IconButton
+                      onClick={handleTooltipOpen}
+                      sx={{ p: "10px" }}
+                      aria-label="search"
+                    >
+                      <SearchIcon />
+                    </IconButton>
+                  </Tooltip>
+                </ClickAwayListener>
+              )}
             </Paper>
           </Box>
           <Grid marginBottom={2} marginTop={-2.5}>
@@ -139,7 +177,8 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}>
+            }}
+          >
             <Grid
               container
               p={5}
@@ -148,7 +187,8 @@ const SearchForm = () => {
               direction="row"
               justifyContent="center"
               alignItems="center"
-              textAlign="center">
+              textAlign="center"
+            >
               {recipeData.length
                 ? recipeData
                     .sort((a, b) =>
@@ -168,14 +208,16 @@ const SearchForm = () => {
                               ":hover": {
                                 boxShadow: 20,
                               },
-                            }}>
+                            }}
+                          >
                             <CardContent
                               sx={{
                                 flexGrow: 1,
                                 paddingTop: 6,
 
                                 marginBottom: -1,
-                              }}>
+                              }}
+                            >
                               <Link href={url} style={{ color: "black" }}>
                                 {recip.title}
                               </Link>
