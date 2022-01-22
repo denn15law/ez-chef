@@ -7,6 +7,7 @@ import {
   Paper,
   Typography,
   Button,
+  ButtonGroup,
   TextField,
 } from "@mui/material";
 import axios from "axios";
@@ -31,13 +32,20 @@ const IngredientList = ({ myGroceryList }) => {
   }, [myGroceryList]);
 
   const textGroceries = () => {
-    const message = myIngredientsArray.map((ingredient, index) => {
-      return ingredient.name;
+    let message = "Here is your grocery list from EZ Chef. Happy Shopping! \n";
+    myIngredientsArray.map((ingredient, index) => {
+      message += `\n${ingredient.name
+        .charAt(0)
+        .toUpperCase()}${ingredient.name.slice(1)}, `;
     });
+
+    message = message.slice(0, -2);
+
     const send = {
-      message: message.join(),
+      message: message,
       phone: phone,
     };
+    console.log("send", send);
     axios
       .put("http://localhost:8000/twilio", send)
       .then((res) => {
@@ -90,13 +98,14 @@ const IngredientList = ({ myGroceryList }) => {
               })}
             </Grid>
           ) : null}
+
           <TextField
             id="outlined-basic"
             label="My Phone Number"
             variant="outlined"
             onChange={handleChange}
           />
-          <Button variant="contained" onClick={textGroceries}>
+          <Button variant="outlined" onClick={textGroceries}>
             Text Me My Groceries
           </Button>
         </Box>
