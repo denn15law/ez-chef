@@ -5,10 +5,11 @@ import {
   Button,
   ButtonGroup,
   CardMedia,
+  ClickAwayListener,
   CssBaseline,
   Grid,
-  Paper,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
@@ -17,7 +18,6 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "react-alert";
 
 const MyRecipeDetailsCard = ({ user }) => {
   const [details, setDetails] = useState({});
@@ -25,10 +25,22 @@ const MyRecipeDetailsCard = ({ user }) => {
   const [servingRatio, setServingRatio] = useState(1);
   const [isFav, setIsFav] = useState(false);
   const [isGroceries, setIsGroceries] = useState(false);
+  const [addFav, setAddFav] = useState(false);
+  const [addGroceries, setAddGroceries] = useState(false);
 
   let url = window.location.pathname;
   const id = url.split("/myRecipes/")[1];
   const navigate = useNavigate();
+
+  const handleTooltipClose = () => {
+    setAddFav(false);
+    // setAddGroceries(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setAddFav(true);
+    // setAddGroceries(true);
+  };
 
   useEffect(() => {
     console.log("I am my recipeID", id);
@@ -97,7 +109,7 @@ const MyRecipeDetailsCard = ({ user }) => {
       axios
         .post(URL, details)
         .then((res) => {
-          alert("Added!");
+          // alert("Added!");
         })
         .then(() => setIsFav(true))
         .catch((err) => deleteFavourite());
@@ -118,7 +130,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           details
         )
         .then((res) => {
-          alert("Added!");
+          // alert("Added!");
         })
         .then(() => setIsGroceries(true))
         .catch((err) => {
@@ -134,7 +146,7 @@ const MyRecipeDetailsCard = ({ user }) => {
     axios
       .delete(url)
       .then(function (response) {
-        alert("This recipe has been removed from your favourites!");
+        // alert("This recipe has been removed from your favourites!");
       })
       .then(() => {
         setIsFav(false);
@@ -149,7 +161,7 @@ const MyRecipeDetailsCard = ({ user }) => {
     axios
       .delete(url)
       .then(function (response) {
-        alert("This recipe has been removed from your grocery list!");
+        // alert("This recipe has been removed from your grocery list!");
       })
       .then(() => {
         setIsGroceries(false);
@@ -173,13 +185,11 @@ const MyRecipeDetailsCard = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
           marginRight: -5.5,
-        }}
-      >
+        }}>
         <Typography
           component="h1"
           variant="h4"
-          sx={{ p: 1, fontWeight: "bold" }}
-        >
+          sx={{ p: 1, fontWeight: "bold" }}>
           {details.title}
         </Typography>
         <Grid sx={{ p: 2 }}>
@@ -194,15 +204,54 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Button
             onClick={() => {
               onClickEdit(details._id);
-            }}
-          >
+            }}>
             <EditIcon />
           </Button>
           <Button onClick={onClickFavourite}>
-            {isFav ? <StarIcon /> : <StarBorderIcon />}
+            {isFav ? (
+              <ClickAwayListener onClickAway={handleTooltipClose}>
+                <Tooltip
+                  title="Added to Favourites"
+                  onClose={handleTooltipClose}
+                  open={addFav}>
+                  <StarIcon onClick={handleTooltipOpen} />
+                </Tooltip>
+              </ClickAwayListener>
+            ) : (
+              <ClickAwayListener onClickAway={handleTooltipClose}>
+                <Tooltip
+                  title="Removed from Favourites"
+                  onClose={handleTooltipClose}
+                  open={addFav}>
+                  <StarBorderIcon onClick={handleTooltipOpen} />
+                </Tooltip>
+              </ClickAwayListener>
+            )}
           </Button>
           <Button onClick={onClickGrocery}>
-            {isGroceries ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}
+            {isGroceries ? (
+              // <ClickAwayListener onClickAway={handleTooltipClose}>
+              //   <Tooltip
+              //     title="Added to your Grocery List"
+              //     onClose={handleTooltipClose}
+              //     open={addGroceries}>
+              <ShoppingCartIcon
+              // onClick={handleTooltipOpen}
+              />
+            ) : (
+              //   </Tooltip>
+              // </ClickAwayListener>
+              // <ClickAwayListener onClickAway={handleTooltipClose}>
+              //   <Tooltip
+              //     title="Added to your Grocery List"
+              //     onClose={handleTooltipClose}
+              //     open={addGroceries}>
+              <AddShoppingCartIcon
+              // onClickAway={handleTooltipOpen}
+              />
+              //   </Tooltip>
+              // </ClickAwayListener>
+            )}
           </Button>
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>
@@ -223,8 +272,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Grid
             sx={{
               p: 1,
-            }}
-          >
+            }}>
             <Typography>
               Current Servings: {details.serving_size * servingRatio}
             </Typography>
@@ -233,8 +281,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Typography>Convert Servings: </Typography>
               <TextField
                 style={{
@@ -268,8 +315,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 textAlign: "left",
-              }}
-            >
+              }}>
               {Object.values(details).length ? (
                 removeTags(details.instructions)
                   .split(".")
@@ -279,8 +325,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}
-                      >
+                          .indexOf(each)}>
                         {each + "."}
                       </li>
                     );

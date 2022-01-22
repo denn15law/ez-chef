@@ -64,8 +64,7 @@ const NewRecipeForm = ({ user }) => {
           p: 2,
           marginRight: -3,
           flexGrow: 1,
-        }}
-      >
+        }}>
         <Typography textAlign="center" variant="h4" fontWeight="bold">
           Add a New Recipe
         </Typography>
@@ -79,8 +78,7 @@ const NewRecipeForm = ({ user }) => {
               display: "flex",
               flexDirection: "column",
               textAlign: "center",
-            }}
-          >
+            }}>
             <Controller
               name="title"
               control={control}
@@ -108,8 +106,7 @@ const NewRecipeForm = ({ user }) => {
             <Typography
               variant="h6"
               style={{ marginBottom: 8 }}
-              fontWeight="bold"
-            >
+              fontWeight="bold">
               List of Ingredients
             </Typography>
             {ingredientsFields.map((item, i) => (
@@ -158,15 +155,13 @@ const NewRecipeForm = ({ user }) => {
                 />
                 <Button
                   onClick={renderIngredientForm}
-                  style={{ display: "flex", alignItems: "flex-end" }}
-                >
+                  style={{ display: "flex", alignItems: "flex-end" }}>
                   Add
                 </Button>
                 <Button
                   color="error"
                   onClick={() => remove(i)}
-                  style={{ display: "flex", alignItems: "flex-end" }}
-                >
+                  style={{ display: "flex", alignItems: "flex-end" }}>
                   Delete
                 </Button>
               </Box>
@@ -206,8 +201,7 @@ const NewRecipeForm = ({ user }) => {
               display: "flex",
               alignItem: "center",
               justifyContent: "center",
-            }}
-          >
+            }}>
             <Button type="submit" color="success">
               Submit
             </Button>

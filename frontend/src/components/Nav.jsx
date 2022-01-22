@@ -4,6 +4,7 @@ import LogoutButton from "./LogoutButton";
 import {
   Avatar,
   Box,
+  ClickAwayListener,
   Divider,
   Drawer,
   Grid,
@@ -57,7 +58,17 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const Nav = ({ user }) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const [tooltip, setTooltip] = useState(false);
+
   const navigate = useNavigate();
+
+  const handleTooltipClose = () => {
+    setTooltip(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setTooltip(true);
+  };
 
   const navigateHome = () => {
     navigate("/");
@@ -72,6 +83,9 @@ const Nav = ({ user }) => {
   };
 
   const showSearch = () => {
+    if (!search) {
+      return;
+    }
     navigate(`/search/results/${replaceString(search)}`);
     window.location.reload();
   };
@@ -90,8 +104,7 @@ const Nav = ({ user }) => {
           justifyContent: "space-between",
           alignItems: "center",
           textAlign: "center",
-        }}
-      >
+        }}>
         <Grid sx={{ display: "flex", flexDirection: "row", width: 160 }}>
           <Toolbar>
             <Tooltip title="Your Menu">
@@ -99,8 +112,7 @@ const Nav = ({ user }) => {
                 aria-label="open drawer"
                 onClick={toggleOpen}
                 edge="start"
-                sx={{ mr: 2, ...(open && { display: "none" }) }}
-              >
+                sx={{ mr: 2, ...(open && { display: "none" }) }}>
                 <Avatar sx={{ width: 35, height: 35 }}>
                   <PersonIcon />
                 </Avatar>
@@ -119,17 +131,33 @@ const Nav = ({ user }) => {
               width: 160,
             }}
             placeholder="Search for Recipes"
-            inputProps={{ "aria-label": "search google maps" }}
+            inputProps={{ "aria-label": "search recipes" }}
             value={search}
             onChange={handleChange}
           />
-          <IconButton
-            onClick={showSearch}
-            sx={{ p: "10px" }}
-            aria-label="search"
-          >
-            <SearchIcon />
-          </IconButton>
+          {search && (
+            <IconButton
+              onClick={showSearch}
+              sx={{ p: "10px" }}
+              aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          )}
+          {!search && (
+            <ClickAwayListener onClickAway={handleTooltipClose}>
+              <Tooltip
+                title="Please enter an ingredient or keyword!"
+                onClose={handleTooltipClose}
+                open={tooltip}>
+                <IconButton
+                  onClick={handleTooltipOpen}
+                  sx={{ p: "10px" }}
+                  aria-label="search">
+                  <SearchIcon />
+                </IconButton>
+              </Tooltip>
+            </ClickAwayListener>
+          )}
         </Grid>
       </Box>
       <Drawer
@@ -144,13 +172,11 @@ const Nav = ({ user }) => {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
-      >
+        open={open}>
         <DrawerHeader
           sx={{
             backgroundColor: "#b7b7a4",
-          }}
-        >
+          }}>
           <IconButton onClick={toggleOpen}>
             <ChevronLeftIcon />
           </IconButton>
@@ -160,23 +186,20 @@ const Nav = ({ user }) => {
           sx={{
             backgroundColor: "#b7b7a4",
             height: "100%",
-          }}
-        >
+          }}>
           <ListItem
             sx={{
               "&:hover": {
                 backgroundColor: "#6b705c",
               },
-            }}
-          >
+            }}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <Link
               to="/"
               onClick={toggleOpen}
-              style={{ textDecoration: "none" }}
-            >
+              style={{ textDecoration: "none" }}>
               <ListItemText
                 primary="Home"
                 sx={{
@@ -190,16 +213,14 @@ const Nav = ({ user }) => {
               "&:hover": {
                 backgroundColor: "#6b705c",
               },
-            }}
-          >
+            }}>
             <ListItemIcon>
               <BrunchDiningIcon />
             </ListItemIcon>
             <Link
               to="/about"
               onClick={toggleOpen}
-              style={{ textDecoration: "none" }}
-            >
+              style={{ textDecoration: "none" }}>
               <ListItemText
                 primary="About Us"
                 sx={{
@@ -208,29 +229,7 @@ const Nav = ({ user }) => {
               />
             </Link>
           </ListItem>
-          <ListItem
-            sx={{
-              "&:hover": {
-                backgroundColor: "#6b705c",
-              },
-            }}
-          >
-            <ListItemIcon>
-              <SearchIcon />
-            </ListItemIcon>
-            <Link
-              to="/search"
-              onClick={toggleOpen}
-              style={{ textDecoration: "none" }}
-            >
-              <ListItemText
-                primary="Search Recipes"
-                sx={{
-                  color: "white",
-                }}
-              />
-            </Link>
-          </ListItem>
+
           {user &&
             navbarList.map((item, index) => {
               return (
@@ -240,14 +239,12 @@ const Nav = ({ user }) => {
                     "&:hover": {
                       backgroundColor: "#6b705c",
                     },
-                  }}
-                >
+                  }}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <Link
                     to={item.path}
                     onClick={toggleOpen}
-                    style={{ textDecoration: "none" }}
-                  >
+                    style={{ textDecoration: "none" }}>
                     <ListItemText
                       primary={item.desc}
                       sx={{
@@ -266,16 +263,14 @@ const Nav = ({ user }) => {
                   "&:hover": {
                     backgroundColor: "#6b705c",
                   },
-                }}
-              >
+                }}>
                 <ListItemIcon>
                   <PersonIcon />
                 </ListItemIcon>
                 <Link
                   to="/register"
                   onClick={toggleOpen}
-                  style={{ textDecoration: "none" }}
-                >
+                  style={{ textDecoration: "none" }}>
                   <ListItemText
                     primary="Sign Up"
                     sx={{
@@ -289,16 +284,14 @@ const Nav = ({ user }) => {
                   "&:hover": {
                     backgroundColor: "#6b705c",
                   },
-                }}
-              >
+                }}>
                 <ListItemIcon>
                   <PersonIcon />
                 </ListItemIcon>
                 <Link
                   to="/login"
                   onClick={toggleOpen}
-                  style={{ textDecoration: "none" }}
-                >
+                  style={{ textDecoration: "none" }}>
                   <ListItemText
                     primary="Login"
                     sx={{
