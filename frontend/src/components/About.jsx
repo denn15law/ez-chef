@@ -83,6 +83,165 @@ const AboutSection = () => {
   );
 };
 
+const TeamSection = () => {
+  return (
+    <>
+      <Typography textAlign="center" variant="h4" fontWeight="bold">
+        Our Team
+      </Typography>
+      <Grid
+        container
+        p={5}
+        spacing={{ xs: 2, md: 7 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid item key={1}>
+          <Card
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 220,
+              ":hover": {
+                boxShadow: 20,
+              },
+            }}
+          >
+            <CardMedia
+              key={1}
+              component="img"
+              src="https://sixhungryfeet.com/wp-content/uploads/2020/06/Vegetarian-Pad-Thai-2.jpg"
+              alt="teamimage"
+              style={{ height: 170, width: 200 }}
+            />
+            <CardContent
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: 30,
+              }}
+            >
+              <h4>Jeewon Lee</h4>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item key={2}>
+          <Card
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 220,
+              ":hover": {
+                boxShadow: 20,
+              },
+            }}
+          >
+            <CardMedia
+              key={2}
+              component="img"
+              src="https://glebekitchen.com/wp-content/uploads/2017/04/tonkotsuramenfront.jpg"
+              alt="teamimage"
+              style={{ height: 170, width: 200 }}
+            />
+            <CardContent
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: 30,
+              }}
+            >
+              <h4>Dennis Law</h4>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item key={3}>
+          <Card
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 220,
+              ":hover": {
+                boxShadow: 20,
+              },
+            }}
+          >
+            <CardMedia
+              key={3}
+              component="img"
+              src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimagesvc.meredithcorp.io%2Fv3%2Fmm%2Fimage%3Furl%3Dhttps%253A%252F%252Fstatic.onecms.io%252Fwp-content%252Fuploads%252Fsites%252F19%252F2018%252F04%252F23%252F1804-what-is-sushi-grade-fish-2000.jpg&q=85"
+              alt="teamimage"
+              style={{ height: 170, width: 200 }}
+            />
+            <CardContent
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: 30,
+              }}
+            >
+              <h4>Kyle Liang</h4>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </>
+  );
+};
+
+const AboutCard = (props) => {
+  const { aboutName, aboutImage } = props;
+
+  return (
+    <>
+      <Card
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: 220,
+          ":hover": {
+            boxShadow: 20,
+          },
+        }}
+      >
+        <CardMedia
+          key={1}
+          component="img"
+          src={aboutImage}
+          alt="teamimage"
+          style={{ height: 170, width: 200 }}
+        />
+        <CardContent
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: 30,
+          }}
+        >
+          <Typography variant="h4">{aboutName}</Typography>
+        </CardContent>
+      </Card>
+    </>
+  );
+};
+
 const About = () => {
   return (
     <Grid container direction="row">
@@ -102,118 +261,7 @@ const About = () => {
             }}
           >
             <AboutSection />
-            <Typography textAlign="center" variant="h4" fontWeight="bold">
-              Our Team
-            </Typography>
-            <Grid
-              container
-              p={5}
-              spacing={{ xs: 2, md: 7 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Grid item key={1}>
-                <Card
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: 220,
-                    ":hover": {
-                      boxShadow: 20,
-                    },
-                  }}
-                >
-                  <CardMedia
-                    key={1}
-                    component="img"
-                    src="https://sixhungryfeet.com/wp-content/uploads/2020/06/Vegetarian-Pad-Thai-2.jpg"
-                    alt="teamimage"
-                    style={{ height: 170, width: 200 }}
-                  />
-                  <CardContent
-                    sx={{
-                      flexGrow: 1,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: 30,
-                    }}
-                  >
-                    <h4>Jeewon Lee</h4>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item key={2}>
-                <Card
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: 220,
-                    ":hover": {
-                      boxShadow: 20,
-                    },
-                  }}
-                >
-                  <CardMedia
-                    key={2}
-                    component="img"
-                    src="https://glebekitchen.com/wp-content/uploads/2017/04/tonkotsuramenfront.jpg"
-                    alt="teamimage"
-                    style={{ height: 170, width: 200 }}
-                  />
-                  <CardContent
-                    sx={{
-                      flexGrow: 1,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: 30,
-                    }}
-                  >
-                    <h4>Dennis Law</h4>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item key={3}>
-                <Card
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: 220,
-                    ":hover": {
-                      boxShadow: 20,
-                    },
-                  }}
-                >
-                  <CardMedia
-                    key={3}
-                    component="img"
-                    src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimagesvc.meredithcorp.io%2Fv3%2Fmm%2Fimage%3Furl%3Dhttps%253A%252F%252Fstatic.onecms.io%252Fwp-content%252Fuploads%252Fsites%252F19%252F2018%252F04%252F23%252F1804-what-is-sushi-grade-fish-2000.jpg&q=85"
-                    alt="teamimage"
-                    style={{ height: 170, width: 200 }}
-                  />
-                  <CardContent
-                    sx={{
-                      flexGrow: 1,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: 30,
-                    }}
-                  >
-                    <h4>Kyle Liang</h4>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
+            <TeamSection />
           </Box>
         </Grid>
       </Grid>
