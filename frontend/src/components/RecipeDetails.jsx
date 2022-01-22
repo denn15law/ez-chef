@@ -9,23 +9,27 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    height: "100vh",
+    overflow: "hidden",
+    height: "100%",
   },
 };
 
 const RecipeDetails = ({ user }) => {
   return (
-    <Grid>
+    <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Paper style={styles.paperContainer}>
-        <Grid container spacing={4} marginTop={8}>
+      <Grid xs={6.5}>
+        <Paper style={styles.paperContainer}></Paper>
+      </Grid>
+      <Grid xs={5.5}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
               p: 5,
               flexGrow: 1,
-              height: "100vh",
+              height: "92.5vh",
+              width: "100%",
               overflow: "auto",
               display: "flex",
               flexDirection: "column",
@@ -34,7 +38,7 @@ const RecipeDetails = ({ user }) => {
             <RecipeDetailsCard user={user} />
           </Box>
         </Grid>
-      </Paper>
+      </Grid>
     </Grid>
   );
 };

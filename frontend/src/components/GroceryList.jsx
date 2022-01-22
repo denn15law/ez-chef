@@ -11,8 +11,7 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    overflow: "hidden",
-
+    // overflow: "hidden",
     height: "100%",
   },
 };
@@ -38,18 +37,18 @@ const GroceryList = ({ user }) => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Grid xs={8.25}>
+      <Grid xs={8}>
         <Paper style={styles.paperContainer}></Paper>
       </Grid>
-      <Grid xs={3.75}>
-        <Grid container spacing={4} marginTop={8} marginLeft={0}>
+      <Grid xs={4}>
+        <Grid container spacing={4} marginTop={8} paddingLeft={4}>
           <Box
             component="main"
             sx={{
               paddingTop: 8,
-              flexWrap: "wrap",
-              minHeight: "100vh",
-              overflow: "hidden",
+              flexGrow: 1,
+              height: "92.5vh",
+              overflow: "auto",
               alignContent: "center",
               justifyContent: "center",
             }}
@@ -57,7 +56,9 @@ const GroceryList = ({ user }) => {
             <Typography textAlign="center" variant="h4" fontWeight="bold">
               My Grocery List
               {myGroceryList.length ? null : (
-                <h6>There are no recipes in your grocery list!</h6>
+                <h6 textAlign="center">
+                  There are no recipes in your grocery list!
+                </h6>
               )}
             </Typography>
 

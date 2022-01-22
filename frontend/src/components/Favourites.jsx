@@ -13,7 +13,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import Image from "../docs/user-pages-background.jpg";
+import Image from "../docs/burger.jpeg";
 
 const styles = {
   paperContainer: {
@@ -21,8 +21,8 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    height: "100vh",
+    width: "100%",
+    height: "100%",
   },
 };
 
@@ -62,13 +62,13 @@ const Favourites = ({ user }) => {
     <Grid>
       <CssBaseline />
       <Paper style={styles.paperContainer}>
-        <Grid container spacing={4} marginTop={8}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
               p: 5,
               flexGrow: 1,
-              height: "100vh",
+              height: "95vh",
               overflow: "auto",
             }}
           >
@@ -101,6 +101,9 @@ const Favourites = ({ user }) => {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
+                          ":hover": {
+                            boxShadow: 20,
+                          },
                         }}
                       >
                         <CardContent sx={{ flexGrow: 1 }}>

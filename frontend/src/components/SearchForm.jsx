@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
-import Image from "../docs/background-option2.jpg";
+import Image from "../docs/burger.jpeg";
 
 const styles = {
   paperContainer: {
@@ -18,8 +18,8 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    height: "100vh",
+    width: "100%",
+    height: "100%",
   },
 };
 
@@ -43,6 +43,7 @@ const SearchForm = () => {
       <Paper style={styles.paperContainer}>
         <Grid
           container
+          marginTop={8}
           spacing={4}
           marginTop={8}
           sx={{
@@ -52,6 +53,7 @@ const SearchForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            height: "93vh",
           }}
         >
           <Box

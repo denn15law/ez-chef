@@ -1,8 +1,6 @@
 import React from "react";
 import {
-  Box,
   Card,
-  CardActionArea,
   CardContent,
   CardMedia,
   CssBaseline,
@@ -16,13 +14,8 @@ import {
   ScrollPage,
   batch,
   Fade,
-  FadeIn,
-  Move,
-  MoveIn,
   MoveOut,
   Sticky,
-  StickyIn,
-  ZoomIn,
 } from "react-scroll-motion";
 
 import TypeWriterEffect from "react-typewriter-effect";
@@ -49,7 +42,7 @@ const Index = () => {
   return (
     <Grid>
       <CssBaseline />
-      <Grid container spacing={5} marginTop={8}>
+      <Grid container marginTop={8} spacing={4}>
         <ScrollContainer>
           <ScrollPage page={0}>
             <Paper style={styles.paperContainer}>

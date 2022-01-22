@@ -2,19 +2,28 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
-  Avatar,
   Box,
   Button,
-  Container,
   CssBaseline,
+  Grid,
   Link,
+  Paper,
   TextField,
   Typography,
 } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const theme = createTheme();
+import Image from "../docs/salmon-quinoa.jpg";
+
+const styles = {
+  paperContainer: {
+    backgroundImage: `url(${Image})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    overflow: "hidden",
+    height: "100%",
+  },
+};
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -40,69 +49,86 @@ const Login = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 15,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <AccountCircleIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Log in to Your Account
-          </Typography>
+    <Grid container direction="row" spacing={1}>
+      <CssBaseline />
+      <Grid xs={4.5}>
+        <Grid container spacing={4} marginTop={8}>
           <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={user.email}
-              onChange={handleChange}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={user.password}
-              onChange={handleChange}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Link href="/register" variant="body2">
-              {"Don't have an account? Sign Up"}
-            </Link>
+            component="main"
+            sx={{
+              p: 5,
+              flexGrow: 1,
+              height: "92.5vh",
+              overflow: "auto",
+              display: "flex",
+              flexDirection: "column",
+            }}>
+            <Box
+              sx={{
+                p: 5,
+                marginTop: 10,
+                marginRight: -4,
+                flexGrow: 1,
+              }}>
+              <Typography textAlign="center" variant="h5" fontWeight="bold">
+                Log in to Your Account
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                noValidate
+                sx={{
+                  p: 2,
+                  margin: "auto",
+                  maxWidth: 500,
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  textAlign: "center",
+                }}>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                  value={user.email}
+                  onChange={handleChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  value={user.password}
+                  onChange={handleChange}
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}>
+                  Sign In
+                </Button>
+                <Link href="/register" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Box>
+            </Box>
           </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
+        </Grid>
+      </Grid>
+      <Grid xs={7.5}>
+        <Paper style={styles.paperContainer}></Paper>
+      </Grid>
+    </Grid>
   );
 };
 

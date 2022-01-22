@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
-import Image from "../docs/background-option2.jpg";
+import Image from "../docs/burger.jpeg";
 
 const styles = {
   paperContainer: {
@@ -71,6 +71,7 @@ const SearchForm = () => {
       <Paper style={styles.paperContainer}>
         <Grid
           container
+          marginTop={8}
           spacing={4}
           marginTop={8}
           sx={{
@@ -103,6 +104,9 @@ const SearchForm = () => {
                 display: "flex",
                 alignItems: "center",
                 width: 600,
+                ":hover": {
+                  boxShadow: 20,
+                },
               }}
             >
               <InputBase
@@ -149,6 +153,7 @@ const SearchForm = () => {
               direction="row"
               justifyContent="center"
               alignItems="center"
+              textAlign="center"
             >
               {recipeData.length
                 ? recipeData

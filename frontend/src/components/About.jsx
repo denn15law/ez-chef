@@ -21,8 +21,8 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    width: "100vw",
-    height: "100vh",
+    width: "100%",
+    height: "100%",
   },
 };
 
@@ -40,16 +40,19 @@ const About = ({ user }) => {
   //   }, [teams]);
 
   return (
-    <Grid>
+    <Grid container direction="row">
       <CssBaseline />
-      <Paper style={styles.paperContainer}>
-        <Grid container spacing={4} marginTop={8}>
+      <Grid xs={5}>
+        <Paper style={styles.paperContainer}></Paper>
+      </Grid>
+      <Grid xs={7}>
+        <Grid container marginTop={8} spacing={4}>
           <Box
             component="main"
             sx={{
               p: 5,
               flexGrow: 1,
-              height: "100vh",
+              height: "92.5vh",
               overflow: "auto",
             }}
           >
@@ -80,6 +83,9 @@ const About = ({ user }) => {
                     paddingLeft: 1,
                     paddingRight: 1,
                     textAlign: "center",
+                    ":hover": {
+                      boxShadow: 20,
+                    },
                   }}
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
@@ -106,7 +112,7 @@ const About = ({ user }) => {
                 </Card>
               </Grid>
             </Grid>
-            <Typography textAlign="center" variant="h5">
+            <Typography textAlign="center" variant="h5" fontWeight="bold">
               Our Team
             </Typography>
             <Grid
@@ -220,7 +226,7 @@ const About = ({ user }) => {
             </Grid>
           </Box>
         </Grid>
-      </Paper>
+      </Grid>
     </Grid>
   );
 };
