@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material";
 import Index from "./components/Index";
-import Nav from "./components/Nav";
+import Nav from "./components/NavBar/Nav";
 import MyRecipes from "./components/MyRecipes";
 import Favourites from "./components/FavourtiesPage/Favourites";
 import GroceryList from "./components/GroceryListPage/GroceryList";

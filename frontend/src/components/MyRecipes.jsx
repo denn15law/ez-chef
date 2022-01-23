@@ -13,7 +13,6 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { history } from "react-router-dom";
 import Image from "../docs/burger.jpeg";
 import { useNavigate } from "react-router-dom";
 
