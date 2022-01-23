@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Box, CssBaseline, Grid, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CssBaseline,
+  Grid,
+  Paper,
+  Typography,
+} from "@mui/material";
 import RecipesList from "./RecipesList";
 import IngredientsList from "./IngredientsList";
 import Image from "../../docs/food3.jpeg";
@@ -55,9 +62,18 @@ const GroceryList = ({ user }) => {
             <Typography textAlign="center" variant="h4" fontWeight="bold">
               My Grocery List
               {myGroceryList.length ? null : (
-                <h6 textAlign="center">
-                  There are no recipes in your grocery list!
-                </h6>
+                <Box
+                  sx={{
+                    p: 10,
+                    flexGrow: 1,
+                    height: "100vh",
+                    overflow: "auto",
+                  }}
+                >
+                  <Button href="/search" variant="outlined" size="large">
+                    Search For Recipes
+                  </Button>
+                </Box>
               )}
             </Typography>
 

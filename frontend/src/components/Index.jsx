@@ -114,7 +114,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image1}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -133,7 +133,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image2}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>
@@ -171,7 +171,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image3}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -190,7 +190,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image4}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>
@@ -228,7 +228,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image5}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -247,7 +247,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image6}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>

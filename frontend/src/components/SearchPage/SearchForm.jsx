@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import {
   Box,
   CssBaseline,
+  ClickAwayListener,
   Grid,
   IconButton,
   InputBase,
   Paper,
   Typography,
+  Tooltip,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +27,16 @@ const styles = {
 
 const SearchForm = () => {
   const [search, setSearch] = useState("");
+  const [tooltip, setTooltip] = useState(false);
   const navigate = useNavigate();
+
+  const handleTooltipClose = () => {
+    setTooltip(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setTooltip(true);
+  };
 
   function handleChange(e) {
     setSearch(e.target.value);
@@ -89,13 +100,36 @@ const SearchForm = () => {
                 value={search}
                 onChange={handleChange}
               />
-              <IconButton
-                onClick={showSearch}
-                sx={{ p: "10px" }}
-                aria-label="search"
-              >
-                <SearchIcon />
-              </IconButton>
+              {search && (
+                <IconButton
+                  onClick={showSearch}
+                  sx={{ p: "10px" }}
+                  aria-label="search"
+                >
+                  <SearchIcon />
+                </IconButton>
+              )}
+              {!search && (
+                <ClickAwayListener onClickAway={handleTooltipClose}>
+                  <Tooltip
+                    title={
+                      <Typography fontSize={20} textAlign="center">
+                        Please enter an ingrededient or keyword!
+                      </Typography>
+                    }
+                    onClose={handleTooltipClose}
+                    open={tooltip}
+                  >
+                    <IconButton
+                      onClick={handleTooltipOpen}
+                      sx={{ p: "10px" }}
+                      aria-label="search"
+                    >
+                      <SearchIcon />
+                    </IconButton>
+                  </Tooltip>
+                </ClickAwayListener>
+              )}
             </Paper>
           </Box>
         </Grid>

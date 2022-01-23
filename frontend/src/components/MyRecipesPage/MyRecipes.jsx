@@ -160,8 +160,8 @@ const MyRecipes = ({ user }) => {
                     }}
                   >
                     <Button
-                      variant="contained"
-                      size="small"
+                      variant="outlined"
+                      size="large"
                       onClick={() => {
                         navigate("/new");
                       }}

@@ -5,19 +5,19 @@ import {
   Button,
   ButtonGroup,
   CardMedia,
+  ClickAwayListener,
   CssBaseline,
   Grid,
-  Paper,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "react-alert";
 
 const MyRecipeDetailsCard = ({ user }) => {
   const [details, setDetails] = useState({});
@@ -25,10 +25,38 @@ const MyRecipeDetailsCard = ({ user }) => {
   const [servingRatio, setServingRatio] = useState(1);
   const [isFav, setIsFav] = useState(false);
   const [isGroceries, setIsGroceries] = useState(false);
+  const [addFav, setAddFav] = useState(false);
+  const [addGroceries, setAddGroceries] = useState(false);
 
   let url = window.location.pathname;
   const id = url.split("/myRecipes/")[1];
   const navigate = useNavigate();
+
+  const handleFavouriteTooltipClose = () => {
+    setAddFav(false);
+  };
+
+  const handleFavouriteTooltipOpen = () => {
+    setAddFav(true);
+  };
+
+  const handleGroceryTooltipClose = () => {
+    setAddGroceries(false);
+  };
+
+  const handleGroceryTooltipOpen = () => {
+    setAddGroceries(true);
+  };
+
+  const myFavouriteFunction = () => {
+    onClickFavourite();
+    handleFavouriteTooltipOpen();
+  };
+
+  const myGroceryFunction = () => {
+    onClickGrocery();
+    handleGroceryTooltipOpen();
+  };
 
   useEffect(() => {
     console.log("I am my recipeID", id);
@@ -96,9 +124,6 @@ const MyRecipeDetailsCard = ({ user }) => {
       const URL = `http://localhost:8000/favourites/myRecipes/${user}/${details._id}`;
       axios
         .post(URL, details)
-        .then((res) => {
-          alert("Added!");
-        })
         .then(() => setIsFav(true))
         .catch((err) => deleteFavourite());
     } else {
@@ -117,9 +142,6 @@ const MyRecipeDetailsCard = ({ user }) => {
           `http://localhost:8000/groceries/myRecipes/${user}/${details._id}`,
           details
         )
-        .then((res) => {
-          alert("Added!");
-        })
         .then(() => setIsGroceries(true))
         .catch((err) => {
           deleteGroceryList();
@@ -133,9 +155,6 @@ const MyRecipeDetailsCard = ({ user }) => {
     const url = `http://localhost:8000/favourites/${user}/${details._id}`;
     axios
       .delete(url)
-      .then(function (response) {
-        alert("This recipe has been removed from your favourites!");
-      })
       .then(() => {
         setIsFav(false);
       })
@@ -148,9 +167,6 @@ const MyRecipeDetailsCard = ({ user }) => {
     const url = `http://localhost:8000/groceries/${user}/${details._id}`;
     axios
       .delete(url)
-      .then(function (response) {
-        alert("This recipe has been removed from your grocery list!");
-      })
       .then(() => {
         setIsGroceries(false);
       })
@@ -198,12 +214,73 @@ const MyRecipeDetailsCard = ({ user }) => {
           >
             <EditIcon />
           </Button>
-          <Button onClick={onClickFavourite}>
-            {isFav ? <StarIcon /> : <StarBorderIcon />}
-          </Button>
-          <Button onClick={onClickGrocery}>
-            {isGroceries ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}
-          </Button>
+
+          {isFav ? (
+            <ClickAwayListener onClickAway={handleFavouriteTooltipClose}>
+              <Tooltip
+                title={
+                  <Typography fontSize={18} textAlign="center">
+                    Added to Favourites
+                  </Typography>
+                }
+                onClose={handleFavouriteTooltipClose}
+                open={addFav}
+              >
+                <Button onClick={myFavouriteFunction}>
+                  <StarIcon />
+                </Button>
+              </Tooltip>
+            </ClickAwayListener>
+          ) : (
+            <ClickAwayListener onClickAway={handleFavouriteTooltipClose}>
+              <Tooltip
+                title={
+                  <Typography fontSize={18} textAlign="center">
+                    Removed from Favourites
+                  </Typography>
+                }
+                onClose={handleFavouriteTooltipClose}
+                open={addFav}
+              >
+                <Button onClick={myFavouriteFunction}>
+                  <StarBorderIcon />
+                </Button>
+              </Tooltip>
+            </ClickAwayListener>
+          )}
+          {isGroceries ? (
+            <ClickAwayListener onClickAway={handleGroceryTooltipClose}>
+              <Tooltip
+                title={
+                  <Typography fontSize={18} textAlign="center">
+                    Added to Groceries
+                  </Typography>
+                }
+                onClose={handleGroceryTooltipClose}
+                open={addGroceries}
+              >
+                <Button onClick={myGroceryFunction}>
+                  <ShoppingCartIcon />
+                </Button>
+              </Tooltip>
+            </ClickAwayListener>
+          ) : (
+            <ClickAwayListener onClickAway={handleGroceryTooltipClose}>
+              <Tooltip
+                title={
+                  <Typography fontSize={18} textAlign="center">
+                    Removed from Groceries
+                  </Typography>
+                }
+                onClose={handleGroceryTooltipClose}
+                open={addGroceries}
+              >
+                <Button onClick={myGroceryFunction}>
+                  <AddShoppingCartIcon />
+                </Button>
+              </Tooltip>
+            </ClickAwayListener>
+          )}
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>
           <Typography fontWeight="bold" variant="h6">

@@ -12,6 +12,8 @@ import {
   Link,
   Paper,
   Typography,
+  Tooltip,
+  ClickAwayListener,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
@@ -32,10 +34,19 @@ const SearchForm = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
   const [searched, setSearched] = useState("");
+  const [tooltip, setTooltip] = useState(false);
   const navigate = useNavigate();
 
   let url = window.location.pathname;
   const results = url.split("/search/results/")[1];
+
+  const handleTooltipClose = () => {
+    setTooltip(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setTooltip(true);
+  };
 
   function handleChange(e) {
     setSearch(e.target.value);
@@ -116,13 +127,36 @@ const SearchForm = () => {
                 value={search}
                 onChange={handleChange}
               />
-              <IconButton
-                onClick={reloadSearch}
-                sx={{ p: "10px" }}
-                aria-label="search"
-              >
-                <SearchIcon />
-              </IconButton>
+              {search && (
+                <IconButton
+                  onClick={reloadSearch}
+                  sx={{ p: "10px" }}
+                  aria-label="search"
+                >
+                  <SearchIcon />
+                </IconButton>
+              )}
+              {!search && (
+                <ClickAwayListener onClickAway={handleTooltipClose}>
+                  <Tooltip
+                    title={
+                      <Typography fontSize={20} textAlign="center">
+                        Please enter an ingrededient or keyword!
+                      </Typography>
+                    }
+                    onClose={handleTooltipClose}
+                    open={tooltip}
+                  >
+                    <IconButton
+                      onClick={handleTooltipOpen}
+                      sx={{ p: "10px" }}
+                      aria-label="search"
+                    >
+                      <SearchIcon />
+                    </IconButton>
+                  </Tooltip>
+                </ClickAwayListener>
+              )}
             </Paper>
           </Box>
           <Grid marginBottom={2} marginTop={-2.5}>

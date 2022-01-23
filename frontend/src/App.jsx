@@ -18,7 +18,7 @@ import About from "./components/AboutPage/About";
 
 const theme = createTheme({
   typography: {
-    fontFamily: ["JetBrains Mono", "sans-serif"].join(","),
+    // fontFamily: ["JetBrains Mono", "sans-serif"].join(","),
   },
 });
 
@@ -29,7 +29,6 @@ const App = () => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
-      console.log(foundUser);
       setUser(foundUser);
     }
   }, []);

@@ -152,8 +152,8 @@ const Favourites = ({ user }) => {
                     }}
                   >
                     <Button
-                      variant="contained"
-                      size="small"
+                      variant="outlined"
+                      size="large"
                       onClick={() => {
                         navigate("/search");
                       }}

@@ -78,14 +78,12 @@ const EditRecipeForm = ({ user, recipeID }) => {
           p: 2,
           marginRight: -3,
           flexGrow: 1,
-        }}
-      >
+        }}>
         <Typography
           textAlign="center"
           component="h1"
           variant="h4"
-          fontWeight="bold"
-        >
+          fontWeight="bold">
           Edit Recipe
         </Typography>
         <form onSubmit={handleSubmit(editRecipe)}>
@@ -98,8 +96,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
               display: "flex",
               flexDirection: "column",
               textAlign: "center",
-            }}
-          >
+            }}>
             <Controller
               name="title"
               control={control}
@@ -127,8 +124,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
             <Typography
               variant="h6"
               style={{ marginBottom: 8 }}
-              fontWeight="bold"
-            >
+              fontWeight="bold">
               List of Ingredients
             </Typography>
             {ingredientsFields.map((item, i) => (
@@ -177,15 +173,13 @@ const EditRecipeForm = ({ user, recipeID }) => {
                 />
                 <Button
                   onClick={renderIngredientForm}
-                  style={{ display: "flex", alignItems: "flex-end" }}
-                >
+                  style={{ display: "flex", alignItems: "flex-end" }}>
                   Add
                 </Button>
                 <Button
                   color="error"
                   onClick={() => remove(i)}
-                  style={{ display: "flex", alignItems: "flex-end" }}
-                >
+                  style={{ display: "flex", alignItems: "flex-end" }}>
                   Delete
                 </Button>
               </Box>
@@ -225,8 +219,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
               display: "flex",
               alignItem: "center",
               justifyContent: "center",
-            }}
-          >
+            }}>
             <Button type="submit" color="success">
               Edit
             </Button>

@@ -88,23 +88,46 @@ const IngredientList = ({ myGroceryList }) => {
               alignItems="center"
               backgroundColor="white"
             >
+              <Grid
+                sx={{ marginBottom: 2, display: "flex", flexDirection: "row" }}
+              >
+                <Grid sx={{ p: 0.5 }}>
+                  <TextField
+                    id="outlined-basic"
+                    label="My Phone Number"
+                    variant="outlined"
+                    size="small"
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid sx={{ p: 0.5, display: "flex", alignContent: "center" }}>
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    onClick={textGroceries}
+                  >
+                    Text me my groceries
+                  </Button>
+                </Grid>
+              </Grid>
               {myIngredientsArray.map((groceryItem, index) => {
                 return (
-                  <Typography key={index}>{`${groceryItem.name}`}</Typography>
+                  <Grid
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <li key={index}>
+                      {`${groceryItem.name
+                        .charAt(0)
+                        .toUpperCase()}${groceryItem.name.slice(1)}`}
+                    </li>
+                  </Grid>
                 );
               })}
             </Grid>
           ) : null}
-
-          <TextField
-            id="outlined-basic"
-            label="My Phone Number"
-            variant="outlined"
-            onChange={handleChange}
-          />
-          <Button variant="outlined" onClick={textGroceries}>
-            Text Me My Groceries
-          </Button>
         </Box>
       </Grid>
     </Grid>
