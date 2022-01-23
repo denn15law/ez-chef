@@ -115,7 +115,8 @@ const IngredientList = ({ myGroceryList }) => {
                   <Grid
                     sx={{
                       display: "flex",
-                      justifyContent: "center",
+                      paddingLeft: 12,
+                      textAlign: "left",
                     }}
                   >
                     <li key={index}>

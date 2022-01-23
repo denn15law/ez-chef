@@ -21,9 +21,9 @@ const checkFavourites = (req, res) => {
   Favourite.findOne({ favourite_recipeID: recipeID, user: user })
     .then((response) => {
       res.json(response);
-      console.log("I AM RESPONSE!!!!!", response);
+      console.log("I AM RESPONSE FAVOURITE!!!", response);
     })
-    .catch((err) => console.log("I AM ERROR!!!!", err));
+    .catch((err) => console.log(err));
 };
 
 const addFavouriteFromMyRecipes = (req, res) => {

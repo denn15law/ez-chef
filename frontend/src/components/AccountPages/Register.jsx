@@ -106,6 +106,7 @@ const Register = () => {
                       autoFocus
                       value={data.first_name}
                       onChange={handleChange}
+                      color="info"
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -118,6 +119,7 @@ const Register = () => {
                       autoFocus
                       value={data.last_name}
                       onChange={handleChange}
+                      color="info"
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -130,6 +132,7 @@ const Register = () => {
                       type="email"
                       autoComplete="email"
                       value={data.email}
+                      color="info"
                       onChange={handleChange}
                     />
                   </Grid>
@@ -144,6 +147,7 @@ const Register = () => {
                       autoComplete="new-password"
                       value={data.password}
                       onChange={handleChange}
+                      color="info"
                     />
                   </Grid>
                 </Grid>
@@ -151,6 +155,7 @@ const Register = () => {
                   type="submit"
                   fullWidth
                   variant="contained"
+                  color="info"
                   sx={{ mt: 3, mb: 2 }}
                 >
                   Sign Up

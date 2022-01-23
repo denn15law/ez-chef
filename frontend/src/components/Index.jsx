@@ -26,6 +26,8 @@ import Image3 from "../docs/add-recipe.png";
 import Image4 from "../docs/my-recipes.png";
 import Image5 from "../docs/my-favourites.png";
 import Image6 from "../docs/my-grocerylist.png";
+import ImageLogin from "../docs/login.png";
+import ImagePersonal from "../docs/personalContent.png";
 
 const styles = {
   paperContainer: {
@@ -34,7 +36,7 @@ const styles = {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     width: "101.7vw",
-    height: "100vh",
+    height: "93vh",
   },
 };
 
@@ -59,7 +61,9 @@ const Index = () => {
                   <div
                     style={{
                       background: "grey",
+                      opacity: 0.9,
                       borderRadius: "3px",
+                      padding: "3px",
                     }}
                   >
                     <TypeWriterEffect
@@ -73,8 +77,7 @@ const Index = () => {
                       startDelay={1000}
                       cursorColor="black"
                       multiText={[
-                        "Hey there! Welcome to EZ Chef",
-                        // "We're excited to show you what you can do with our website!",
+                        "Hey there! Welcome to EZ Chef!",
                         "Scroll down to see all the features!",
                       ]}
                       multiTextDelay={1000}
@@ -143,12 +146,73 @@ const Index = () => {
             <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
               <Grid sx={{ display: "flex", flexDirection: "row" }}>
                 <Typography variant="h3">
-                  Create and save your own recipes!
+                  Register and Log in for personal content!
                 </Typography>
               </Grid>
             </Animator>
           </ScrollPage>
           <ScrollPage page={4}>
+            <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
+              <Grid
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-around"
+              >
+                <Card
+                  sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginRight: 5,
+                  }}
+                >
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography variant="h5">
+                      Register and Login to your Account
+                    </Typography>
+                  </CardContent>
+                  <CardMedia
+                    component="img"
+                    src={ImageLogin}
+                    style={{ width: 540, height: 285 }}
+                  />
+                </Card>
+                <Card
+                  sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginLeft: 5,
+                  }}
+                >
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography variant="h5">
+                      View your Personal Content
+                    </Typography>
+                  </CardContent>
+                  <CardMedia
+                    component="img"
+                    src={ImagePersonal}
+                    style={{ width: 540, height: 285 }}
+                  />
+                </Card>
+              </Grid>
+            </Animator>
+          </ScrollPage>
+          <ScrollPage page={5}>
+            <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
+              <Grid sx={{ display: "flex", flexDirection: "row" }}>
+                <Typography variant="h3">
+                  Create and save your own recipes!
+                </Typography>
+              </Grid>
+            </Animator>
+          </ScrollPage>
+          <ScrollPage page={6}>
             <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
               <Grid
                 display="flex"
@@ -196,7 +260,7 @@ const Index = () => {
               </Grid>
             </Animator>
           </ScrollPage>
-          <ScrollPage page={5}>
+          <ScrollPage page={7}>
             <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
               <Grid sx={{ display: "flex", flexDirection: "row" }}>
                 <Typography variant="h3">
@@ -205,7 +269,7 @@ const Index = () => {
               </Grid>
             </Animator>
           </ScrollPage>
-          <ScrollPage page={6}>
+          <ScrollPage page={8}>
             <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
               <Grid
                 display="flex"
