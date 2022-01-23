@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 
 const IngredientList = ({ myGroceryList }) => {
-  const [myIngredientsArray, setIngredientsArray] = useState([]);
+  const [myIngredientsArray, setMyIngredientsArray] = useState([]);
   const [phone, setPhone] = useState("");
 
   let ingredientsArray = [];
@@ -18,22 +18,27 @@ const IngredientList = ({ myGroceryList }) => {
   const getIngredients = () => {
     for (let recipe of myGroceryList) {
       for (let ingredient of recipe.ingredients) {
-        ingredientsArray.push(ingredient);
+        if (
+          !ingredientsArray.includes(ingredient.name) &&
+          !ingredientsArray.includes(`${ingredient.name}s`)
+        ) {
+          ingredientsArray.push(ingredient.name);
+        }
       }
     }
-    setIngredientsArray(ingredientsArray);
+    setMyIngredientsArray(ingredientsArray);
   };
 
   useEffect(() => {
     getIngredients();
-  }, [myGroceryList]);
+  }, [ingredientsArray]);
 
   const textGroceries = () => {
     let message = "Here is your grocery list from EZ Chef. Happy Shopping! \n";
-    myIngredientsArray.map((ingredient, index) => {
-      message += `\n${ingredient.name
-        .charAt(0)
-        .toUpperCase()}${ingredient.name.slice(1)}, `;
+    myIngredientsArray.map((ingredient) => {
+      message += `\n${ingredient.charAt(0).toUpperCase()}${ingredient.slice(
+        1
+      )}, `;
     });
 
     message = message.slice(0, -2);
@@ -119,9 +124,9 @@ const IngredientList = ({ myGroceryList }) => {
                     }}
                   >
                     <li key={index}>
-                      {`${groceryItem.name
+                      {`${groceryItem
                         .charAt(0)
-                        .toUpperCase()}${groceryItem.name.slice(1)}`}
+                        .toUpperCase()}${groceryItem.slice(1)}`}
                     </li>
                   </Grid>
                 );

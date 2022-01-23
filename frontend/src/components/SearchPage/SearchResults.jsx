@@ -162,7 +162,7 @@ const SearchForm = () => {
           <Grid marginBottom={2} marginTop={-2.5}>
             {recipeData.length ? (
               <Typography variant="h6" fontWeight="bold">
-                Now displaying recipes containing:{" "}
+                Now displaying results for:{" "}
                 {searched.replaceAll("++", "+").replaceAll("+", ", ")}
               </Typography>
             ) : null}
