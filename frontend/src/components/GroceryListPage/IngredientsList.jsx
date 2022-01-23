@@ -36,9 +36,9 @@ const IngredientList = ({ myGroceryList }) => {
   const textGroceries = () => {
     let message = "Here is your grocery list from EZ Chef. Happy Shopping! \n";
     myIngredientsArray.map((ingredient) => {
-      message += `\n${ingredient.charAt(0).toUpperCase()}${ingredient.slice(
-        1
-      )}, `;
+      return (message += `\n${ingredient
+        .charAt(0)
+        .toUpperCase()}${ingredient.slice(1)}, `);
     });
 
     message = message.slice(0, -2);
