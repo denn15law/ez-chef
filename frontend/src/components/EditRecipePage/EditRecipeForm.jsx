@@ -67,7 +67,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
       .put(`/recipes/edit/${user}/${recipeID}`, data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    navigate("/myrecipes");
+    navigate(`/myRecipes/${recipe._id}`);
   };
 
   return (
