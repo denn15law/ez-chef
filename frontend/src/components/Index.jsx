@@ -56,29 +56,31 @@ const Index = () => {
                     alignItems: "center",
                   }}
                 >
-                  <div style={{
-                                        'background': 'grey'
-                    }}>
-
-                  <TypeWriterEffect
-                    p={10}
-                    color="white"
-                    textStyle={{
-                      color: "white",
-                      fontWeight: "bold",
-                      fontSize: "2.5rem",
+                  <div
+                    style={{
+                      background: "grey",
+                      borderRadius: "3px",
                     }}
-                    startDelay={1000}
-                    cursorColor="black"
-                    multiText={[
-                      "Hey there! Welcome to EZ Chef",
-                      // "We're excited to show you what you can do with our website!",
-                      "Scroll down to see all the features!",
-                    ]}
-                    multiTextDelay={1000}
-                    typeSpeed={50}
-                  />
-</div>
+                  >
+                    <TypeWriterEffect
+                      p={10}
+                      color="white"
+                      textStyle={{
+                        color: "white",
+                        fontWeight: "bold",
+                        fontSize: "2.5rem",
+                      }}
+                      startDelay={1000}
+                      cursorColor="black"
+                      multiText={[
+                        "Hey there! Welcome to EZ Chef",
+                        // "We're excited to show you what you can do with our website!",
+                        "Scroll down to see all the features!",
+                      ]}
+                      multiTextDelay={1000}
+                      typeSpeed={50}
+                    />
+                  </div>
                 </Grid>
               </Animator>
             </Paper>

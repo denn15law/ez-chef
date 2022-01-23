@@ -13,7 +13,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import Image from "../docs/burger.jpeg";
+import Image from "../../docs/burger.jpeg";
 import { useNavigate } from "react-router-dom";
 
 const styles = {
