@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import Image from "../docs/pasta.jpg";
+import Image from "../../docs/pasta.jpg";
 
 const styles = {
   paperContainer: {
@@ -54,10 +54,10 @@ const Register = () => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Grid xs={7.5}>
+      <Grid md={7}>
         <Paper style={styles.paperContainer}></Paper>
       </Grid>
-      <Grid xs={4.5}>
+      <Grid xs={12} md={5}>
         <Grid container spacing={4} marginTop={8}>
           <Box
             component="main"
@@ -68,14 +68,16 @@ const Register = () => {
               overflow: "auto",
               display: "flex",
               flexDirection: "column",
-            }}>
+            }}
+          >
             <Box
               sx={{
                 p: 5,
                 marginTop: 10,
                 marginRight: -4,
                 flexGrow: 1,
-              }}>
+              }}
+            >
               <Typography textAlign="center" variant="h5" fontWeight="bold">
                 Sign up for an Account
               </Typography>
@@ -91,7 +93,8 @@ const Register = () => {
                   display: "flex",
                   flexDirection: "column",
                   textAlign: "center",
-                }}>
+                }}
+              >
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <TextField
@@ -148,7 +151,8 @@ const Register = () => {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}>
+                  sx={{ mt: 3, mb: 2 }}
+                >
                   Sign Up
                 </Button>
                 <Link href="/login" variant="body2">

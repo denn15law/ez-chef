@@ -56,24 +56,31 @@ const Index = () => {
                     alignItems: "center",
                   }}
                 >
-                  <TypeWriterEffect
-                    p={10}
-                    color="white"
-                    textStyle={{
-                      color: "white",
-                      fontWeight: "bold",
-                      fontSize: "2.5rem",
+                  <div
+                    style={{
+                      background: "grey",
+                      borderRadius: "3px",
                     }}
-                    startDelay={1000}
-                    cursorColor="black"
-                    multiText={[
-                      "Hey there! Welcome to EZ Chef",
-                      // "We're excited to show you what you can do with our website!",
-                      "Scroll down to see all the features!",
-                    ]}
-                    multiTextDelay={1000}
-                    typeSpeed={50}
-                  />
+                  >
+                    <TypeWriterEffect
+                      p={10}
+                      color="white"
+                      textStyle={{
+                        color: "white",
+                        fontWeight: "bold",
+                        fontSize: "2.5rem",
+                      }}
+                      startDelay={1000}
+                      cursorColor="black"
+                      multiText={[
+                        "Hey there! Welcome to EZ Chef",
+                        // "We're excited to show you what you can do with our website!",
+                        "Scroll down to see all the features!",
+                      ]}
+                      multiTextDelay={1000}
+                      typeSpeed={50}
+                    />
+                  </div>
                 </Grid>
               </Animator>
             </Paper>
@@ -107,7 +114,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image1}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -126,7 +133,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image2}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>
@@ -164,7 +171,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image3}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -183,7 +190,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image4}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>
@@ -221,7 +228,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image5}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
                 <Card
@@ -240,7 +247,7 @@ const Index = () => {
                   <CardMedia
                     component="img"
                     src={Image6}
-                    style={{ width: "40vw", height: "40vh" }}
+                    style={{ width: 540, height: 285 }}
                   />
                 </Card>
               </Grid>

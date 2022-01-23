@@ -13,7 +13,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import Image from "../docs/burger.jpeg";
+import Image from "../../docs/burger.jpeg";
 import { useNavigate } from "react-router-dom";
 
 const styles = {
@@ -27,16 +27,15 @@ const styles = {
   },
 };
 
-const MyRecipes = ({ user }) => {
-  const [myRecipes, setMyRecipes] = useState([]);
-
+const Favourites = ({ user }) => {
   const navigate = useNavigate();
+  const [myFavs, setMyFavs] = useState([]);
 
   const getData = () => {
     axios
-      .get(`http://localhost:8000/recipes/${user}`)
+      .get(`http://localhost:8000/favourites/${user}`)
       .then(function (response) {
-        setMyRecipes(response.data);
+        setMyFavs(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -47,10 +46,10 @@ const MyRecipes = ({ user }) => {
     getData();
   }, []);
 
-  const deleteRecipe = (id) => {
-    const URL = `http://localhost:8000/recipes/${user}/${id}`;
+  const deleteFavourite = (id) => {
+    const url = `http://localhost:8000/favourites/${user}/${id}`;
     axios
-      .delete(URL)
+      .delete(url)
       .then(function (response) {
         getData();
         console.log(response);
@@ -58,10 +57,6 @@ const MyRecipes = ({ user }) => {
       .catch(function (error) {
         console.log(error);
       });
-  };
-
-  const editRecipe = (id) => {
-    navigate(`/edit/${user}/${id}`);
   };
 
   return (
@@ -79,7 +74,7 @@ const MyRecipes = ({ user }) => {
             }}
           >
             <Typography textAlign="center" variant="h4" fontWeight="bold">
-              My Recipes
+              My Favourite Recipes
             </Typography>
             <Grid
               container
@@ -90,9 +85,14 @@ const MyRecipes = ({ user }) => {
               justifyContent="center"
               alignItems="center"
             >
-              {myRecipes.length ? (
-                myRecipes.map((recip) => {
-                  const url = `http://localhost:3000/myRecipes/${recip._id}`;
+              {myFavs.length ? (
+                myFavs.map((recip) => {
+                  let url = "";
+                  if (recip.favourite_recipeID.length < 10) {
+                    url += `http://localhost:3000/search/${recip.favourite_recipeID}`;
+                  } else {
+                    url += `http://localhost:3000/myRecipes/${recip.favourite_recipeID}`;
+                  }
                   return (
                     <Grid item key={recip}>
                       <Card
@@ -108,28 +108,20 @@ const MyRecipes = ({ user }) => {
                         }}
                       >
                         <CardContent sx={{ flexGrow: 1 }}>
-                          <Link href={url}>{recip.title}</Link>
+                          <Link href={url}>{recip.favourite_title}</Link>
                         </CardContent>
                         <CardMedia
-                          key={recip._id}
+                          key={recip.favourite_recipeID}
                           component="img"
-                          src={recip.image_url}
+                          src={recip.favourite_image}
                           alt="recipe"
                           style={{ height: 250, width: 250 }}
                         />
                         <CardActions>
                           <Button
-                            onClick={() => {
-                              editRecipe(recip._id);
-                            }}
-                            size="small"
-                          >
-                            Edit
-                          </Button>
-                          <Button
                             color="error"
                             onClick={() => {
-                              deleteRecipe(recip._id);
+                              deleteFavourite(recip.favourite_recipeID);
                             }}
                             size="small"
                           >
@@ -159,8 +151,14 @@ const MyRecipes = ({ user }) => {
                       overflow: "auto",
                     }}
                   >
-                    <Button href="/new" variant="outlined" size="large">
-                      Create New Recipes
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      onClick={() => {
+                        navigate("/search");
+                      }}
+                    >
+                      Search For Recipes
                     </Button>
                   </Box>
                 </Grid>
@@ -173,4 +171,4 @@ const MyRecipes = ({ user }) => {
   );
 };
 
-export default MyRecipes;
+export default Favourites;
