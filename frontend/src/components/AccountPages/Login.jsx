@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import Image from "../docs/salmon-quinoa.jpg";
+import Image from "../../docs/salmon-quinoa.jpg";
 
 const styles = {
   paperContainer: {
@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Grid xs={4.5}>
+      <Grid item xs={12} md={4.5}>
         <Grid container spacing={4} marginTop={8}>
           <Box
             component="main"
@@ -62,14 +62,16 @@ const Login = () => {
               overflow: "auto",
               display: "flex",
               flexDirection: "column",
-            }}>
+            }}
+          >
             <Box
               sx={{
                 p: 5,
                 marginTop: 10,
                 marginRight: -4,
                 flexGrow: 1,
-              }}>
+              }}
+            >
               <Typography textAlign="center" variant="h5" fontWeight="bold">
                 Log in to Your Account
               </Typography>
@@ -85,7 +87,8 @@ const Login = () => {
                   display: "flex",
                   flexDirection: "column",
                   textAlign: "center",
-                }}>
+                }}
+              >
                 <TextField
                   margin="normal"
                   required
@@ -114,7 +117,8 @@ const Login = () => {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}>
+                  sx={{ mt: 3, mb: 2 }}
+                >
                   Sign In
                 </Button>
                 <Link href="/register" variant="body2">
@@ -125,7 +129,7 @@ const Login = () => {
           </Box>
         </Grid>
       </Grid>
-      <Grid xs={7.5}>
+      <Grid item md={7.5}>
         <Paper style={styles.paperContainer}></Paper>
       </Grid>
     </Grid>
