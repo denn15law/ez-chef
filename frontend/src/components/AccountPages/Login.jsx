@@ -100,6 +100,7 @@ const Login = () => {
                   autoFocus
                   value={user.email}
                   onChange={handleChange}
+                  color="info"
                 />
                 <TextField
                   margin="normal"
@@ -112,12 +113,14 @@ const Login = () => {
                   autoComplete="current-password"
                   value={user.password}
                   onChange={handleChange}
+                  color="info"
                 />
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
+                  color="info"
                 >
                   Sign In
                 </Button>
