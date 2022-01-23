@@ -125,6 +125,11 @@ const SearchForm = () => {
                 inputProps={{ "aria-label": "search google maps" }}
                 value={search}
                 onChange={handleChange}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    reloadSearch();
+                  }
+                }}
               />
               {search && (
                 <IconButton
