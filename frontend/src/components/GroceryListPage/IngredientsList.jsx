@@ -72,9 +72,7 @@ const IngredientList = ({ myGroceryList }) => {
         alignItems="center"
       >
         {myGroceryList.length ? (
-          <Typography variant="h5" fontWeight="bold">
-            List of Ingredients
-          </Typography>
+          <Typography variant="h5">List of Ingredients</Typography>
         ) : null}
 
         <Box
@@ -83,6 +81,7 @@ const IngredientList = ({ myGroceryList }) => {
           direction="column"
           justifyContent="center"
           alignItems="center"
+          padding="0"
         >
           {myGroceryList.length ? (
             <Grid
@@ -123,11 +122,14 @@ const IngredientList = ({ myGroceryList }) => {
                       textAlign: "left",
                     }}
                   >
-                    <li key={index}>
-                      {`${groceryItem
-                        .charAt(0)
-                        .toUpperCase()}${groceryItem.slice(1)}`}
-                    </li>
+                    <Typography>
+                      {" "}
+                      <li key={index}>
+                        {`${groceryItem
+                          .charAt(0)
+                          .toUpperCase()}${groceryItem.slice(1)}`}
+                      </li>
+                    </Typography>
                   </Grid>
                 );
               })}

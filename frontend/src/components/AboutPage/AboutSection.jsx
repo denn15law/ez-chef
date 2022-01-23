@@ -4,8 +4,8 @@ import { Typography, Grid, Card, CardContent } from "@mui/material";
 export default function AboutSection() {
   return (
     <>
-      <Typography textAlign="center" variant="h4" fontWeight="bold">
-        About EZ Chef
+      <Typography textAlign="center" variant="h4">
+        Our Story
       </Typography>
       <Grid
         container
@@ -25,17 +25,13 @@ export default function AboutSection() {
               justifyContent: "center",
               alignItems: "center",
               maxWidth: 715,
-              textAlign: "left",
-              paddingTop: 2,
-              paddingLeft: 1,
-              paddingRight: 1,
               textAlign: "center",
               ":hover": {
                 boxShadow: 20,
               },
             }}
           >
-            <CardContent sx={{ flexGrow: 1 }}>
+            <CardContent sx={{ flexGrow: 1, marginBottom: -2.5 }}>
               <p>
                 Two years into the COVID-19 pandemic, developers Jeewon Lee,
                 Dennis Law, and Kyle Liang had had enough of being cooped up at

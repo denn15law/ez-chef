@@ -37,9 +37,7 @@ const RecipesList = ({ myGroceryList, user }) => {
         alignItems="center"
       >
         {myGroceryList.length ? (
-          <Typography variant="h5" fontWeight="bold">
-            List of Recipes
-          </Typography>
+          <Typography variant="h5">List of Recipes</Typography>
         ) : null}
 
         <Grid
@@ -72,7 +70,15 @@ const RecipesList = ({ myGroceryList, user }) => {
                         },
                       }}
                     >
-                      <CardContent sx={{ flexGrow: 1 }}>
+                      <CardContent
+                        sx={{
+                          flexGrow: 1,
+                          paddingLeft: 1.5,
+                          paddingRight: 1.5,
+                          paddingTop: 1,
+                          paddingBottom: 1,
+                        }}
+                      >
                         <Link href={url}>{groceryList.grocery_list_title}</Link>
                       </CardContent>
                       <CardActions>

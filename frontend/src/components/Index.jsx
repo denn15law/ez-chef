@@ -63,16 +63,19 @@ const Index = () => {
                       background: "grey",
                       opacity: 0.9,
                       borderRadius: "3px",
-                      padding: "3px",
+                      // paddingTop: "3px",
+                      // paddingBottom: "3px",
+                      paddingLeft: "5px",
+                      paddingRight: "5px",
                     }}
                   >
                     <TypeWriterEffect
-                      p={10}
+                      // p={10}
                       color="white"
                       textStyle={{
                         color: "white",
-                        fontWeight: "bold",
-                        fontSize: "2.5rem",
+                        fontWeight: "500",
+                        fontSize: "3rem",
                       }}
                       startDelay={1000}
                       cursorColor="black"

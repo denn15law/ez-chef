@@ -72,7 +72,7 @@ const Login = () => {
                 flexGrow: 1,
               }}
             >
-              <Typography textAlign="center" variant="h5" fontWeight="bold">
+              <Typography textAlign="center" variant="h5">
                 Log in to Your Account
               </Typography>
               <Box

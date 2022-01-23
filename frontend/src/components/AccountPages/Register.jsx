@@ -78,7 +78,7 @@ const Register = () => {
                 flexGrow: 1,
               }}
             >
-              <Typography textAlign="center" variant="h5" fontWeight="bold">
+              <Typography textAlign="center" variant="h5">
                 Sign up for an Account
               </Typography>
               <Box

@@ -58,7 +58,7 @@ const GroceryList = ({ user }) => {
               alignItems: "center",
             }}
           >
-            <Typography textAlign="center" variant="h4" fontWeight="bold">
+            <Typography textAlign="center" variant="h4">
               My Grocery List
               {myGroceryList.length ? null : (
                 <Box

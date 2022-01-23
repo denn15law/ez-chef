@@ -5,7 +5,7 @@ import AboutCard from "./AboutCard";
 export default function TeamSection() {
   return (
     <>
-      <Typography textAlign="center" variant="h4" fontWeight="bold">
+      <Typography textAlign="center" variant="h4">
         Our Team
       </Typography>
       <Grid

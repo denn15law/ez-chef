@@ -132,6 +132,7 @@ const Nav = ({ user }) => {
               ml: 1,
               flex: 1,
               width: 160,
+              fontSize: 18,
             }}
             placeholder="Search for Recipes"
             inputProps={{ "aria-label": "search recipes" }}
@@ -222,6 +223,7 @@ const Nav = ({ user }) => {
             >
               <ListItemText
                 primary="Home"
+                primaryTypographyProps={{ fontSize: "17px" }}
                 sx={{
                   color: "white",
                 }}
@@ -245,6 +247,7 @@ const Nav = ({ user }) => {
             >
               <ListItemText
                 primary="About Us"
+                primaryTypographyProps={{ fontSize: "17px" }}
                 sx={{
                   color: "white",
                 }}
@@ -270,6 +273,7 @@ const Nav = ({ user }) => {
                     style={{ textDecoration: "none" }}
                   >
                     <ListItemText
+                      primaryTypographyProps={{ fontSize: "17px" }}
                       primary={item.desc}
                       sx={{
                         color: "white",
@@ -298,6 +302,7 @@ const Nav = ({ user }) => {
                   style={{ textDecoration: "none" }}
                 >
                   <ListItemText
+                    primaryTypographyProps={{ fontSize: "17px" }}
                     primary="Sign Up"
                     sx={{
                       color: "white",
@@ -321,6 +326,7 @@ const Nav = ({ user }) => {
                   style={{ textDecoration: "none" }}
                 >
                   <ListItemText
+                    primaryTypographyProps={{ fontSize: "17px" }}
                     primary="Login"
                     sx={{
                       color: "white",
