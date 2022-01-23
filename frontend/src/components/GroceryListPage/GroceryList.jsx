@@ -43,10 +43,10 @@ const GroceryList = ({ user }) => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
-      <Grid item md={7}>
+      <Grid item md={7.5}>
         <Paper style={styles.paperContainer}></Paper>
       </Grid>
-      <Grid item xs={12} md={5}>
+      <Grid item xs={12} md={4.5}>
         <Grid container spacing={4} marginTop={8} paddingLeft={4}>
           <Box
             component="main"
