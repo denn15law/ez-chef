@@ -13,7 +13,8 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import Image from "../docs/burger.jpeg";
+import Image from "../../docs/burger.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   paperContainer: {
@@ -26,15 +27,16 @@ const styles = {
   },
 };
 
-const Favourites = ({ user }) => {
-  const [myFavs, setMyFavs] = useState([]);
+const MyRecipes = ({ user }) => {
+  const [myRecipes, setMyRecipes] = useState([]);
+
+  const navigate = useNavigate();
 
   const getData = () => {
-    console.log("iamuser", user);
     axios
-      .get(`http://localhost:8000/favourites/${user}`)
+      .get(`http://localhost:8000/recipes/${user}`)
       .then(function (response) {
-        setMyFavs(response.data);
+        setMyRecipes(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -45,10 +47,10 @@ const Favourites = ({ user }) => {
     getData();
   }, []);
 
-  const deleteFavourite = (id) => {
-    const url = `http://localhost:8000/favourites/${user}/${id}`;
+  const deleteRecipe = (id) => {
+    const URL = `http://localhost:8000/recipes/${user}/${id}`;
     axios
-      .delete(url)
+      .delete(URL)
       .then(function (response) {
         getData();
         console.log(response);
@@ -56,6 +58,10 @@ const Favourites = ({ user }) => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  const editRecipe = (id) => {
+    navigate(`/edit/${user}/${id}`);
   };
 
   return (
@@ -73,7 +79,7 @@ const Favourites = ({ user }) => {
             }}
           >
             <Typography textAlign="center" variant="h4" fontWeight="bold">
-              My Favourite Recipes
+              My Recipes
             </Typography>
             <Grid
               container
@@ -84,14 +90,9 @@ const Favourites = ({ user }) => {
               justifyContent="center"
               alignItems="center"
             >
-              {myFavs.length ? (
-                myFavs.map((recip) => {
-                  let url = "";
-                  if (recip.favourite_recipeID.length < 10) {
-                    url += `http://localhost:3000/search/${recip.favourite_recipeID}`;
-                  } else {
-                    url += `http://localhost:3000/myRecipes/${recip.favourite_recipeID}`;
-                  }
+              {myRecipes.length ? (
+                myRecipes.map((recip) => {
+                  const url = `http://localhost:3000/myRecipes/${recip._id}`;
                   return (
                     <Grid item key={recip}>
                       <Card
@@ -107,20 +108,28 @@ const Favourites = ({ user }) => {
                         }}
                       >
                         <CardContent sx={{ flexGrow: 1 }}>
-                          <Link href={url}>{recip.favourite_title}</Link>
+                          <Link href={url}>{recip.title}</Link>
                         </CardContent>
                         <CardMedia
-                          key={recip.favourite_recipeID}
+                          key={recip._id}
                           component="img"
-                          src={recip.favourite_image}
+                          src={recip.image_url}
                           alt="recipe"
                           style={{ height: 250, width: 250 }}
                         />
                         <CardActions>
                           <Button
+                            onClick={() => {
+                              editRecipe(recip._id);
+                            }}
+                            size="small"
+                          >
+                            Edit
+                          </Button>
+                          <Button
                             color="error"
                             onClick={() => {
-                              deleteFavourite(recip.favourite_recipeID);
+                              deleteRecipe(recip._id);
                             }}
                             size="small"
                           >
@@ -150,8 +159,14 @@ const Favourites = ({ user }) => {
                       overflow: "auto",
                     }}
                   >
-                    <Button href="/search" variant="outlined" size="large">
-                      Search For Recipes
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      onClick={() => {
+                        navigate("/new");
+                      }}
+                    >
+                      Create New Recipes
                     </Button>
                   </Box>
                 </Grid>
@@ -164,4 +179,4 @@ const Favourites = ({ user }) => {
   );
 };
 
-export default Favourites;
+export default MyRecipes;

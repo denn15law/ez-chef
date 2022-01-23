@@ -54,25 +54,33 @@ const Index = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                  }}>
-                  <TypeWriterEffect
-                    p={10}
-                    color="white"
-                    textStyle={{
-                      color: "white",
-                      fontWeight: "bold",
-                      fontSize: "2.5rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "grey",
+                      borderRadius: "3px",
                     }}
-                    startDelay={1000}
-                    cursorColor="black"
-                    multiText={[
-                      "Hey there! Welcome to EZ Chef",
-                      // "We're excited to show you what you can do with our website!",
-                      "Scroll down to see all the features!",
-                    ]}
-                    multiTextDelay={1000}
-                    typeSpeed={50}
-                  />
+                  >
+                    <TypeWriterEffect
+                      p={10}
+                      color="white"
+                      textStyle={{
+                        color: "white",
+                        fontWeight: "bold",
+                        fontSize: "2.5rem",
+                      }}
+                      startDelay={1000}
+                      cursorColor="black"
+                      multiText={[
+                        "Hey there! Welcome to EZ Chef",
+                        // "We're excited to show you what you can do with our website!",
+                        "Scroll down to see all the features!",
+                      ]}
+                      multiTextDelay={1000}
+                      typeSpeed={50}
+                    />
+                  </div>
                 </Grid>
               </Animator>
             </Paper>
@@ -98,7 +106,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Search Recipes </Typography>
                   </CardContent>
@@ -116,7 +125,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Recipe Details </Typography>
                   </CardContent>
@@ -143,7 +153,8 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around">
+                justifyContent="space-around"
+              >
                 <Card
                   sx={{
                     height: "100%",
@@ -152,7 +163,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Create Recipes </Typography>
                   </CardContent>
@@ -170,7 +182,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">View Your Recipes</Typography>
                   </CardContent>
@@ -197,7 +210,8 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around">
+                justifyContent="space-around"
+              >
                 <Card
                   sx={{
                     height: "100%",
@@ -206,7 +220,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">My Favourite Recipes</Typography>
                   </CardContent>
@@ -224,7 +239,8 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}>
+                  }}
+                >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">My Grocery List</Typography>
                   </CardContent>

@@ -18,7 +18,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import navbarList from "./navbarList";
+import navbarList from "../../helpers/navbarList";
 import MuiAppBar from "@mui/material/AppBar";
 import SearchIcon from "@mui/icons-material/Search";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -26,7 +26,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import BrunchDiningIcon from "@mui/icons-material/BrunchDining";
 import { Link, useNavigate } from "react-router-dom";
-import Image from "../docs/logo.png";
+import Image from "../../docs/logo.png";
 
 const drawerWidth = 240;
 
