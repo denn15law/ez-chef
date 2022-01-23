@@ -1,5 +1,7 @@
 # EZ Chef
 
+EZ Chef provides recipes based on ingredients, generates shopping lists, and converts serving sizes based on desired portion.
+
 ## Final Product
 
 ## Getting Started
