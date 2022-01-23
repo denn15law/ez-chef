@@ -57,6 +57,7 @@ const GroceryList = ({ user }) => {
               overflow: "auto",
               alignContent: "center",
               justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <Typography textAlign="center" variant="h4" fontWeight="bold">
@@ -80,12 +81,16 @@ const GroceryList = ({ user }) => {
             <Grid
               container
               p={2}
-              direction="row"
-              justifyContent="space-evenly"
-              alignItems="top"
+              direction="column"
+              wrap="no-wrap"
+              justifyContent="center"
+              alignContent="center"
+              // alignItems="top"
             >
-              <RecipesList myGroceryList={myGroceryList} user={user} />
-              <IngredientsList myGroceryList={myGroceryList} />
+              <Grid xs={12}>
+                <RecipesList myGroceryList={myGroceryList} user={user} />
+                <IngredientsList myGroceryList={myGroceryList} />
+              </Grid>
             </Grid>
           </Box>
         </Grid>

@@ -62,7 +62,6 @@ const IngredientList = ({ myGroceryList }) => {
       <Grid
         container
         p={2}
-        width="40vw"
         direction="column"
         justifyContent="center"
         alignItems="center"

@@ -31,8 +31,8 @@ const RecipesList = ({ myGroceryList, user }) => {
       <Grid
         container
         p={2}
-        width="50vw"
-        direction="row"
+        // width="50vw"
+        direction="column"
         justifyContent="center"
         alignItems="center"
       >
