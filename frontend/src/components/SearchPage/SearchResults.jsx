@@ -161,7 +161,7 @@ const SearchForm = () => {
               )}
             </Paper>
           </Box>
-          <Grid marginBottom={2} marginTop={-2.5}>
+          <Grid paddingBottom={3} marginTop={-2.5}>
             {recipeData.length ? (
               <Typography variant="h5">
                 Now displaying results for:{" "}
@@ -172,7 +172,8 @@ const SearchForm = () => {
           <Box
             component="main"
             sx={{
-              p: 4,
+              paddingRight: 8,
+              paddingLeft: 10,
               flexGrow: 1,
               height: "65vh",
               overflow: "auto",
@@ -183,7 +184,8 @@ const SearchForm = () => {
           >
             <Grid
               container
-              p={5}
+              // paddingRight={5}
+              // paddingLeft={6}
               spacing={{ xs: 2, md: 8 }}
               columns={{ xs: 4, sm: 8, md: 16 }}
               direction="row"
