@@ -202,7 +202,8 @@ const SearchForm = () => {
                         <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
                           <Card
                             sx={{
-                              height: 275,
+                              height: 350,
+                              width: 300,
                               display: "flex",
                               flexDirection: "column",
                               justifyContent: "center",
@@ -215,25 +216,42 @@ const SearchForm = () => {
                             <CardContent
                               sx={{
                                 flexGrow: 1,
-                                paddingTop: 6,
-                                marginBottom: -1,
+                                marginBottom: -2,
                               }}
                             >
                               <Link
-                                fontSize={18}
                                 href={url}
-                                style={{ color: "black" }}
+                                style={{
+                                  color: "black",
+                                  textDecoration: "none",
+                                }}
                               >
-                                {recip.title}
+                                <Typography
+                                  fontSize={18}
+                                  paddingLeft={3}
+                                  paddingRight={3}
+                                  paddingTop={5}
+                                  paddingBottom={1}
+                                  display="flex"
+                                  justifyContent="center"
+                                  direction="column"
+                                  alignItems="center"
+                                >
+                                  {recip.title}
+                                </Typography>
+                                <CardMedia
+                                  key={recip.id}
+                                  component="img"
+                                  src={recip.image}
+                                  alt="recipe"
+                                  style={{
+                                    height: 325,
+                                    width: 300,
+                                    marginTop: 0,
+                                  }}
+                                />
                               </Link>
                             </CardContent>
-                            <CardMedia
-                              key={recip.id}
-                              component="img"
-                              src={recip.image}
-                              alt="recipe"
-                              style={{ height: 350, width: 350 }}
-                            />
                           </Card>
                         </Grid>
                       );

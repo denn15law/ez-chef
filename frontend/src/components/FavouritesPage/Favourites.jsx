@@ -107,18 +107,39 @@ const Favourites = ({ user }) => {
                           },
                         }}
                       >
-                        <CardContent sx={{ flexGrow: 1 }}>
-                          <Link fontSize={18} href={url}>
-                            {recip.favourite_title}
+                        <CardContent
+                          sx={{
+                            flexGrow: 1,
+                            paddingLeft: 0,
+                            paddingRight: 0,
+                            paddingBottom: 0,
+                          }}
+                        >
+                          <Link
+                            href={url}
+                            style={{
+                              color: "black",
+                              textDecoration: "none",
+                            }}
+                          >
+                            <Typography
+                              fontSize={18}
+                              textAlign="center"
+                              marginBottom={1}
+                            >
+                              {recip.favourite_title}
+                            </Typography>
+                            <CardMedia
+                              key={recip.favourite_recipeID}
+                              component="img"
+                              src={recip.favourite_image}
+                              alt="recipe"
+                              style={{ height: 250, width: 250 }}
+                              margin={-1}
+                            />
                           </Link>
                         </CardContent>
-                        <CardMedia
-                          key={recip.favourite_recipeID}
-                          component="img"
-                          src={recip.favourite_image}
-                          alt="recipe"
-                          style={{ height: 250, width: 250 }}
-                        />
+
                         <CardActions>
                           <Button
                             color="error"

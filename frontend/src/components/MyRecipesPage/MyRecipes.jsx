@@ -107,18 +107,38 @@ const MyRecipes = ({ user }) => {
                           },
                         }}
                       >
-                        <CardContent sx={{ flexGrow: 1 }}>
-                          <Link fontSize={18} href={url}>
-                            {recip.title}
+                        <CardContent
+                          sx={{
+                            flexGrow: 1,
+                            paddingLeft: 0,
+                            paddingRight: 0,
+                            paddingBottom: 0,
+                          }}
+                        >
+                          <Link
+                            style={{
+                              color: "black",
+                              textDecoration: "none",
+                            }}
+                            fontSize={18}
+                            href={url}
+                          >
+                            <Typography
+                              fontSize={18}
+                              textAlign="center"
+                              marginBottom={1}
+                            >
+                              {recip.title}
+                            </Typography>
+                            <CardMedia
+                              key={recip._id}
+                              component="img"
+                              src={recip.image_url}
+                              alt="recipe"
+                              style={{ height: 250, width: 250 }}
+                            />
                           </Link>
                         </CardContent>
-                        <CardMedia
-                          key={recip._id}
-                          component="img"
-                          src={recip.image_url}
-                          alt="recipe"
-                          style={{ height: 250, width: 250 }}
-                        />
                         <CardActions>
                           <Button
                             onClick={() => {
