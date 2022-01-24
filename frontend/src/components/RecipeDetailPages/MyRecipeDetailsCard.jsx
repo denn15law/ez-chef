@@ -188,7 +188,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          marginRight: -5.5,
+          marginRight: -4.75,
         }}
       >
         <Typography

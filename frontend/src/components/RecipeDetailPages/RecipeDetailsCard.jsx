@@ -183,7 +183,7 @@ const RecipeDetails = ({ user }) => {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          marginRight: -5.5,
+          marginRight: -4.5,
         }}
       >
         <Typography
@@ -332,8 +332,6 @@ const RecipeDetails = ({ user }) => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 textAlign: "left",
-                paddingLeft: 3,
-                paddingRight: 5.5,
               }}
             >
               {Object.values(details).length
