@@ -108,7 +108,9 @@ const MyRecipes = ({ user }) => {
                         }}
                       >
                         <CardContent sx={{ flexGrow: 1 }}>
-                          <Link href={url}>{recip.title}</Link>
+                          <Link fontSize={18} href={url}>
+                            {recip.title}
+                          </Link>
                         </CardContent>
                         <CardMedia
                           key={recip._id}
@@ -122,7 +124,7 @@ const MyRecipes = ({ user }) => {
                             onClick={() => {
                               editRecipe(recip._id);
                             }}
-                            size="small"
+                            size="medium"
                           >
                             Edit
                           </Button>
@@ -131,7 +133,7 @@ const MyRecipes = ({ user }) => {
                             onClick={() => {
                               deleteRecipe(recip._id);
                             }}
-                            size="small"
+                            size="medium"
                           >
                             Delete
                           </Button>

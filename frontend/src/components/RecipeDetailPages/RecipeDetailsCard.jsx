@@ -186,11 +186,7 @@ const RecipeDetails = ({ user }) => {
           marginRight: -4.5,
         }}
       >
-        <Typography
-          component="h1"
-          variant="h4"
-          sx={{ p: 1, fontWeight: "bold" }}
-        >
+        <Typography component="h1" variant="h4" sx={{ p: 1 }}>
           {details.title}
         </Typography>
         <Grid sx={{ p: 2 }}>
@@ -270,9 +266,7 @@ const RecipeDetails = ({ user }) => {
           )}
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>
-          <Typography fontWeight="bold" variant="h6">
-            Recipe Ingredients
-          </Typography>
+          <Typography variant="h4">Recipe Ingredients</Typography>
           <Grid sx={{ p: 2, textAlign: "left" }}>
             {Object.values(details).length > 0
               ? details.extendedIngredients.map((ing) => {
@@ -289,7 +283,7 @@ const RecipeDetails = ({ user }) => {
               p: 1,
             }}
           >
-            <Typography>
+            <Typography variant="h6" paddingTop={3}>
               Current Servings: {details.servings * servingRatio}
             </Typography>
             <Grid
@@ -322,7 +316,7 @@ const RecipeDetails = ({ user }) => {
           </Grid>
         </Grid>
         <Grid sx={{ p: 5 }}>
-          <Typography fontWeight="bold" variant="h6">
+          <Typography variant="h4" marginTop={-2}>
             Cooking Instructions
           </Typography>
           <ol type="1">

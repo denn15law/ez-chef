@@ -108,7 +108,9 @@ const Favourites = ({ user }) => {
                         }}
                       >
                         <CardContent sx={{ flexGrow: 1 }}>
-                          <Link href={url}>{recip.favourite_title}</Link>
+                          <Link fontSize={18} href={url}>
+                            {recip.favourite_title}
+                          </Link>
                         </CardContent>
                         <CardMedia
                           key={recip.favourite_recipeID}
@@ -123,7 +125,7 @@ const Favourites = ({ user }) => {
                             onClick={() => {
                               deleteFavourite(recip.favourite_recipeID);
                             }}
-                            size="small"
+                            size="medium"
                           >
                             Delete
                           </Button>
