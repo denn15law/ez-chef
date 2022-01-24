@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import RecipesList from "./RecipesList";
 import IngredientsList from "./IngredientsList";
-import Image from "../../docs/food3.jpeg";
+import Image from "../../docs/pad-thai.jpeg";
 
 const styles = {
   paperContainer: {
@@ -43,7 +43,9 @@ const GroceryList = ({ user }) => {
   return (
     <Grid container direction="row" spacing={1}>
       <CssBaseline />
-
+      <Grid item md={7.5}>
+        <Paper style={styles.paperContainer}></Paper>
+      </Grid>
       <Grid item xs={12} md={4.5}>
         <Grid container spacing={4} marginTop={8} paddingLeft={4}>
           <Box
@@ -92,9 +94,6 @@ const GroceryList = ({ user }) => {
             </Grid>
           </Box>
         </Grid>
-      </Grid>
-      <Grid item md={7.5}>
-        <Paper style={styles.paperContainer}></Paper>
       </Grid>
     </Grid>
   );
