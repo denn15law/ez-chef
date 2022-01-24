@@ -6,7 +6,7 @@ const searchFunc = (req, res) => {
   const search = req.params.searched;
   axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.apiKey}&query=${search}&number=20`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.apiKey}&query=${search}&number=50`
     )
     .then(function (response) {
       // handle success

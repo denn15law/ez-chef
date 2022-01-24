@@ -17,7 +17,7 @@ mongoose
   .then(() => {
     console.log("Database Connected");
     Recipe.collection.drop(() => console.log("Recipe Dropped"));
-    User.collection.drop(() => console.log("User Dropped"));
+    // User.collection.drop(() => console.log("User Dropped"));
     Favourite.collection.drop(() => console.log("Favourite Dropped"));
   })
   .catch((err) => console.log(err.message));
