@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import Index from "./components/Index";
 import Nav from "./components/NavBar/Nav";
 import MyRecipes from "./components/MyRecipesPage/MyRecipes";
-import Favourites from "./components/FavourtiesPage/Favourites";
+import Favourites from "./components/FavouritesPage/Favourites";
 import GroceryList from "./components/GroceryListPage/GroceryList";
 import Register from "./components/AccountPages/Register";
 import Login from "./components/AccountPages/Login";
@@ -47,37 +47,33 @@ const App = () => {
               <Route path="/search" element={<SearchForm />}></Route>
               <Route
                 path="/search/results/:search"
-                element={<SearchResults />}
-              ></Route>
+                element={<SearchResults />}></Route>
               <Route
                 path="/search/:recipeID"
-                element={<RecipeDetails user={user} />}
-              ></Route>
+                element={<RecipeDetails user={user} />}></Route>
 
               <Route
                 path="/myrecipes"
-                element={user ? <MyRecipes user={user} /> : <Index />}
-              ></Route>
+                element={user ? <MyRecipes user={user} /> : <Index />}></Route>
               <Route
                 path="/myrecipes/:recipeID"
-                element={user ? <MyRecipeDetails user={user} /> : <Index />}
-              ></Route>
+                element={
+                  user ? <MyRecipeDetails user={user} /> : <Index />
+                }></Route>
               <Route
                 path="/new"
-                element={user ? <NewRecipe user={user} /> : <Index />}
-              ></Route>
+                element={user ? <NewRecipe user={user} /> : <Index />}></Route>
               <Route
                 path="/edit/:user/:recipeID"
-                element={user ? <EditRecipe user={user} /> : <Index />}
-              ></Route>
+                element={user ? <EditRecipe user={user} /> : <Index />}></Route>
               <Route
                 path="/favourites"
-                element={user ? <Favourites user={user} /> : <Index />}
-              ></Route>
+                element={user ? <Favourites user={user} /> : <Index />}></Route>
               <Route
                 path="/grocerylist"
-                element={user ? <GroceryList user={user} /> : <Index />}
-              ></Route>
+                element={
+                  user ? <GroceryList user={user} /> : <Index />
+                }></Route>
             </Routes>
           </div>
         </div>
