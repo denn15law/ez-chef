@@ -45,9 +45,9 @@ export default function AboutSection() {
                 are confident enough, you can even create your own recipes in EZ
                 Chef so that you can come back to that same delicious meal
                 whenever you want to. EZ Chef is perfect for anybody wishing to
-                improve their cooking skills, avid meal prep fanatics, new
-                aspiring chefs, and those who wish to cook for themselves and
-                need a convenient serving size converter. Start cooking today!
+                just improve their cooking skills, avid meal prep fanatics, and
+                even aspiring chefs. Start cooking today with EZ Chef, cooking
+                made easy!
               </p>
             </CardContent>
           </Card>

@@ -77,9 +77,7 @@ const SearchForm = () => {
               alignItems: "center",
             }}
           >
-            <Typography variant="h4" fontWeight="bold">
-              Search For Recipes
-            </Typography>
+            <Typography variant="h3">Search For Recipes</Typography>
             <Paper
               component="form"
               sx={{

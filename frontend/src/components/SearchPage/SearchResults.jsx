@@ -103,9 +103,7 @@ const SearchForm = () => {
               alignItems: "center",
             }}
           >
-            <Typography variant="h4" fontWeight="bold">
-              Search For Recipes
-            </Typography>
+            <Typography variant="h3">Search For Recipes</Typography>
             <Paper
               component="form"
               sx={{
@@ -165,7 +163,7 @@ const SearchForm = () => {
           </Box>
           <Grid marginBottom={2} marginTop={-2.5}>
             {recipeData.length ? (
-              <Typography variant="h6" fontWeight="bold">
+              <Typography variant="h5">
                 Now displaying results for:{" "}
                 {searched.replaceAll("++", "+").replaceAll("+", ", ")}
               </Typography>
@@ -218,11 +216,14 @@ const SearchForm = () => {
                               sx={{
                                 flexGrow: 1,
                                 paddingTop: 6,
-
                                 marginBottom: -1,
                               }}
                             >
-                              <Link href={url} style={{ color: "black" }}>
+                              <Link
+                                fontSize={18}
+                                href={url}
+                                style={{ color: "black" }}
+                              >
                                 {recip.title}
                               </Link>
                             </CardContent>
