@@ -2,6 +2,7 @@ const Recipe = require("../models/Recipe");
 const Favourite = require("../models/Favourite");
 const GroceryList = require("../models/GroceryList");
 
+//Get recipes belong to user to display on My Recipes//
 const getRecipes = (req, res) => {
   const user = req.params.user;
   Recipe.find({ user: user, user_created: true })
@@ -12,6 +13,7 @@ const getRecipes = (req, res) => {
     });
 };
 
+//Get recipe information to pre-fill the edit form//
 const getRecipeDetailsEdit = (req, res) => {
   const user = req.params.user;
   const recipeID = req.params.id;
@@ -60,7 +62,7 @@ const deleteRecipeById = (req, res) => {
 const getRecipeDetails = (req, res) => {
   const recipeID = req.params.id;
   const user = req.params.user;
-  console.log("I am recipeID", recipeID);
+
   Recipe.find({ user: user, _id: recipeID })
     .then((recipe) => res.json(recipe))
     .catch((err) => {
@@ -84,7 +86,7 @@ const editRecipeDetails = (req, res) => {
       },
     }
   )
-    .then((response) => console.log(`-----${req.session.id}-----`))
+    .then((response) => console.log(response))
     .catch((err) => console.log(err.message));
 };
 

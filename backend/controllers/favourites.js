@@ -14,14 +14,13 @@ const getFavourites = (req, res) => {
     });
 };
 
+//Check whether the recipe already exists in favourites//
 const checkFavourites = (req, res) => {
   user = req.params.user;
   recipeID = req.params.id;
-  console.log("checkfav", req.params.user, recipeID);
   Favourite.findOne({ favourite_recipeID: recipeID, user: user })
     .then((response) => {
       res.json(response);
-      console.log("I AM RESPONSE FAVOURITE!!!", response);
     })
     .catch((err) => console.log(err));
 };
@@ -46,8 +45,7 @@ const addFavouriteFromMyRecipes = (req, res) => {
           })
           .catch((err) => console.log(err));
       } else {
-        console.log("Already added!");
-        res.status(400).send("Favourite already added");
+        res.status(400).send("Bad Request");
       }
     }
   );
@@ -74,8 +72,7 @@ const addFavouriteFromApi = (req, res) => {
           })
           .catch((err) => console.log(err.message));
       } else {
-        console.log("Already added!");
-        res.status(400).send("Favourite already added");
+        res.status(400).send("Bad Request");
       }
     }
   );
@@ -83,7 +80,6 @@ const addFavouriteFromApi = (req, res) => {
 
 const deleteFavouriteById = (req, res) => {
   const user = req.params.user;
-  console.log("user", user);
   Favourite.deleteOne({ favourite_recipeID: req.params.id, user: user })
     .then((response) => {
       res.json(response);

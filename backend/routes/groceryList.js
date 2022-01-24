@@ -9,7 +9,7 @@ const {
   checkGroceries,
 } = require("../controllers/groceryList");
 
-//Route: /favourites
+//Route: /groceries
 router.get("/:user/", getGroceryListRecipes);
 router.get("/check/:user/:id", checkGroceries);
 router.post("/api/:user/:id", addGroceryListFromApi);

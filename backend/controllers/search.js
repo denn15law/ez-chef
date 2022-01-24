@@ -18,9 +18,9 @@ const searchFunc = (req, res) => {
     });
 };
 
+//Display recipe details for api recipes//
 const recipeDetails = (req, res) => {
   const recipeID = req.params.id;
-  console.log("I am recipeID", recipeID);
   axios
     .get(
       `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${process.env.apiKey}&query=includeNutrition=false`

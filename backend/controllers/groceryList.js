@@ -13,14 +13,14 @@ const getGroceryListRecipes = (req, res) => {
     });
 };
 
+//Checks whether the recipe already exists in groceries//
 const checkGroceries = (req, res) => {
   user = req.params.user;
   recipeID = req.params.id;
-  console.log("checkgroceries", req.params.user, recipeID);
+
   GroceryList.findOne({ grocery_list_recipeID: recipeID, user: user })
     .then((response) => {
       res.json(response);
-      console.log("I AM RESPONSE GROCERY!!!!!", response);
     })
     .catch((err) => console.log(err));
 };
@@ -43,10 +43,9 @@ const addGroceryListFromMyRecipes = (req, res) => {
           .then((response) => {
             res.json(response);
           })
-          .catch((err) => console.log("hello i am error"));
+          .catch((err) => console.log(err));
       } else {
-        console.log("Already added!");
-        res.status(400).send("Favourite already added");
+        res.status(400).send("Bad Request");
       }
     }
   );
@@ -85,11 +84,10 @@ const addGroceryListFromApi = (req, res) => {
               .then((response) => {
                 res.json(response);
               })
-              .catch((err) => console.log(err.message));
+              .catch((err) => console.log(err));
           });
       } else {
-        console.log("Already added!");
-        res.status(400).send("Already added to grocery list!");
+        res.status(400).send("Bad Request");
       }
     }
   );
@@ -97,8 +95,7 @@ const addGroceryListFromApi = (req, res) => {
 
 const deleteGroceryListById = (req, res) => {
   const user = req.params.user;
-  console.log("grocery_list_recipeID", req.params.id);
-  console.log("deletegrocerylist user", user);
+
   GroceryList.deleteOne({ grocery_list_recipeID: req.params.id, user: user })
     .then((response) => {
       res.json(response);
