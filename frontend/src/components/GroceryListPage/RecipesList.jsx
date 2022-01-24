@@ -90,7 +90,7 @@ const RecipesList = ({ myGroceryList, user }) => {
                             );
                           }}
                         >
-                          Delete
+                          Remove
                         </Button>
                       </CardActions>
                     </Card>

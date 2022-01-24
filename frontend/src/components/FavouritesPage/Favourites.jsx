@@ -127,7 +127,7 @@ const Favourites = ({ user }) => {
                             }}
                             size="medium"
                           >
-                            Delete
+                            Remove
                           </Button>
                         </CardActions>
                       </Card>
