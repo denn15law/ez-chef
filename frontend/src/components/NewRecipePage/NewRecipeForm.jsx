@@ -116,7 +116,7 @@ const NewRecipeForm = ({ user }) => {
                   render={({ field }) => (
                     <TextField
                       size="small"
-                      InputProps={{ inputProps: { min: 0 } }}
+                      InputProps={{ inputProps: { min: 0, step: 0.05 } }}
                       type="number"
                       label="Qty"
                       variant="standard"
