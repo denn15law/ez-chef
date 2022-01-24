@@ -105,7 +105,7 @@ const IngredientList = ({ myGroceryList }) => {
                 </Grid>
                 <Grid sx={{ p: 0.5, display: "flex", alignContent: "center" }}>
                   <Button
-                    size="small"
+                    size="medium"
                     variant="outlined"
                     onClick={textGroceries}
                   >
@@ -118,12 +118,11 @@ const IngredientList = ({ myGroceryList }) => {
                   <Grid
                     sx={{
                       display: "flex",
-                      paddingLeft: 12,
+                      paddingLeft: 14,
                       textAlign: "left",
                     }}
                   >
                     <Typography>
-                      {" "}
                       <li key={index}>
                         {`${groceryItem
                           .charAt(0)

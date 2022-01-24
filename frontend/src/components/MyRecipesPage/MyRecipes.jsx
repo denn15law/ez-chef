@@ -98,6 +98,7 @@ const MyRecipes = ({ user }) => {
                       <Card
                         sx={{
                           height: "100%",
+                          width: 270,
                           display: "flex",
                           flexDirection: "column",
                           justifyContent: "center",
@@ -135,7 +136,7 @@ const MyRecipes = ({ user }) => {
                               component="img"
                               src={recip.image_url}
                               alt="recipe"
-                              style={{ height: 250, width: 250 }}
+                              style={{ height: 250, width: 280 }}
                             />
                           </Link>
                         </CardContent>

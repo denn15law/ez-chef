@@ -73,13 +73,23 @@ const RecipesList = ({ myGroceryList, user }) => {
                       <CardContent
                         sx={{
                           flexGrow: 1,
-                          paddingLeft: 1.5,
-                          paddingRight: 1.5,
+                          paddingLeft: 2,
+                          paddingRight: 2,
                           paddingTop: 1,
                           paddingBottom: 1,
                         }}
                       >
-                        <Link href={url}>{groceryList.grocery_list_title}</Link>
+                        <Link
+                          style={{
+                            color: "black",
+                            textDecoration: "none",
+                          }}
+                          href={url}
+                        >
+                          <Typography fontSize={18}>
+                            {groceryList.grocery_list_title}
+                          </Typography>
+                        </Link>
                       </CardContent>
                       <CardActions>
                         <Button
@@ -89,6 +99,7 @@ const RecipesList = ({ myGroceryList, user }) => {
                               groceryList.grocery_list_recipeID
                             );
                           }}
+                          size="medium"
                         >
                           Remove
                         </Button>

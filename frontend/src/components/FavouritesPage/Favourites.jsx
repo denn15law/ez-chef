@@ -98,6 +98,7 @@ const Favourites = ({ user }) => {
                       <Card
                         sx={{
                           height: "100%",
+                          width: 270,
                           display: "flex",
                           flexDirection: "column",
                           justifyContent: "center",
@@ -134,7 +135,7 @@ const Favourites = ({ user }) => {
                               component="img"
                               src={recip.favourite_image}
                               alt="recipe"
-                              style={{ height: 250, width: 250 }}
+                              style={{ height: 250, width: 270 }}
                               margin={-1}
                             />
                           </Link>
