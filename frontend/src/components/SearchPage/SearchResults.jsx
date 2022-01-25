@@ -186,6 +186,8 @@ const SearchForm = () => {
               container
               paddingRight={4}
               paddingLeft={5}
+              paddingTop={2}
+              paddingBottom={2}
               spacing={{ xs: 2, md: 8 }}
               columns={{ xs: 4, sm: 8, md: 16 }}
               direction="row"
