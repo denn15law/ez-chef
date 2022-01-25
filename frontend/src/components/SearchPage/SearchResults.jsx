@@ -175,7 +175,7 @@ const SearchForm = () => {
               paddingRight: 8,
               paddingLeft: 10,
               flexGrow: 1,
-              height: "65vh",
+              height: "61vh",
               overflow: "auto",
               display: "flex",
               flexDirection: "column",
@@ -184,8 +184,8 @@ const SearchForm = () => {
           >
             <Grid
               container
-              // paddingRight={5}
-              // paddingLeft={6}
+              paddingRight={4}
+              paddingLeft={5}
               spacing={{ xs: 2, md: 8 }}
               columns={{ xs: 4, sm: 8, md: 16 }}
               direction="row"
