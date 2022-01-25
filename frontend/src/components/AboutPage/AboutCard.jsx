@@ -16,13 +16,6 @@ const AboutCard = ({ aboutName, aboutImage }) => {
           },
         }}
       >
-        <CardMedia
-          key={1}
-          component="img"
-          src={aboutImage}
-          alt="teamimage"
-          style={{ height: 170, width: 200 }}
-        />
         <CardContent
           sx={{
             flexGrow: 1,
@@ -34,6 +27,13 @@ const AboutCard = ({ aboutName, aboutImage }) => {
         >
           <Typography variant="h6">{aboutName}</Typography>
         </CardContent>
+        <CardMedia
+          key={1}
+          component="img"
+          src={aboutImage}
+          alt="teamimage"
+          style={{ height: 170, width: 200 }}
+        />
       </Card>
     </>
   );

@@ -4,6 +4,7 @@ import Image from "../../docs/background-option1.jpg";
 import { styled } from "@mui/system";
 import AboutSection from "./AboutSection";
 import TeamSection from "./TeamSection";
+import TechStackSection from "./TechStackSection";
 
 const styles = {
   paperContainer: {
@@ -29,7 +30,6 @@ const About = () => {
   return (
     <Grid container direction="row">
       <CssBaseline />
-
       <Grid item md={5}>
         <SideImage>
           <Paper style={styles.paperContainer}></Paper>
@@ -40,7 +40,8 @@ const About = () => {
           <Box
             component="main"
             sx={{
-              p: 5,
+              paddingTop: 5,
+              paddingLeft: 4.5,
               flexGrow: 1,
               height: "92.5vh",
               overflow: "auto",
@@ -48,6 +49,7 @@ const About = () => {
           >
             <AboutSection />
             <TeamSection />
+            <TechStackSection />
           </Box>
         </Grid>
       </Grid>

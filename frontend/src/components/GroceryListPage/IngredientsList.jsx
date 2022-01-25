@@ -122,7 +122,7 @@ const IngredientList = ({ myGroceryList }) => {
                       textAlign: "left",
                     }}
                   >
-                    <Typography>
+                    <Typography fontSize={18}>
                       <li key={index}>
                         {`${groceryItem
                           .charAt(0)

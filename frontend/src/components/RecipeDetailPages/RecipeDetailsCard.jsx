@@ -184,7 +184,8 @@ const RecipeDetails = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
           marginRight: -4.5,
-        }}>
+        }}
+      >
         <Typography component="h1" variant="h4" sx={{ p: 1 }}>
           {details.title}
         </Typography>
@@ -206,7 +207,8 @@ const RecipeDetails = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}>
+                open={addFav}
+              >
                 <Button onClick={myFavouriteFunction}>
                   <StarIcon />
                 </Button>
@@ -221,7 +223,8 @@ const RecipeDetails = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}>
+                open={addFav}
+              >
                 <Button onClick={myFavouriteFunction}>
                   <StarBorderIcon />
                 </Button>
@@ -237,7 +240,8 @@ const RecipeDetails = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}>
+                open={addGroceries}
+              >
                 <Button onClick={myGroceryFunction}>
                   <ShoppingCartIcon />
                 </Button>
@@ -252,7 +256,8 @@ const RecipeDetails = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}>
+                open={addGroceries}
+              >
                 <Button onClick={myGroceryFunction}>
                   <AddShoppingCartIcon />
                 </Button>
@@ -262,7 +267,7 @@ const RecipeDetails = ({ user }) => {
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>
           <Typography variant="h4">Recipe Ingredients</Typography>
-          <Grid sx={{ p: 2, textAlign: "left" }}>
+          <Grid sx={{ p: 2, paddingLeft: 5, textAlign: "left", fontSize: 18 }}>
             {Object.values(details).length > 0
               ? details.extendedIngredients.map((ing) => {
                   return (
@@ -276,8 +281,9 @@ const RecipeDetails = ({ user }) => {
           <Grid
             x={{
               p: 1,
-            }}>
-            <Typography variant="h6" paddingTop={3}>
+            }}
+          >
+            <Typography variant="h5" paddingTop={3}>
               Current Servings: {details.servings * servingRatio}
             </Typography>
             <Grid
@@ -285,8 +291,11 @@ const RecipeDetails = ({ user }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-              }}>
-              <Typography>Convert Servings: </Typography>
+              }}
+            >
+              <Typography fontSize={18} paddingLeft={2}>
+                Convert Servings:{" "}
+              </Typography>
               <TextField
                 style={{
                   width: 70,
@@ -302,7 +311,7 @@ const RecipeDetails = ({ user }) => {
                   inputProps: { min: 1, style: { textAlign: "center" } },
                 }}
               />
-              <Button size="small" onClick={onClickConvert}>
+              <Button size="medium" onClick={onClickConvert}>
                 Convert
               </Button>
             </Grid>
@@ -319,7 +328,9 @@ const RecipeDetails = ({ user }) => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 textAlign: "left",
-              }}>
+                fontSize: 18,
+              }}
+            >
               {Object.values(details).length
                 ? removeTags(details.instructions)
                     .split(".")
@@ -329,7 +340,8 @@ const RecipeDetails = ({ user }) => {
                         <li
                           key={removeTags(details.instructions)
                             .split(".")
-                            .indexOf(each)}>
+                            .indexOf(each)}
+                        >
                           {each + "."}
                         </li>
                       );

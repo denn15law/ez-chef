@@ -25,10 +25,11 @@ export default function AboutSection() {
               justifyContent: "center",
               alignItems: "center",
               maxWidth: 715,
-              textAlign: "center",
+              textAlign: "left",
               ":hover": {
                 boxShadow: 20,
               },
+              fontSize: "18px",
             }}
           >
             <CardContent sx={{ flexGrow: 1, marginBottom: -2.5 }}>

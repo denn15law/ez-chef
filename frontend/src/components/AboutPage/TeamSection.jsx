@@ -5,12 +5,12 @@ import AboutCard from "./AboutCard";
 export default function TeamSection() {
   return (
     <>
-      <Typography textAlign="center" variant="h4">
+      <Typography textAlign="center" variant="h4" paddingTop={4}>
         Our Team
       </Typography>
       <Grid
         container
-        p={5}
+        p={2}
         spacing={{ xs: 2, md: 7 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
         direction="row"

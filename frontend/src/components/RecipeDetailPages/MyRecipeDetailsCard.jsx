@@ -189,7 +189,8 @@ const MyRecipeDetailsCard = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
           marginRight: -4.75,
-        }}>
+        }}
+      >
         <Typography component="h1" variant="h4" sx={{ p: 1 }}>
           {details.title}
         </Typography>
@@ -205,7 +206,8 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Button
             onClick={() => {
               onClickEdit(details._id);
-            }}>
+            }}
+          >
             <EditIcon />
           </Button>
 
@@ -218,7 +220,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}>
+                open={addFav}
+              >
                 <Button onClick={myFavouriteFunction}>
                   <StarIcon />
                 </Button>
@@ -233,7 +236,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}>
+                open={addFav}
+              >
                 <Button onClick={myFavouriteFunction}>
                   <StarBorderIcon />
                 </Button>
@@ -249,7 +253,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}>
+                open={addGroceries}
+              >
                 <Button onClick={myGroceryFunction}>
                   <ShoppingCartIcon />
                 </Button>
@@ -264,7 +269,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}>
+                open={addGroceries}
+              >
                 <Button onClick={myGroceryFunction}>
                   <AddShoppingCartIcon />
                 </Button>
@@ -274,7 +280,7 @@ const MyRecipeDetailsCard = ({ user }) => {
         </ButtonGroup>
         <Grid sx={{ p: 2 }}>
           <Typography variant="h4">Recipe Ingredients</Typography>
-          <Grid sx={{ p: 2, textAlign: "left" }}>
+          <Grid sx={{ p: 2, paddingLeft: 5, textAlign: "left", fontSize: 18 }}>
             {Object.values(details).length > 0
               ? details.ingredients.map((ing) => {
                   return (
@@ -288,8 +294,9 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Grid
             sx={{
               p: 1,
-            }}>
-            <Typography variant="h6" paddingTop={2}>
+            }}
+          >
+            <Typography variant="h5" paddingTop={2}>
               Current Servings: {details.serving_size * servingRatio}
             </Typography>
             <Grid
@@ -297,8 +304,9 @@ const MyRecipeDetailsCard = ({ user }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-              }}>
-              <Typography>Convert Servings: </Typography>
+              }}
+            >
+              <Typography fontSize={18}>Convert Servings: </Typography>
               <TextField
                 style={{
                   width: 70,
@@ -314,7 +322,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   inputProps: { min: 1, style: { textAlign: "center" } },
                 }}
               />
-              <Button size="small" onClick={onClickConvert}>
+              <Button size="medium" onClick={onClickConvert}>
                 Convert
               </Button>
             </Grid>
@@ -331,7 +339,9 @@ const MyRecipeDetailsCard = ({ user }) => {
                 textAlign: "left",
                 paddingLeft: 3,
                 paddingRight: 5,
-              }}>
+                fontSize: 18,
+              }}
+            >
               {Object.values(details).length ? (
                 removeTags(details.instructions)
                   .split(".")
@@ -341,7 +351,8 @@ const MyRecipeDetailsCard = ({ user }) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}>
+                          .indexOf(each)}
+                      >
                         {each + "."}
                       </li>
                     );
