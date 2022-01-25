@@ -33,10 +33,11 @@ EZ Chef provides recipes based on ingredients, generates shopping lists, and con
 
 ## Dependencies
 
-- [Express](https://github.com/expressjs/express)
 - [Mongoose](https://github.com/Automattic/mongoose)
-- [Node](https://github.com/nodejs/node)
+- [Express](https://github.com/expressjs/express)
 - [React](https://github.com/facebook/react)
+- [Node](https://github.com/nodejs/node)
+- [Axios](https://github.com/axios/axios)
 - [Material-UI](https://github.com/mui-org/material-ui)
 
 ## Contributors
