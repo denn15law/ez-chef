@@ -1,10 +1,18 @@
 # EZ Chef
 
-## Overview
-
 EZ Chef provides recipes based on ingredients, generates shopping lists, and converts serving sizes based on desired portion.
 
 ## Final Product
+
+### Landing Page
+
+### API request for recipes
+
+### Creating and editing a user's own recipe
+
+### Adding a recipe to a user's favourites and grocery list
+
+### Texting a user's grocery list to their mobile device
 
 ## Getting Started
 
@@ -25,10 +33,11 @@ EZ Chef provides recipes based on ingredients, generates shopping lists, and con
 
 ## Dependencies
 
-- Express
-- Mongoose
-- Node
-- React
+- [Express](https://github.com/expressjs/express)
+- [Mongoose](https://github.com/Automattic/mongoose)
+- [Node](https://github.com/nodejs/node)
+- [React](https://github.com/facebook/react)
+- [Material-UI](https://github.com/mui-org/material-ui)
 
 ## Contributors
 
