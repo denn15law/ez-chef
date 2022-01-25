@@ -189,8 +189,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
           marginRight: -4.75,
-        }}
-      >
+        }}>
         <Typography component="h1" variant="h4" sx={{ p: 1 }}>
           {details.title}
         </Typography>
@@ -198,7 +197,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <CardMedia
             component="img"
             src={details.image_url}
-            alt="recipe"
+            alt={details.title}
             style={{ height: 400, width: 500 }}
           />
         </Grid>
@@ -206,8 +205,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Button
             onClick={() => {
               onClickEdit(details._id);
-            }}
-          >
+            }}>
             <EditIcon />
           </Button>
 
@@ -220,8 +218,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}
-              >
+                open={addFav}>
                 <Button onClick={myFavouriteFunction}>
                   <StarIcon />
                 </Button>
@@ -236,8 +233,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}
-              >
+                open={addFav}>
                 <Button onClick={myFavouriteFunction}>
                   <StarBorderIcon />
                 </Button>
@@ -253,8 +249,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}
-              >
+                open={addGroceries}>
                 <Button onClick={myGroceryFunction}>
                   <ShoppingCartIcon />
                 </Button>
@@ -269,8 +264,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}
-              >
+                open={addGroceries}>
                 <Button onClick={myGroceryFunction}>
                   <AddShoppingCartIcon />
                 </Button>
@@ -294,8 +288,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Grid
             sx={{
               p: 1,
-            }}
-          >
+            }}>
             <Typography variant="h6" paddingTop={2}>
               Current Servings: {details.serving_size * servingRatio}
             </Typography>
@@ -304,8 +297,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Typography>Convert Servings: </Typography>
               <TextField
                 style={{
@@ -339,8 +331,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 textAlign: "left",
                 paddingLeft: 3,
                 paddingRight: 5,
-              }}
-            >
+              }}>
               {Object.values(details).length ? (
                 removeTags(details.instructions)
                   .split(".")
@@ -350,8 +341,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}
-                      >
+                          .indexOf(each)}>
                         {each + "."}
                       </li>
                     );

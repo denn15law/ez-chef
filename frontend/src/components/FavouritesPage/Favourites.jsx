@@ -71,8 +71,7 @@ const Favourites = ({ user }) => {
               flexGrow: 1,
               height: "95vh",
               overflow: "auto",
-            }}
-          >
+            }}>
             <Typography textAlign="center" variant="h4">
               My Favourite Recipes
             </Typography>
@@ -83,8 +82,7 @@ const Favourites = ({ user }) => {
               columns={{ xs: 4, sm: 8, md: 12 }}
               direction="row"
               justifyContent="center"
-              alignItems="center"
-            >
+              alignItems="center">
               {myFavs.length ? (
                 myFavs.map((recip) => {
                   let url = "";
@@ -106,35 +104,31 @@ const Favourites = ({ user }) => {
                           ":hover": {
                             boxShadow: 20,
                           },
-                        }}
-                      >
+                        }}>
                         <CardContent
                           sx={{
                             flexGrow: 1,
                             paddingLeft: 0,
                             paddingRight: 0,
                             paddingBottom: 0,
-                          }}
-                        >
+                          }}>
                           <Link
                             href={url}
                             style={{
                               color: "black",
                               textDecoration: "none",
-                            }}
-                          >
+                            }}>
                             <Typography
                               fontSize={18}
                               textAlign="center"
-                              marginBottom={1}
-                            >
+                              marginBottom={1}>
                               {recip.favourite_title}
                             </Typography>
                             <CardMedia
                               key={recip.favourite_recipeID}
                               component="img"
                               src={recip.favourite_image}
-                              alt="recipe"
+                              alt={recip.favourite_title}
                               style={{ height: 250, width: 270 }}
                               margin={-1}
                             />
@@ -147,8 +141,7 @@ const Favourites = ({ user }) => {
                             onClick={() => {
                               deleteFavourite(recip.favourite_recipeID);
                             }}
-                            size="medium"
-                          >
+                            size="medium">
                             Remove
                           </Button>
                         </CardActions>
@@ -165,23 +158,20 @@ const Favourites = ({ user }) => {
                   lg={4}
                   style={{
                     textAlign: "center",
-                  }}
-                >
+                  }}>
                   <Box
                     sx={{
                       p: 10,
                       flexGrow: 1,
                       height: "100vh",
                       overflow: "auto",
-                    }}
-                  >
+                    }}>
                     <Button
                       variant="outlined"
                       size="large"
                       onClick={() => {
                         navigate("/search");
-                      }}
-                    >
+                      }}>
                       Search For Recipes
                     </Button>
                   </Box>

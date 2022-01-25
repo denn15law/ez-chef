@@ -244,7 +244,7 @@ const SearchForm = () => {
                                   key={recip.id}
                                   component="img"
                                   src={recip.image}
-                                  alt="recipe"
+                                  alt={recip.title}
                                   style={{
                                     height: 260,
                                     width: 280,
