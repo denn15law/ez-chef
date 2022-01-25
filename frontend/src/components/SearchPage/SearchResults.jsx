@@ -204,8 +204,8 @@ const SearchForm = () => {
                         <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
                           <Card
                             sx={{
-                              height: 350,
-                              width: 300,
+                              height: 280,
+                              width: 260,
                               display: "flex",
                               flexDirection: "column",
                               justifyContent: "center",
@@ -218,7 +218,6 @@ const SearchForm = () => {
                             <CardContent
                               sx={{
                                 flexGrow: 1,
-                                marginBottom: -2,
                               }}
                             >
                               <Link
@@ -229,11 +228,11 @@ const SearchForm = () => {
                                 }}
                               >
                                 <Typography
-                                  fontSize={18}
-                                  paddingLeft={3}
-                                  paddingRight={3}
-                                  paddingTop={5}
+                                  fontSize={17}
+                                  paddingTop={7}
                                   paddingBottom={1}
+                                  paddingLeft={2}
+                                  paddingRight={2}
                                   display="flex"
                                   justifyContent="center"
                                   direction="column"
@@ -247,9 +246,8 @@ const SearchForm = () => {
                                   src={recip.image}
                                   alt="recipe"
                                   style={{
-                                    height: 325,
-                                    width: 300,
-                                    marginTop: 0,
+                                    height: 260,
+                                    width: 280,
                                   }}
                                 />
                               </Link>
