@@ -1,5 +1,7 @@
 # EZ Chef
 
+## Overview
+
 EZ Chef provides recipes based on ingredients, generates shopping lists, and converts serving sizes based on desired portion.
 
 ## Final Product
@@ -20,3 +22,14 @@ EZ Chef provides recipes based on ingredients, generates shopping lists, and con
 6. Install dependencies with `npm install`
 7. Start the web server using the `npm start` command. The app will be served at http://localhost:3000/.
 8. Run `npm run db:reset` to reset the database.
+
+## Dependencies
+
+- Express
+- Mongoose
+- Node
+- React
+
+## Contributors
+
+[Dennis Law](https://github.com/denn15law), [Jeewon Lee](https://github.com/jjwlee94), [Kyle Liang](https://github.com/kliang1194)
