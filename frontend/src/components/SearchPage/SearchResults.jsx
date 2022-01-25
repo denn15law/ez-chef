@@ -91,8 +91,7 @@ const SearchForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Box
             component="main"
             sx={{
@@ -101,8 +100,7 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Typography variant="h3">Search For Recipes</Typography>
             <Paper
               component="form"
@@ -115,8 +113,7 @@ const SearchForm = () => {
                 ":hover": {
                   boxShadow: 20,
                 },
-              }}
-            >
+              }}>
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Enter Ingredients or Keywords"
@@ -133,8 +130,7 @@ const SearchForm = () => {
                 <IconButton
                   onClick={reloadSearch}
                   sx={{ p: "10px" }}
-                  aria-label="search"
-                >
+                  aria-label="search">
                   <SearchIcon />
                 </IconButton>
               )}
@@ -147,13 +143,11 @@ const SearchForm = () => {
                       </Typography>
                     }
                     onClose={handleTooltipClose}
-                    open={tooltip}
-                  >
+                    open={tooltip}>
                     <IconButton
                       onClick={handleTooltipOpen}
                       sx={{ p: "10px" }}
-                      aria-label="search"
-                    >
+                      aria-label="search">
                       <SearchIcon />
                     </IconButton>
                   </Tooltip>
@@ -180,8 +174,7 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Grid
               container
               // paddingRight={5}
@@ -191,8 +184,7 @@ const SearchForm = () => {
               direction="row"
               justifyContent="center"
               alignItems="center"
-              textAlign="center"
-            >
+              textAlign="center">
               {recipeData.length
                 ? recipeData
                     .sort((a, b) =>
@@ -213,21 +205,18 @@ const SearchForm = () => {
                               ":hover": {
                                 boxShadow: 20,
                               },
-                            }}
-                          >
+                            }}>
                             <CardContent
                               sx={{
                                 flexGrow: 1,
                                 marginBottom: -2,
-                              }}
-                            >
+                              }}>
                               <Link
                                 href={url}
                                 style={{
                                   color: "black",
                                   textDecoration: "none",
-                                }}
-                              >
+                                }}>
                                 <Typography
                                   fontSize={18}
                                   paddingLeft={3}
@@ -237,15 +226,14 @@ const SearchForm = () => {
                                   display="flex"
                                   justifyContent="center"
                                   direction="column"
-                                  alignItems="center"
-                                >
+                                  alignItems="center">
                                   {recip.title}
                                 </Typography>
                                 <CardMedia
                                   key={recip.id}
                                   component="img"
                                   src={recip.image}
-                                  alt="recipe"
+                                  alt={recip.title}
                                   style={{
                                     height: 325,
                                     width: 300,
