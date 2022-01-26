@@ -11,6 +11,7 @@ const db = require("../config/keys").mongoLocal;
 const Recipe = require("../models/Recipe");
 const User = require("../models/User");
 const Favourite = require("../models/Favourite");
+const GroceryList = require("../models/GroceryList");
 
 mongoose
   .connect(db)
@@ -19,6 +20,7 @@ mongoose
     Recipe.collection.drop(() => console.log("Recipe Dropped"));
     // User.collection.drop(() => console.log("User Dropped"));
     Favourite.collection.drop(() => console.log("Favourite Dropped"));
+    GroceryList.collection.drop(() => console.log("Grocery List Dropped"));
   })
   .catch((err) => console.log(err.message));
 

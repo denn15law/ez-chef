@@ -24,12 +24,16 @@ const theme = createTheme({
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
+      console.log("foundUser", foundUser);
+      console.log(typeof foundUser);
+      setUser(foundUser.id);
+      setUsername(foundUser.name);
     }
   }, []);
 
@@ -37,7 +41,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <div className="App">
-          <Nav user={user} />
+          <Nav user={user} username={username} />
           <div className="main">
             <Routes>
               <Route path="/" element={<Index />}></Route>
@@ -47,33 +51,37 @@ const App = () => {
               <Route path="/search" element={<SearchForm />}></Route>
               <Route
                 path="/search/results/:search"
-                element={<SearchResults />}></Route>
+                element={<SearchResults />}
+              ></Route>
               <Route
                 path="/search/:recipeID"
-                element={<RecipeDetails user={user} />}></Route>
+                element={<RecipeDetails user={user} />}
+              ></Route>
 
               <Route
                 path="/myrecipes"
-                element={user ? <MyRecipes user={user} /> : <Index />}></Route>
+                element={user ? <MyRecipes user={user} /> : <Index />}
+              ></Route>
               <Route
                 path="/myrecipes/:recipeID"
-                element={
-                  user ? <MyRecipeDetails user={user} /> : <Index />
-                }></Route>
+                element={user ? <MyRecipeDetails user={user} /> : <Index />}
+              ></Route>
               <Route
                 path="/new"
-                element={user ? <NewRecipe user={user} /> : <Index />}></Route>
+                element={user ? <NewRecipe user={user} /> : <Index />}
+              ></Route>
               <Route
                 path="/edit/:user/:recipeID"
-                element={user ? <EditRecipe user={user} /> : <Index />}></Route>
+                element={user ? <EditRecipe user={user} /> : <Index />}
+              ></Route>
               <Route
                 path="/favourites"
-                element={user ? <Favourites user={user} /> : <Index />}></Route>
+                element={user ? <Favourites user={user} /> : <Index />}
+              ></Route>
               <Route
                 path="/grocerylist"
-                element={
-                  user ? <GroceryList user={user} /> : <Index />
-                }></Route>
+                element={user ? <GroceryList user={user} /> : <Index />}
+              ></Route>
             </Routes>
           </div>
         </div>
