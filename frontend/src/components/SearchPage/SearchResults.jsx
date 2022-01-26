@@ -30,7 +30,7 @@ const styles = {
   },
 };
 
-const SearchForm = () => {
+const SearchResults = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [search, setSearch] = useState("");
   const [searched, setSearched] = useState("");
@@ -267,4 +267,4 @@ const SearchForm = () => {
   );
 };
 
-export default SearchForm;
+export default SearchResults;
