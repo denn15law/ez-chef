@@ -30,8 +30,6 @@ const App = () => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
-      console.log("foundUser", foundUser);
-      console.log(typeof foundUser);
       setUser(foundUser.id);
       setUsername(foundUser.name);
     }
