@@ -1,7 +1,8 @@
 import React from "react";
-import { Typography, Grid, Card, CardContent } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
+import TechStackCard from "./TechStackCard";
 
-export default function AboutStack() {
+export default function TeamSection() {
   return (
     <>
       <Typography textAlign="center" variant="h4" paddingTop={4}>
@@ -17,32 +18,22 @@ export default function AboutStack() {
         alignItems="center"
       >
         <Grid item key={1}>
-          <Card
-            sx={{
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              maxWidth: 715,
-              textAlign: "center",
-              ":hover": {
-                boxShadow: 20,
-              },
-            }}
-          >
-            <CardContent sx={{ flexGrow: 1, fontSize: 18, marginBottom: -1.5 }}>
-              <p>
-                <strong>Front End:</strong> React, Material UI
-              </p>
-              <p>
-                <strong>Back End:</strong> Mongo DB, Express, Node
-              </p>
-              <p>
-                <strong>APIs:</strong> Spoonacular API, Twilio API
-              </p>
-            </CardContent>
-          </Card>
+          <TechStackCard Image="https://hearmecheer.com/wp-content/uploads/2021/03/1000px-React-icon.svg.png" />
+        </Grid>
+        <Grid item key={2}>
+          <TechStackCard Image="https://mui.com/static/logo.png" />
+        </Grid>
+        <Grid item key={3}>
+          <TechStackCard Image="https://infinapps.com/wp-content/uploads/2018/10/mongodb-logo.png" />
+        </Grid>
+        <Grid item key={4}>
+          <TechStackCard Image="https://www.bairesdev.com/wp-content/uploads/2021/07/Expressjs.svg" />
+        </Grid>
+        <Grid item key={5}>
+          <TechStackCard Image="https://images-na.ssl-images-amazon.com/images/I/510uF1kS8LL.png" />
+        </Grid>
+        <Grid item key={6}>
+          <TechStackCard Image="https://www.bizahoy.com/resource/wp-content/uploads/sites/2/2019/04/Twilio-Logo-1.png" />
         </Grid>
       </Grid>
     </>

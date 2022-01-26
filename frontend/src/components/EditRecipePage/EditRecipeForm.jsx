@@ -88,7 +88,7 @@ const EditRecipeForm = ({ user, recipeID }) => {
             sx={{
               p: 2,
               margin: "auto",
-              maxWidth: 500,
+              maxWidth: 525,
               flexGrow: 1,
               display: "flex",
               flexDirection: "column",
