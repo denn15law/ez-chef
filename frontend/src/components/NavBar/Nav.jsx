@@ -114,12 +114,7 @@ const Nav = ({ user }) => {
                 onClick={toggleOpen}
                 edge="start"
                 sx={{ mr: 2, ...(open && { display: "none" }) }}>
-                {user && (
-                  <Avatar sx={{ width: 35, height: 35 }}>
-                    {user.charAt(0)}
-                  </Avatar>
-                )}
-                {!user && <Avatar sx={{ width: 35, height: 35 }}></Avatar>}
+                <Avatar sx={{ width: 35, height: 35 }}></Avatar>
               </IconButton>
             </Tooltip>
           </Toolbar>
