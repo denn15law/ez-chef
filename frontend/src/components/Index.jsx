@@ -56,8 +56,8 @@ const Index = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                  }}
-                >
+                    width: "80vw",
+                  }}>
                   <div
                     style={{
                       background: "grey",
@@ -67,8 +67,7 @@ const Index = () => {
                       // paddingBottom: "3px",
                       paddingLeft: "5px",
                       paddingRight: "5px",
-                    }}
-                  >
+                    }}>
                     <TypeWriterEffect
                       // p={10}
                       color="white"
@@ -112,8 +111,7 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Search Recipes </Typography>
                   </CardContent>
@@ -131,8 +129,7 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Recipe Details </Typography>
                   </CardContent>
@@ -159,8 +156,7 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around"
-              >
+                justifyContent="space-around">
                 <Card
                   sx={{
                     height: "100%",
@@ -169,8 +165,7 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">
                       Register and Login to your Account
@@ -190,8 +185,7 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">
                       View your Personal Content
@@ -220,8 +214,7 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around"
-              >
+                justifyContent="space-around">
                 <Card
                   sx={{
                     height: "100%",
@@ -230,8 +223,7 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">Create Recipes </Typography>
                   </CardContent>
@@ -249,8 +241,7 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">View Your Recipes</Typography>
                   </CardContent>
@@ -277,8 +268,7 @@ const Index = () => {
               <Grid
                 display="flex"
                 flexDirection="row"
-                justifyContent="space-around"
-              >
+                justifyContent="space-around">
                 <Card
                   sx={{
                     height: "100%",
@@ -287,8 +277,7 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginRight: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">My Favourite Recipes</Typography>
                   </CardContent>
@@ -306,8 +295,7 @@ const Index = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     marginLeft: 5,
-                  }}
-                >
+                  }}>
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5">My Grocery List</Typography>
                   </CardContent>
