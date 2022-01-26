@@ -17,7 +17,7 @@ router.post("/", (req, res, next) => {
         return res.status(400).json({ err: err });
       }
       console.log(`-----Logged in as ${user.first_name}-----`);
-      res.json(`${user.id}`);
+      res.json(`${user.first_name}`);
     });
   })(req, res, next);
 });
