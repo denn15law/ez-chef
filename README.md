@@ -10,13 +10,15 @@ EZ Chef provides recipes based on ingredients, generates shopping lists, and con
 
 ### API request for recipes
 
+![search-recipes](https://github.com/denn15law/ez-chef/blob/main/frontend/src/docs/search-recipes.gif)
+
 ### Creating and editing a user's own recipe
+
+![Create-Edit-Recipes](https://github.com/denn15law/ez-chef/blob/main/frontend/src/docs/Create-Edit-Recipes.gif)
 
 ### Adding a recipe to a user's favourites and grocery list
 
 ![Favourites-Groceries](https://github.com/denn15law/ez-chef/blob/main/frontend/src/docs/Favourites-Groceries.gif)
-
-### Texting a user's grocery list to their mobile device
 
 ## Getting Started
 
