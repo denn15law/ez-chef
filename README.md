@@ -6,6 +6,8 @@ EZ Chef provides recipes based on ingredients, generates shopping lists, and con
 
 ### Landing Page
 
+![Homepage](https://github.com/denn15law/ez-chef/blob/main/frontend/src/docs/homepage.gif)
+
 ### API request for recipes
 
 ### Creating and editing a user's own recipe
