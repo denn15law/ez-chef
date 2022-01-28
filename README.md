@@ -14,6 +14,8 @@ EZ Chef provides recipes based on ingredients, generates shopping lists, and con
 
 ### Adding a recipe to a user's favourites and grocery list
 
+![Favourites-Groceries](https://github.com/denn15law/ez-chef/blob/main/frontend/src/docs/Favourites-Groceries.gif)
+
 ### Texting a user's grocery list to their mobile device
 
 ## Getting Started
